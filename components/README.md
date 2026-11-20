@@ -1,6 +1,6 @@
 # Components
 
-**63 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**64 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (12)
 
@@ -19,7 +19,7 @@
 | [Elastic Slider](elastic-slider/) | `elastic-slider` |
 | [ThemeSelector](theme-selector/) | `theme-selector` |
 
-## Buttons (12)
+## Buttons (13)
 
 | Component | ID |
 | --- | --- |
@@ -30,6 +30,7 @@
 | [Pulse Heart](pulse-heart/) | `pulse-heart` |
 | [Fuse Button](fuse-button/) | `fuse-button` |
 | [Delete Button](delete-button/) | `delete-button` |
+| [Countdown Delete](countdown-delete/) | `countdown-delete` |
 | [Hold Button](hold-button/) | `hold-button` |
 | [Notification Bell](notification-bell/) | `notification-bell` |
 | [Bell Toggle](bell-toggle/) | `bell-toggle` |

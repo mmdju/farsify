@@ -1,0 +1,21 @@
+{
+  "description": "A destructive-action button that morphs from a red \"delete account\" pill into a soft \"cancel deletion\" pill with a live Persian-digit countdown, and reverts on its own when the countdown ends.",
+  "interactionType": "Click",
+  "interactionNotes": "Click the red pill: it morphs into a soft cancel pill with an undo icon and a ticking countdown. Clicking it again mid-countdown reverts to the delete pill. When the countdown reaches zero, onCountdownEnd fires once and the button returns to its delete state on its own after a short pause. Under prefers-reduced-motion every morph, pop and fade becomes an instant swap and only the countdown keeps ticking.",
+  "props": {
+    "deleteLabel": "Label on the red pill before the countdown starts.",
+    "cancelLabel": "Label shown between the countdown chip and the undo icon while the countdown runs.",
+    "countdown": "Seconds the cancel state lasts before it counts as done; clamped to at least 1.",
+    "deleteColor": "Color of the delete pill, the undo circle, the countdown chip and the cancel label.",
+    "softColor": "Background of the cancel pill while the countdown runs.",
+    "onCountdownEnd": "Fires once when the countdown reaches zero, right before the button reverts to its delete state. Hand the actual deletion work to this.",
+    "className": "Extra class for the root box."
+  },
+  "tips": [
+    "This is a two-step delete: the first click only arms the countdown and every second of it stays cancelable — gentler than a confirm dialog for irreversible actions.",
+    "Do the real deletion in `onCountdownEnd`; the component reverts to its delete state on its own and does not wait on you.",
+    "Keep the countdown short (3 to 10 seconds): long waits read as the app being stuck.",
+    "Match `deleteColor` to your danger token and pick a `softColor` that is a light tint of it, so the cancel state still whispers the same danger.",
+    "Under `prefers-reduced-motion` the morph, the word cascade and the fades all become instant swaps; only the countdown itself keeps ticking."
+  ]
+}
