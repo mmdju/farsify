@@ -1,8 +1,8 @@
 # Components
 
-**63 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**64 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
-## Inputs (12)
+## Inputs (13)
 
 | Component | ID |
 | --- | --- |
@@ -18,6 +18,7 @@
 | [Stepper](stepper/) | `stepper` |
 | [Elastic Slider](elastic-slider/) | `elastic-slider` |
 | [ThemeSelector](theme-selector/) | `theme-selector` |
+| [Input Switch](input-switch/) | `input-switch` |
 
 ## Buttons (12)
 
