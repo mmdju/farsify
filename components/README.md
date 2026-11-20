@@ -1,6 +1,6 @@
 # Components
 
-**63 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**64 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (12)
 
@@ -36,7 +36,7 @@
 | [Magnet](magnet/) | `magnet` |
 | [Specular Button](specular-button/) | `specular-button` |
 
-## Navigation (10)
+## Navigation (11)
 
 | Component | ID |
 | --- | --- |
@@ -50,6 +50,7 @@
 | [Rail TOC](rail-toc/) | `rail-toc` |
 | [Flower Menu](flower-menu/) | `flower-menu` |
 | [Pop Menu](pop-menu/) | `pop-menu` |
+| [Bottom Menu](bottom-menu/) | `bottom-menu` |
 
 ## Loaders & status (4)
 

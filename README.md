@@ -4,13 +4,13 @@
 
 # Farsify
 
-**63 components** for Persian, right-to-left React interfaces.
+**64 components** for Persian, right-to-left React interfaces.
 
 Every one is a single file you copy into your project and own from then on.
 No package to install, no build step, no link back to this site.
 
 [![License](https://img.shields.io/badge/license-FCL%201.0-0b0b0b?style=flat-square)](LICENSE.md)
-[![Components](https://img.shields.io/badge/components-63-0b0b0b?style=flat-square)](components/README.md)
+[![Components](https://img.shields.io/badge/components-64-0b0b0b?style=flat-square)](components/README.md)
 [![React](https://img.shields.io/badge/React-19-0b0b0b?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Live](https://img.shields.io/badge/live%20previews-farsifyui.ir-0b0b0b?style=flat-square)](https://farsifyui.ir)
 
@@ -28,7 +28,7 @@ No package to install, no build step, no link back to this site.
 | --- | --- | --- | --- |
 | Inputs | `inputs` | 12 | `squish-switch`, `wake-slider`, `theme-selector`, `comet-dial` |
 | Buttons | `actions` | 12 | `magnet`, `hold-button`, `slide-commit`, `voice-pill` |
-| Navigation | `navigation` | 10 | `gooey-nav`, `branched-menu`, `rail-toc`, `carousel` |
+| Navigation | `navigation` | 11 | `gooey-nav`, `branched-menu`, `rail-toc`, `carousel` |
 | Loaders & status | `status` | 4 | `lattice-loader`, `status-mark`, `thought-line`, `refine-frame` |
 | Showcase | `showcase` | 25 | `card-swap`, `glass-icons`, `tilted-card`, `paper-crumple` |
 
