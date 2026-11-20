@@ -229,7 +229,7 @@ function Panel({
           className="absolute inset-0"
           style={{
             borderRadius: radius,
-            backgroundImage: `url(${imageSrc})`,
+            backgroundImage: `url("${imageSrc}")`,
             backgroundSize: `${count * 100}% 100%`,
             backgroundPosition: `${posX}% center`,
           }}
