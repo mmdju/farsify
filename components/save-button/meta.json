@@ -1,0 +1,91 @@
+{
+  "slug": "save-button",
+  "name": "Save Button",
+  "description": "A save button that owns its own state: a muted saving face with a spinning badge, then a green tick when the save lands, then back to idle.",
+  "category": "actions",
+  "dependencies": ["motion", "lucide-react"],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Clicking it, or pressing Enter or Space while it is focused, starts the save: the button becomes a muted, non-clickable surface, a badge with a spinner pops into its corner, and the label swaps word by word with a short blur. When the save resolves the badge turns green with a check and the label reads as saved; after `successMs` everything returns to idle. A rejected promise sends the button back to idle without a success flash. Under `prefers-reduced-motion` the label and the badge change instantly.",
+  "props": [
+    {
+      "name": "onSave",
+      "type": "() => void | Promise<void>",
+      "description": "Called when the button is pressed. Return a promise and the loading state lasts exactly until it settles; a rejection returns the button to idle."
+    },
+    {
+      "name": "idleLabel",
+      "type": "string",
+      "defaultValue": "\"ذخیره\"",
+      "description": "Label in the idle state."
+    },
+    {
+      "name": "loadingLabel",
+      "type": "string",
+      "defaultValue": "\"در حال ذخیره\"",
+      "description": "Label while the save is running."
+    },
+    {
+      "name": "successLabel",
+      "type": "string",
+      "defaultValue": "\"ذخیره شد\"",
+      "description": "Label after a successful save."
+    },
+    {
+      "name": "loadingMs",
+      "type": "number",
+      "defaultValue": "1200",
+      "description": "How long the loading state lasts when `onSave` returns nothing."
+    },
+    {
+      "name": "successMs",
+      "type": "number",
+      "defaultValue": "2000",
+      "description": "How long the success state stays before the button returns to idle, milliseconds."
+    },
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "defaultValue": "\"#232323\"",
+      "description": "Button surface."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "\"#fafafa\"",
+      "description": "Label and icon color."
+    },
+    {
+      "name": "successColor",
+      "type": "string",
+      "defaultValue": "\"#22c55e\"",
+      "description": "Badge color in the success state."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dims the button and blocks input."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Accessible name, for when you do not want the visible label alone to name the button."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra class for the root wrapper."
+    }
+  ],
+  "tips": [
+    "Return a promise from `onSave` and the loading state lasts exactly as long as the request; the built-in timer is only a stand-in for prototypes.",
+    "A rejected promise drops the button back to idle without a success flash. Show the error yourself from inside `onSave`.",
+    "The labels animate word by word, never letter by letter: splitting Persian letters across elements breaks their joining.",
+    "Colors default to the neutral dark pill; `backgroundColor` and `textColor` accept any CSS color, a theme variable included.",
+    "The badge sits on the inline-end corner and its ring separates it from the page, so keep the badge inside the root wrapper when you restyle it."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 208,
+  "version": 1
+}

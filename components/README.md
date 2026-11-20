@@ -1,6 +1,6 @@
 # Components
 
-**63 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**64 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (12)
 
@@ -19,7 +19,7 @@
 | [Elastic Slider](elastic-slider/) | `elastic-slider` |
 | [ThemeSelector](theme-selector/) | `theme-selector` |
 
-## Buttons (12)
+## Buttons (13)
 
 | Component | ID |
 | --- | --- |
@@ -35,6 +35,7 @@
 | [Bell Toggle](bell-toggle/) | `bell-toggle` |
 | [Magnet](magnet/) | `magnet` |
 | [Specular Button](specular-button/) | `specular-button` |
+| [Save Button](save-button/) | `save-button` |
 
 ## Navigation (10)
 
