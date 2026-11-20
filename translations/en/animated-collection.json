@@ -1,0 +1,19 @@
+{
+  "description": "A collection block whose items spring between a stacked list, a two-column card grid and a tilted pack, driven by a pill tab switcher.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Clicking a pill tab morphs the whole collection: items glide to their new positions with a spring, the image boxes resize, and the info blocks blur out when the pack forms and blur back in elsewhere. In pack view a caption with the joined titles and the piece count fades in under the stack. The active tab pill slides between the tabs, every tab is a real button with a visible focus ring, and with `prefers-reduced-motion` the springs, blurs and fades become instant.",
+  "props": {
+    "title": "The heading above the tab switcher.",
+    "items": "The collection items; each has `id`, `title`, `subtitle`, `idNumber` and `image` (any `<img>` source, such as a URL or an inline SVG data URI). Without them, two sample items appear.",
+    "defaultView": "The view the collection starts in.",
+    "className": "Extra class for the outer block."
+  },
+  "tips": [
+    "`image` accepts any `<img>` source — a remote URL, a local path or an inline SVG data URI; the built-in samples are inline gradients, so the component makes no external requests.",
+    "With a single item the pack view keeps it centered; from two items on, the cards fan out to their mirrored poses.",
+    "From the third item on, extra cards stack centered in pack view with no pose, so a deep pile stays tidy.",
+    "`defaultView` is only the starting point; the component keeps its own view state afterwards.",
+    "The block is `max-w-xl` and fills the width it is given up to that; widen it with `className` when the surrounding layout is narrow.",
+    "With `prefers-reduced-motion` the springs, blurs and fades land instantly."
+  ]
+}

@@ -1,6 +1,6 @@
 # Components
 
-**63 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**64 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (12)
 
@@ -60,7 +60,7 @@
 | [Status Mark](status-mark/) | `status-mark` |
 | [Refine Frame](refine-frame/) | `refine-frame` |
 
-## Showcase (25)
+## Showcase (26)
 
 | Component | ID |
 | --- | --- |
@@ -89,3 +89,4 @@
 | [Bookshelf](bookshelf/) | `bookshelf` |
 | [Holographic Referral Card](invite-card/) | `invite-card` |
 | [Scroll Panels](scroll-panels/) | `scroll-panels` |
+| [Animated Collection](animated-collection/) | `animated-collection` |
