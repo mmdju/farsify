@@ -1,0 +1,22 @@
+{
+  "description": "A round bell that carries the number of unread notifications; it rattles as the count goes up, the clapper lags behind and the badge digits roll like an odometer.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "It is a button, but its personality comes from the data, not from the click: every time `count` goes up the bell swings around its top hinge, the clapper lags behind on its own spring and the digits roll in the direction of the change. At `max` the badge becomes \"+\" and at zero it fades out completely. The click itself is normal button behavior (focus, hover, press) and `onClick` is free.",
+  "props": {
+    "count": "Number of unread notifications. Every increase rattles the bell; a decrease or staying the same has no rattle.",
+    "max": "From this number up the badge shows \"99+\" and the digits do not roll.",
+    "variant": "`count` shows the number, `dot` shows just a dot — for when the count does not matter.",
+    "size": "Button diameter in pixels; the bell, badge and badge font are all scaled from it.",
+    "color": "Badge color; the same five default system colors.",
+    "disabled": "Dimmed and unresponsive to the pointer.",
+    "className": "Extra class for the button itself."
+  },
+  "tips": [
+    "Pass `count` from your own data source; the bell rattles as soon as the number goes up, so no `ref` or manual method is needed.",
+    "The rattle only comes from the count **increasing**. That is deliberate: reading notifications should not shake the bell.",
+    "The digits are Persian and sit in fixed-width boxes because `tabular-nums` has no effect on Peyda's Persian numerals; do not swap them by hand.",
+    "The badge sits on the `inline-end` side — in Persian that means the top-left corner. If the `dir` prop on the parent changes, it mirrors itself.",
+    "The remaining `<button>` props (such as `onClick` and `aria-label`) go straight to the button; for a custom label, replace the default screen-reader text with `aria-label`.",
+    "With `prefers-reduced-motion` the rattle and rolling are removed: the badge appears and the digits jump in place, but the counting logic is untouched."
+  ]
+}

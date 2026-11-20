@@ -1,0 +1,34 @@
+{
+  "description": "A 3D referral card that tilts toward the pointer with a holographic sheen following it; a black-and-white photo in the middle, a badge up top and a ticket number at the bottom — like a cinema ticket.",
+  "interactionType": "Hover / Touch hold / Focus",
+  "interactionNotes": "As the mouse moves over the card, it tilts on a 3D spring and the holographic sheen shines exactly under the pointer; on mouse leave it springs back to rest. On phones, holding a finger does the same job as hover — the card tilts and glints under the finger — and it returns on release, while vertical page scrolling stays intact. If the second logo is a link, Tab lights a fainter sheen and the link gets its focus ring. The auto demo (if enabled) turns off on the first hover or finger hold and hands control to the user. Under `prefers-reduced-motion` the tilt and lift are turned off but the sheen remains. The tilt is physical geometry and is not mirrored in RTL.",
+  "props": {
+    "image": "The card's center photo; it is stretched with object-cover into a 3:4 frame and stays black-and-white with low contrast (so the sheen reads as holographic on top).",
+    "imageAlt": "Alt text for the photo.",
+    "title": "Label of the bottom row (right side in RTL). If it grows wider than the card, it is clipped silently.",
+    "description": "Caption beside the title in the bottom row — muted in color and set heavier.",
+    "logo": "Badge in the top corner of the card: any `ReactNode`, or `{src, alt, className}`. A string is treated as an image only when it looks like a path (`/`, `./`, `http`, or an image extension); otherwise it is printed as text. Defaults to the Sparkles icon.",
+    "logoAlt": "Alt text for the badge, when `logo` is an image URL.",
+    "secondLogo": "The other corner of the top row — usually the ticket number (`67`) or a second badge; it follows the same `logo` rule, so a plain string is text, not an image.",
+    "secondLogoHref": "If provided, the second logo becomes an external link (new tab); it also gets its own focus ring.",
+    "secondLogoAlt": "Alt text for the second logo image; if omitted and the logo is an image, the component's English name is used.",
+    "secondLogoAriaLabel": "Accessible label for the second logo link.",
+    "icon": "Icon in the center of the photo; defaults to a large white BadgeCheck (swap it for your own brand icon).",
+    "tilt": "Maximum card tilt in degrees; zero means the card only glints and never tilts.",
+    "glow": "Holographic sheen intensity between 0 and 1; it is the opacity multiplier of the sheen layer — zero turns it fully off.",
+    "stiffness": "Stiffness of the tilt spring; higher means the card reacts faster and more nervously.",
+    "damping": "Damping of the spring; lower means the card wobbles more on the way back.",
+    "radius": "Corner roundness of the card and the photo frame in px (component default: rounded-2xl).",
+    "autoPreview": "Automatic cycle of tilt and sheen for previews; it turns off on the first mouse hover or finger hold and hands control to the user. Not needed in normal use.",
+    "replay": "A \"replay\" signal; whenever it changes, the stopped demo (if autoPreview is on) starts again.",
+    "ariaLabel": "Accessible label for the card itself.",
+    "className": "Extra class for the outer container (it sits on a 375px width)."
+  },
+  "tips": [
+    "The card is always dark (`#1f2121`) and looks the same in both site themes — like a real ticket that does not change under light; the white sheen sits on that darkness with mix-blend-overlay.",
+    "Tilt and sheen follow the mouse/pen, and holding a finger does the same on phones; vertical scrolling stays intact thanks to touch-action: pan-y — if the browser hands the gesture to scrolling, the card quietly returns to rest — but with Tab you get a fainter sheen and the focus ring.",
+    "For your own branded ticket, usually `title`, `description`, `logo` and `image` are enough; `tilt`/`glow`/`stiffness`/`damping` give the default motion personality.",
+    "Variant identities are distinguishable even at rest by corner roundness (classic 16, bold 6, energetic 10, calm 24).",
+    "Under `prefers-reduced-motion` the card does not tilt, but the sheen remains on hover and focus — a holographic touch experience without motion."
+  ]
+}

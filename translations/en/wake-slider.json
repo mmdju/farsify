@@ -1,0 +1,34 @@
+{
+  "description": "A slider built from slim bars; dragging sends a wave of height through them that traces the path of movement.",
+  "interactionType": "Drag / Click / Keyboard",
+  "interactionNotes": "Drag or click on the track; the bars next to the handle rise like a wave, and the faster you drag the taller they get. The handle lags behind the movement and then settles, so it has a sense of weight. The arrow keys work too and mirror in right-to-left.",
+  "props": {
+    "value": "Controlled value. Leave it out to keep it internal.",
+    "defaultValue": "Initial value when not controlled.",
+    "onChange": "Called on every value change.",
+    "min": "Minimum value.",
+    "max": "Maximum value.",
+    "step": "Step of value changes.",
+    "bars": "Number of bars; more means a smoother wave and heavier rendering.",
+    "height": "Full height of the bars, in pixels.",
+    "restHeight": "Bar height at rest.",
+    "gap": "Spacing between the bars.",
+    "fillColor": "Color of the filled bars.",
+    "trackColor": "Color of the empty bars.",
+    "crestColor": "Color of the wave crest layer; empty means the same as the fill color.",
+    "sensitivity": "Wave sensitivity to drag speed.",
+    "reach": "The maximum distance the wave reaches from the handle.",
+    "skew": "Asymmetry of the wave: behind is taller than ahead.",
+    "glide": "Glide of the handle toward the target; low means lazier.",
+    "smoothing": "Smoothing of the computed speed.",
+    "showValue": "Show the value number next to the track.",
+    "formatValue": "Formatting of the displayed number.",
+    "disabled": "Disable the whole control.",
+    "ariaLabel": "Screen reader label."
+  },
+  "tips": [
+    "Want a tall wave? Raise `reach` and `sensitivity` together — either one alone has little effect.",
+    "For a \"heavier\" feel, bring `glide` down; for \"fast and nimble\", raise it.",
+    "On mobile, 32 bars render together; if something gets slow, reduce `bars`."
+  ]
+}

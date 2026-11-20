@@ -1,0 +1,39 @@
+{
+  "description": "A holographic profile card with spring tilt under the pointer, a patternable holo layer, light glare and parallax depth — plus a status indicator and a contact button.",
+  "interactionType": "Hover / Touch / Gyroscope",
+  "interactionNotes": "The card tilts under the pointer with a spring, the light rotates with it and the hologram layer shifts in place; on touch the same happens with your finger, and with `enableMobileTilt` tilting the phone also moves the card (on iOS it asks for permission on the first touch). Entry is a stretched 1.4-second spring. The geometry is not mirrored: tilt and light are physical.",
+  "props": {
+    "avatarUrl": "Portrait on the tile.",
+    "iconUrl": "Image for the hologram pattern; without it a soft gradient is used.",
+    "miniAvatarUrl": "Small round avatar next to the handle in the footer.",
+    "name": "Name on the tile — the default is a placeholder, not an invented person.",
+    "title": "Below the name.",
+    "handle": "The handle in the footer (without @; it is added for you).",
+    "status": "Status text below the handle.",
+    "statusColor": "Color of the status indicator.",
+    "contactText": "Text of the contact button.",
+    "showUserInfo": "Whether the handle/status/contact footer is shown.",
+    "onContactClick": "Click of the contact button.",
+    "contactHref": "If passed, the contact button becomes a real link (new tab, `rel=noreferrer`).",
+    "theme": "Frame and tile palette.",
+    "backdropColor": "Background color of the tile; the hologram foil derives from how dark or light this color is. Omitting it means the theme tile.",
+    "radius": "Card corner radius.",
+    "holo": "Hologram layer intensity; 0 to 1.",
+    "glare": "Intensity of the following light glare; 0 to 1.",
+    "enableTilt": "Tilt with pointer/touch.",
+    "tiltStrength": "Maximum tilt angle, in degrees.",
+    "parallax": "Layer movement with the pointer, in pixels.",
+    "enableMobileTilt": "Gyroscope tilt on mobile.",
+    "mobileTiltSensitivity": "Gyroscope sensitivity.",
+    "intro": "The 1.4-second entry spring.",
+    "autoPreview": "Auto demo: an imaginary pointer slowly circles the card so tilt, glare and hologram are visible in non-interactive previews (bento/list). It turns off with `prefers-reduced-motion`.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "⚠️ This component's CSS variable prefix is `--pfc-*`, not `--pc-*` — that prefix belongs to sponsor-card in this repo (precedent: paper-crumple with `--pcr-*`). The names were changed mechanically and no value differs.",
+    "The hologram foil derives from how dark or light `backdropColor` is (dark surface = color-dodge, light = multiply) — so the backdrop color also changes the hologram's character, not just the background.",
+    "The text defaults (\"online\"/\"message\") were made Persian; pass the Persian name and title from props and set the Persian line's `line-height` deliberately (1.25 for the name / 1.45 for the title — above the font ink).",
+    "On mobile you get two separate sensations: touching the card itself and — with `enableMobileTilt` — tilting the phone itself; the iOS permission pattern is automatic.",
+    "In the light theme the foil gets `invert(1) hue-rotate(180deg)` — pass the dark color pattern so it looks right in both themes."
+  ]
+}

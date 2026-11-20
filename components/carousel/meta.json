@@ -1,0 +1,158 @@
+{
+  "slug": "carousel",
+  "name": "Carousel",
+  "description": "A motorized carousel with five transition effects (tilt, slide, scale, fade and cube), momentum dragging, autoplay with a progress bar and seamless loop — for text, images or any other content.",
+  "category": "navigation",
+  "dependencies": [],
+  "interactionType": "Drag / Click / Keyboard / Mouse wheel",
+  "interactionNotes": "Drag the cards and release: your finger's speed is measured and the card springs onto the nearest slide. The horizontal mouse wheel also turns the page, and the arrows/dots/bars give a direct jump. In RTL the engine is mirrored: \"next\" comes from the left and the strip of cards follows your finger. The keys are logical: the right arrow is always \"next\".",
+  "props": [
+    {
+      "name": "items",
+      "type": "CarouselEntry[]",
+      "description": "The cards; a string (image URL), a CarouselItem object, or any custom ReactElement."
+    },
+    {
+      "name": "baseWidth",
+      "type": "number | string",
+      "defaultValue": "300",
+      "description": "Maximum width of the carousel, pixels."
+    },
+    {
+      "name": "aspectRatio",
+      "type": "number",
+      "defaultValue": "1.25",
+      "description": "Width-to-height ratio of the card; 0.5 to 4. Use 0.62 for a vertical story."
+    },
+    {
+      "name": "peek",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "How much of the neighboring card is visible from the edge, pixels."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "16",
+      "description": "Spacing between the cards, pixels."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "Corner radius of the cards."
+    },
+    {
+      "name": "frame",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Glass frame around the carousel."
+    },
+    {
+      "name": "effect",
+      "type": "\"tilt\" | \"slide\" | \"scale\" | \"fade\" | \"cube\"",
+      "defaultValue": "\"tilt\"",
+      "options": [
+        "tilt",
+        "slide",
+        "scale",
+        "fade",
+        "cube"
+      ],
+      "description": "Transition effect between the cards; cube needs 3D perspective and shadow and provides them itself."
+    },
+    {
+      "name": "indicator",
+      "type": "\"dots\" | \"bars\" | \"counter\" | \"none\"",
+      "defaultValue": "\"dots\"",
+      "options": [
+        "dots",
+        "bars",
+        "counter",
+        "none"
+      ],
+      "description": "Indicator shape; with autoplay, bars fill so you know when the next one is."
+    },
+    {
+      "name": "arrows",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Previous/next arrow buttons — they mirror themselves in RTL."
+    },
+    {
+      "name": "autoplay",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Autoplay; it stops on hover (if pauseOnHover), focus, dragging, or when the tab is hidden."
+    },
+    {
+      "name": "autoplayDelay",
+      "type": "number",
+      "defaultValue": "3000",
+      "description": "Autoplay interval, milliseconds (minimum 600)."
+    },
+    {
+      "name": "pauseOnHover",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Holding the pointer over the carousel pauses the playing."
+    },
+    {
+      "name": "loop",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Seamless loop: go from the last card to the first."
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Dragging with pointer/touch and the horizontal mouse wheel."
+    },
+    {
+      "name": "round",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Full-height round card — for avatars and badges."
+    },
+    {
+      "name": "initialIndex",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "The first slide."
+    },
+    {
+      "name": "theme",
+      "type": "\"dark\" | \"light\"",
+      "defaultValue": "\"dark\"",
+      "description": "Palette of the frame and the controls; it can also be changed from outside with `--carousel-*` variables."
+    },
+    {
+      "name": "onChange",
+      "type": "(index: number) => void",
+      "description": "Called on every arrival at a new slide."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style of the root."
+    }
+  ],
+  "tips": [
+    "The engine mirrors in RTL, not just the look: translations and the cube angle flip with the sign of the X axis, dragging follows your finger and throw velocity advances correctly — the sign is gathered in one place in `settings.sign`.",
+    "The mouse wheel deliberately doesn't take the mirror sign: a positive deltaX means \"going forward\" in both directions — the same natural feel as scrolling.",
+    "For a gallery row with a half-visible neighbor: `frame={false}` + `peek={64}` + `effect=\"scale\"` — the blurred edge mask builds itself.",
+    "Pair autoplay with the bar indicator (`indicator=\"bars\"`) so the user understands how many seconds are left to the next slide — the stories pattern.",
+    "The round card (`round`) squares the width to the image ratio; for short text inside it, `compact` applies automatically and the description is hidden."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 1005,
+  "version": 1
+}

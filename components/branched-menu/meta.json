@@ -1,0 +1,131 @@
+{
+  "slug": "branched-menu",
+  "name": "Branched Menu",
+  "description": "A nested menu whose sections open and close like tree branches, and a path line is drawn all the way to the selected option.",
+  "category": "navigation",
+  "dependencies": [],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Click a section's title to open or close its branches; whichever child is selected, a colored line is drawn from the trunk to that option and the indicator beside the title slides toward it. Section buttons have `aria-expanded` and closed children are out of the tab path, so it works correctly with the keyboard and screen readers too.",
+  "props": [
+    {
+      "name": "items",
+      "type": "BranchedMenuItem[]",
+      "defaultValue": "DEFAULT_ITEMS",
+      "description": "The sections. Each section has a `label` and a list of children (`value`, `label`, `icon`), or is itself a leaf with a `value`."
+    },
+    {
+      "name": "defaultOpen",
+      "type": "number | number[]",
+      "defaultValue": "0",
+      "description": "Which sections are open at first. A negative number means none."
+    },
+    {
+      "name": "defaultActive",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "The initial selected value. Leave it empty so the first child of the open section is selected."
+    },
+    {
+      "name": "onSelect",
+      "type": "(value, item) => void",
+      "description": "Called when a child or a leaf is selected."
+    },
+    {
+      "name": "onToggle",
+      "type": "(index, open) => void",
+      "description": "Called when a section opens or closes."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Ink color. The lines and the unstyled text are blends of this same color."
+    },
+    {
+      "name": "accentColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Color of the active line, the active label and the indicator."
+    },
+    {
+      "name": "lineColor",
+      "type": "string",
+      "defaultValue": "\"#3f3f46\"",
+      "description": "Color of the trunk and branches. It is a flat color so the connection points don't get darker."
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "defaultValue": "240",
+      "description": "Maximum menu width; it shrinks to fit the content."
+    },
+    {
+      "name": "rowHeight",
+      "type": "number",
+      "defaultValue": "36",
+      "description": "Height of each child row."
+    },
+    {
+      "name": "indent",
+      "type": "number",
+      "defaultValue": "40",
+      "description": "Where the children start. The branches end a little before it."
+    },
+    {
+      "name": "trunk",
+      "type": "number",
+      "defaultValue": "14",
+      "description": "Horizontal position of the trunk line."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "10",
+      "description": "Arc radius of each branch; it is limited to the row height."
+    },
+    {
+      "name": "lineWidth",
+      "type": "number",
+      "defaultValue": "1.5",
+      "description": "Line thickness."
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "defaultValue": "14",
+      "description": "Font size of the children; section titles are one pixel larger."
+    },
+    {
+      "name": "drawDuration",
+      "type": "number",
+      "defaultValue": "400",
+      "description": "Duration of drawing the active colored line, milliseconds."
+    },
+    {
+      "name": "foldDuration",
+      "type": "number",
+      "defaultValue": "300",
+      "description": "Duration of each section opening and closing, milliseconds."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only: keeps the sections open and selects children one by one; every few steps a section actually folds and unfolds so the path line is drawn anew."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra class on the menu root."
+    }
+  ],
+  "tips": [
+    "You can also give the colors with a CSS variable: `accentColor=\"var(--color-brand)\"` so the active line matches your site's brand.",
+    "For a side menu, pass an array to `defaultOpen` so several sections are open at once.",
+    "Each child's icon is a React element (`icon`), so pass your own project's icons directly — there is no external dependency."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 408,
+  "version": 1
+}

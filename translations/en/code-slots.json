@@ -1,0 +1,40 @@
+{
+  "description": "A one-time code input; each digit springs into its own slot, an error empties the slots from last to first, and success draws a curtain with a tick rising in the middle.",
+  "interactionType": "Keyboard typing / Paste / Click",
+  "interactionNotes": "Click the row and type digits; each digit springs into the next slot. You can also paste the whole code at once — the digits settle in a cascade. When the last slot fills, `onComplete` is called and whatever decision you made about the code plays out: acceptance opens an accent curtain from the middle with a tick rising, rejection empties the slots from last to first and then clears the code. The component does not decide whether the code is correct — that is your job.",
+  "props": {
+    "length": "Number of slots.",
+    "value": "The controlled code. A digit arriving from outside settles in with a cascade, and a digit that leaves empties its slot.",
+    "defaultValue": "Initial uncontrolled code; it renders already settled from the start.",
+    "onChange": "Called on every edit — including clearing at the end of a rejection.",
+    "onComplete": "Once, when the last slot fills.",
+    "status": "Error empties the slots from last to first under a danger tint and clears the code; success merges the fills into a curtain and locks the input.",
+    "mask": "Shows a dot in place of each digit.",
+    "caret": "Blinking caret in the active slot.",
+    "disabled": "Dims the row and ignores input.",
+    "autoFocus": "Focuses the input on mount.",
+    "accentColor": "Fill of a settled digit, the ring of the active slot, and the success curtain.",
+    "inkColor": "The caret, and the tint of the active slot.",
+    "slotColor": "Surface of an empty slot.",
+    "digitColor": "Color of the digit on the fill.",
+    "dangerColor": "Ring and fill color in the error state.",
+    "slotSize": "Slot width, px. Height and digit size follow it too.",
+    "gap": "Spacing between slots, px.",
+    "radius": "Corner rounding, px; capped at half the slot size.",
+    "bounce": "Spring bounce of settling; zero means damped with no bounce.",
+    "settle": "Seconds a digit takes to settle or empty.",
+    "rise": "Pixels a digit rises from below; zero means it only fades.",
+    "cascade": "Milliseconds between slots when several settle together or empty in a rejection.",
+    "ariaLabel": "Accessible name of the input.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "This component does not decide whether the code is correct — you know where the right code lives. Take `onComplete` and set `status` after the server responds.",
+    "Pasting works: copy the whole code and paste it onto the row, and the digits settle in a cascade. The SMS keyboard autofill (`autocomplete=\"one-time-code\"`) is wired up too.",
+    "Persian input is accepted too — both Persian and Arabic-Indic digit forms convert to the same Latin code. The `value` and `onChange` values are always Latin, because that is data, not display.",
+    "Filled slots are distinguishable from empty ones but **cannot be skipped**: clicking any slot moves the caret to the first empty slot and no further.",
+    "Set `cascade` to zero so all digits settle at once; raise it to make the stepped line more obvious. Above 40ms it feels slow on a six-digit code.",
+    "This component **does not mirror for right-to-left**, and that is intentional: its geometry is physical (the caret moves via `translateX` and a tap is mapped to a slot via `clientX`). Only the text and digits are Persian — the same rule as `jelly-radio`.",
+    "To let the user know you rejected a wrong code, set `status` to `error` and **then yourself** return it to `idle` once the emptying finishes — at the end the component fires `onChange('')`, which is the signal that it is done."
+  ]
+}

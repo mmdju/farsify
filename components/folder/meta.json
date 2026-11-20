@@ -1,0 +1,217 @@
+{
+  "slug": "folder",
+  "name": "Folder",
+  "description": "A three-dimensional folder whose flap opens on click; the papers come out, peek when hovered, and can be dropped anywhere by dragging.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Click / Drag / Hover / Keyboard",
+  "interactionNotes": "Clicking the folder body opens and closes it; while open, hovering a paper lifts it, a click zooms it, and dragging takes it out of the folder. Clicking outside or Escape closes it. Papers that came out go back by dragging them into the folder again.",
+  "props": [
+    {
+      "name": "items",
+      "type": "FolderEntry[]",
+      "defaultValue": "سه سندِ نمونه",
+      "description": "What the folder holds, at most 6 entries. Each entry can be a string, `{ title, description }`, `{ image, title, alt }`, `{ content }`, or a React element."
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "defaultValue": "undefined",
+      "description": "Custom documents as children; each child becomes a paper (it takes precedence over `items`)."
+    },
+    {
+      "name": "mode",
+      "type": "'flap' | 'book'",
+      "defaultValue": "'flap'",
+      "options": [
+        "flap",
+        "book"
+      ],
+      "description": "`flap` keeps the folder upright and opens its flap; `book` lays it flat and turns the cover like a book."
+    },
+    {
+      "name": "variant",
+      "type": "'solid' | 'glass' | 'matte'",
+      "defaultValue": "'solid'",
+      "options": [
+        "solid",
+        "glass",
+        "matte"
+      ],
+      "description": "The folder's material; `glass` makes the flap refractive glass and shows the papers inside through it."
+    },
+    {
+      "name": "layout",
+      "type": "'spread' | 'stack' | 'row'",
+      "defaultValue": "'spread'",
+      "options": [
+        "spread",
+        "stack",
+        "row"
+      ],
+      "description": "Arrangement of the papers when the folder is open: free spread, vertical stack, or tidy row."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "defaultValue": "تم‌آگاه (#8c8c8c / #27272a)",
+      "description": "Color of the folder; shadows and the light/dark layers are derived from it. Omit it to stay in tune with the mono surface theme; the blue `#3b82f6` is only the accent of the dock's blue slot."
+    },
+    {
+      "name": "paperColor",
+      "type": "string",
+      "defaultValue": "'#ffffff'",
+      "description": "Color of the papers."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "defaultValue": "undefined",
+      "description": "Text of the tab label; the tab grows to fit the text."
+    },
+    {
+      "name": "tabPosition",
+      "type": "'left' | 'center' | 'right'",
+      "defaultValue": "'right'",
+      "options": [
+        "left",
+        "center",
+        "right"
+      ],
+      "description": "Where the tab sits on the top edge (in right-to-left layout, `right` is the start side)."
+    },
+    {
+      "name": "openOn",
+      "type": "'click' | 'hover'",
+      "defaultValue": "'click'",
+      "options": [
+        "click",
+        "hover"
+      ],
+      "description": "Open on click, or while the pointer is over the folder."
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "defaultValue": "undefined",
+      "description": "Controlled state; pass `onOpenChange` alongside it."
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "The folder starts open."
+    },
+    {
+      "name": "onOpenChange",
+      "type": "(open: boolean) => void",
+      "defaultValue": "undefined",
+      "description": "Called on every open or close."
+    },
+    {
+      "name": "onItemClick",
+      "type": "(item, index: number) => void",
+      "defaultValue": "undefined",
+      "description": "On clicking a paper, when the folder is open or the paper has been taken out."
+    },
+    {
+      "name": "onItemDrop",
+      "type": "(item, index: number, inside: boolean) => void",
+      "defaultValue": "undefined",
+      "description": "On releasing a dragged paper; `inside` says whether it landed inside the folder or outside."
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Allow dragging papers out of the folder and dropping them anywhere."
+    },
+    {
+      "name": "zoomOnClick",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Clicking a paper brings it close; another click, Escape, or an outside click returns it."
+    },
+    {
+      "name": "peek",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "On hover the papers peek out a little; in flap mode, the paper under the pointer lifts more."
+    },
+    {
+      "name": "intro",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "When it comes into view, the papers drop in and the folder closes over them."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Overall scale of the folder."
+    },
+    {
+      "name": "frost",
+      "type": "number",
+      "defaultValue": "0.25",
+      "description": "Amount of glass frosting, 0 to 1; only with `variant='glass'`."
+    },
+    {
+      "name": "tilt",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "How much the folder tilts toward the pointer, 0 to 1.5."
+    },
+    {
+      "name": "speed",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Speed of all animations."
+    },
+    {
+      "name": "bounce",
+      "type": "number",
+      "defaultValue": "0.4",
+      "description": "How much the flap/cover/papers bounce when settling, 0 to 1."
+    },
+    {
+      "name": "closeOnOutsideClick",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Close on an outside click or Escape."
+    },
+    {
+      "name": "theme",
+      "type": "'dark' | 'light'",
+      "defaultValue": "'dark'",
+      "options": [
+        "dark",
+        "light"
+      ],
+      "description": "Matches the shadows and focus to a dark or light theme."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style; it sits after the color variables."
+    }
+  ],
+  "tips": [
+    "Keep the label short and Persian; the tab grows with the text width and does not overflow the edge.",
+    "The paper drawing reads direction from CSS; keep `dir=\"rtl\"` on the page or parent so Persian lines are laid out from the right.",
+    "`variant='glass'` gives the best result on WebGL2; without it you still get the same CSS glass with `backdrop-filter`.",
+    "Papers can be dragged out and dropped back in; `onItemDrop` tells you which case happened.",
+    "Under `prefers-reduced-motion` the intro and the springs calm down; content and accessibility stay untouched.",
+    "For narrow cards lower `size`; the spread-open papers need more width than the folder itself."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 2259,
+  "version": 1
+}

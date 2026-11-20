@@ -1,0 +1,34 @@
+{
+  "description": "A vertical level gauge; its liquid chases the value, tilts while moving, and splashes against the wall when it fills or empties.",
+  "interactionType": "Drag / Click / Keyboard",
+  "interactionNotes": "In interactive mode, dragging or clicking on the body moves the level up and down. If you drag from the middle of the handle, it moves smoothly and continuously; if you click elsewhere, the level springs to that spot. The tilt direction comes from velocity, so the faster you drag, the more the level tilts. The up and down keys, Page and Home/End work too, and Escape cancels a drag.",
+  "props": {
+    "value": "Controlled value. Omit it to keep it internal.",
+    "defaultValue": "Initial value when not controlled.",
+    "onChange": "Called on every value change.",
+    "interactive": "Whether the user can change the level or it's read-only.",
+    "showValue": "Show the level number on the gauge itself.",
+    "disabled": "Disables dragging and the keyboard.",
+    "liquidColor": "Color of the liquid inside the tank.",
+    "glassColor": "Glass color — that is, the empty tank background.",
+    "width": "Gauge width, pixels.",
+    "height": "Gauge height, pixels.",
+    "radius": "Corner radius; it is itself constrained by the width and height.",
+    "ticks": "Number of guide lines beside the gauge; zero means none.",
+    "viscosity": "Thickness of the liquid; the higher it is, the later it settles and the less it sloshes. Zero means immediately.",
+    "tilt": "How strongly the level tilts with movement velocity.",
+    "splash": "Velocity bounce coefficient when the level hits the top or bottom; higher means more splash.",
+    "unit": "Display unit next to the number.",
+    "digits": "Display digits on the gauge: Persian or Latin.",
+    "ariaLabel": "Screen reader label.",
+    "className": "Extra classes on the element itself."
+  },
+  "tips": [
+    "`digits` only changes the **visible** text; `aria-valuenow` and `aria-valuemin/max` always stay raw Latin numbers — screen readers read Persian digits poorly.",
+    "`viscosity` zero means the spring steps aside and the level settles at once; use this for a simple display that only needs to show the number.",
+    "For a water-like feel, lower `viscosity` and raise `splash`; for a honey-like feel, the opposite.",
+    "Dragging beside the handle is smooth and clicking elsewhere is springy; if you want only one of them, keep `interactive` on but don't wire `onChange`.",
+    "The tilt sign comes from the **direction** of velocity, so as the spring returns the level tilts the opposite way — that's what gives it the liquid feel.",
+    "With `prefers-reduced-motion` the spring is damped (no splash and no tilt) but the final value is the same; users sensitive to motion lose nothing."
+  ]
+}

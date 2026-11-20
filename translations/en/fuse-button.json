@@ -1,0 +1,40 @@
+{
+  "description": "A button that lights a fuse with one press and gives you until it burns out to take it back; when the fuse runs out, the action is committed.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Press the button; a glowing ring around the pill starts burning and the label changes to \"Undo\". While the fuse burns, a click or `Escape` takes the action back. If you let the fuse finish, a check appears and the action is committed. With a mouse, keeping the pointer on the button freezes the fuse and it continues when the pointer leaves — the same default behavior.",
+  "props": {
+    "label": "Label of the idle state.",
+    "undoLabel": "Label of the armed state; until the fuse burns out the whole pill is the undo button.",
+    "doneLabel": "Shown on the final face with a check, and announced to screen readers when arming.",
+    "icon": "Idle icon; if omitted, the inline archive icon.",
+    "color": "Ink of the label and icon; the streaks and undertones are derived from it.",
+    "background": "Surface of the pill.",
+    "fuseColor": "The glowing line or ring.",
+    "size": "Height of 36, 44, or 52 pixels with matching type and icon.",
+    "radius": "Corner roundness, px; 22 is a full pill at the medium size.",
+    "undoWindow": "How many milliseconds the fuse burns and undo is offered.",
+    "fuse": "The ring around the pill that burns clockwise, or a line on the bottom or top edge.",
+    "fuseThickness": "Thickness of the line or of the ring's stroke, px.",
+    "crossfadeMs": "Crossfade of the faces after a pointer press; the keyboard switches without a transition.",
+    "commitOn": "When `onCommit` is called: on press with undo as the way back, or only after the fuse ends.",
+    "pauseOnHover": "Moving the mouse in and out freezes the fuse until the next pointer exit.",
+    "settle": "After the fuse, go back to the initial state or stay on the done face to be mounted again.",
+    "disabled": "Dims the idle face and ignores presses; undoing mid-fuse still works.",
+    "autoPreview": "Site preview only: it alternately burns the fuse to the end and hits \"Undo\" mid-burn. Keep it off in normal use.",
+    "onCommit": "The main action — at the moment `commitOn` specifies.",
+    "onUndo": "When undo or `Escape` takes the action back.",
+    "onFuseEnd": "When the window closes without an undo.",
+    "onPhaseChange": "On every phase change.",
+    "type": "Type of the idle button.",
+    "className": "Extra class for the pill."
+  },
+  "tips": [
+    "`commitOn` determines the meaning of `label`: with `press` the label should state the action (\"Delete\"), while with `fuseEnd` it can be an invitation (\"Press to delete\").",
+    "With `settle=\"stay\"` the final face stays; to run it again you must mount the component again with a fresh `key` — the component itself follows the same contract.",
+    "`pauseOnHover` only works with the mouse pointer; on touch, lifting the finger means the fuse continues — because touch has no notion of \"hover\".",
+    "For an irreversible action, do not use `commitOn=\"fuseEnd\"`; instead wait inside `onCommit`: with `press`, the user has a way back until the last moment.",
+    "`disabled` does not close undo mid-fuse — this is deliberate: whoever started the action must be able to cancel it.",
+    "The fuse burns with WAAPI, not CSS; so `undoWindow` is the physics of the motion, not just display duration. Shortening it really shortens the undo window.",
+    "This component does not go right-to-left: the layout is centered and the fuse empties from the left as in the default. Only the texts are Persian."
+  ]
+}

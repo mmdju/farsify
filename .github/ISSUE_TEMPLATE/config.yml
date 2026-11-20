@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Browse every component
+    url: https://farsifyui.ir/components
+    about: See the live preview before opening an issue.
+  - name: Open-ended discussion
+    url: https://github.com/mmdju/farsify/discussions
+    about: Ideas, questions, or something you built with Farsify.

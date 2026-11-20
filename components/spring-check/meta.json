@@ -1,0 +1,126 @@
+{
+  "slug": "spring-check",
+  "name": "Spring Check",
+  "description": "A checkbox that fills when checked, draws a check and strikes through its text.",
+  "category": "inputs",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "On each click, the box fills from the center, swells a little and the check appears; at the same time the text dims and a line passes through it. Space and Enter do the same, but without animation.",
+  "props": [
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "defaultValue": "\"انجام شد\"",
+      "description": "The text next to the box; it can be any node, not just a string."
+    },
+    {
+      "name": "checked",
+      "type": "boolean",
+      "description": "Controlled value. If you want it uncontrolled, don't pass this."
+    },
+    {
+      "name": "defaultChecked",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Initial state in uncontrolled mode."
+    },
+    {
+      "name": "onChange",
+      "type": "(checked: boolean) => void",
+      "description": "Returns the new state on every change."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dims it and makes it unclickable."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "defaultValue": "#ffffff (تیره) · #18181b (روشن)",
+      "description": "Ink color: the box outline, the text and the line through the text all use it. Its default changes with the theme."
+    },
+    {
+      "name": "fillColor",
+      "type": "string",
+      "defaultValue": "#ffffff (تیره) · #18181b (روشن)",
+      "description": "Fill color of the box in the checked state."
+    },
+    {
+      "name": "checkColor",
+      "type": "string",
+      "defaultValue": "#0b0b0f (تیره) · #ffffff (روشن)",
+      "description": "Color of the check itself; it must contrast with fillColor."
+    },
+    {
+      "name": "boxSize",
+      "type": "number",
+      "defaultValue": "28",
+      "description": "Side of the box, pixels. Below 24 the outline thickness goes from 2 to 1.5."
+    },
+    {
+      "name": "boxRadius",
+      "type": "number",
+      "defaultValue": "9",
+      "description": "Corner radius of the box; at half of boxSize it becomes fully round."
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "defaultValue": "18",
+      "description": "Font size of the text; the strikethrough thickness is calculated from it too."
+    },
+    {
+      "name": "bounce",
+      "type": "number",
+      "defaultValue": "0.2",
+      "description": "Spring bounciness, between 0 and 1. Zero means fully damped; above 0.4 it looks too jittery."
+    },
+    {
+      "name": "strikeLag",
+      "type": "number",
+      "defaultValue": "0.12",
+      "description": "How much of the motion progress passes before the line starts. Zero means at the same time as the fill."
+    },
+    {
+      "name": "doneOpacity",
+      "type": "number",
+      "defaultValue": "0.42",
+      "description": "Final text opacity in the done state; one means the text doesn't dim at all."
+    },
+    {
+      "name": "strike",
+      "type": "left | center | right | none",
+      "defaultValue": "right",
+      "options": [
+        "left",
+        "center",
+        "right",
+        "none"
+      ],
+      "description": "Which side the line is drawn from. The default is right for Persian text (the reading start); for English text it is left."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Screen reader label. It isn't needed if `label` has readable text, but always give it when you put an icon next to it."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra class on the button itself."
+    }
+  ],
+  "tips": [
+    "For todo lists, set `bounce` around 0.1 and `strikeLag` to zero; less motion is better.",
+    "If you use a brand color, watch the contrast of `fillColor` and `checkColor`; otherwise the check won't be visible.",
+    "With `strike=\"none\"` the text only dims; that is better for long labels."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 231,
+  "version": 1
+}

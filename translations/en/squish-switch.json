@@ -1,0 +1,31 @@
+{
+  "description": "A switch whose handle stretches as you drag it and, when you let go, a spring throws it to one end.",
+  "interactionType": "Click / Drag / Keyboard",
+  "interactionNotes": "You can click it like any switch, or grab the handle and drag it. As you drag, the handle stretches in proportion to your movement speed but doesn't get wider, and the state changes the moment it crosses the middle. On release, the spring throws it to the nearest end. When the cursor arrives it grows slightly, and Escape mid-drag returns everything to the previous state.",
+  "props": {
+    "checked": "Controlled value. If you want it uncontrolled, don't pass this.",
+    "defaultChecked": "Initial state in uncontrolled mode.",
+    "onChange": "Returns the new state on every change.",
+    "label": "The text next to the switch. If given, clicking it also toggles the switch (via `htmlFor`).",
+    "disabled": "Dims it and makes it non-interactive.",
+    "trackColor": "Track color in the off state.",
+    "trackOnColor": "Track color in the on state.",
+    "thumbColor": "Handle color in the off state. Leave it empty to build it from a mix of `trackOnColor` and `trackColor`.",
+    "thumbOnColor": "Handle color in the on state. Leave it empty to use `trackColor` itself.",
+    "width": "Track width, pixels.",
+    "height": "Track height; the handle's inset from the edge and the handle's own size are calculated from it.",
+    "radius": "Track corner radius. Above half the height it is clipped to half (a pill switch).",
+    "speed": "Speed at which the handle reaches the other end, between 0 and 100. A higher number means softer and more stretched out.",
+    "stretch": "How strongly the handle stretches, between 0 and 100. Zero means the handle doesn't deform at all.",
+    "hoverScale": "How much the handle grows when the cursor is over it. 1 means no reaction (mouse only).",
+    "colorDuration": "Duration of the track and handle color transition, milliseconds.",
+    "ariaLabel": "Screen reader label. It isn't needed if `label` has text.",
+    "id": "The switch id; if you don't give one, a unique id is generated.",
+    "className": "Extra class on the component root."
+  },
+  "tips": [
+    "For frequently used switches, set `speed` around 70 so the motion is calmer; high speed is for switches the user \"plays\" with.",
+    "If you set `stretch` to zero and `hoverScale` to 1, what's left is a clean ordinary switch — no stretching and no cursor reaction.",
+    "You can also pass colors with a CSS variable: `trackOnColor=\"var(--color-brand)\"`."
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "slug": "accordion-gallery",
+  "name": "Accordion Gallery",
+  "description": "A row of image frames that opens like an accordion: the active frame grows with a soft bend and gains color, the rest stay dark gray and slightly tilted, and its label reveals with a staggered delay — horizontal or vertical, on hover or click.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Hover / Click / Keyboard",
+  "interactionNotes": "With `trigger: hover` simply moving the pointer over a frame opens it, while `trigger: click` requires a click; clicking an open frame again follows its link (if it has a `link`). Focus and the arrow keys also move between the frames — ArrowRight/ArrowDown forward, ArrowLeft/ArrowUp back.",
+  "props": [
+    {
+      "name": "items",
+      "type": "Array<{ image: string; label?: string; link?: string; alt?: string }>",
+      "defaultValue": "۵ عکسِ نمونه",
+      "description": "The gallery images; each is center-cropped inside its frame. `label` is the open frame's caption, `link` is the click destination and `alt` is the alternative text."
+    },
+    {
+      "name": "defaultIndex",
+      "type": "number",
+      "defaultValue": "2",
+      "description": "The frame that is open on the first render. It only affects that render; later changes have no effect — see `activeIndex` for live control."
+    },
+    {
+      "name": "activeIndex",
+      "type": "number",
+      "defaultValue": "—",
+      "description": "Controlled channel for external drivers (such as a desktop auto-tour). When you provide a value the active frame stays in sync, and when you don't the component stays uncontrolled and the user has direct control."
+    },
+    {
+      "name": "accentColor",
+      "type": "string",
+      "defaultValue": "'#ffffff'",
+      "description": "Color of the bar beside the label and the focus ring of the frames."
+    },
+    {
+      "name": "overlayColor",
+      "type": "string",
+      "defaultValue": "'#060010'",
+      "description": "Color of the dark veil over the images and the gradient beneath the label."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "'#ffffff'",
+      "description": "Text color of the labels."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "460",
+      "description": "Height of the row in pixels; in vertical orientation it becomes 1.6 times as much."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "10",
+      "description": "Spacing between frames in pixels."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "16",
+      "description": "Corner radius of the frames in pixels."
+    },
+    {
+      "name": "expandRatio",
+      "type": "number",
+      "defaultValue": "0.52",
+      "description": "Share of the row width taken by the open frame, 0.2 to 0.9; a higher number means a wider open frame and narrower remaining frames."
+    },
+    {
+      "name": "orientation",
+      "type": "'horizontal' | 'vertical'",
+      "defaultValue": "'horizontal'",
+      "options": [
+        "horizontal",
+        "vertical"
+      ],
+      "description": "Direction of the row; vertical for sidebars and tall columns."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Duration of opening and closing in seconds."
+    },
+    {
+      "name": "ease",
+      "type": "string",
+      "defaultValue": "'power3.out'",
+      "description": "Motion curve by gsap ease name (such as `power2.out` or `power3.inOut`); an unknown name falls back to the default."
+    },
+    {
+      "name": "parallax",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "Images in closed frames slide by how far they are from the open frame; 0 means no parallax."
+    },
+    {
+      "name": "tilt",
+      "type": "number",
+      "defaultValue": "8",
+      "description": "Three-dimensional backward tilt of the closed frames, in degrees."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "defaultValue": "0.06",
+      "description": "Staggered delay for the open frame's label to reveal, in seconds."
+    },
+    {
+      "name": "trigger",
+      "type": "'hover' | 'click'",
+      "defaultValue": "'hover'",
+      "options": [
+        "hover",
+        "click"
+      ],
+      "description": "Whether a frame opens on pointer hover or on click."
+    },
+    {
+      "name": "showLabels",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the open frame's label is shown."
+    },
+    {
+      "name": "grayscale",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Keep closed frames black and white so the open frame gains color."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "No dependencies at all: without gsap the same geometry is rebuilt with CSS transitions and an equivalent `power3.out` curve, adding zero weight.",
+    "With `grayscale` on, color is granted only to the open frame — the opening and closing of the frames itself builds a \"narrative of color\"; turn it off if you want a full-color gallery.",
+    "Vertical orientation plus a high `expandRatio` works well for a column beside the page; the final height becomes 1.6 times `height`, so take the frame's placement into account.",
+    "The active frame at start with `defaultIndex`, and live driving with `activeIndex`; both are clamped when out of the list's range.",
+    "On narrow mobile (under 520px) the row turns into a vertical tiled layout by itself and the 3D tilt is off — as the default."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 241,
+  "version": 1
+}

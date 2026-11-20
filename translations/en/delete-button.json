@@ -1,0 +1,20 @@
+{
+  "description": "A trash-can button that opens on click with the two options \"Confirm\" and \"Cancel\" unfolding beside it; the bin's lid flips up and, after deletion, a check settles in.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Click the bin: its body shortens, its lid flips up, and the panel beside it opens with a stepped delay. Clicking the check confirms (the bin icon gives way to a check that lingers for a moment), the cross cancels (the bin gives a tiny \"no\" shake), and Escape triggers the same cancel. Clicking the bin itself again or pressing Escape both close the panel and return focus to the bin.",
+  "props": {
+    "accent": "Color of the confirm check and the large check after deletion — the button's only touch of color.",
+    "disabled": "Dims the button and makes it inert; it neither opens nor has auto-preview.",
+    "autoPreview": "For the site preview only: it opens itself, confirms, and starts over. Leave it off in normal use.",
+    "onConfirm": "When confirm is pressed; at the moment the check settles. Hand the actual deletion work to this.",
+    "onCancel": "Called by the cross, a second click on the bin, or Escape.",
+    "className": "Extra class for the root box (whose width changes as it opens)."
+  },
+  "tips": [
+    "This button is safer than a single-step button for an irreversible action: the first click only opens the panel and the decision is made with the second click.",
+    "Make `onConfirm` only persist data; the closing animation and the button's return are handled by the component and it will not wait on you.",
+    "Outside clicks deliberately do not close the panel — so an accidental click cannot change the user's decision. If you want that behavior, manage it yourself with an `onClick` on the parent.",
+    "The panel always opens on the `start` side — in Persian, **to the right of the button** — and the button stays at `end`; the panel's tab and the bin lid's hinge align with the same direction. Do not reposition either of them by hand.",
+    "Under `prefers-reduced-motion` all motion is zeroed, but the open/closed logic and the timing of the final state stay intact."
+  ]
+}

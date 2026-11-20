@@ -1,0 +1,161 @@
+{
+  "slug": "sling-button",
+  "name": "Sling Button",
+  "description": "A button that pulls like a slingshot; releasing flings the pad out of its seat and scatters particles.",
+  "category": "actions",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Drag and release / Keyboard",
+  "interactionNotes": "Drag the button; the band stretches and the power arc fills. Once you pass the arming threshold, releasing launches it: the pad leaves its seat, particles spread in a cone, and then it returns. If you release before it arms, it springs back and sends nothing. A simple tap also sends (if `tapSends` is on), and Enter and Space always do.",
+  "props": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "description": "The content of the pad. Defaults to an up arrow."
+    },
+    {
+      "name": "onSend",
+      "type": "() => void",
+      "description": "Called when releasing while armed, on a tap (if `tapSends` is on), and on Enter or Space."
+    },
+    {
+      "name": "padColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "The fill of the pad."
+    },
+    {
+      "name": "iconColor",
+      "type": "string",
+      "defaultValue": "\"#18181b\"",
+      "description": "Color of the pad's content."
+    },
+    {
+      "name": "accentColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "The power arc, the arming band and the launch point."
+    },
+    {
+      "name": "wellColor",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "The seat the pad rests on."
+    },
+    {
+      "name": "bandColor",
+      "type": "string",
+      "defaultValue": "\"#52525b\"",
+      "description": "The band before arming."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "defaultValue": "56",
+      "description": "Pad diameter, px. The seat, hit area and launch point scale with it too."
+    },
+    {
+      "name": "strokeWidth",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "Thickness of the arc and band, px. The band gets thinner as it stretches."
+    },
+    {
+      "name": "armAt",
+      "type": "number",
+      "defaultValue": "48",
+      "description": "The distance at which the shot arms, px."
+    },
+    {
+      "name": "maxPull",
+      "type": "number",
+      "defaultValue": "160",
+      "description": "How far the band stretches before it stops giving, px."
+    },
+    {
+      "name": "launchSpeed",
+      "type": "number",
+      "defaultValue": "2600",
+      "description": "The speed the band adds on release, px/s. It determines how far past the seat the pad travels."
+    },
+    {
+      "name": "recoil",
+      "type": "number",
+      "defaultValue": "0.2",
+      "description": "Bounce of the return spring; zero means no bounce."
+    },
+    {
+      "name": "flight",
+      "type": "number",
+      "defaultValue": "120",
+      "description": "How far the leading point travels, px; the rest scatter around it."
+    },
+    {
+      "name": "particles",
+      "type": "number",
+      "defaultValue": "14",
+      "description": "Number of launch particles. Each gets a random angle, range, size, drift, speed and delay. 1 means a single dot, zero means none."
+    },
+    {
+      "name": "spread",
+      "type": "number",
+      "defaultValue": "60",
+      "description": "The cone the burst spreads within, in degrees, around the launch direction."
+    },
+    {
+      "name": "axis",
+      "type": "\"any\" | \"horizontal\" | \"vertical\"",
+      "defaultValue": "\"any\"",
+      "options": [
+        "any",
+        "horizontal",
+        "vertical"
+      ],
+      "description": "Free dragging, or one axis with a little play on the other axis."
+    },
+    {
+      "name": "tapSends",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether a simple tap also sends; Enter always sends."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dims the pad and ignores input."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only: it performs the pull, arm and release itself so the flight, the particles and the elastic return can be seen along the real path."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"ارسال\"",
+      "description": "Accessible name of the button."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "Dragging without releasing sends nothing — it doesn't arm until you pass `armAt`, and `onSend` isn't called.",
+    "`armAt` and `maxPull` work together: the first says where it arms, the second caps the pull. If you bring `armAt` close to `maxPull`, the user has to pull all the way to fire.",
+    "For a \"send\" button, set `armAt` at least larger than `size` so the arming motion extends beyond the pad and stays visible.",
+    "Lower `recoil` (e.g. 0.05) for a dry, technical feel; raising it (near 0.3) makes the button more playful.",
+    "This component shows no feedback of its own; handle `onSend` and add your own message or state (the site demo does this with a \"Sent\" label).",
+    "Turn on `disabled` while sending so the user doesn't launch again.",
+    "Set `particles` to zero if you want the pad to fly out without a burst; `spread` only matters when there are particles. `axis` only constrains the drag axis, not the launch — the launch is always along the drag direction."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 627,
+  "version": 1
+}

@@ -1,0 +1,150 @@
+{
+  "slug": "jelly-radio",
+  "name": "Jelly Radio",
+  "description": "A row of chips for picking an option; the chip you click swells and the others give way with a springy shove.",
+  "category": "inputs",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Click any chip and it grows while the others shrink slightly and move aside; the farther away they are, the later they go. You can also move between options with the arrow keys, and Home/End jump to either end. Selection is the same with click and keyboard, so both feel identical.",
+  "props": [
+    {
+      "name": "items",
+      "type": "JellyRadioItem[]",
+      "defaultValue": "[\"خاموش\", \"کم\", \"متوسط\", \"زیاد\", \"بیشینه\"]",
+      "description": "The options; you can pass strings, or objects with value, label, icon and disabled."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Controlled value. If you want uncontrolled, do not pass this and pass defaultValue instead."
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "description": "The selected option in uncontrolled mode; defaults to the first option."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string, index: number) => void",
+      "description": "Returns the new option's value and index on every selection."
+    },
+    {
+      "name": "size",
+      "type": "sm | md | lg",
+      "defaultValue": "md",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "description": "Chip size: sm 28, md 36 and lg 44 pixels."
+    },
+    {
+      "name": "chipColor",
+      "type": "string",
+      "defaultValue": "#27272a",
+      "description": "Background color of the inactive chips."
+    },
+    {
+      "name": "activeColor",
+      "type": "string",
+      "defaultValue": "#f5f5f5",
+      "description": "Background color of the selected chip."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "#f5f5f5",
+      "description": "Text color of the inactive chips; the same color is used when the pointer moves over them."
+    },
+    {
+      "name": "activeTextColor",
+      "type": "string",
+      "defaultValue": "#18181b",
+      "description": "Text color of the selected chip."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "8",
+      "description": "Spacing between chips, in pixels."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "18",
+      "description": "Corner radius of the chips; for a fully pill-shaped chip, pass half the height."
+    },
+    {
+      "name": "swell",
+      "type": "number",
+      "defaultValue": "0.2",
+      "description": "How much larger the active chip grows, relative to its own size."
+    },
+    {
+      "name": "barge",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "How many extra pixels the neighbours are pushed aside."
+    },
+    {
+      "name": "shrink",
+      "type": "number",
+      "defaultValue": "0.05",
+      "description": "How much the neighbours shrink."
+    },
+    {
+      "name": "jelly",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Intensity of the jelly feel. At 0 the motion becomes a simple zoom; above 1 the stretch gets exaggerated."
+    },
+    {
+      "name": "bounce",
+      "type": "number",
+      "defaultValue": "0.25",
+      "description": "Spring bounciness. Above 0.4 it looks too resonant."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "defaultValue": "22",
+      "description": "Time offset at which each neighbour starts moving, in milliseconds."
+    },
+    {
+      "name": "stiffness",
+      "type": "number",
+      "defaultValue": "580",
+      "description": "Spring stiffness; lower means softer and slower."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Disables and dims the whole group."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "گزینه‌ها",
+      "description": "Group label for screen readers; keep it close to the question's topic."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class on the group root; for custom spacing or width."
+    }
+  ],
+  "tips": [
+    "For choices picked over and over, set `bounce` around 0.15; less bounce, calmer.",
+    "If the chip labels are long, increase `size` rather than `gap`; a large gap scatters the group.",
+    "You can also pass colors with a CSS variable, like `var(--color-brand)`."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 343,
+  "version": 1
+}

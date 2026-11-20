@@ -1,0 +1,33 @@
+{
+  "description": "A segmented bar with a rubbery glass thumb: it stretches as it jumps, sets an anchor and glides into the new cell with momentum.",
+  "interactionType": "Click / Drag / Keyboard",
+  "interactionNotes": "Clicking any cell makes the glass thumb spring to that cell, stretching mid-flight and squashing its trailing edge. Dragging the thumb across the bar lets you move between cells; releasing with speed gives momentum and settles it on the nearest cell. Arrow keys also work — in RTL `ArrowLeft` moves forward.",
+  "props": {
+    "items": "The options; a string or a `{ value, label, icon }` object.",
+    "value": "Controlled mode; pass it to own the value control.",
+    "defaultValue": "Initial value in uncontrolled mode; if omitted, the first option.",
+    "onChange": "Called on every settled change.",
+    "trackColor": "Background of the bar.",
+    "thumbColor": "Color of the glass thumb.",
+    "textColor": "Text color of inactive options.",
+    "activeTextColor": "Text color of the one the thumb sits on.",
+    "size": "Bar and text size.",
+    "radius": "Corner rounding, in pixels.",
+    "inset": "Inner margin of the thumb from the bar's edge, in pixels.",
+    "equalSlots": "Equal width for all options.",
+    "stretch": "Stretch percentage during the jump; zero means no stretch.",
+    "squash": "Squash amount of the trailing edge, in pixels.",
+    "speed": "Animation speed multiplier; 1 is the default.",
+    "glide": "Momentum glide on release, 0 to 100.",
+    "draggable": "Whether dragging the thumb across the bar is enabled.",
+    "disabled": "Dimmed and unresponsive to input.",
+    "aria-label": "Accessible name of the radio group.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "For Persian, a three-to-four option bar is the sweet spot; keep `equalSlots` on so the cells are the same size and the thumb does not wobble in the middle.",
+    "This component needs no manual mirroring: the reading direction of the layout comes from the page's own flex, and the arrow keys swap based on `direction` — in RTL `ArrowLeft` moves forward.",
+    "If the indicators are too low-contrast (a light background with a light bar), make `trackColor` one step darker than the surface, not one step lighter; this is the only place where the bar's contrast shows.",
+    "With `prefers-reduced-motion` the spring jump becomes a simple change; momentum and stretch also turn off but selection still works correctly."
+  ]
+}

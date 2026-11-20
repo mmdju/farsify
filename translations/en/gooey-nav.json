@@ -1,0 +1,36 @@
+{
+  "description": "A pill navigation bar whose active pill breaks into gooey droplets when you pick any item, flies over to the new item, and merges back into one piece.",
+  "interactionType": "Click / Keyboard / Hover",
+  "interactionNotes": "Tap any item and the active pill breaks into tiny droplets, crosses the bar, and gathers again on the new item. As the pointer passes, a soft halo lights up behind the item under it. The bar works with the keyboard too: each item is a real link or button with a focus ring. If you do not pass `href`, the item becomes a button and only calls `onChange`.",
+  "props": {
+    "items": "The items. Each item has a `label` and optionally `href` and `icon`; without `href` it renders as a button.",
+    "initialActiveIndex": "Which item is selected initially.",
+    "activeIndex": "Controlled state; pass it with `onChange` to keep control of the selection yourself.",
+    "onChange": "On every selection, returns the index and the item itself.",
+    "theme": "Theme of the frame and text; the pill color is derived from its own luminance.",
+    "color": "Color of the active pill. Pass a hex or `rgb()`; the text color inside is chosen automatically.",
+    "activeTextColor": "Text color inside the pill. Omit it to have it derived from the luminance of `color`.",
+    "colors": "Color of the droplets; they blend when they meet. Empty means the pill color itself.",
+    "size": "Size of the pill and the type.",
+    "frame": "The frosted glass frame around the bar.",
+    "animationTime": "Roughly how long the droplets take to reach the new item, milliseconds.",
+    "particleCount": "How many droplets the active pill breaks into on each selection.",
+    "spread": "How far the droplets spread along the path, pixels.",
+    "timeVariance": "Random difference in each droplet's timing, milliseconds.",
+    "gooeyness": "How readily droplets and pills merge, 0 to 1.",
+    "wobble": "How much the new pill wobbles while forming, 0 to 1.",
+    "hoverEffect": "Soft halo behind the item under the pointer.",
+    "ariaLabel": "Accessible label of the bar for screen readers.",
+    "autoPreview": "Site preview only: it advances the active item itself. Keep it off in normal use.",
+    "className": "Extra class for the bar's root.",
+    "style": "Inline style; it sits after the color variables."
+  },
+  "tips": [
+    "Give the labels Persian text and keep them short; the bar wraps with `flex-wrap`, but a single line is always more readable.",
+    "If the items have real destinations, pass `href`; without it they become buttons and you handle navigation yourself in `onChange`.",
+    "Pass `colors` for the droplets so you see several close hues when it breaks; leave it empty to keep the pill color.",
+    "The active pill uses the luminance of `color` to choose white or dark text; if you pass a very light or very dark color and dislike the result, set `activeTextColor` explicitly.",
+    "On touch devices `hoverEffect` has no effect; the halo only appears with a real pointer.",
+    "The droplet motion is turned off under `prefers-reduced-motion` and the selection lands directly — value and accessibility stay untouched."
+  ]
+}

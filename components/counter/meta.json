@@ -1,0 +1,168 @@
+{
+  "slug": "counter",
+  "name": "Counter",
+  "description": "A number whose digits roll like an odometer to reach the new value; digits and separators come from `Intl` itself, changes land with a spring and a stepped cascade, and fast-spinning digits pick up motion blur along the way.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Value change / Auto",
+  "interactionNotes": "The component takes no input; you change the value from outside and the digits roll. The live demo has four scenes: a countdown that rolls over every second, a stats dashboard that moves live numbers up and down, a pricing scene that cycles through a monthly/annual segment and seat buttons, and a base scene where the minus/plus/random buttons shift the value. Each sample's entrance also has a welcome roll that plays as soon as it is seen.",
+  "props": [
+    {
+      "name": "value",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "The number shown; every change rolls the digits."
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "defaultValue": "'fa-IR'",
+      "description": "Locale for separators, symbols, and digits; it defaults to Persian and takes its digits from it — pass another locale and the same component rolls with that script's digits."
+    },
+    {
+      "name": "format",
+      "type": "Intl.NumberFormatOptions",
+      "defaultValue": "—",
+      "description": "Formatting options: currency, percent, unit, or compact notation."
+    },
+    {
+      "name": "decimals",
+      "type": "number",
+      "defaultValue": "—",
+      "description": "Fixed number of decimal places; omit it to keep the format's default."
+    },
+    {
+      "name": "minDigits",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Minimum digits in the integer part — leading zeros of the number."
+    },
+    {
+      "name": "prefix",
+      "type": "ReactNode",
+      "defaultValue": "—",
+      "description": "Content before the number."
+    },
+    {
+      "name": "suffix",
+      "type": "ReactNode",
+      "defaultValue": "—",
+      "description": "Content after the number."
+    },
+    {
+      "name": "direction",
+      "type": "'auto' | 'up' | 'down' | 'shortest'",
+      "defaultValue": "'auto'",
+      "options": [
+        "auto",
+        "up",
+        "down",
+        "shortest"
+      ],
+      "description": "Roll direction; 'auto' goes up as the value grows and down as it shrinks."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "defaultValue": "0.7",
+      "description": "Approximately the length of one roll, in seconds."
+    },
+    {
+      "name": "bounce",
+      "type": "number",
+      "defaultValue": "0.2",
+      "description": "How far the digits overshoot before settling, from 0 to 0.9."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "defaultValue": "0.04",
+      "description": "Delay between neighboring digits, in seconds — the wave of change comes from this, and it falls from the right of the number."
+    },
+    {
+      "name": "motionBlur",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Blur of fast-spinning digits along their path; it only activates during a fast roll."
+    },
+    {
+      "name": "intro",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "A full welcome roll as soon as half of the frame is visible — once per sample."
+    },
+    {
+      "name": "fade",
+      "type": "number",
+      "defaultValue": "0.3",
+      "description": "How far (in em) a digit rolls outside the text before fading; zero means clipping at the edge."
+    },
+    {
+      "name": "fontSize",
+      "type": "number | string",
+      "defaultValue": "100",
+      "description": "Font size in px, or any CSS value such as \"inherit\"."
+    },
+    {
+      "name": "fontWeight",
+      "type": "number | string",
+      "defaultValue": "'inherit'",
+      "description": "Font weight of the number."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "'inherit'",
+      "description": "Color of the number; it defaults to the surrounding ink."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Spacing between digits and symbols, px."
+    },
+    {
+      "name": "padding",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Extra height per digit, px — it also opens up the roll space."
+    },
+    {
+      "name": "tabular",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Equal widths for the digits; off means the width shifts smoothly between digits."
+    },
+    {
+      "name": "digitStyle",
+      "type": "CSSProperties",
+      "defaultValue": "—",
+      "description": "Style of each digit — for example tiling it with a background and rounding."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "defaultValue": "—",
+      "description": "Inline style of the root."
+    }
+  ],
+  "tips": [
+    "Persian digits need no manual conversion: they come from `Intl.NumberFormat` with the locale. Pass another locale (Arabic, English…) and the same component rolls with that script's digits.",
+    "For a countdown, raise `padding` a little so the digits can breathe inside their tile and set `fade: 0` so the edge is clipped — the site demo uses exactly this combination.",
+    "`stagger` sets the character of the display: zero means all digits roll at once; above 0.1 a stepped wave falls from the right of the number.",
+    "On a weak phone, turn off `motionBlur` — the SVG filter only activates during a fast roll, but turning it off costs nothing.",
+    "Under `prefers-reduced-motion` the rolls settle instantly and the new value is shown directly; the entrance animation does not play at all.",
+    "This component does not mirror for right-to-left, and that is intentional: a number is a left-to-right run. Put the unit and label outside it so they land in the right place in a Persian layout.",
+    "Keep `tabular` on for tabular numeric columns; for a large single-number display turn it off so the width follows the digits smoothly."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 629,
+  "version": 1
+}

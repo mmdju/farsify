@@ -1,0 +1,151 @@
+{
+  "slug": "thought-line",
+  "name": "Thought Line",
+  "description": "A \"thinking\" bar that announces its steps one by one and finally settles and calms down.",
+  "category": "status",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Auto / Click to dismiss",
+  "interactionNotes": "The line reveals the steps one by one, with a soft shimmer sliding over the current text. When it finishes, a thin colored line advances, the text fades slightly, and it takes on the done color. If collapsing is enabled, a click collapses and expands it.",
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "defaultValue": "\"در حال فکر کردن…\"",
+      "description": "The text shown while it is working."
+    },
+    {
+      "name": "doneLabel",
+      "type": "string",
+      "description": "The text shown after it finishes; empty means the last step stays."
+    },
+    {
+      "name": "renderLabel",
+      "type": "(text, working) => ReactNode",
+      "description": "A full replacement for rendering the label."
+    },
+    {
+      "name": "glyph",
+      "type": "ThoughtLineGlyph",
+      "defaultValue": "\"sparkle\"",
+      "options": [
+        "sparkle",
+        "dot",
+        "none"
+      ],
+      "description": "The marker next to the text."
+    },
+    {
+      "name": "steps",
+      "type": "string[]",
+      "description": "The steps shown in order."
+    },
+    {
+      "name": "collapsible",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Collapse and expand on click."
+    },
+    {
+      "name": "collapseOnSettle",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Collapse by itself after finishing."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "defaultValue": "currentColor",
+      "description": "Text color."
+    },
+    {
+      "name": "glyphColor",
+      "type": "string",
+      "description": "Color of the marker; empty means the same as the text color."
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "defaultValue": "16",
+      "description": "Font size."
+    },
+    {
+      "name": "breathPeriod",
+      "type": "number",
+      "defaultValue": "1.6",
+      "description": "Breathing period of the marker, in seconds."
+    },
+    {
+      "name": "breathDepth",
+      "type": "number",
+      "defaultValue": "0.45",
+      "description": "Intensity of the breathing."
+    },
+    {
+      "name": "shimmer",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "A sliding shimmer over the current text."
+    },
+    {
+      "name": "shimmerDuration",
+      "type": "number",
+      "defaultValue": "1.8",
+      "description": "Duration of one shimmer cycle, in seconds."
+    },
+    {
+      "name": "settleDuration",
+      "type": "number",
+      "defaultValue": "350",
+      "description": "Duration of the final settle, in milliseconds."
+    },
+    {
+      "name": "settleBlur",
+      "type": "number",
+      "defaultValue": "2",
+      "description": "Transient blur while settling."
+    },
+    {
+      "name": "working",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Is it still working?"
+    },
+    {
+      "name": "settleAfter",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Finish by itself after how many seconds; zero means manual."
+    },
+    {
+      "name": "elapsed",
+      "type": "number",
+      "description": "Elapsed time; omit it to have it count on its own."
+    },
+    {
+      "name": "showTimer",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Show the elapsed time."
+    },
+    {
+      "name": "onSettle",
+      "type": "(seconds: number) => void",
+      "description": "When it settles, with the total duration."
+    }
+  ],
+  "tips": [
+    "Add steps to the list **one at a time**, not all at once. The component checks off each step except the last, so the \"one-by-one checking\" is only visible when the list also fills up one by one.",
+    "When the last step arrives, turn `working` off — that is the moment the last step gets its check, the header settles on \"Thought for:\", and (if `collapseOnSettle` is on) the list collapses.",
+    "Great for a chat assistant: fill the steps from real work so the user knows where they are.",
+    "If you give a timeout, it ends by itself after that — good for short, simulated tasks.",
+    "Turn the marker off if you already have a marker elsewhere and do not want two.",
+    "Do not take `breathDepth` above 0.6: the text's opacity goes from 1 to `1 - depth`, and above that the line effectively disappears.",
+    "If you build your own counter and rely on `tabular-nums`: it does not work on **Persian** digits. Peyda has matching glyphs for them. Put each digit in a fixed-width step."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 489,
+  "version": 1
+}

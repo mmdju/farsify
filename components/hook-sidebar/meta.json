@@ -1,0 +1,69 @@
+{
+  "slug": "hook-sidebar",
+  "name": "Hook Sidebar",
+  "description": "A navigation column where a dashed line runs down from the top and snaps into the active row with a cornered hook; the row under the indicator gets its own faint hook.",
+  "category": "navigation",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Click / Hover / Keyboard",
+  "interactionNotes": "Click any row to select it; the colored line runs from the top of the list to the center of that row and joins it with a 6px corner. On hover (or Tab focus) a faint dashed line is drawn from the active row to the row under the pointer, so you can see where a click will take you. The line moves on a spring, not in jumps. If you pass `href` the row becomes a link, otherwise a button; either way `onChange` fires.",
+  "props": [
+    {
+      "name": "items",
+      "type": "HookSidebarItem[]",
+      "required": true,
+      "defaultValue": "[\"حساب کاربری\", \"اعلان‌ها\", \"امنیت\"]",
+      "description": "The rows. Each item is either a string or `{ label, href }`; items with `href` render as links, the rest as buttons."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": "Heading above the column. It also becomes the navigation `aria-label` unless you provide your own `aria-label`."
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "description": "Selected index in controlled mode. This is the one to use for syncing with the route (e.g. with `usePathname`)."
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Initial index in uncontrolled mode."
+    },
+    {
+      "name": "onChange",
+      "type": "(index: number) => void",
+      "description": "Returns the new index on every selection."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "defaultValue": "var(--brand, currentColor)",
+      "description": "Color of the active line. Any CSS value works; if your project has no `--brand`, it falls back to the text color."
+    },
+    {
+      "name": "dashed",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Dashed line (default) or a solid line."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Outer class on the `nav`; set the column width here."
+    }
+  ],
+  "tips": [
+    "The component does not set the column width itself; pass `className=\"w-52\"` or any other width so the rows share the same width.",
+    "`next/link` is deliberately not imported — the shipped version must compile in non-Next projects too. If you want soft navigation, feed `value` from the route.",
+    "The line position is measured from the DOM, so long text or a different font size won't break it; a `ResizeObserver` watches both the rows and the whole list.",
+    "In RTL the column comes in from the right and the hook turns to the left; don't mirror anything by hand.",
+    "For long lists a fixed height with `overflow-y-auto` is better than an endless column; the line is measured inside that frame."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 263,
+  "version": 1
+}

@@ -1,0 +1,139 @@
+{
+  "slug": "chroma-grid",
+  "name": "Chroma Grid",
+  "description": "A grayscale gallery that gains color under a follow spot: only within the light's radius do the photos show their true hue and their edges show their own accent color.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Hover",
+  "interactionNotes": "The spotlight follows the pointer with an adjustable lag and, on exit, turns off over the \"fade out\" of a second or so. In \"card\" mode, instead of a global light, hovering each card colors only that card. The light coordinates are physical and need no mirroring in RTL; the texts lay out right-to-left by themselves.",
+  "props": [
+    {
+      "name": "items",
+      "type": "ChromaItem[]",
+      "description": "The cards; each has `image` (required), `title`, `subtitle`, `accent` (the edge glow hue) and an optional `url`. Without them, six sample cards appear."
+    },
+    {
+      "name": "columns",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "The grid columns; combined with `minCardWidth`, and at a low width it reduces by itself."
+    },
+    {
+      "name": "minCardWidth",
+      "type": "number",
+      "defaultValue": "180",
+      "description": "Minimum width of each card, pixels."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "Spacing between the cards."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "260",
+      "description": "Radius of the global spotlight."
+    },
+    {
+      "name": "softness",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Softness of the light's edge; zero is a sharp disc, one is a complete blur from the center."
+    },
+    {
+      "name": "damping",
+      "type": "number",
+      "defaultValue": "0.45",
+      "description": "The lag of the light's pursuit; zero sticks to the pointer."
+    },
+    {
+      "name": "fadeOut",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "The time in seconds to turn off after the pointer leaves."
+    },
+    {
+      "name": "grayscale",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "How grayscale the normal state is; 0 means always colored."
+    },
+    {
+      "name": "dim",
+      "type": "number",
+      "defaultValue": "0.12",
+      "description": "Darkness behind the light."
+    },
+    {
+      "name": "glow",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "The hue of the light that settles on the card under the spotlight."
+    },
+    {
+      "name": "borderGlow",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Glow of the card edges in their own hue."
+    },
+    {
+      "name": "reveal",
+      "type": "\"spotlight\" | \"card\"",
+      "defaultValue": "\"spotlight\"",
+      "options": [
+        "spotlight",
+        "card"
+      ],
+      "description": "A global light under the pointer, or each card coloring independently on hover."
+    },
+    {
+      "name": "aspectRatio",
+      "type": "string",
+      "defaultValue": "\"3 / 2\"",
+      "description": "Image ratio of the cards; such as \"1 / 1\" or \"16 / 10\"."
+    },
+    {
+      "name": "cardRadius",
+      "type": "number",
+      "defaultValue": "22",
+      "description": "Corner radius of the cards."
+    },
+    {
+      "name": "showInfo",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The title and subtitle on the cards."
+    },
+    {
+      "name": "frame",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Glass frame around the grid."
+    },
+    {
+      "name": "theme",
+      "type": "\"dark\" | \"light\"",
+      "defaultValue": "\"dark\"",
+      "description": "Palette of the frame and the tiles."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "Each card's `accent` hue is visible only under the light: the card's edge and the colored wash beneath the image light up in that same hue — great for the gallery's visual categorization (each topic a hue).",
+    "`reveal=\"card\"` is better for touch rows: a global spotlight makes no sense on a touch screen and each card colors independently on hover.",
+    "Halve `grayscale` so the gallery stays \"colored by cool light\" — it gives an appealing middle state that is neither black and white nor fully colored.",
+    "With a long `fadeOut`, the light's shutdown becomes drawn out and cinematic; with zero it is instant — for busy galleries instant is better.",
+    "It has no dependency and no permanent rAF loop: the light's falloff is a pre-built 13-stop gradient that only moves with two coordinate variables."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 288,
+  "version": 1
+}

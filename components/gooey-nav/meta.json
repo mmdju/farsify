@@ -1,0 +1,154 @@
+{
+  "slug": "gooey-nav",
+  "name": "Gooey Nav",
+  "description": "A pill navigation bar whose active pill breaks into gooey droplets when you pick any item, flies over to the new item, and merges back into one piece.",
+  "category": "navigation",
+  "dependencies": [],
+  "interactionType": "Click / Keyboard / Hover",
+  "interactionNotes": "Tap any item and the active pill breaks into tiny droplets, crosses the bar, and gathers again on the new item. As the pointer passes, a soft halo lights up behind the item under it. The bar works with the keyboard too: each item is a real link or button with a focus ring. If you do not pass `href`, the item becomes a button and only calls `onChange`.",
+  "props": [
+    {
+      "name": "items",
+      "type": "GooeyNavItem[]",
+      "defaultValue": "[\"خانه\", \"محصولات\", \"درباره\", \"تماس\"]",
+      "description": "The items. Each item has a `label` and optionally `href` and `icon`; without `href` it renders as a button."
+    },
+    {
+      "name": "initialActiveIndex",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Which item is selected initially."
+    },
+    {
+      "name": "activeIndex",
+      "type": "number",
+      "description": "Controlled state; pass it with `onChange` to keep control of the selection yourself."
+    },
+    {
+      "name": "onChange",
+      "type": "(index: number, item: GooeyNavItem) => void",
+      "description": "On every selection, returns the index and the item itself."
+    },
+    {
+      "name": "theme",
+      "type": "\"dark\" | \"light\"",
+      "defaultValue": "\"dark\"",
+      "options": [
+        "dark",
+        "light"
+      ],
+      "description": "Theme of the frame and text; the pill color is derived from its own luminance."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "defaultValue": "تم‌آگاه (#f4f4f5 / #27272a)",
+      "description": "Color of the active pill. Pass a hex or `rgb()`; the text color inside is chosen automatically."
+    },
+    {
+      "name": "activeTextColor",
+      "type": "string",
+      "description": "Text color inside the pill. Omit it to have it derived from the luminance of `color`."
+    },
+    {
+      "name": "colors",
+      "type": "string[]",
+      "defaultValue": "[]",
+      "description": "Color of the droplets; they blend when they meet. Empty means the pill color itself."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "defaultValue": "\"md\"",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "description": "Size of the pill and the type."
+    },
+    {
+      "name": "frame",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The frosted glass frame around the bar."
+    },
+    {
+      "name": "animationTime",
+      "type": "number",
+      "defaultValue": "600",
+      "description": "Roughly how long the droplets take to reach the new item, milliseconds."
+    },
+    {
+      "name": "particleCount",
+      "type": "number",
+      "defaultValue": "15",
+      "description": "How many droplets the active pill breaks into on each selection."
+    },
+    {
+      "name": "spread",
+      "type": "number",
+      "defaultValue": "56",
+      "description": "How far the droplets spread along the path, pixels."
+    },
+    {
+      "name": "timeVariance",
+      "type": "number",
+      "defaultValue": "300",
+      "description": "Random difference in each droplet's timing, milliseconds."
+    },
+    {
+      "name": "gooeyness",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "How readily droplets and pills merge, 0 to 1."
+    },
+    {
+      "name": "wobble",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "How much the new pill wobbles while forming, 0 to 1."
+    },
+    {
+      "name": "hoverEffect",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Soft halo behind the item under the pointer."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"منو\"",
+      "description": "Accessible label of the bar for screen readers."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only: it advances the active item itself. Keep it off in normal use."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the bar's root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style; it sits after the color variables."
+    }
+  ],
+  "tips": [
+    "Give the labels Persian text and keep them short; the bar wraps with `flex-wrap`, but a single line is always more readable.",
+    "If the items have real destinations, pass `href`; without it they become buttons and you handle navigation yourself in `onChange`.",
+    "Pass `colors` for the droplets so you see several close hues when it breaks; leave it empty to keep the pill color.",
+    "The active pill uses the luminance of `color` to choose white or dark text; if you pass a very light or very dark color and dislike the result, set `activeTextColor` explicitly.",
+    "On touch devices `hoverEffect` has no effect; the halo only appears with a real pointer.",
+    "The droplet motion is turned off under `prefers-reduced-motion` and the selection lands directly — value and accessibility stay untouched."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 1077,
+  "version": 1
+}

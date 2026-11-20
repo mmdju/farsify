@@ -1,0 +1,152 @@
+{
+  "slug": "pulse-heart",
+  "name": "Pulse Heart",
+  "description": "A like pill that beats on every press: the heart contracts, springs out of place, and the counter digit rolls up one step like an odometer.",
+  "category": "actions",
+  "dependencies": [],
+  "interactionType": "Click / Touch / Keyboard",
+  "interactionNotes": "Click the pill or press it with `Enter`/`Space` to toggle between liked and not liked and move the count up or down by one. With mouse and touch the full beat plays — the heart contracts to `dotSize` and overshoots its mark by `overshoot`, the pill shrinks by `beat` percent and the changed digit rolls over `rollDuration`. With the keyboard the beat is skipped: state and count change instantly so the user does not wait for the animation. If `prefers-reduced-motion` is on, the pointer path becomes that same instant swap.",
+  "props": [
+    {
+      "name": "liked",
+      "type": "boolean",
+      "description": "Controlled state; pass it to own the state. An external change settles without playing the beat."
+    },
+    {
+      "name": "defaultLiked",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Initial state in uncontrolled mode."
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "The number shown; each press adds or subtracts one. Rendering uses Persian digits and a thousands separator."
+    },
+    {
+      "name": "onChange",
+      "type": "(liked: boolean, count: number) => void",
+      "description": "Gives the new state and count on every press."
+    },
+    {
+      "name": "showCount",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the count is shown; turning it off collapses the pill into a circle."
+    },
+    {
+      "name": "icon",
+      "type": "\"heart\" | \"star\" | \"thumb\" | ReactNode",
+      "defaultValue": "\"heart\"",
+      "options": [
+        "heart",
+        "star",
+        "thumb"
+      ],
+      "description": "Built-in glyph or any custom element."
+    },
+    {
+      "name": "idleOutline",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the idle icon is outlined; turning it off gives a dimmed solid version."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "defaultValue": "40",
+      "description": "Icon size, px; padding, gap and counter size derive from it."
+    },
+    {
+      "name": "corner",
+      "type": "number",
+      "defaultValue": "32",
+      "description": "Pill corner radius, px."
+    },
+    {
+      "name": "likedColor",
+      "type": "string",
+      "defaultValue": "\"#ff4d6d\"",
+      "description": "Color after liking, the hover tint and the focus ring."
+    },
+    {
+      "name": "idleColor",
+      "type": "string",
+      "defaultValue": "\"#8b8b93\"",
+      "description": "Color before liking."
+    },
+    {
+      "name": "pillColor",
+      "type": "string",
+      "defaultValue": "\"#232326\"",
+      "description": "Background of the pill that beats beneath the icon."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Counter color."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "defaultValue": "560",
+      "description": "Total beat duration, ms; the return always happens within 40% of it."
+    },
+    {
+      "name": "dotSize",
+      "type": "number",
+      "defaultValue": "0.3",
+      "description": "Ratio the icon shrinks to at the return moment."
+    },
+    {
+      "name": "overshoot",
+      "type": "number",
+      "defaultValue": "1.7",
+      "description": "How far it overshoots the target on the return; zero means no spring."
+    },
+    {
+      "name": "beat",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "Percentage the pill shrinks by at the return moment."
+    },
+    {
+      "name": "rollDuration",
+      "type": "number",
+      "defaultValue": "350",
+      "description": "Duration of the changed digit's roll, ms."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dimmed and unresponsive to input."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "defaultValue": "\"پسندیدن\"",
+      "description": "Accessible name; the counter is appended to it."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "To connect to a server, take `onChange` and pass `liked` and `count` **after** the successful response — controlled mode settles an external change without playing the beat, so it does not beat twice.",
+    "The demo starts with `count={1204}` but the component itself defaults to `0`; pass the real count (e.g. the server's total likes) from the parent and do not rely on the demo value.",
+    "The odometer roll turns only that one cell when a single digit changes; if the string length changes (999 → 1,000) the whole number shifts at once — the default behavior.",
+    "The built-in icon sits inside a scalable SVG group and its stroke width comes from `--ph-stroke` (`1.5 × size / 24`). If you pass `icon` as a `ReactNode`, that element replaces the whole `<svg>` and the beat applies to the outer `<span>` — so match its stroke width to `size` yourself.",
+    "With `prefers-reduced-motion`, both the beat and the roll turn off and the color changes with a soft transition; the count still updates immediately, so nothing is lost.",
+    "This component **does not get RTL**, and that is deliberate: the layout is LTR-safe (`inline-flex` and `padding-inline-end` mirror themselves) and the beat axis is a symmetric scale around the center. Only the text and digits were made Persian — the same rule as `jelly-radio`."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 379,
+  "version": 1
+}

@@ -1,0 +1,35 @@
+{
+  "description": "A glide selector whose list opens smoothly and whose raised pill slides onto the next option with a springy glide; dragging a finger across the list works too.",
+  "interactionType": "Click / Drag / Keyboard",
+  "interactionNotes": "A click or `Space`/`Enter` opens the list and the raised pill lands on the active option. Move over the list with the pointer or the arrow keys so the pill glides with a spring; pressing and dragging a finger does the same and, with the release velocity, advances several rows. `Escape` closes it and typing the first letter jumps to the option whose name starts with it.",
+  "props": {
+    "options": "The options; a string or an object `{ value, label, tag }`.",
+    "value": "Controlled state.",
+    "defaultValue": "Initial value in uncontrolled mode.",
+    "onChange": "Called on selection and returns the option itself too.",
+    "placeholder": "Text shown when nothing is selected.",
+    "showTags": "Whether the small tag beside the options is shown.",
+    "accentColor": "Color of the check on the selected option.",
+    "surfaceColor": "Background of the menu.",
+    "highlightColor": "Color of the raised pill.",
+    "textColor": "Text color of the button and the options.",
+    "size": "Size of the button and the rows.",
+    "radius": "Roundness of the button and the menu, pixels.",
+    "menuWidth": "Minimum width of the menu, pixels.",
+    "placement": "Whether the menu opens above or below the button.",
+    "align": "Which edge to stick to; it mirrors automatically in RTL.",
+    "popDuration": "Duration of the menu opening, milliseconds.",
+    "glideDuration": "Duration of the pill gliding between options, milliseconds.",
+    "rememberPosition": "When the pointer leaves the list, the active position is kept.",
+    "disabled": "Dimmed and unresponsive to input.",
+    "autoPreview": "Site preview only: it opens the menu, glides the pill to the next option, and selects it — all through the real open/glide/select path.",
+    "ariaLabel": "Accessible name of the button.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "`tag` holds a short note, not the name: in the file-template demo, `label` stays the Latin \"PNG\" and `tag` is \"without quality loss\". The two sit in separate elements and `tag` lives in an isolated left-to-right domain, so it does not mix with Persian text.",
+    "Do not think of `align` physically: under `dir=\"rtl\"` the value `left` means \"stick to the start edge\", which is the right side. The component mirrors it itself, so you do not need to change anything by hand.",
+    "For a list with more than eight options, make `menuWidth` larger and do not pass `tag`; tight rows get crowded with a tag next to the name.",
+    "The motion is not only `motion` — most of the opening and closing is CSS keyframes, so it has no noticeable cost even across dozens of selectors on one page."
+  ]
+}

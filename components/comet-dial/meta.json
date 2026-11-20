@@ -1,0 +1,159 @@
+{
+  "slug": "comet-dial",
+  "name": "Comet Dial",
+  "description": "A rotary dial with a comet tail: the arc fills by dragging, the indicator head leaves fading particles behind, and the number sits in the middle in fixed-width Persian digits.",
+  "category": "inputs",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Drag / Keyboard",
+  "interactionNotes": "Press and drag around the circle to change the value; releasing with speed gives momentum, and a spring settles the value onto the nearest step with a slight bounce. In RTL zero is on the right and the value increases toward the left; in LTR it is the reverse. The arrow keys work too — in RTL `ArrowLeft` increases.",
+  "props": [
+    {
+      "name": "value",
+      "type": "number",
+      "description": "Controlled state."
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "defaultValue": "62",
+      "description": "Initial value in the uncontrolled state."
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Minimum value."
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "defaultValue": "100",
+      "description": "Maximum value."
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Value step."
+    },
+    {
+      "name": "unit",
+      "type": "\"%\" | \"٪\" | \"°\" | \"dB\" | \"\"",
+      "defaultValue": "\"%\"",
+      "options": [
+        "%",
+        "٪",
+        "°",
+        "dB",
+        ""
+      ],
+      "description": "The unit next to the number; an empty string means no unit."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "defaultValue": "\"مقدار\"",
+      "description": "Accessible name of the dial."
+    },
+    {
+      "name": "accent",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Color of the filled arc."
+    },
+    {
+      "name": "ink",
+      "type": "string",
+      "defaultValue": "\"#fdfdfd\"",
+      "description": "Color of the centered number."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "defaultValue": "250",
+      "description": "Dial side length, pixels."
+    },
+    {
+      "name": "sweep",
+      "type": "number",
+      "defaultValue": "320",
+      "description": "Arc extent, degrees."
+    },
+    {
+      "name": "thickness",
+      "type": "number",
+      "defaultValue": "5",
+      "description": "Rail thickness, pixels."
+    },
+    {
+      "name": "speed",
+      "type": "number",
+      "defaultValue": "25",
+      "description": "Speed of the number spring, 0 to 100."
+    },
+    {
+      "name": "tapBounce",
+      "type": "number",
+      "defaultValue": "0.2",
+      "description": "Spring bounce on a tap (0 to 0.9)."
+    },
+    {
+      "name": "flickBounce",
+      "type": "number",
+      "defaultValue": "0.1",
+      "description": "Spring bounce on a flick (0 to 0.9)."
+    },
+    {
+      "name": "momentum",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Multiplier for release momentum."
+    },
+    {
+      "name": "cometReach",
+      "type": "number",
+      "defaultValue": "180",
+      "description": "Tail length, degrees."
+    },
+    {
+      "name": "cometWidth",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "Tail width, pixels."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dimmed and unresponsive to input."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: number) => void",
+      "description": "Called on every change."
+    },
+    {
+      "name": "onChangeEnd",
+      "type": "(value: number, detail: { velocity: number; bounce: number }) => void",
+      "description": "When the motion ends; it also reports velocity and bounce."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "Zero is on the right in RTL and the value increases toward the left — the Persian convention. This mirroring happens in JS, so it is enough for the page to be `dir=\"rtl\"`; no `rtl` prop is needed.",
+    "Digits render as Persian and each one sits in a fixed-width 0.694em box; `tabular-nums` has no effect with the Peyda font, and these boxes are the only thing keeping the number from shaking while it turns.",
+    "For a unit other than percent, change `unit` — `°`, `dB`, or an empty string. An empty string means just the number, and the number stays centered on its own.",
+    "`onChangeEnd` is the right place to save to the server: it is not called on every drag frame, only once the spring has settled."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 561,
+  "version": 1
+}

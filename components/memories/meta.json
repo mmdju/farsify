@@ -1,0 +1,85 @@
+{
+  "slug": "memories",
+  "name": "Memories",
+  "description": "A deck of photo cards fanned on top of each other; \"Start\" opens the top card, you page through with arrows or by dragging card to card, and closing gathers the deck back in place.",
+  "category": "showcase",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Click / Drag / Keyboard",
+  "interactionNotes": "\"Start\" enlarges the middle card in place and the two back cards retreat behind it. In the open state the card can be dragged with the mouse: past a third of the width or with a fast throw it flips away, otherwise it springs back into place. The \"next\" button turns into a check on the last card and that is the end of the review; closing files the read card onto the deck and then quietly returns to the first card. With the keyboard: left arrow next, right arrow previous and Escape closes.",
+  "props": [
+    {
+      "name": "cards",
+      "type": "MemoriesCard[]",
+      "description": "The deck's cards (`label`, `date`, `src` and `alt` for screen readers); defaults to the component's own five memories with local photos. With a single card there are no back cards."
+    },
+    {
+      "name": "heading",
+      "type": "string",
+      "defaultValue": "\"مرورِ خاطره‌ها\"",
+      "description": "Header of the deck state; in the open state it gives way to the current card's date."
+    },
+    {
+      "name": "startLabel",
+      "type": "string",
+      "defaultValue": "\"شروع\"",
+      "description": "Text of the solid Start button."
+    },
+    {
+      "name": "spread",
+      "type": "number",
+      "defaultValue": "75",
+      "description": "Horizontal spread of the back cards' fan in the deck state, in px."
+    },
+    {
+      "name": "fanAngle",
+      "type": "number",
+      "defaultValue": "10",
+      "description": "Rotation angle of the back cards, in degrees; zero means a flat fan."
+    },
+    {
+      "name": "cardWidth",
+      "type": "number",
+      "defaultValue": "200",
+      "description": "Card width on the deck; its height is 1.2× and the open state is 1.48× the width — everything derives from this number."
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "description": "Controlled open/closed state of the deck; when provided, buttons and dragging no longer change the state (for toggling the deck from outside)."
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "description": "Controlled current card (0 to count minus one); do not pass it while the deck is closed so the calm gather is not disturbed."
+    },
+    {
+      "name": "onIndexChange",
+      "type": "(index: number) => void",
+      "description": "Returns the card number on every change — dragging, buttons, the automatic return at the end."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Accessibility label for the card area — in both the deck and open states."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra class on the component container."
+    }
+  ],
+  "tips": [
+    "Directions are physical and RTL-friendly: \"next\" is always to the left — both when dragging the card and with the arrow key; the button arrows show the same direction.",
+    "Closing files the read card right there on the deck and, once it settles, quietly returns to the first card — so every time you open it the deck starts from the beginning.",
+    "The \"next\" button is normal until a page remains, and only on the last card does it turn solid with a check: black means the end of the review, not the forward direction.",
+    "The card throw has a threshold: more than a third of the frame or a velocity of 500px/s flips it; a half-hearted drag springs back.",
+    "Frame and button colors are `--mm-*` variables in `memories.css` tied to the site tokens — light/dark theme switches automatically; the photo gradients are deliberately fixed.",
+    "Only `motion` is needed; the photos use local paths and a plain `img` so nothing is tied to next/image and domain configuration."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 575,
+  "version": 1
+}

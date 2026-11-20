@@ -1,0 +1,163 @@
+{
+  "slug": "glide-select",
+  "name": "Glide Select",
+  "description": "A glide selector whose list opens smoothly and whose raised pill slides onto the next option with a springy glide; dragging a finger across the list works too.",
+  "category": "navigation",
+  "dependencies": [],
+  "interactionType": "Click / Drag / Keyboard",
+  "interactionNotes": "A click or `Space`/`Enter` opens the list and the raised pill lands on the active option. Move over the list with the pointer or the arrow keys so the pill glides with a spring; pressing and dragging a finger does the same and, with the release velocity, advances several rows. `Escape` closes it and typing the first letter jumps to the option whose name starts with it.",
+  "props": [
+    {
+      "name": "options",
+      "type": "Array<string | GlideSelectOption>",
+      "defaultValue": "[\"One\", \"Two\", \"Three\"]",
+      "description": "The options; a string or an object `{ value, label, tag }`."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Controlled state."
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "description": "Initial value in uncontrolled mode."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string, option: GlideSelectOption) => void",
+      "description": "Called on selection and returns the option itself too."
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "defaultValue": "\"انتخاب کن…\"",
+      "description": "Text shown when nothing is selected."
+    },
+    {
+      "name": "showTags",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the small tag beside the options is shown."
+    },
+    {
+      "name": "accentColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Color of the check on the selected option."
+    },
+    {
+      "name": "surfaceColor",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Background of the menu."
+    },
+    {
+      "name": "highlightColor",
+      "type": "string",
+      "defaultValue": "\"#3f3f46\"",
+      "description": "Color of the raised pill."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Text color of the button and the options."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "defaultValue": "\"md\"",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "description": "Size of the button and the rows."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "10",
+      "description": "Roundness of the button and the menu, pixels."
+    },
+    {
+      "name": "menuWidth",
+      "type": "number",
+      "defaultValue": "176",
+      "description": "Minimum width of the menu, pixels."
+    },
+    {
+      "name": "placement",
+      "type": "\"top\" | \"bottom\"",
+      "defaultValue": "\"bottom\"",
+      "options": [
+        "top",
+        "bottom"
+      ],
+      "description": "Whether the menu opens above or below the button."
+    },
+    {
+      "name": "align",
+      "type": "\"left\" | \"right\"",
+      "defaultValue": "\"left\"",
+      "options": [
+        "left",
+        "right"
+      ],
+      "description": "Which edge to stick to; it mirrors automatically in RTL."
+    },
+    {
+      "name": "popDuration",
+      "type": "number",
+      "defaultValue": "180",
+      "description": "Duration of the menu opening, milliseconds."
+    },
+    {
+      "name": "glideDuration",
+      "type": "number",
+      "defaultValue": "220",
+      "description": "Duration of the pill gliding between options, milliseconds."
+    },
+    {
+      "name": "rememberPosition",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "When the pointer leaves the list, the active position is kept."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dimmed and unresponsive to input."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only: it opens the menu, glides the pill to the next option, and selects it — all through the real open/glide/select path."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"انتخاب\"",
+      "description": "Accessible name of the button."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "`tag` holds a short note, not the name: in the file-template demo, `label` stays the Latin \"PNG\" and `tag` is \"without quality loss\". The two sit in separate elements and `tag` lives in an isolated left-to-right domain, so it does not mix with Persian text.",
+    "Do not think of `align` physically: under `dir=\"rtl\"` the value `left` means \"stick to the start edge\", which is the right side. The component mirrors it itself, so you do not need to change anything by hand.",
+    "For a list with more than eight options, make `menuWidth` larger and do not pass `tag`; tight rows get crowded with a tag next to the name.",
+    "The motion is not only `motion` — most of the opening and closing is CSS keyframes, so it has no noticeable cost even across dozens of selectors on one page."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 502,
+  "version": 1
+}

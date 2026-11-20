@@ -1,0 +1,14 @@
+.voice-pill-wave,
+.voice-pill-arrow {
+  transform-origin: 50% 50%;
+}
+
+.voice-pill[data-flip="rtl"] .voice-pill-wave,
+.voice-pill[data-flip="rtl"] .voice-pill-arrow {
+  scale: -1 1;
+}
+
+.voice-pill:focus-visible {
+  outline: 2px solid var(--vp-accent);
+  outline-offset: 2px;
+}

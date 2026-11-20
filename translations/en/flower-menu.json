@@ -1,0 +1,29 @@
+{
+  "description": "A button with a + icon whose icons bloom around it like petals; a second tap gathers them back with the same calm.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Tapping the center button opens the petals one by one (each 35 milliseconds later than the previous) with a spring, each petal enters from a soft blur, and the `+` rotates into an X. A second tap closes the petals from last to first with a smooth transition. Space or Enter also opens and closes it, and on open, focus lands on the first petal so Tab reveals the rest; Escape closes it from anywhere and returns focus to the center button. A closed petal is kept out of the focus order and the accessibility tree with `inert`. Each petal is a real button; a click or Enter on it calls `onSelect` and closes the menu.",
+  "props": {
+    "items": "The menu items; each item has an `id`, a `label`, and an icon. The label goes to `aria-label` because the menu has no visible text.",
+    "open": "Controlled state; omit it to let the component keep its own state.",
+    "onOpenChange": "Called on every open or close.",
+    "radius": "Radius of the bloom circle in pixels — the distance from each petal's center to the center of the menu.",
+    "discSize": "Size of each petal.",
+    "centerSize": "Size of the center button.",
+    "accent": "Color of the center button; the petals stay neutral. Pass a hex or `rgb()` — the `+` icon's ink automatically turns dark or light to stay readable on any color.",
+    "stagger": "Staggered delay of each petal in milliseconds; closing uses the same step but reversed.",
+    "stiffness": "Stiffness of the opening spring — higher means snappier.",
+    "damping": "Spring damping; a lower value gives more bounce.",
+    "blurIn": "Blur of the petals before opening, in pixels; set it to zero for a sharp entrance.",
+    "autoPreview": "Site preview only — it runs an endless open/close cycle by itself. Keep it off in normal use.",
+    "ariaLabel": "Label of the center button for screen readers.",
+    "onSelect": "On selecting any petal (click or Enter) it returns the item and the menu closes itself; it is optional, and without it the menu just closes.",
+    "className": "Extra class for the menu frame."
+  },
+  "tips": [
+    "The circle is symmetric and has no directional arrow, so nothing is mirrored for RTL — the geometry stays physical and the frame center is the same point in both directions.",
+    "The menu frame grows with the bloom radius (it is not fixed), so even a large radius does not overflow the frame; just watch the height of the host card.",
+    "The disc shadows are controlled by the `--fm-disc` variable in the CSS file and switch themselves in the dark theme with a `.dark` selector; if your project uses a different theme class, change that one selector.",
+    "Closed petals have `tabIndex={-1}` and `aria-hidden` — common implementations made them invisible but still tabbable; this one fixes that.",
+    "With `prefers-reduced-motion` all transitions become instant: the petals move without a spring and the staggered delay drops to zero."
+  ]
+}

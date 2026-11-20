@@ -1,0 +1,253 @@
+{
+  "slug": "elastic-slider",
+  "name": "Elastic Slider",
+  "description": "A slider that thickens under the pointer and, if you pull past either end, stretches like a rubber band and springs back.",
+  "category": "inputs",
+  "dependencies": [],
+  "interactionType": "Drag / Click / Keyboard / Mouse wheel",
+  "interactionNotes": "Drag or click on the track; the track thickens under your finger and, if you pull past either end, it stretches and then springs back. In right-to-left the track fills from the **right** and the arrow keys are mirrored too (left = more); in vertical mode it fills from the bottom. The mouse wheel (when `wheel` is on) and the Home/End keys can change the value as well.",
+  "props": [
+    {
+      "name": "value",
+      "type": "number",
+      "description": "Controlled value. Omit it for the value to be internal."
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "defaultValue": "50",
+      "description": "Starting value when it is not controlled."
+    },
+    {
+      "name": "startingValue",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Lowest value of the range."
+    },
+    {
+      "name": "maxValue",
+      "type": "number",
+      "defaultValue": "100",
+      "description": "Highest value of the range."
+    },
+    {
+      "name": "isStepped",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "The value snaps to the `stepSize` grid."
+    },
+    {
+      "name": "stepSize",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Size of each step when `isStepped` is on."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: number) => void",
+      "description": "Called on every value change."
+    },
+    {
+      "name": "onChangeEnd",
+      "type": "(value: number) => void",
+      "description": "End of a drag, key, or wheel — once."
+    },
+    {
+      "name": "orientation",
+      "type": "'horizontal' | 'vertical'",
+      "defaultValue": "'horizontal'",
+      "options": [
+        "horizontal",
+        "vertical"
+      ],
+      "description": "Track direction; vertical fills from the bottom."
+    },
+    {
+      "name": "startIcon",
+      "type": "ReactNode",
+      "description": "Icon of the low end. It is logical: it sits on the left in LTR and on the right in RTL. `null` hides it."
+    },
+    {
+      "name": "endIcon",
+      "type": "ReactNode",
+      "description": "Icon of the high end. On the right in LTR and on the left in RTL. `null` hides it."
+    },
+    {
+      "name": "iconPlacement",
+      "type": "'outside' | 'inside'",
+      "defaultValue": "'outside'",
+      "options": [
+        "outside",
+        "inside"
+      ],
+      "description": "Outside the track or inside it. For inside, the thickness should be around 40px or the icons get clipped."
+    },
+    {
+      "name": "valuePosition",
+      "type": "'top' | 'bubble' | 'inside' | 'none'",
+      "defaultValue": "'top'",
+      "options": [
+        "top",
+        "bubble",
+        "inside",
+        "none"
+      ],
+      "description": "Where the number goes: above the track, in a moving bubble, inside the track, or nowhere."
+    },
+    {
+      "name": "formatValue",
+      "type": "(value: number) => string",
+      "description": "Formats the number and `aria-valuetext`; by default Persian digits via `Intl.NumberFormat('fa-IR')`."
+    },
+    {
+      "name": "ticks",
+      "type": "boolean | number[]",
+      "defaultValue": "false",
+      "description": "Dots on the track: every step, every tenth, or explicit values."
+    },
+    {
+      "name": "thumb",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Round handle at the head of the fill."
+    },
+    {
+      "name": "fillFrom",
+      "type": "number",
+      "description": "The value the fill grows from; the middle of the range means a two-sided fill."
+    },
+    {
+      "name": "thickness",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "Track thickness at rest, in pixels."
+    },
+    {
+      "name": "activeThickness",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "Track thickness on hover, focus, or drag."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "description": "Track corner radius; omit it for the track to be fully round."
+    },
+    {
+      "name": "restOpacity",
+      "type": "number",
+      "defaultValue": "0.7",
+      "description": "Brightness at rest; it reaches 1 when active."
+    },
+    {
+      "name": "growOnHover",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Hover also activates the track; off means press/focus only."
+    },
+    {
+      "name": "maxStretch",
+      "type": "number",
+      "defaultValue": "50",
+      "description": "Maximum stretch past either end, in pixels; zero turns it off."
+    },
+    {
+      "name": "bounce",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "How much the return spring wobbles, 0 to 0.95."
+    },
+    {
+      "name": "jumpToClick",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "A click on the track puts the value right there; off means it drags from the current value."
+    },
+    {
+      "name": "wheel",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Let the mouse wheel change the value (it captures scrolling over the track)."
+    },
+    {
+      "name": "trackColor",
+      "type": "string",
+      "defaultValue": "'color-mix(in srgb, currentColor 18%, transparent)'",
+      "description": "Color of the empty groove."
+    },
+    {
+      "name": "rangeColor",
+      "type": "string",
+      "defaultValue": "'currentColor'",
+      "description": "Color of the fill; in the demo the default is the theme's mono and the variants add an accent."
+    },
+    {
+      "name": "iconColor",
+      "type": "string",
+      "defaultValue": "'currentColor'",
+      "description": "Color of the icons outside the track."
+    },
+    {
+      "name": "contentColor",
+      "type": "string",
+      "defaultValue": "'currentColor'",
+      "description": "Color of the number/icon/tick over the empty groove."
+    },
+    {
+      "name": "fillContentColor",
+      "type": "string",
+      "defaultValue": "'auto'",
+      "description": "Color of the content over the fill; `auto` picks opaque ink from the brightness of the fill color."
+    },
+    {
+      "name": "thumbColor",
+      "type": "string",
+      "defaultValue": "'#ffffff'",
+      "description": "Handle color."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Turns interaction off and dims the whole slider."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "'لغزنده'",
+      "description": "Accessible name of the slider."
+    },
+    {
+      "name": "dir",
+      "type": "'ltr' | 'rtl'",
+      "description": "Provide the direction manually; by default it is read from the computed `direction`."
+    },
+    {
+      "name": "ref",
+      "type": "Ref<ElasticSliderHandle>",
+      "description": "Imperative handle with `bump(side)` — stretches the track past one end and springs it back without changing the value; for preview drivers and storytelling."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style; it is applied after the color variables."
+    }
+  ],
+  "tips": [
+    "In right-to-left the track fills from the right; the left key means 'more'. The same convention holds in `wake-slider`.",
+    "For a two-sided fill (like camera exposure), set `fillFrom` to the middle of the range and turn `thumb` on.",
+    "For an inside icon, take `thickness` to around 40px; otherwise the icons get clipped in a thin track.",
+    "With `ticks={[0]}` you show only the zero dot; a numeric `ticks` brings in every step.",
+    "If the mouse wheel should scroll the page, leave `wheel` off (the default)."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 928,
+  "version": 1
+}

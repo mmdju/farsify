@@ -1,0 +1,32 @@
+.coffee-milk {
+  --cm-coffee-fill: oklch(0.72 0.15 48);
+  --cm-coffee-word: oklch(0.5 0.07 48);
+  --cm-coffee-num: oklch(0.46 0.14 40);
+  --cm-milk-fill: oklch(0.65 0.02 250);
+  --cm-milk-word: oklch(0.5 0.01 250);
+  --cm-milk-num: oklch(0.32 0.01 250);
+  --cm-coffee-alpha: 0.22;
+  --cm-milk-alpha: 0.16;
+  --cm-rule: oklch(0.35 0.02 250 / 0.5);
+}
+
+.coffee-milk:is(.dark *, .force-dark *):not(:is(.light, .light *)) {
+  --cm-coffee-word: oklch(0.84 0.05 48);
+  --cm-coffee-num: oklch(0.82 0.105 46);
+  --cm-milk-fill: oklch(0.72 0.02 250);
+  --cm-milk-word: oklch(0.8 0.008 250);
+  --cm-milk-num: oklch(0.96 0.004 250);
+  --cm-coffee-alpha: 0.26;
+  --cm-rule: oklch(0.95 0 0 / 0.6);
+}
+
+.coffee-milk__hit {
+
+  touch-action: none;
+}
+
+.coffee-milk__hit:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--cm-coffee-fill) 70%, transparent);
+  outline-offset: 4px;
+  border-radius: 8px;
+}

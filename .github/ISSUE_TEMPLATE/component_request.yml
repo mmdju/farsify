@@ -1,0 +1,58 @@
+name: Component request
+description: Propose a new component for Farsify
+title: "[Component] "
+labels: ["component"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Component name
+      description: One English name and one Latin kebab-case slug.
+      placeholder: Magnet / magnet
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Inputs
+        - Buttons
+        - Navigation
+        - Loaders & status
+        - Showcase
+    validations:
+      required: true
+
+  - type: textarea
+    id: usecase
+    attributes:
+      label: Where would it be used?
+      description: A real situation this component solves.
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Behavior and interaction
+      description: What does the user see and do? Include motion, states and keyboard behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: props
+    attributes:
+      label: Suggested props
+      description: Size, color, controlled state, and so on.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Will you help build it?
+      options:
+        - label: I can write the code and open a pull request
+        - label: I am only suggesting the idea

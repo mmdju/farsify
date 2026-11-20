@@ -1,0 +1,249 @@
+{
+  "slug": "paper-crumple",
+  "name": "Paper Crumple",
+  "description": "An image that crumples like real paper when you hold it; you can drag it, and on release it either unfolds or keeps its creases, depending on your choice.",
+  "category": "showcase",
+  "dependencies": [
+    "three"
+  ],
+  "devDependencies": [
+    "@types/three"
+  ],
+  "interactionType": "Hold / Drag / Keyboard",
+  "interactionNotes": "Grab the paper with the mouse and hold it; it crumples in your hand like real paper, tilting and following you as you move. On release, depending on the \"release behavior\", it either fully unfolds or keeps a crease from the memory of being crumpled. With the keyboard: hold Space or Enter to crumple, move it with the arrow keys (hold Shift for faster) and reset with Escape. With `prefers-reduced-motion`, all transitions become instant.",
+  "props": [
+    {
+      "name": "src",
+      "type": "string",
+      "description": "URL of the image the paper is built from. Required; the remote image must allow CORS."
+    },
+    {
+      "name": "alt",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Alternative text for the image — used both for the fallback `<img>` and in the button's screen-reader label."
+    },
+    {
+      "name": "backSrc",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Image for the back of the paper. If omitted, the paper's back is `paperColor`."
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "defaultValue": "320",
+      "description": "Paper width, in pixels. Together with `height` it sets the paper's aspect ratio."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "400",
+      "description": "Paper height, in pixels."
+    },
+    {
+      "name": "sceneHeight",
+      "type": "number",
+      "defaultValue": "560",
+      "description": "Total scene height, in pixels."
+    },
+    {
+      "name": "imageFit",
+      "type": "\"cover\" | \"contain\"",
+      "defaultValue": "\"cover\"",
+      "options": [
+        "cover",
+        "contain"
+      ],
+      "description": "How the image fits on the paper."
+    },
+    {
+      "name": "releaseBehavior",
+      "type": "\"stay\" | \"restore\" | \"creased\"",
+      "defaultValue": "\"restore\"",
+      "options": [
+        "stay",
+        "restore",
+        "creased"
+      ],
+      "description": "What happens after release: stay crumpled, fully unfold, or unfold while keeping some creases."
+    },
+    {
+      "name": "crumpleAmount",
+      "type": "number",
+      "defaultValue": "0.85",
+      "description": "How much it crumples, 0 to 1. Holding longer does not increase it — it is the fixed target of the spring."
+    },
+    {
+      "name": "crumpleDuration",
+      "type": "number",
+      "defaultValue": "0.55",
+      "description": "Crumple duration, in seconds."
+    },
+    {
+      "name": "releaseDuration",
+      "type": "number",
+      "defaultValue": "0.4",
+      "description": "Unfold duration after release, in seconds."
+    },
+    {
+      "name": "foldCount",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "Number of fold guides; more means finer creases. 3 to 16."
+    },
+    {
+      "name": "foldSharpness",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Crispness of the edges; 1 is like an ironed fold, 0 is soft and wavy."
+    },
+    {
+      "name": "wrinkleDepth",
+      "type": "number",
+      "defaultValue": "0.65",
+      "description": "Depth of the wrinkles; above 1 is exaggerated."
+    },
+    {
+      "name": "creaseStrength",
+      "type": "number",
+      "defaultValue": "0.18",
+      "description": "With `releaseBehavior=\"creased\"`, how much of the crumpling stays in the paper."
+    },
+    {
+      "name": "paperColor",
+      "type": "string",
+      "defaultValue": "\"#f4f0e8\"",
+      "description": "Color of the paper's back and edges; the front is the image, so it is mostly visible inside the folds."
+    },
+    {
+      "name": "roughness",
+      "type": "number",
+      "defaultValue": "0.92",
+      "description": "Surface roughness for lighting; 1 is fully matte."
+    },
+    {
+      "name": "paperTexture",
+      "type": "number",
+      "defaultValue": "0.08",
+      "description": "Intensity of the paper grain (fine bump)."
+    },
+    {
+      "name": "lightIntensity",
+      "type": "number",
+      "defaultValue": "1.8",
+      "description": "Directional light intensity; zero means ambient light only."
+    },
+    {
+      "name": "lightAngle",
+      "type": "number",
+      "defaultValue": "-35",
+      "description": "Light angle, in degrees; light comes from this side so the folds cast shadows."
+    },
+    {
+      "name": "shadow",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Enable a soft shadow under the paper."
+    },
+    {
+      "name": "shadowOpacity",
+      "type": "number",
+      "defaultValue": "0.08",
+      "description": "Shadow opacity; 0 means almost none."
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "While holding, the paper moves with the pointer."
+    },
+    {
+      "name": "dragRotation",
+      "type": "number",
+      "defaultValue": "10",
+      "description": "How much it tilts while dragging, in degrees; maximum 60."
+    },
+    {
+      "name": "dragRadius",
+      "type": "number",
+      "defaultValue": "180",
+      "description": "Movement radius from the center, in pixels."
+    },
+    {
+      "name": "returnToOrigin",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Return to the center after release (unless `stay`)."
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Permanent rotation of the paper, in degrees."
+    },
+    {
+      "name": "seed",
+      "type": "number",
+      "defaultValue": "7",
+      "description": "Random seed for the folds; each number gives a fresh crumple pattern."
+    },
+    {
+      "name": "detail",
+      "type": "number",
+      "defaultValue": "64",
+      "description": "Mesh density; more means softer folds and heavier computation. Changing it rebuilds the scene."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Disables input and reverts a half-finished crumple."
+    },
+    {
+      "name": "resetKey",
+      "type": "number | string",
+      "description": "Changing it returns the paper to its initial state — for external resets."
+    },
+    {
+      "name": "onStateChange",
+      "type": "(state) => void",
+      "description": "On every state transition: `flat` / `holding` / `crumpled` / `creased`."
+    },
+    {
+      "name": "onError",
+      "type": "(error: Error) => void",
+      "description": "Called if WebGL is unavailable or the image fails to load; the component falls back to a plain image itself."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Automatic crumple preview without any interaction."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class on the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "defaultValue": "{}",
+      "description": "Inline styles on the root."
+    }
+  ],
+  "tips": [
+    "This component **does not get RTL, and does not need to**: the 3D scene is symmetric; only the labels and screen-reader states are Persian.",
+    "The front image comes from `src` and the back color from `paperColor` — inside the crumple folds the paper's back shows through the creases, so a back color that differs from the image makes the crumpling more legible.",
+    "`releaseBehavior=\"creased\"` is great for \"notes that get worn\": keep `creaseStrength` low so it only creases a little more each time.",
+    "With `releaseBehavior=\"stay\"` the paper stays crumpled until you change `resetKey` or the user presses `Escape` — for games and one-off effects.",
+    "This component is **the archive's only dynamic-import demo**: `three` is loaded with `next/dynamic` only on this page and the rest of the site stays free of it. If the page feels slow, lower `detail` — fold computation scales with it exponentially.",
+    "Motion-sensitive users are not left out either: with `prefers-reduced-motion` the crumple and unfold become instant but the hold and drag logic stays intact, and if WebGL is unavailable it shows a plain image and calls `onError`."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 1323,
+  "version": 1
+}

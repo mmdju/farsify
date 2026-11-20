@@ -1,0 +1,162 @@
+{
+  "slug": "card-swap",
+  "name": "Card Swap",
+  "description": "A stack of 3D cards that changes with drag, click or autoplay: the front card jumps away, the rest shift with a five-axis spring, and a dimming halo builds depth.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Drag / Click / Keyboard",
+  "interactionNotes": "Drag the front card and release: the throw path determines the next card's entry direction and its tilt. Clicking the back cards brings them to the front, and the arrows/arrow keys switch too. On hover the stack opens slightly and the back cards look blurrier. The geometry is not mirrored: the stack opens up and to the right and dragging is finger physics; the keys are logical (right/down = next).",
+  "props": [
+    {
+      "name": "items",
+      "type": "CardSwapItem[]",
+      "description": "The cards; each has `title`, `image`, `icon` and `alt`. Without them, four sample cards appear."
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "description": "Fully custom cards with `<Card>` — if you provide them, `items` is ignored."
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "defaultValue": "460",
+      "description": "Width of each card, pixels."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "340",
+      "description": "Height of each card, pixels."
+    },
+    {
+      "name": "cardDistance",
+      "type": "number",
+      "defaultValue": "60",
+      "description": "Horizontal spacing of the stack's steps."
+    },
+    {
+      "name": "verticalDistance",
+      "type": "number",
+      "defaultValue": "70",
+      "description": "Vertical spacing of the steps — the cards step upward."
+    },
+    {
+      "name": "depth",
+      "type": "number",
+      "defaultValue": "90",
+      "description": "Perspective depth of each step; back cards look smaller."
+    },
+    {
+      "name": "skewAmount",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "Skew of the stack in degrees; negative reverses its direction."
+    },
+    {
+      "name": "visibleCards",
+      "type": "number",
+      "defaultValue": "4",
+      "description": "How many cards of the stack are visible."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "defaultValue": "4000",
+      "description": "Autoplay interval, milliseconds."
+    },
+    {
+      "name": "autoplay",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Automatic advance of the front card."
+    },
+    {
+      "name": "pauseOnHover",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Pause the playing on hover."
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Dragging the front card to swap."
+    },
+    {
+      "name": "speed",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Spring speed; 0.3 to 4."
+    },
+    {
+      "name": "bounce",
+      "type": "number",
+      "defaultValue": "0.35",
+      "description": "Bounce of the front card when jumping; 0 to 1."
+    },
+    {
+      "name": "parallax",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "Layer separation with pointer movement; 0 to 1."
+    },
+    {
+      "name": "hoverSpread",
+      "type": "number",
+      "defaultValue": "0.12",
+      "description": "How much the stack opens on hover; 0 to 0.4."
+    },
+    {
+      "name": "dim",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "Dimming of the back cards; 0 to 1."
+    },
+    {
+      "name": "cardRadius",
+      "type": "number",
+      "defaultValue": "18",
+      "description": "Corner radius of the cards."
+    },
+    {
+      "name": "intro",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Staggered entry of the cards on mount."
+    },
+    {
+      "name": "theme",
+      "type": "\"dark\" | \"light\"",
+      "defaultValue": "\"dark\"",
+      "description": "Palette of the tile, border and dimming; it can also be changed with `--swap-*` variables."
+    },
+    {
+      "name": "onCardClick",
+      "type": "(index: number) => void",
+      "description": "A click on any card (even the back ones)."
+    },
+    {
+      "name": "onChange",
+      "type": "(index: number) => void",
+      "description": "On every swap of the front card."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "The root fits itself into any box: `fit()` measures the container's width/height ratio and scales the whole stack — in a list card and bento it hosts with no configuration at all.",
+    "The drag path builds the next card's entry direction: drag from below so the next card comes in from below — the same feel as a real stack of paper.",
+    "Set `hoverSpread` to zero and raise `dim` for a quiet, deep stack; for a product showcase, a high `hoverSpread` and a negative `skewAmount` give a shelf feel.",
+    "The stack opens up and to the right — the default look and not mirrored; the title on the card sits in Persian and RTL. If you ever want the stack to open to the left, make the sign of `cardDistance` negative rather than mirroring the whole engine.",
+    "With `children` and `<Card>` you build any content; `onCardClick` is called even for the back cards."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 1032,
+  "version": 1
+}

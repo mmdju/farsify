@@ -1,0 +1,22 @@
+{
+  "description": "Three panels that together complete a single image; on scroll they open slightly, flip, and the text behind each panel is revealed.",
+  "interactionType": "Scroll",
+  "interactionNotes": "The further you scroll, the further it goes: first the side panels open outward and the whole trio shrinks a little, then the panels flip one by one and the text on their backs appears, and finally the whole group moves up slightly. Scrolling back reverses everything — the motion is entirely in your hands.",
+  "props": {
+    "items": "Up to three cards; each card is `{ title, description, bgColor, textColor, kicker? }` and sits behind one panel. If omitted, the component's own three Persian panels are used.",
+    "imageSrc": "The shared image of the three panels — a wide image looks best. If omitted, the online default is kept.",
+    "className": "Applies to the scroll track container; an `h-` class lets you change the 400vh height for tighter spaces.",
+    "containerRef": "The scroll area to track — for example a div with `overflow-y-auto`. If omitted, the page itself is tracked.",
+    "paneHeight": "Height of the sticky stage. For embedding inside a box, give a fixed value, not a percentage.",
+    "panelHeight": "Height of the panel row.",
+    "peak": "How many pixels the side panels open outward at their peak before returning.",
+    "flipStart": "Where in the scroll progress the flip starts (0 to 1); a lower value means it turns over sooner.",
+    "innerRadius": "Maximum radius of the panels' inner corners while they collapse."
+  },
+  "tips": [
+    "Choose a wide, landscape image; the trio crops it, so it's better to keep the subject in the middle.",
+    "To embed it in a scrollable box: pass that box as `containerRef`, set `paneHeight` to a fixed value, and shorten the track height with `className=\"h-…\"`.",
+    "Keep the kicker short (a two-word phrase); a long one gets cut off with `truncate`.",
+    "Each panel's color is changed through the card's own props — the colors are content and don't mix with the site theme."
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "slug": "infinite-menu",
+  "name": "Infinite Menu",
+  "description": "A sphere of image tiles that spins on drag, brings the nearest tile to the front and shows its title and description — with autoplay and four shape presets.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Drag / Click / Keyboard",
+  "interactionNotes": "Spin the sphere with the pointer or a finger; the release velocity carries on with inertia and the nearest tile snaps to the front. Clicking the front tile only selects it; to open it or act you must provide `onItemClick` or `link` (otherwise no action arrow is rendered). The arrow keys move to a neighbouring tile and Enter fires the current selection; hover/focus pauses autoplay.",
+  "props": [
+    {
+      "name": "items",
+      "type": "InfiniteMenuItem[]",
+      "defaultValue": "[]",
+      "description": "The tiles; each item has `image` (required) and optional `title`, `description` and `link`. The desktop demo supplies six local images with Persian titles."
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "defaultValue": "160",
+      "description": "Number of tiles on the sphere; 6 to 400 (clamped automatically)."
+    },
+    {
+      "name": "tileSize",
+      "type": "number",
+      "defaultValue": "0.63",
+      "description": "Size of each tile relative to the sphere radius, 0.2 to 1.2."
+    },
+    {
+      "name": "roundness",
+      "type": "number",
+      "defaultValue": "0.2",
+      "description": "Corner roundness of the tiles, 0 to 1."
+    },
+    {
+      "name": "zoom",
+      "type": "number",
+      "defaultValue": "1.65",
+      "description": "How close the camera sits to the sphere; 0.2 to 4."
+    },
+    {
+      "name": "pullBack",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "How far the sphere pulls back while dragging, 0 to 3."
+    },
+    {
+      "name": "stretch",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Stretch of the tiles along the spin direction, 0 to 3."
+    },
+    {
+      "name": "inertia",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Spin inertia after release, 0 to 1."
+    },
+    {
+      "name": "autoplay",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "Interval of the automatic spin, in seconds; zero turns it off."
+    },
+    {
+      "name": "grayscale",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Background tiles stay grayscale; the front tile is always in color."
+    },
+    {
+      "name": "dim",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "Dimming of the background tiles, 0 to 1."
+    },
+    {
+      "name": "intro",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Play a short intro spin when the component comes into view."
+    },
+    {
+      "name": "showInfo",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Show the title/description and action of the front tile."
+    },
+    {
+      "name": "renderInfo",
+      "type": "(item, index, moving) => ReactNode",
+      "description": "Full replacement for the info layer; for a custom headline/action."
+    },
+    {
+      "name": "theme",
+      "type": "'dark' | 'light'",
+      "defaultValue": "'dark'",
+      "options": [
+        "dark",
+        "light"
+      ],
+      "description": "Palette for the ink, shadows and shader placeholder."
+    },
+    {
+      "name": "inkColor",
+      "type": "string",
+      "description": "Ink color for the title/description; defaults by theme (`#fafafa` / `#0a0a0a`)."
+    },
+    {
+      "name": "accentColor",
+      "type": "string",
+      "description": "Color of the action arrow; defaults to the ink color. The blue comes only from the variant doc."
+    },
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "description": "Root background; transparent by default so the card surface shows through."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "'گالری تصاویر'",
+      "description": "Group label when a tile has no title."
+    },
+    {
+      "name": "openLabel",
+      "type": "string",
+      "defaultValue": "'باز کردن'",
+      "description": "Accessible-name prefix for the action arrow."
+    },
+    {
+      "name": "onActiveChange",
+      "type": "(item, index) => void",
+      "description": "Fired every time a tile settles at the front."
+    },
+    {
+      "name": "onItemClick",
+      "type": "(item, index) => void",
+      "description": "On the arrow or a click on the front tile; replaces opening `link`."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style for the root."
+    }
+  ],
+  "tips": [
+    "All images sit in a single atlas and the tiles are drawn in one `drawElementsInstanced` call; no `three` dependency and no draw call per tile.",
+    "In RTL the title sits on the right (start) and the description on the left (end); in the narrow layout the info moves to the bottom-right and the arrow to the bottom-left, and the arrow is mirrored horizontally too.",
+    "Letter spacing is zero; any positive or negative `letter-spacing` breaks the joining of Persian letters.",
+    "Without WebGL2, a grid of the same images is shown instead of an empty canvas; the content and title are preserved.",
+    "Under `prefers-reduced-motion` the intro and autoplay are turned off; manual dragging and the keys still work.",
+    "For a lighter gallery, lower `count` and raise `tileSize`; for a dense mosaic, the reverse."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 972,
+  "version": 1
+}

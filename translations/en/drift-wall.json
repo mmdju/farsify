@@ -1,0 +1,34 @@
+{
+  "description": "A wall of image-tile columns on a three-dimensional plane: each column drifts continuously up or down at its own speed, the plane tilts with the pointer, the edges fade into a radial mask, and the tile under the pointer comes forward at full color.",
+  "interactionType": "Hover / Pointer / Auto",
+  "interactionNotes": "The columns' drift is autonomous and constant; with `pauseOnHover` it stops as the pointer enters, and the column of the tile under the pointer always stops. Pointer movement tilts the plane with parallax, and the tile under the pointer comes forward by `lift`, out of the veil and into color. Tiles are focusable with Tab too.",
+  "props": {
+    "items": "The wall's tiles; columns are assigned by cycling `i % columns`. `title` is the tile's accessible label and `href` is the click destination (without an `href`, the tile stays a focusable button).",
+    "columns": "Number of wall columns.",
+    "tileWidth": "Width of each tile in pixels.",
+    "tileHeight": "Height of each tile in pixels (excluding the gap).",
+    "gap": "Spacing between tiles in pixels.",
+    "radius": "Corner rounding of the tiles.",
+    "tilt": "Base pitch of the plane around the X axis in degrees.",
+    "turn": "Base yaw of the plane around the Y axis in degrees.",
+    "roll": "Rotation of the plane around the view axis in degrees.",
+    "perspective": "Perspective viewing distance in pixels.",
+    "depth": "How far the plane recedes in depth; a larger number makes the wall look farther away and smaller.",
+    "speed": "Base drift speed in pixels per second; zero builds a static wall.",
+    "direction": "Base drift direction; every other column always goes the opposite way.",
+    "variance": "How much the column speeds differ (0 to 1); zero means all at the same speed.",
+    "parallax": "How strongly the plane tilts with pointer movement; zero turns parallax off.",
+    "pauseOnHover": "On hover over the wall, all columns stop gently.",
+    "lift": "Prominence of the active tile toward the viewer in pixels (translateZ).",
+    "fade": "Width of the region where the edges fade (1 means no fade).",
+    "dim": "Dimming of the inactive tiles; the active tile is always at full brightness.",
+    "grayscale": "Keep the inactive tiles black and white and color the active one.",
+    "overlayColor": "Color of the veil over the inactive tiles; it goes to zero on the active tile."
+  },
+  "tips": [
+    "Zero dependencies: a self-contained rAF loop with exponential damping for the parallax and the columns' gentle stop.",
+    "Good for section backgrounds: turn `pauseOnHover` on so text over the wall stays readable, and lower `fade` so the edges fade more.",
+    "With `speed: 0` and `parallax` on, you get a static three-dimensional wall that only breathes with the pointer.",
+    "Under `prefers-reduced-motion` the drift stops completely (tiles stay at their offset) and parallax is off; hover and focus still work."
+  ]
+}

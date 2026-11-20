@@ -1,0 +1,151 @@
+{
+  "slug": "drift-wall",
+  "name": "Drift Wall",
+  "description": "A wall of image-tile columns on a three-dimensional plane: each column drifts continuously up or down at its own speed, the plane tilts with the pointer, the edges fade into a radial mask, and the tile under the pointer comes forward at full color.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Hover / Pointer / Auto",
+  "interactionNotes": "The columns' drift is autonomous and constant; with `pauseOnHover` it stops as the pointer enters, and the column of the tile under the pointer always stops. Pointer movement tilts the plane with parallax, and the tile under the pointer comes forward by `lift`, out of the veil and into color. Tiles are focusable with Tab too.",
+  "props": [
+    {
+      "name": "items",
+      "type": "Array<{ image: string; title?: string; href?: string }>",
+      "defaultValue": "۱۵ عکسِ نمونه",
+      "description": "The wall's tiles; columns are assigned by cycling `i % columns`. `title` is the tile's accessible label and `href` is the click destination (without an `href`, the tile stays a focusable button)."
+    },
+    {
+      "name": "columns",
+      "type": "number",
+      "defaultValue": "5",
+      "description": "Number of wall columns."
+    },
+    {
+      "name": "tileWidth",
+      "type": "number",
+      "defaultValue": "200",
+      "description": "Width of each tile in pixels."
+    },
+    {
+      "name": "tileHeight",
+      "type": "number",
+      "defaultValue": "132",
+      "description": "Height of each tile in pixels (excluding the gap)."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "18",
+      "description": "Spacing between tiles in pixels."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "14",
+      "description": "Corner rounding of the tiles."
+    },
+    {
+      "name": "tilt",
+      "type": "number",
+      "defaultValue": "16",
+      "description": "Base pitch of the plane around the X axis in degrees."
+    },
+    {
+      "name": "turn",
+      "type": "number",
+      "defaultValue": "-14",
+      "description": "Base yaw of the plane around the Y axis in degrees."
+    },
+    {
+      "name": "roll",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Rotation of the plane around the view axis in degrees."
+    },
+    {
+      "name": "perspective",
+      "type": "number",
+      "defaultValue": "1200",
+      "description": "Perspective viewing distance in pixels."
+    },
+    {
+      "name": "depth",
+      "type": "number",
+      "defaultValue": "120",
+      "description": "How far the plane recedes in depth; a larger number makes the wall look farther away and smaller."
+    },
+    {
+      "name": "speed",
+      "type": "number",
+      "defaultValue": "42",
+      "description": "Base drift speed in pixels per second; zero builds a static wall."
+    },
+    {
+      "name": "direction",
+      "type": "'up' | 'down'",
+      "defaultValue": "'up'",
+      "options": [
+        "up",
+        "down"
+      ],
+      "description": "Base drift direction; every other column always goes the opposite way."
+    },
+    {
+      "name": "variance",
+      "type": "number",
+      "defaultValue": "0.45",
+      "description": "How much the column speeds differ (0 to 1); zero means all at the same speed."
+    },
+    {
+      "name": "parallax",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "How strongly the plane tilts with pointer movement; zero turns parallax off."
+    },
+    {
+      "name": "pauseOnHover",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "On hover over the wall, all columns stop gently."
+    },
+    {
+      "name": "lift",
+      "type": "number",
+      "defaultValue": "64",
+      "description": "Prominence of the active tile toward the viewer in pixels (translateZ)."
+    },
+    {
+      "name": "fade",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Width of the region where the edges fade (1 means no fade)."
+    },
+    {
+      "name": "dim",
+      "type": "number",
+      "defaultValue": "0.55",
+      "description": "Dimming of the inactive tiles; the active tile is always at full brightness."
+    },
+    {
+      "name": "grayscale",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Keep the inactive tiles black and white and color the active one."
+    },
+    {
+      "name": "overlayColor",
+      "type": "string",
+      "defaultValue": "'#060010'",
+      "description": "Color of the veil over the inactive tiles; it goes to zero on the active tile."
+    }
+  ],
+  "tips": [
+    "Zero dependencies: a self-contained rAF loop with exponential damping for the parallax and the columns' gentle stop.",
+    "Good for section backgrounds: turn `pauseOnHover` on so text over the wall stays readable, and lower `fade` so the edges fade more.",
+    "With `speed: 0` and `parallax` on, you get a static three-dimensional wall that only breathes with the pointer.",
+    "Under `prefers-reduced-motion` the drift stops completely (tiles stay at their offset) and parallax is off; hover and focus still work."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 393,
+  "version": 1
+}

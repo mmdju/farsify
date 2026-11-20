@@ -1,0 +1,164 @@
+{
+  "slug": "scrub-field",
+  "name": "Scrub Field",
+  "description": "A numeric chip that increases and decreases by dragging horizontally and accepts typed input; values are displayed with Persian digits.",
+  "category": "inputs",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Drag / Type / Keyboard",
+  "interactionNotes": "Drag on the chip to change the number; outside the range, the chip tilts a little and springs back when you let go. `Shift` gives a coarse jump and `Alt` a fine adjustment. Click the number and type — both Persian and Latin digits are read. `ArrowUp`/`ArrowDown` move one step, `PageUp`/`PageDown` ten steps, and `Home`/`End` to either end of the range; `Escape` cancels mid-drag.",
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "defaultValue": "\"شعاع\"",
+      "description": "Label next to the number."
+    },
+    {
+      "name": "suffix",
+      "type": "string",
+      "defaultValue": "\"px\"",
+      "description": "Unit next to the number; leave it empty to have none."
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "description": "Controlled value; pass it to control the value yourself."
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "defaultValue": "24",
+      "description": "Initial value in uncontrolled mode."
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Minimum of the range."
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "defaultValue": "100",
+      "description": "Maximum of the range."
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Size of each step; the number of decimal places comes from it too."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "defaultValue": "\"md\"",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "description": "Height, font size, radius and the chip's width."
+    },
+    {
+      "name": "sensitivity",
+      "type": "number",
+      "defaultValue": "2",
+      "description": "How many pixels of dragging count as one `step`; a lower number means faster."
+    },
+    {
+      "name": "rubberReach",
+      "type": "number",
+      "defaultValue": "8",
+      "description": "How many percent of the range the spring can reach outside `min`/`max`."
+    },
+    {
+      "name": "returnDuration",
+      "type": "number",
+      "defaultValue": "300",
+      "description": "Duration of the return into the range after release."
+    },
+    {
+      "name": "coarseMultiplier",
+      "type": "number",
+      "defaultValue": "10",
+      "description": "`Shift` multiplier — the coarse jump."
+    },
+    {
+      "name": "fineMultiplier",
+      "type": "number",
+      "defaultValue": "0.1",
+      "description": "`Alt` multiplier — the fine adjustment."
+    },
+    {
+      "name": "showDelta",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The floating delta chip above the indicator."
+    },
+    {
+      "name": "showDirty",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "A ring around the chip when the value differs from `defaultValue`."
+    },
+    {
+      "name": "showFill",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The colored fill that shows the size of the value."
+    },
+    {
+      "name": "accent",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Accent color — the value fill, the delta chip and the changed ring."
+    },
+    {
+      "name": "chipColor",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Chip background."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dims it and ignores input."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: number) => void",
+      "description": "On every value change — even mid-drag."
+    },
+    {
+      "name": "onCommit",
+      "type": "(value: number) => void",
+      "description": "Only when the drag has ended and the value actually changed."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Automatic drag preview without interaction."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root element."
+    }
+  ],
+  "tips": [
+    "Use `onCommit` for heavy work and `onChange` for live display — keep that separation. `onChange` is called on every drag frame.",
+    "The input reads both Persian and Latin digits. Persian keyboards send Persian digits and a raw `parseFloat` reads them as `NaN`; here both work the same.",
+    "If you set `min` and `max` to the same number, the range becomes zero and the rubber-band stretch turns off — the component doesn't break, it just loses its spring.",
+    "Label and unit are UI, not data — they are shown on the chip itself and announced in `aria-valuetext`. So keep them Persian.",
+    "The value is **displayed** with Persian digits, but `aria-valuenow` stays a Latin number — the same thing assistive technology reads."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 533,
+  "version": 1
+}

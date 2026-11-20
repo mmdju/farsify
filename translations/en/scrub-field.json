@@ -1,0 +1,37 @@
+{
+  "description": "A numeric chip that increases and decreases by dragging horizontally and accepts typed input; values are displayed with Persian digits.",
+  "interactionType": "Drag / Type / Keyboard",
+  "interactionNotes": "Drag on the chip to change the number; outside the range, the chip tilts a little and springs back when you let go. `Shift` gives a coarse jump and `Alt` a fine adjustment. Click the number and type — both Persian and Latin digits are read. `ArrowUp`/`ArrowDown` move one step, `PageUp`/`PageDown` ten steps, and `Home`/`End` to either end of the range; `Escape` cancels mid-drag.",
+  "props": {
+    "label": "Label next to the number.",
+    "suffix": "Unit next to the number; leave it empty to have none.",
+    "value": "Controlled value; pass it to control the value yourself.",
+    "defaultValue": "Initial value in uncontrolled mode.",
+    "min": "Minimum of the range.",
+    "max": "Maximum of the range.",
+    "step": "Size of each step; the number of decimal places comes from it too.",
+    "size": "Height, font size, radius and the chip's width.",
+    "sensitivity": "How many pixels of dragging count as one `step`; a lower number means faster.",
+    "rubberReach": "How many percent of the range the spring can reach outside `min`/`max`.",
+    "returnDuration": "Duration of the return into the range after release.",
+    "coarseMultiplier": "`Shift` multiplier — the coarse jump.",
+    "fineMultiplier": "`Alt` multiplier — the fine adjustment.",
+    "showDelta": "The floating delta chip above the indicator.",
+    "showDirty": "A ring around the chip when the value differs from `defaultValue`.",
+    "showFill": "The colored fill that shows the size of the value.",
+    "accent": "Accent color — the value fill, the delta chip and the changed ring.",
+    "chipColor": "Chip background.",
+    "disabled": "Dims it and ignores input.",
+    "onChange": "On every value change — even mid-drag.",
+    "onCommit": "Only when the drag has ended and the value actually changed.",
+    "className": "Extra class for the root element.",
+    "autoPreview": "Automatic drag preview without interaction."
+  },
+  "tips": [
+    "Use `onCommit` for heavy work and `onChange` for live display — keep that separation. `onChange` is called on every drag frame.",
+    "The input reads both Persian and Latin digits. Persian keyboards send Persian digits and a raw `parseFloat` reads them as `NaN`; here both work the same.",
+    "If you set `min` and `max` to the same number, the range becomes zero and the rubber-band stretch turns off — the component doesn't break, it just loses its spring.",
+    "Label and unit are UI, not data — they are shown on the chip itself and announced in `aria-valuetext`. So keep them Persian.",
+    "The value is **displayed** with Persian digits, but `aria-valuenow` stays a Latin number — the same thing assistive technology reads."
+  ]
+}

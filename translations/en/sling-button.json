@@ -1,0 +1,38 @@
+{
+  "description": "A button that pulls like a slingshot; releasing flings the pad out of its seat and scatters particles.",
+  "interactionType": "Drag and release / Keyboard",
+  "interactionNotes": "Drag the button; the band stretches and the power arc fills. Once you pass the arming threshold, releasing launches it: the pad leaves its seat, particles spread in a cone, and then it returns. If you release before it arms, it springs back and sends nothing. A simple tap also sends (if `tapSends` is on), and Enter and Space always do.",
+  "props": {
+    "children": "The content of the pad. Defaults to an up arrow.",
+    "onSend": "Called when releasing while armed, on a tap (if `tapSends` is on), and on Enter or Space.",
+    "padColor": "The fill of the pad.",
+    "iconColor": "Color of the pad's content.",
+    "accentColor": "The power arc, the arming band and the launch point.",
+    "wellColor": "The seat the pad rests on.",
+    "bandColor": "The band before arming.",
+    "size": "Pad diameter, px. The seat, hit area and launch point scale with it too.",
+    "strokeWidth": "Thickness of the arc and band, px. The band gets thinner as it stretches.",
+    "armAt": "The distance at which the shot arms, px.",
+    "maxPull": "How far the band stretches before it stops giving, px.",
+    "launchSpeed": "The speed the band adds on release, px/s. It determines how far past the seat the pad travels.",
+    "recoil": "Bounce of the return spring; zero means no bounce.",
+    "flight": "How far the leading point travels, px; the rest scatter around it.",
+    "particles": "Number of launch particles. Each gets a random angle, range, size, drift, speed and delay. 1 means a single dot, zero means none.",
+    "spread": "The cone the burst spreads within, in degrees, around the launch direction.",
+    "axis": "Free dragging, or one axis with a little play on the other axis.",
+    "tapSends": "Whether a simple tap also sends; Enter always sends.",
+    "disabled": "Dims the pad and ignores input.",
+    "autoPreview": "Site preview only: it performs the pull, arm and release itself so the flight, the particles and the elastic return can be seen along the real path.",
+    "ariaLabel": "Accessible name of the button.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "Dragging without releasing sends nothing — it doesn't arm until you pass `armAt`, and `onSend` isn't called.",
+    "`armAt` and `maxPull` work together: the first says where it arms, the second caps the pull. If you bring `armAt` close to `maxPull`, the user has to pull all the way to fire.",
+    "For a \"send\" button, set `armAt` at least larger than `size` so the arming motion extends beyond the pad and stays visible.",
+    "Lower `recoil` (e.g. 0.05) for a dry, technical feel; raising it (near 0.3) makes the button more playful.",
+    "This component shows no feedback of its own; handle `onSend` and add your own message or state (the site demo does this with a \"Sent\" label).",
+    "Turn on `disabled` while sending so the user doesn't launch again.",
+    "Set `particles` to zero if you want the pad to fly out without a burst; `spread` only matters when there are particles. `axis` only constrains the drag axis, not the launch — the launch is always along the drag direction."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "description": "A number whose digits roll like an odometer to reach the new value; digits and separators come from `Intl` itself, changes land with a spring and a stepped cascade, and fast-spinning digits pick up motion blur along the way.",
+  "interactionType": "Value change / Auto",
+  "interactionNotes": "The component takes no input; you change the value from outside and the digits roll. The live demo has four scenes: a countdown that rolls over every second, a stats dashboard that moves live numbers up and down, a pricing scene that cycles through a monthly/annual segment and seat buttons, and a base scene where the minus/plus/random buttons shift the value. Each sample's entrance also has a welcome roll that plays as soon as it is seen.",
+  "props": {
+    "value": "The number shown; every change rolls the digits.",
+    "locale": "Locale for separators, symbols, and digits; it defaults to Persian and takes its digits from it — pass another locale and the same component rolls with that script's digits.",
+    "format": "Formatting options: currency, percent, unit, or compact notation.",
+    "decimals": "Fixed number of decimal places; omit it to keep the format's default.",
+    "minDigits": "Minimum digits in the integer part — leading zeros of the number.",
+    "prefix": "Content before the number.",
+    "suffix": "Content after the number.",
+    "direction": "Roll direction; 'auto' goes up as the value grows and down as it shrinks.",
+    "duration": "Approximately the length of one roll, in seconds.",
+    "bounce": "How far the digits overshoot before settling, from 0 to 0.9.",
+    "stagger": "Delay between neighboring digits, in seconds — the wave of change comes from this, and it falls from the right of the number.",
+    "motionBlur": "Blur of fast-spinning digits along their path; it only activates during a fast roll.",
+    "intro": "A full welcome roll as soon as half of the frame is visible — once per sample.",
+    "fade": "How far (in em) a digit rolls outside the text before fading; zero means clipping at the edge.",
+    "fontSize": "Font size in px, or any CSS value such as \"inherit\".",
+    "fontWeight": "Font weight of the number.",
+    "textColor": "Color of the number; it defaults to the surrounding ink.",
+    "gap": "Spacing between digits and symbols, px.",
+    "padding": "Extra height per digit, px — it also opens up the roll space.",
+    "tabular": "Equal widths for the digits; off means the width shifts smoothly between digits.",
+    "digitStyle": "Style of each digit — for example tiling it with a background and rounding.",
+    "className": "Extra class for the root.",
+    "style": "Inline style of the root."
+  },
+  "tips": [
+    "Persian digits need no manual conversion: they come from `Intl.NumberFormat` with the locale. Pass another locale (Arabic, English…) and the same component rolls with that script's digits.",
+    "For a countdown, raise `padding` a little so the digits can breathe inside their tile and set `fade: 0` so the edge is clipped — the site demo uses exactly this combination.",
+    "`stagger` sets the character of the display: zero means all digits roll at once; above 0.1 a stepped wave falls from the right of the number.",
+    "On a weak phone, turn off `motionBlur` — the SVG filter only activates during a fast roll, but turning it off costs nothing.",
+    "Under `prefers-reduced-motion` the rolls settle instantly and the new value is shown directly; the entrance animation does not play at all.",
+    "This component does not mirror for right-to-left, and that is intentional: a number is a left-to-right run. Put the unit and label outside it so they land in the right place in a Persian layout.",
+    "Keep `tabular` on for tabular numeric columns; for a large single-number display turn it off so the width follows the digits smoothly."
+  ]
+}

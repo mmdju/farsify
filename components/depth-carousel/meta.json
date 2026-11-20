@@ -1,0 +1,151 @@
+{
+  "slug": "depth-carousel",
+  "name": "Depth Carousel",
+  "description": "A three-dimensional rail of image cards: the front card is centered and the ones behind recede into depth, tilting and becoming blurrier and darker. It turns with drag, the mouse wheel, arrows, or autoplay, and a flick with speed carries you to the next card.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Drag / Mouse wheel / Keyboard / Auto",
+  "interactionNotes": "Drag the scene and let go — the flick carries the release velocity and lands on the nearest card. The mouse wheel gives continuous motion, and the left/right arrows (or the keys for the same direction when the scene has focus) move card by card. The arrows beside the scene and the dots at the bottom are direct routes too; with `autoplay` the scene takes a step on its own every `autoplayDelay` milliseconds and pauses temporarily on hover.",
+  "props": [
+    {
+      "name": "items",
+      "type": "Array<string | { image: string; alt?: string }>",
+      "defaultValue": "۶ عکسِ نمونه",
+      "description": "The carousel images; a plain string works too. `alt` is the image's alternative text."
+    },
+    {
+      "name": "cardWidth",
+      "type": "number",
+      "defaultValue": "300",
+      "description": "Width of each card in pixels; a narrow scene scales itself down to fit."
+    },
+    {
+      "name": "cardHeight",
+      "type": "number",
+      "defaultValue": "380",
+      "description": "Height of each card in pixels."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "18",
+      "description": "Corner rounding radius of the cards."
+    },
+    {
+      "name": "tint",
+      "type": "string",
+      "defaultValue": "'#05060a'",
+      "description": "Color of the veil that sits on the rear cards with mix-blend-mode: multiply and is stronger the further back it goes; it is zero on the front card."
+    },
+    {
+      "name": "depth",
+      "type": "number",
+      "defaultValue": "220",
+      "description": "Depth of each step along the Z axis; a larger number spreads the rear cards further apart and farther away."
+    },
+    {
+      "name": "spread",
+      "type": "number",
+      "defaultValue": "90",
+      "description": "Horizontal distance of each step from the front card."
+    },
+    {
+      "name": "tilt",
+      "type": "number",
+      "defaultValue": "22",
+      "description": "Rotation angle of the first rear card (rotateY) in degrees; cards further back keep the same angle."
+    },
+    {
+      "name": "tiltDirection",
+      "type": "'right' | 'left'",
+      "defaultValue": "'right'",
+      "options": [
+        "right",
+        "left"
+      ],
+      "description": "Which side the rail opens toward and which way the cards bend."
+    },
+    {
+      "name": "perspective",
+      "type": "number",
+      "defaultValue": "1400",
+      "description": "Perspective viewing distance in pixels; a smaller value shows the depth more steeply."
+    },
+    {
+      "name": "visibleCards",
+      "type": "number",
+      "defaultValue": "4",
+      "description": "Number of cards shown on each side of the front card; the rest are hidden."
+    },
+    {
+      "name": "falloff",
+      "type": "number",
+      "defaultValue": "0.2",
+      "description": "How strongly the rear cards darken; zero keeps all cards equally bright."
+    },
+    {
+      "name": "blur",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "Maximum blur of the rear cards in pixels; zero removes the blur entirely."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "defaultValue": "700",
+      "description": "Transition duration to the target card in milliseconds."
+    },
+    {
+      "name": "ease",
+      "type": "string",
+      "defaultValue": "'power3.out'",
+      "description": "Name of the gsap-style easing curve (such as `power3.out` or `power2.inOut`). An unknown name falls back to the default."
+    },
+    {
+      "name": "autoplay",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Automatic rotation; it pauses temporarily on hover or focus on the scene and is fully off under `prefers-reduced-motion`."
+    },
+    {
+      "name": "autoplayDelay",
+      "type": "number",
+      "defaultValue": "3200",
+      "description": "Interval between autoplay steps in milliseconds (minimum 600)."
+    },
+    {
+      "name": "loop",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Go from the last card back to the first; turn it off so the carousel stops at both ends."
+    },
+    {
+      "name": "showControls",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The two arrows beside the scene."
+    },
+    {
+      "name": "showIndicators",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The dots at the bottom of the scene; the active dot stretches."
+    },
+    {
+      "name": "onChange",
+      "type": "(index: number, item: { image: string; alt?: string }) => void",
+      "defaultValue": "—",
+      "description": "Called when the active card changes."
+    }
+  ],
+  "tips": [
+    "Zero dependencies: even without gsap, the same numeric tween is rebuilt with an rAF loop and equivalent curves, adding no bundle weight.",
+    "Want the rear cards brighter? Lighten `tint` or lower `falloff`; the veil is applied with multiply, so a light color is nearly ineffective.",
+    "For an aggressive 'depth showcase': lower `perspective` and raise `depth`; for a calm, legible rail these defaults are enough.",
+    "Under `prefers-reduced-motion` transitions become instant and autoplay is off; manual dragging is untouched."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 558,
+  "version": 1
+}

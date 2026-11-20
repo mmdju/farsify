@@ -1,0 +1,38 @@
+{
+  "description": "A row of stars where the star under the pointer lifts and grows while a bubble shows that step's label; clicking commits and clicking again clears.",
+  "interactionType": "Hover / Horizontal drag / Keyboard",
+  "interactionNotes": "Move the pointer over the row so the star beneath it lifts and the bubble shows that step's label. Pressing and dragging horizontally gives a preview value and releasing commits that same value; on touch, a vertical drag scrolls the page and selection only happens with horizontal pressure. Clicking the current star again sets the value to zero. Arrow keys, Home/End, Space/Enter and Backspace/Delete also work.",
+  "props": {
+    "value": "Controlled mode; pass it to own the value control.",
+    "defaultValue": "Initial value in uncontrolled mode.",
+    "onChange": "Called on every commit; zero means cleared.",
+    "onPreview": "Gives the step under the pointer on every pointer move; `null` on leave.",
+    "count": "Number of stars.",
+    "shape": "Built-in glyph.",
+    "icon": "Custom glyph instead of the built-in one.",
+    "labels": "Label for each step, used for the bubble and the star's accessible name.",
+    "activeColor": "Color of lit stars and the focus ring.",
+    "idleColor": "Color of unlit stars.",
+    "tipColor": "Background of the tooltip bubble.",
+    "tipTextColor": "Text color of the bubble.",
+    "size": "Glyph size, in pixels; spacing, bubble height and star height derive from it.",
+    "lift": "How many pixels the star under the pointer lifts.",
+    "magnify": "Magnification of the star under the pointer.",
+    "riseDuration": "Rise and settle duration, in milliseconds.",
+    "popScale": "Strength of the selected star's spring on commit.",
+    "showTip": "Whether the tooltip bubble is shown.",
+    "allowClear": "Whether clicking the same star again clears the rating.",
+    "readOnly": "Display only; stars become `<span>`s and the root takes the `img` role.",
+    "disabled": "Dimmed and unresponsive to input.",
+    "ariaLabel": "Accessible name of the radio group.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "For a rating form, wire `onChange` to state and pass `defaultValue`; to display a stored rating just use `readOnly` with `value` — in that mode the stars are not buttons and the root becomes a readable image (\"3 of 5\").",
+    "`onPreview` is for what a screen reader or a label next to the form needs; it receives `null` on pointer leave, so you can restore the helper text to the committed value right away.",
+    "Pass labels **in Persian** and make their count at least equal to `count`: the bubble text comes from `labels` and each star's accessible name becomes \"2 of 5, fairly good\". If you do not pass them, only the step's Persian numeral is shown.",
+    "This component does not get RTL because it does not need to: the component handles mirroring itself in JS (both the star index and the bubble position), so in Persian the first star starts from the right side and everything stays in place.",
+    "The glyphs are inline and copied from `@hugeicons/core-free-icons` so no external UI dependency is added; they have `fill=\"currentColor\"`, so the glyph comes out solid and takes its color from `activeColor`/`idleColor`.",
+    "With `prefers-reduced-motion` the lift and magnification are removed entirely but the preview color stays — feedback is not lost, only its motion is reduced."
+  ]
+}

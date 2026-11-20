@@ -1,0 +1,168 @@
+{
+  "slug": "flying-posters",
+  "name": "Flying Posters",
+  "description": "An endless ring of posters that spins with scroll or drag, and every poster loops around as it passes the edges and comes back from the other side — with alternating columns, scroll lean and edge fade.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Scroll / Drag / Mouse wheel",
+  "interactionNotes": "The mouse wheel over the stage spins the posters (the page does not scroll), and dragging with the pointer or a finger does the same. Posters near either end of the stage loop around on a smooth curve and return from the other side; use `speed` for a continuous drift and `lean` to let them bend back on fast scroll. A short click on any poster is reported through `onItemClick`.",
+  "props": [
+    {
+      "name": "items",
+      "type": "Array<string | { image: string; link?: string; alt?: string }>",
+      "defaultValue": "[]",
+      "description": "The poster images; each is center-cropped to fill its frame and repeated to fill the view. The desktop demo supplies six local photos."
+    },
+    {
+      "name": "planeWidth",
+      "type": "number",
+      "defaultValue": "320",
+      "description": "Width of each poster in pixels, at the default camera."
+    },
+    {
+      "name": "planeHeight",
+      "type": "number",
+      "defaultValue": "320",
+      "description": "Height of each poster in pixels, at the default camera."
+    },
+    {
+      "name": "distortion",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "How much sooner one corner of a poster turns than the other corner; the same twist while passing, 0 to 10."
+    },
+    {
+      "name": "scrollEase",
+      "type": "number",
+      "defaultValue": "0.01",
+      "description": "How quickly the posters catch up with the wheel and drag; a lower number means a longer glide (0.002 to 0.1)."
+    },
+    {
+      "name": "cameraFov",
+      "type": "number",
+      "defaultValue": "45",
+      "description": "Camera field of view in degrees; a wider angle means more distant."
+    },
+    {
+      "name": "cameraZ",
+      "type": "number",
+      "defaultValue": "20",
+      "description": "Distance of the camera from the posters; a higher number makes the posters smaller and flatter, a lower number brings them closer with stronger perspective."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "description": "Spacing between posters in pixels; the default comes from the base default spacing, which shifts with the camera."
+    },
+    {
+      "name": "columns",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Number of poster columns, 1 to 8."
+    },
+    {
+      "name": "columnGap",
+      "type": "number",
+      "defaultValue": "40",
+      "description": "Spacing between columns in pixels."
+    },
+    {
+      "name": "alternate",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Alternating columns move in the opposite direction."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Corner radius of the posters in pixels."
+    },
+    {
+      "name": "rotation",
+      "type": "number",
+      "defaultValue": "180",
+      "description": "How far each poster rotates while passing through view, in degrees."
+    },
+    {
+      "name": "axis",
+      "type": "'vertical' | 'horizontal' | 'diagonal'",
+      "defaultValue": "'vertical'",
+      "options": [
+        "vertical",
+        "horizontal",
+        "diagonal"
+      ],
+      "description": "The axis the posters rotate around."
+    },
+    {
+      "name": "speed",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Continuous drift in pixels per second when nobody is scrolling; a negative value drifts downward."
+    },
+    {
+      "name": "lean",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "How far the posters bend back on fast scroll, 0 to 2."
+    },
+    {
+      "name": "fade",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "The posters fade toward the top and bottom edges, 0 to 1."
+    },
+    {
+      "name": "shading",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Rotated posters appear darker, 0 to 1."
+    },
+    {
+      "name": "wheel",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The mouse wheel over the stage spins the posters."
+    },
+    {
+      "name": "drag",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Dragging with the pointer or finger spins the posters."
+    },
+    {
+      "name": "pageScroll",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "The posters move along with the page's own scroll; the displacement multiplier. Zero means off."
+    },
+    {
+      "name": "onItemClick",
+      "type": "(item, index) => void",
+      "description": "Called on a click or a short tap on a poster."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style for the root."
+    }
+  ],
+  "tips": [
+    "No dependencies at all: a WebGL2 program, a texture atlas of all the images, and every poster drawn with `drawElementsInstanced` in a single call.",
+    "The mouse wheel over the canvas does not scroll the page and spins the posters instead; for normal page scrolling, move the pointer off the canvas.",
+    "Several columns with `columns` plus alternating columns (`alternate`) give a gallery-wall feel; for real portrait posters make `planeHeight` larger than `planeWidth`.",
+    "Under `prefers-reduced-motion` the drift and lean are off and the fade-in is instant; manual dragging stays available.",
+    "If WebGL2 is unavailable, the stage stays silent — the default behaves the same way."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 667,
+  "version": 1
+}

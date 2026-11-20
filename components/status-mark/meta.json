@@ -1,0 +1,135 @@
+{
+  "slug": "status-mark",
+  "name": "Status Mark",
+  "description": "A status glyph with five states — pending, running, done, failed, and cancelled — whose ring spins and finally lands on a check or a cross.",
+  "category": "status",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Status-driven / autonomous",
+  "interactionNotes": "The component takes no input and is governed by `status`. In `pending` it shows eight static dashes; in `running`, if you pass `progress` the arc fills to that ratio, and otherwise a short arc travels around the ring. `done` draws the check, softly fills the circle, and strikes through the label; `failed` and `cancelled` draw a cross, and the cancelled label gets struck through.",
+  "props": [
+    {
+      "name": "status",
+      "type": "\"pending\" | \"running\" | \"done\" | \"failed\" | \"cancelled\"",
+      "defaultValue": "\"pending\"",
+      "options": [
+        "pending",
+        "running",
+        "done",
+        "failed",
+        "cancelled"
+      ],
+      "description": "The current state; each of the five states has its own Persian text."
+    },
+    {
+      "name": "progress",
+      "type": "number",
+      "description": "Only meaningful in `running`; 0 to 1 or 0 to 100 (values above 1 are read as a percentage)."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": "The label next to the glyph; if omitted, only the glyph is shown."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "defaultValue": "\"currentColor\"",
+      "description": "The primary color of the ring and the marks."
+    },
+    {
+      "name": "doneColor",
+      "type": "string",
+      "defaultValue": "\"#22c55e\"",
+      "description": "The color of the completion check."
+    },
+    {
+      "name": "errorColor",
+      "type": "string",
+      "defaultValue": "\"#ef4444\"",
+      "description": "The color of the cross for failure and cancellation."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "defaultValue": "20",
+      "description": "The glyph's edge length, in pixels; the gap between the glyph and the text is half of this."
+    },
+    {
+      "name": "strokeWidth",
+      "type": "number",
+      "defaultValue": "2",
+      "description": "Stroke thickness of the ring and the marks."
+    },
+    {
+      "name": "dashes",
+      "type": "number",
+      "defaultValue": "8",
+      "description": "The number of dashes in the idle state."
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "defaultValue": "14",
+      "description": "Label text size, in pixels."
+    },
+    {
+      "name": "spinDuration",
+      "type": "number",
+      "defaultValue": "1100",
+      "description": "Duration of one indeterminate rotation, in milliseconds."
+    },
+    {
+      "name": "arcLength",
+      "type": "number",
+      "defaultValue": "0.68",
+      "description": "Arc length in indeterminate mode, as a fraction of the circumference (0 to 1)."
+    },
+    {
+      "name": "drawDuration",
+      "type": "number",
+      "defaultValue": "240",
+      "description": "Duration of the check or cross being drawn, in milliseconds."
+    },
+    {
+      "name": "fillOpacity",
+      "type": "number",
+      "defaultValue": "0.06",
+      "description": "Intensity of the circle fill on completion."
+    },
+    {
+      "name": "strike",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Strike-through of the label in `done` and `cancelled`."
+    },
+    {
+      "name": "strikeDelay",
+      "type": "number",
+      "defaultValue": "60",
+      "description": "Delay of the strike-through, in milliseconds."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style; it layers onto the component's variables."
+    }
+  ],
+  "tips": [
+    "`progress` accepts two scales: a 0-to-1 ratio (as in the default) and a 0-to-100 percentage. If your own form holds a rounded percentage, pass the 0-to-100 value — it normalizes it for you.",
+    "For a task list, give a stable label (such as \"build output\") rather than the status name: the status text is included automatically in the accessible name, and repeating it makes the screen reader say \"done, done\".",
+    "The glyph is the first child of the root flex, so under `dir=\"rtl\"` it sits on the right by itself and the text on the left — no new `order` or `flex-direction` is needed.",
+    "With `prefers-reduced-motion`, the spin and draw are removed and the marks go straight to their final position; the state is still readable from the color and label."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 249,
+  "version": 1
+}

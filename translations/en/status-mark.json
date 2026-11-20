@@ -1,0 +1,31 @@
+{
+  "description": "A status glyph with five states — pending, running, done, failed, and cancelled — whose ring spins and finally lands on a check or a cross.",
+  "interactionType": "Status-driven / autonomous",
+  "interactionNotes": "The component takes no input and is governed by `status`. In `pending` it shows eight static dashes; in `running`, if you pass `progress` the arc fills to that ratio, and otherwise a short arc travels around the ring. `done` draws the check, softly fills the circle, and strikes through the label; `failed` and `cancelled` draw a cross, and the cancelled label gets struck through.",
+  "props": {
+    "status": "The current state; each of the five states has its own Persian text.",
+    "progress": "Only meaningful in `running`; 0 to 1 or 0 to 100 (values above 1 are read as a percentage).",
+    "label": "The label next to the glyph; if omitted, only the glyph is shown.",
+    "color": "The primary color of the ring and the marks.",
+    "doneColor": "The color of the completion check.",
+    "errorColor": "The color of the cross for failure and cancellation.",
+    "size": "The glyph's edge length, in pixels; the gap between the glyph and the text is half of this.",
+    "strokeWidth": "Stroke thickness of the ring and the marks.",
+    "dashes": "The number of dashes in the idle state.",
+    "fontSize": "Label text size, in pixels.",
+    "spinDuration": "Duration of one indeterminate rotation, in milliseconds.",
+    "arcLength": "Arc length in indeterminate mode, as a fraction of the circumference (0 to 1).",
+    "drawDuration": "Duration of the check or cross being drawn, in milliseconds.",
+    "fillOpacity": "Intensity of the circle fill on completion.",
+    "strike": "Strike-through of the label in `done` and `cancelled`.",
+    "strikeDelay": "Delay of the strike-through, in milliseconds.",
+    "className": "Extra class for the root.",
+    "style": "Inline style; it layers onto the component's variables."
+  },
+  "tips": [
+    "`progress` accepts two scales: a 0-to-1 ratio (as in the default) and a 0-to-100 percentage. If your own form holds a rounded percentage, pass the 0-to-100 value — it normalizes it for you.",
+    "For a task list, give a stable label (such as \"build output\") rather than the status name: the status text is included automatically in the accessible name, and repeating it makes the screen reader say \"done, done\".",
+    "The glyph is the first child of the root flex, so under `dir=\"rtl\"` it sits on the right by itself and the text on the left — no new `order` or `flex-direction` is needed.",
+    "With `prefers-reduced-motion`, the spin and draw are removed and the marks go straight to their final position; the state is still readable from the color and label."
+  ]
+}

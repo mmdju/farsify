@@ -1,0 +1,33 @@
+{
+  "description": "A row of chips for picking an option; the chip you click swells and the others give way with a springy shove.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Click any chip and it grows while the others shrink slightly and move aside; the farther away they are, the later they go. You can also move between options with the arrow keys, and Home/End jump to either end. Selection is the same with click and keyboard, so both feel identical.",
+  "props": {
+    "items": "The options; you can pass strings, or objects with value, label, icon and disabled.",
+    "value": "Controlled value. If you want uncontrolled, do not pass this and pass defaultValue instead.",
+    "defaultValue": "The selected option in uncontrolled mode; defaults to the first option.",
+    "onChange": "Returns the new option's value and index on every selection.",
+    "size": "Chip size: sm 28, md 36 and lg 44 pixels.",
+    "chipColor": "Background color of the inactive chips.",
+    "activeColor": "Background color of the selected chip.",
+    "textColor": "Text color of the inactive chips; the same color is used when the pointer moves over them.",
+    "activeTextColor": "Text color of the selected chip.",
+    "gap": "Spacing between chips, in pixels.",
+    "radius": "Corner radius of the chips; for a fully pill-shaped chip, pass half the height.",
+    "swell": "How much larger the active chip grows, relative to its own size.",
+    "barge": "How many extra pixels the neighbours are pushed aside.",
+    "shrink": "How much the neighbours shrink.",
+    "jelly": "Intensity of the jelly feel. At 0 the motion becomes a simple zoom; above 1 the stretch gets exaggerated.",
+    "bounce": "Spring bounciness. Above 0.4 it looks too resonant.",
+    "stagger": "Time offset at which each neighbour starts moving, in milliseconds.",
+    "stiffness": "Spring stiffness; lower means softer and slower.",
+    "disabled": "Disables and dims the whole group.",
+    "ariaLabel": "Group label for screen readers; keep it close to the question's topic.",
+    "className": "Extra class on the group root; for custom spacing or width."
+  },
+  "tips": [
+    "For choices picked over and over, set `bounce` around 0.15; less bounce, calmer.",
+    "If the chip labels are long, increase `size` rather than `gap`; a large gap scatters the group.",
+    "You can also pass colors with a CSS variable, like `var(--color-brand)`."
+  ]
+}

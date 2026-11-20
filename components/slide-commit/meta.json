@@ -1,0 +1,146 @@
+{
+  "slug": "slide-commit",
+  "name": "Slide Commit",
+  "description": "A button whose handle you must drag all the way to confirm; the result is shown with a spinner and then a success or rejection chip.",
+  "category": "actions",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Drag / Keyboard",
+  "interactionNotes": "Drag the handle to the side. If you pull too little, it springs back and hits the home wall; if you reach the end, it confirms. With the keyboard: the right or up arrow moves forward (a tenth of the track per press) and `End` confirms directly; the left or down arrow moves back, and `Home` or `Escape` returns it to the start.",
+  "props": [
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "defaultValue": "\"برای پرداخت بکش\"",
+      "description": "The text in the middle of the chip; it clears as you drag."
+    },
+    {
+      "name": "doneLabel",
+      "type": "ReactNode",
+      "defaultValue": "\"پرداخت شد\"",
+      "description": "The text next to the check mark after confirmation."
+    },
+    {
+      "name": "errorLabel",
+      "type": "ReactNode",
+      "defaultValue": "\"پرداخت انجام نشد\"",
+      "description": "Replaces the hint text, in the danger color, after a rejection."
+    },
+    {
+      "name": "onConfirm",
+      "type": "() => void | Promise<unknown>",
+      "description": "Called when the handle reaches the end. If it returns a Promise, a spinner is shown."
+    },
+    {
+      "name": "onDone",
+      "type": "() => void",
+      "description": "Called when the completed chip opens."
+    },
+    {
+      "name": "onError",
+      "type": "(reason: unknown) => void",
+      "description": "Called with the rejection reason; otherwise the component swallows it."
+    },
+    {
+      "name": "trackColor",
+      "type": "string",
+      "defaultValue": "\"#262626\"",
+      "description": "The track behind the handle."
+    },
+    {
+      "name": "handleColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "The handle and the fill it drags; its arrow color is chosen for legibility over it."
+    },
+    {
+      "name": "successColor",
+      "type": "string",
+      "defaultValue": "\"#22c55e\"",
+      "description": "The fill of the completed chip."
+    },
+    {
+      "name": "dangerColor",
+      "type": "string",
+      "defaultValue": "\"#e5484d\"",
+      "description": "The handle and error text color after a rejection."
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "defaultValue": "280",
+      "description": "Track width; the travel distance scales with it."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "56",
+      "description": "Track height; the handle is 8 pixels smaller."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "28",
+      "description": "Track corner radius; the handle corner is 4 pixels smaller so they stay concentric."
+    },
+    {
+      "name": "speed",
+      "type": "number",
+      "defaultValue": "50",
+      "description": "Speed of opening and returning after release."
+    },
+    {
+      "name": "returnBounce",
+      "type": "number",
+      "defaultValue": "0.38",
+      "description": "The energy left when returning to the home wall; zero means it stops immediately."
+    },
+    {
+      "name": "landingDip",
+      "type": "number",
+      "defaultValue": "0.026",
+      "description": "How much the track dips when the completed chip lands; zero turns it off."
+    },
+    {
+      "name": "holdMs",
+      "type": "number",
+      "defaultValue": "1500",
+      "description": "How long the completed chip stays before it collapses; zero means it stays until remount."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dims it and ignores input."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only: it drags the handle to the end with animation and releases it; the rubber stretch and the spring return follow the real path."
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "description": "Replaces the arrow inside the handle."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root element."
+    }
+  ],
+  "tips": [
+    "If `onConfirm` returns a Promise, a spinner is shown — that's the right way to wire it to the network. If it fails, the handle shakes and returns, so the user knows it didn't work without your page showing a separate message.",
+    "The spinner deliberately stays for at least 300 milliseconds. Without that, a fast response would make it skip a frame and vanish, and the user would never see \"in progress\".",
+    "Labels are UI, not data — they are shown on the chip itself, exposed as `aria-label` and announced in the live region. So keep them Persian; only change them if you supply your own label.",
+    "Unlike most right-to-left components, **nothing here mirrors and nothing should**: all the geometry is physical and the arrow points the same way the handle moves. So the right key means \"forward\", exactly like the drag direction.",
+    "`holdMs={0}` keeps the completed chip until the component remounts — for when you show the result somewhere else."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 634,
+  "version": 1
+}

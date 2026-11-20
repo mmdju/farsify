@@ -1,0 +1,29 @@
+{
+  "description": "Pulls any element toward the pointer: translation, 3D tilt and scale on a spring, plus a soft return when the pointer moves away.",
+  "interactionType": "Hover / Pointer",
+  "interactionNotes": "As the pointer gets close, the element is pulled toward it, harder the nearer it is; at the same time it tilts slightly toward the pointer and scales up. When the pointer moves away, the spring brings it back into place instead of dropping the motion mid-way. If several magnets share one area, by default only the one closest to the pointer is pulled; turn `exclusive` off and they all build a field together. Touch screens have no pointer, so nothing moves — for that case provide `autoPreview` or a fallback animation.",
+  "props": {
+    "children": "The element that moves. The component has no appearance of its own; whatever you pass gets the motion.",
+    "padding": "Pull reach from the element's edge, in pixels. Larger means it attracts from farther away.",
+    "magnetStrength": "Pull strength; the offset is divided by this. 1 means it follows the pointer exactly, 3 means a third of the way.",
+    "maxOffset": "Cap on the offset from the original position, in pixels. Omitting it means no cap.",
+    "exclusive": "Only the closest magnet is pulled. Turn it off for adjacent groups so they build a field together.",
+    "axis": "Pull axis.",
+    "tilt": "Maximum 3D tilt toward the pointer, in degrees.",
+    "scale": "Scale during the pull.",
+    "spring": "Spring parameters; more stiffness means a faster response, more damping means a calmer return.",
+    "disabled": "Turns the pull off entirely.",
+    "autoPreview": "When there is no pointer, a phantom pointer circles the element so the pull is visible in non-interactive previews too. A real pointer always takes precedence.",
+    "onActiveChange": "Reports entering and leaving the field.",
+    "wrapperClassName": "Class of the outer frame — the one that sits in the layout.",
+    "innerClassName": "Class of the inner layer — the one that moves.",
+    "style": "Style of the outer frame (with normal HTML classes)."
+  },
+  "tips": [
+    "No dependencies at all: the spring is solved on `requestAnimationFrame` and the loop puts itself to sleep once settled — zero CPU at rest.",
+    "All magnets on the page share one `pointermove` listener; dozens of magnets do not multiply the cost.",
+    "For an icon bar pass `exclusive={false}` so the whole bar bends toward the pointer, not just one icon.",
+    "It does not move on touch (there is no pointer); if you want a mobile preview, turn on `autoPreview`.",
+    "`maxOffset` is a layout safety net: without it an element near the center of the area can shift by up to half the distance."
+  ]
+}

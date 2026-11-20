@@ -1,0 +1,35 @@
+{
+  "description": "A rotary dial with a comet tail: the arc fills by dragging, the indicator head leaves fading particles behind, and the number sits in the middle in fixed-width Persian digits.",
+  "interactionType": "Drag / Keyboard",
+  "interactionNotes": "Press and drag around the circle to change the value; releasing with speed gives momentum, and a spring settles the value onto the nearest step with a slight bounce. In RTL zero is on the right and the value increases toward the left; in LTR it is the reverse. The arrow keys work too — in RTL `ArrowLeft` increases.",
+  "props": {
+    "value": "Controlled state.",
+    "defaultValue": "Initial value in the uncontrolled state.",
+    "min": "Minimum value.",
+    "max": "Maximum value.",
+    "step": "Value step.",
+    "unit": "The unit next to the number; an empty string means no unit.",
+    "label": "Accessible name of the dial.",
+    "accent": "Color of the filled arc.",
+    "ink": "Color of the centered number.",
+    "size": "Dial side length, pixels.",
+    "sweep": "Arc extent, degrees.",
+    "thickness": "Rail thickness, pixels.",
+    "speed": "Speed of the number spring, 0 to 100.",
+    "tapBounce": "Spring bounce on a tap (0 to 0.9).",
+    "flickBounce": "Spring bounce on a flick (0 to 0.9).",
+    "momentum": "Multiplier for release momentum.",
+    "cometReach": "Tail length, degrees.",
+    "cometWidth": "Tail width, pixels.",
+    "disabled": "Dimmed and unresponsive to input.",
+    "onChange": "Called on every change.",
+    "onChangeEnd": "When the motion ends; it also reports velocity and bounce.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "Zero is on the right in RTL and the value increases toward the left — the Persian convention. This mirroring happens in JS, so it is enough for the page to be `dir=\"rtl\"`; no `rtl` prop is needed.",
+    "Digits render as Persian and each one sits in a fixed-width 0.694em box; `tabular-nums` has no effect with the Peyda font, and these boxes are the only thing keeping the number from shaking while it turns.",
+    "For a unit other than percent, change `unit` — `°`, `dB`, or an empty string. An empty string means just the number, and the number stays centered on its own.",
+    "`onChangeEnd` is the right place to save to the server: it is not called on every drag frame, only once the spring has settled."
+  ]
+}

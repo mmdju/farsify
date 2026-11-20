@@ -1,0 +1,114 @@
+{
+  "slug": "magnet",
+  "name": "Magnet",
+  "description": "Pulls any element toward the pointer: translation, 3D tilt and scale on a spring, plus a soft return when the pointer moves away.",
+  "category": "actions",
+  "dependencies": [],
+  "interactionType": "Hover / Pointer",
+  "interactionNotes": "As the pointer gets close, the element is pulled toward it, harder the nearer it is; at the same time it tilts slightly toward the pointer and scales up. When the pointer moves away, the spring brings it back into place instead of dropping the motion mid-way. If several magnets share one area, by default only the one closest to the pointer is pulled; turn `exclusive` off and they all build a field together. Touch screens have no pointer, so nothing moves — for that case provide `autoPreview` or a fallback animation.",
+  "props": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The element that moves. The component has no appearance of its own; whatever you pass gets the motion."
+    },
+    {
+      "name": "padding",
+      "type": "number",
+      "defaultValue": "100",
+      "description": "Pull reach from the element's edge, in pixels. Larger means it attracts from farther away."
+    },
+    {
+      "name": "magnetStrength",
+      "type": "number",
+      "defaultValue": "2",
+      "description": "Pull strength; the offset is divided by this. 1 means it follows the pointer exactly, 3 means a third of the way."
+    },
+    {
+      "name": "maxOffset",
+      "type": "number",
+      "description": "Cap on the offset from the original position, in pixels. Omitting it means no cap."
+    },
+    {
+      "name": "exclusive",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Only the closest magnet is pulled. Turn it off for adjacent groups so they build a field together."
+    },
+    {
+      "name": "axis",
+      "type": "\"both\" | \"x\" | \"y\"",
+      "defaultValue": "\"both\"",
+      "options": [
+        "both",
+        "x",
+        "y"
+      ],
+      "description": "Pull axis."
+    },
+    {
+      "name": "tilt",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Maximum 3D tilt toward the pointer, in degrees."
+    },
+    {
+      "name": "scale",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Scale during the pull."
+    },
+    {
+      "name": "spring",
+      "type": "MagnetSpring",
+      "defaultValue": "{ stiffness: 170, damping: 16, mass: 1 }",
+      "description": "Spring parameters; more stiffness means a faster response, more damping means a calmer return."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Turns the pull off entirely."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "When there is no pointer, a phantom pointer circles the element so the pull is visible in non-interactive previews too. A real pointer always takes precedence."
+    },
+    {
+      "name": "onActiveChange",
+      "type": "(active: boolean) => void",
+      "description": "Reports entering and leaving the field."
+    },
+    {
+      "name": "wrapperClassName",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Class of the outer frame — the one that sits in the layout."
+    },
+    {
+      "name": "innerClassName",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Class of the inner layer — the one that moves."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Style of the outer frame (with normal HTML classes)."
+    }
+  ],
+  "tips": [
+    "No dependencies at all: the spring is solved on `requestAnimationFrame` and the loop puts itself to sleep once settled — zero CPU at rest.",
+    "All magnets on the page share one `pointermove` listener; dozens of magnets do not multiply the cost.",
+    "For an icon bar pass `exclusive={false}` so the whole bar bends toward the pointer, not just one icon.",
+    "It does not move on touch (there is no pointer); if you want a mobile preview, turn on `autoPreview`.",
+    "`maxOffset` is a layout safety net: without it an element near the center of the area can shift by up to half the distance."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 359,
+  "version": 1
+}

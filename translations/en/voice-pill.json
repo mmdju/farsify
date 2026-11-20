@@ -1,0 +1,37 @@
+{
+  "description": "A voice-recording button that opens like a messaging app: you hold it, it shows a waveform, and you slide aside to cancel.",
+  "interactionType": "Hold / Drag / Keyboard",
+  "interactionNotes": "Hold the button to start recording; the timer and waveform open right there. If you drag your finger toward cancel, the color and text warn you, and releasing in that state cancels the recording instead of sending it. With a keyboard, Space starts and Escape cancels.",
+  "props": {
+    "accentColor": "Accent color of the recording state.",
+    "iconColor": "Color of the microphone icon at rest.",
+    "background": "Background color of the pill.",
+    "size": "Diameter of the button in the closed state, in pixels.",
+    "shape": "Shape when open: pill or rounded.",
+    "reach": "How far the pill opens ahead of the button.",
+    "showTime": "Show the recording time.",
+    "waveform": "Show the waveform.",
+    "slideToCancel": "Cancel by sliding aside.",
+    "cancelDistance": "How far you have to drag to cancel.",
+    "attack": "How fast the wave reacts to louder sound, in milliseconds.",
+    "release": "How fast the wave returns, in milliseconds.",
+    "sensitivity": "Waveform sensitivity.",
+    "floor": "The minimum height the wave bars have.",
+    "openDuration": "Opening duration, in milliseconds.",
+    "pressScale": "Button scale while pressed.",
+    "mode": "Whether it works by holding or by a single tap.",
+    "holdAfter": "In auto mode, how long a hold means recording.",
+    "reactive": "Where the wave comes from: simulated or a real microphone.",
+    "disabled": "Disable the button.",
+    "ariaLabel": "Screen reader label.",
+    "onStart": "When recording starts.",
+    "onStop": "When recording ends; the reason comes with it.",
+    "autoPreview": "Automatic waveform preview without interaction; for a showcase card.",
+    "className": "Extra class on the root."
+  },
+  "tips": [
+    "mic mode needs a real microphone and the browser will ask for permission; for a demo, simulated mode is hassle-free.",
+    "For a button that starts with one tap and ends with another, use toggle mode.",
+    "If you turn off slide-to-cancel, the user can finish recording only by releasing."
+  ]
+}

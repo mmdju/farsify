@@ -1,0 +1,64 @@
+{
+  "slug": "task-list",
+  "name": "Task List",
+  "description": "A card-style task list that fills in, checks off, strikes through, and gives a tiny shake as each task is completed; finished tasks also move to the bottom so open ones stay on top.",
+  "category": "inputs",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Click any row: the box fills, a check is drawn, the text is struck through, and the row takes a short shake; the text also dims. The checked row springs to the bottom of the list and returns along the same path when unchecked. Space and Enter work too, and Tab cycles through the rows. With `prefers-reduced-motion` the motion is removed, but the order of the stages remains.",
+  "props": [
+    {
+      "name": "tasks",
+      "type": "Task[]",
+      "defaultValue": "[{ id: \"a\", label: \"خرید نان\", done: true }]",
+      "description": "The list in controlled mode. Each task is `{ id, label, done? }`; `id` is the key used for reordering."
+    },
+    {
+      "name": "defaultTasks",
+      "type": "Task[]",
+      "defaultValue": "[]",
+      "description": "The initial list in uncontrolled mode; it only seeds the state."
+    },
+    {
+      "name": "onTasksChange",
+      "type": "(tasks: Task[]) => void",
+      "description": "Returns the full, updated list on every check/uncheck."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "defaultValue": "\"md\"",
+      "description": "Row and font size; text comes from the project scale, not a raw number."
+    },
+    {
+      "name": "accent",
+      "type": "string",
+      "defaultValue": "currentColor",
+      "description": "Fill color of the box. Any CSS value works; it defaults to the row's text color, so it changes with the theme."
+    },
+    {
+      "name": "checkColor",
+      "type": "string",
+      "defaultValue": "var(--page, #ffffff)",
+      "description": "Color of the check itself, on the filled box. It must contrast with `accent` — it defaults to the page color."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Outer class on the `ul`; set the list width here."
+    }
+  ],
+  "tips": [
+    "For a single row, export `TaskItem` directly — it has the same state machine, without reordering and without the `aria-live` announcement.",
+    "`accent` is the box color and `checkColor` is the check color; the two play separate roles. With the defaults it is legible in both themes, so you do not need to pass anything.",
+    "A finished task really does move to the bottom of the DOM, so the focus order matches what you see; if you want a fixed order, make the list controlled and sort it yourself.",
+    "The strike is drawn from the start side (from the right in right-to-left) and the row's shake is mirrored too; do not mirror anything by hand.",
+    "Each stage waits for the previous animation to finish rather than a timer, so the order stays correct under `prefers-reduced-motion` too, just without motion."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 436,
+  "version": 1
+}

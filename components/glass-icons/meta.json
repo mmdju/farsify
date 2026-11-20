@@ -1,0 +1,164 @@
+{
+  "slug": "glass-icons",
+  "name": "Glass Icons",
+  "description": "A grid of glass icons that refract the color behind them; for docks, app grids, and social links.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Hover / Click / Keyboard",
+  "interactionNotes": "On hover the glass lifts or presses in with a spring, the colored card behind it drifts gently with the cursor, and the glass edge catches light; a click presses it too. Tab focus shows the same hover state. `prefers-reduced-motion` makes all of this instant.",
+  "props": [
+    {
+      "name": "items",
+      "type": "GlassIconsItem[]",
+      "defaultValue": "[]",
+      "description": "The icons. Each item takes `icon`, `label`, and `color`, and optionally `href`, `target`, `onClick`, `id`, and `className`. `color` is either the name of a ready gradient (blue, purple, red, indigo, orange, green, teal, pink, graphite, silver) or any CSS color/gradient."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "defaultValue": "82",
+      "description": "Width and height of each icon in px."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "66",
+      "description": "Spacing between icons in px."
+    },
+    {
+      "name": "columns",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "How many icons per row. If they do not fit, the row wraps and moves to fewer columns."
+    },
+    {
+      "name": "roundness",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Corner roundness; from 0 square to 1 circle."
+    },
+    {
+      "name": "refraction",
+      "type": "number",
+      "defaultValue": "0.8",
+      "description": "Light refraction at the glass edge — it bends what is behind it around the rim. Works only in Chromium browsers; the rest fall back to a regular blur."
+    },
+    {
+      "name": "bevel",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Width of the glass's curved edge, from 0 to 1."
+    },
+    {
+      "name": "dispersion",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "The rim's iridescence that splits the light; from 0 to 1."
+    },
+    {
+      "name": "frost",
+      "type": "number",
+      "defaultValue": "0.2",
+      "description": "Glass fog — how blurred what is behind it looks; from 0 to 1."
+    },
+    {
+      "name": "shine",
+      "type": "number",
+      "defaultValue": "0.85",
+      "description": "Intensity of the light catch on the glass edge; from 0 to 1."
+    },
+    {
+      "name": "tint",
+      "type": "string",
+      "defaultValue": "'#dfdfdf'",
+      "description": "The glass's own color."
+    },
+    {
+      "name": "tintOpacity",
+      "type": "number",
+      "defaultValue": "0.2",
+      "description": "How much `tint` colors the glass; from 0 to 1."
+    },
+    {
+      "name": "iconColor",
+      "type": "string",
+      "defaultValue": "-",
+      "description": "Icon color on the glass. The default is white; on clear glass in a light theme it becomes near-black."
+    },
+    {
+      "name": "plate",
+      "type": "'tilt' | 'offset' | 'circle' | 'none'",
+      "defaultValue": "'tilt'",
+      "description": "Shape of the colored layer behind the glass: tilted card, offset card, circle, or none — which makes the glass fully clear."
+    },
+    {
+      "name": "tilt",
+      "type": "number",
+      "defaultValue": "30",
+      "description": "Angle of the tilted card in degrees."
+    },
+    {
+      "name": "spread",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "How far the offset card or circle pokes out from behind the glass; from 0 to 1."
+    },
+    {
+      "name": "hover",
+      "type": "'lift' | 'float' | 'press' | 'none'",
+      "defaultValue": "'press'",
+      "description": "Hover animation: `lift` raises the glass and tilts the card, `float` only raises it, `press` presses it in."
+    },
+    {
+      "name": "parallax",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "How far the card behind the glass moves with the cursor; from 0 to 1."
+    },
+    {
+      "name": "labels",
+      "type": "'hover' | 'always' | 'none'",
+      "defaultValue": "'hover'",
+      "description": "When the label under the icon appears."
+    },
+    {
+      "name": "intro",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The first time the icons come into view, the glass settles and the cards pop out one by one."
+    },
+    {
+      "name": "theme",
+      "type": "'dark' | 'light'",
+      "defaultValue": "'dark'",
+      "description": "Color of the labels and the glass edge."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the main container."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style for the main container."
+    },
+    {
+      "name": "ref",
+      "type": "Ref<GlassIconsHandle>",
+      "description": "Imperative handle with `hover(index, on, aim?)` — a virtual hover on one cell without a real pointer; for preview drivers and storytelling."
+    }
+  ],
+  "tips": [
+    "It has no dependencies — the springs are written with raw rAF and the shader with raw WebGL2; where WebGL2 is unavailable it falls back to the DOM version on its own.",
+    "True light refraction (liquid glass) is only visible in Chrome and Edge; Safari and Firefox show the same scene with blur and a shine map.",
+    "For fully clear glass, set `plate` to `none` — then whatever is behind the component (image, gradient, card) gets bent and becomes meaningful; on a flat background nothing is visible.",
+    "For a dock, raise `columns` and lower `gap` — the `dock` preset in the demo does exactly this.",
+    "The geometry (card tilt, bulge direction) is deliberately not mirrored; in right-to-left only the texts become Persian and the motion physics stays the same."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 1222,
+  "version": 1
+}

@@ -1,0 +1,68 @@
+name: Bug report
+description: Something is broken or looks wrong
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: component
+    attributes:
+      label: Which component?
+      description: The component's install ID (for example magnet) or a link to its page.
+      placeholder: magnet
+    validations:
+      required: true
+
+  - type: input
+    id: place
+    attributes:
+      label: Where did you see it?
+      description: The page URL, or the name of your own project.
+      placeholder: https://farsifyui.ir/components/magnet
+    validations:
+      required: true
+
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options:
+        - Light
+        - Dark
+        - Both
+      default: 0
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Chrome 140 / Windows 11, or Safari / iPhone 15
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Opened the page
+        2. Clicked the button
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: media
+    attributes:
+      label: Screenshots or video
+      description: A screenshot or a short recording helps a lot.
+    validations:
+      required: false

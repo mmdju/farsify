@@ -1,0 +1,38 @@
+{
+  "description": "A grid of glass icons that refract the color behind them; for docks, app grids, and social links.",
+  "interactionType": "Hover / Click / Keyboard",
+  "interactionNotes": "On hover the glass lifts or presses in with a spring, the colored card behind it drifts gently with the cursor, and the glass edge catches light; a click presses it too. Tab focus shows the same hover state. `prefers-reduced-motion` makes all of this instant.",
+  "props": {
+    "items": "The icons. Each item takes `icon`, `label`, and `color`, and optionally `href`, `target`, `onClick`, `id`, and `className`. `color` is either the name of a ready gradient (blue, purple, red, indigo, orange, green, teal, pink, graphite, silver) or any CSS color/gradient.",
+    "size": "Width and height of each icon in px.",
+    "gap": "Spacing between icons in px.",
+    "columns": "How many icons per row. If they do not fit, the row wraps and moves to fewer columns.",
+    "roundness": "Corner roundness; from 0 square to 1 circle.",
+    "refraction": "Light refraction at the glass edge — it bends what is behind it around the rim. Works only in Chromium browsers; the rest fall back to a regular blur.",
+    "bevel": "Width of the glass's curved edge, from 0 to 1.",
+    "dispersion": "The rim's iridescence that splits the light; from 0 to 1.",
+    "frost": "Glass fog — how blurred what is behind it looks; from 0 to 1.",
+    "shine": "Intensity of the light catch on the glass edge; from 0 to 1.",
+    "tint": "The glass's own color.",
+    "tintOpacity": "How much `tint` colors the glass; from 0 to 1.",
+    "iconColor": "Icon color on the glass. The default is white; on clear glass in a light theme it becomes near-black.",
+    "plate": "Shape of the colored layer behind the glass: tilted card, offset card, circle, or none — which makes the glass fully clear.",
+    "tilt": "Angle of the tilted card in degrees.",
+    "spread": "How far the offset card or circle pokes out from behind the glass; from 0 to 1.",
+    "hover": "Hover animation: `lift` raises the glass and tilts the card, `float` only raises it, `press` presses it in.",
+    "parallax": "How far the card behind the glass moves with the cursor; from 0 to 1.",
+    "labels": "When the label under the icon appears.",
+    "intro": "The first time the icons come into view, the glass settles and the cards pop out one by one.",
+    "theme": "Color of the labels and the glass edge.",
+    "className": "Extra class for the main container.",
+    "style": "Inline style for the main container.",
+    "ref": "Imperative handle with `hover(index, on, aim?)` — a virtual hover on one cell without a real pointer; for preview drivers and storytelling."
+  },
+  "tips": [
+    "It has no dependencies — the springs are written with raw rAF and the shader with raw WebGL2; where WebGL2 is unavailable it falls back to the DOM version on its own.",
+    "True light refraction (liquid glass) is only visible in Chrome and Edge; Safari and Firefox show the same scene with blur and a shine map.",
+    "For fully clear glass, set `plate` to `none` — then whatever is behind the component (image, gradient, card) gets bent and becomes meaningful; on a flat background nothing is visible.",
+    "For a dock, raise `columns` and lower `gap` — the `dock` preset in the demo does exactly this.",
+    "The geometry (card tilt, bulge direction) is deliberately not mirrored; in right-to-left only the texts become Persian and the motion physics stays the same."
+  ]
+}

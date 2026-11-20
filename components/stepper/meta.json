@@ -1,0 +1,179 @@
+{
+  "slug": "stepper",
+  "name": "Stepper",
+  "description": "Walk the user through steps one at a time; you can use numbers, dots, or bars as indicators, lay the flow out horizontally or vertically, and swap each step's content with a smooth transition.",
+  "category": "inputs",
+  "dependencies": [],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Clicking any indicator takes you straight to that step; in linear mode only the steps you have already reached are open. The back/next buttons mirror themselves in RTL, and on the last step the button becomes \"Finish\". The panel height also eases open between steps.",
+  "props": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "description": "The steps; each inside a `<Step>` with a `title`, a `description`, and an optional `icon`."
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "description": "If you want to own the current step yourself, pass this together with `onStepChange`; without it, the component starts from `initialStep`."
+    },
+    {
+      "name": "initialStep",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "The step shown first."
+    },
+    {
+      "name": "onStepChange",
+      "type": "(step: number) => void",
+      "defaultValue": "() => {}",
+      "description": "Called every time the step changes."
+    },
+    {
+      "name": "onFinalStepCompleted",
+      "type": "() => void",
+      "defaultValue": "() => {}",
+      "description": "When the last step is passed."
+    },
+    {
+      "name": "indicator",
+      "type": "\"numbers\" | \"dots\" | \"bars\"",
+      "defaultValue": "\"numbers\"",
+      "options": [
+        "numbers",
+        "dots",
+        "bars"
+      ],
+      "description": "The shape of the indicators in horizontal layout; vertical always uses numbers."
+    },
+    {
+      "name": "orientation",
+      "type": "\"horizontal\" | \"vertical\"",
+      "defaultValue": "\"horizontal\"",
+      "options": [
+        "horizontal",
+        "vertical"
+      ],
+      "description": "Indicators above the content or in a rail beside it; below 520 pixels the rail collapses on its own."
+    },
+    {
+      "name": "transition",
+      "type": "\"slide\" | \"fade\" | \"none\"",
+      "defaultValue": "\"slide\"",
+      "options": [
+        "slide",
+        "fade",
+        "none"
+      ],
+      "description": "How content moves between steps; the height eases in every mode too."
+    },
+    {
+      "name": "linear",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Linear navigation: you can only go back to steps you have already reached."
+    },
+    {
+      "name": "disableStepIndicators",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Turns off clicking on the indicators."
+    },
+    {
+      "name": "renderStepIndicator",
+      "type": "(props: StepIndicatorProps) => ReactNode",
+      "description": "Render your own custom indicator."
+    },
+    {
+      "name": "showFooter",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the back/next buttons are shown."
+    },
+    {
+      "name": "backButtonText",
+      "type": "string",
+      "defaultValue": "\"قبلی\"",
+      "description": "Text of the back button; the default is Persian."
+    },
+    {
+      "name": "nextButtonText",
+      "type": "string",
+      "defaultValue": "\"ادامه\"",
+      "description": "Text of the next button."
+    },
+    {
+      "name": "completeButtonText",
+      "type": "string",
+      "defaultValue": "\"پایان\"",
+      "description": "Text of the next button on the final step."
+    },
+    {
+      "name": "backButtonProps",
+      "type": "ButtonHTMLAttributes",
+      "defaultValue": "{}",
+      "description": "Extra props for the back button, such as `disabled`."
+    },
+    {
+      "name": "nextButtonProps",
+      "type": "ButtonHTMLAttributes",
+      "defaultValue": "{}",
+      "description": "Extra props for the next button."
+    },
+    {
+      "name": "completedContent",
+      "type": "ReactNode",
+      "description": "Content that takes the place of the steps; if omitted, the buttons collapse and only the checks remain."
+    },
+    {
+      "name": "theme",
+      "type": "\"dark\" | \"light\"",
+      "defaultValue": "\"dark\"",
+      "description": "Palette for the frame and controls; you can also override the colors from outside with the `--stepper-*` variables."
+    },
+    {
+      "name": "accentColor",
+      "type": "string",
+      "description": "Color of completed steps, the progress bar, and the next button; the text color on top is derived automatically from the color's lightness."
+    },
+    {
+      "name": "frame",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The glass frame around the stepper."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "24",
+      "description": "Corner roundness of the frame, in pixels."
+    },
+    {
+      "name": "width",
+      "type": "number | string",
+      "defaultValue": "440",
+      "description": "Maximum width of the stepper."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style for the root."
+    }
+  ],
+  "tips": [
+    "If it is a real form, turn on `linear`; that way the user cannot jump from step 2 to 4, and only the steps they have reached are open.",
+    "On mobile the layout becomes vertical and compact on its own; you do not need to write a media query.",
+    "Provide `completedContent` so a finish screen takes the place of the steps; otherwise only the checks and indicators remain.",
+    "Got several steppers one after another? Just change each one's `initialStep`; to sync with outside state, pass `step` and `onStepChange` as well."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 654,
+  "version": 1
+}

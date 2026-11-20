@@ -1,0 +1,164 @@
+{
+  "slug": "glare-hover",
+  "name": "Glare Hover",
+  "description": "A shell that sends a diagonal band of light across its content: it sweeps on hover, moves with the cursor, repeats in a loop, or arrives on click — with three light profiles and a rim that glints too.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Hover / Cursor / Click / Auto",
+  "interactionNotes": "With `mode: hover`, the pointer entering triggers a sweep in the entry direction and leaving sweeps it back (with `playOnce` only once). With `follow` the band stays under the cursor with a spring. With `loop` it sweeps every `interval` seconds, and with `click` on click. Keyboard focus also sweeps.",
+  "props": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "defaultValue": "—",
+      "description": "The card's content — usually a full-bleed image; the light sits on it with a blend mode."
+    },
+    {
+      "name": "width",
+      "type": "string",
+      "defaultValue": "'auto'",
+      "description": "Width of the shell; any CSS value (such as `'300px'`)."
+    },
+    {
+      "name": "height",
+      "type": "string",
+      "defaultValue": "'auto'",
+      "description": "Height of the shell; any CSS value."
+    },
+    {
+      "name": "background",
+      "type": "string",
+      "defaultValue": "'transparent'",
+      "description": "Background of the shell beneath the content."
+    },
+    {
+      "name": "borderRadius",
+      "type": "string",
+      "defaultValue": "'10px'",
+      "description": "Corner roundness of the shell, the light, and the glowing rim."
+    },
+    {
+      "name": "borderColor",
+      "type": "string",
+      "defaultValue": "'transparent'",
+      "description": "Color of the shell's one-pixel border."
+    },
+    {
+      "name": "glareColor",
+      "type": "string",
+      "defaultValue": "'#ffffff'",
+      "description": "Color of the light band and the glowing rim."
+    },
+    {
+      "name": "glareOpacity",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "Intensity of the light band; the glowing rim takes 1.8 times this value."
+    },
+    {
+      "name": "glareAngle",
+      "type": "number",
+      "defaultValue": "-45",
+      "description": "Angle of the light band in degrees; the sweep direction comes from it."
+    },
+    {
+      "name": "glareSize",
+      "type": "number",
+      "defaultValue": "30",
+      "description": "Width of the light band as a percentage of the frame's diagonal."
+    },
+    {
+      "name": "softness",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Softness of the band's edges in the chosen profile (0 sharp to 1 open)."
+    },
+    {
+      "name": "variant",
+      "type": "'streak' | 'twin' | 'sheen'",
+      "defaultValue": "'streak'",
+      "options": [
+        "streak",
+        "twin",
+        "sheen"
+      ],
+      "description": "Light profile: a single line, a close pair of lines, or a broad sheen."
+    },
+    {
+      "name": "blendMode",
+      "type": "CSSProperties['mixBlendMode']",
+      "defaultValue": "'screen'",
+      "description": "How the light blends with the content; `screen` glows on a dark image."
+    },
+    {
+      "name": "rimGlint",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the frame's edge glints along with the band."
+    },
+    {
+      "name": "mode",
+      "type": "'hover' | 'follow' | 'loop' | 'click'",
+      "defaultValue": "'hover'",
+      "options": [
+        "hover",
+        "follow",
+        "loop",
+        "click"
+      ],
+      "description": "What sets the band in motion — hover, following the cursor, a timed loop, or click."
+    },
+    {
+      "name": "transitionDuration",
+      "type": "number",
+      "defaultValue": "650",
+      "description": "Duration of one full sweep in milliseconds; shorter sweeps scale to the shorter distance."
+    },
+    {
+      "name": "interval",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "Gap between sweeps in `mode: loop`, in seconds (minimum 0.5)."
+    },
+    {
+      "name": "playOnce",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "In `mode: hover`, sweep only on entry and not on exit."
+    },
+    {
+      "name": "intro",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "As soon as 40% of the frame is visible, do one welcome sweep (once per mount)."
+    },
+    {
+      "name": "sweepLoop",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Repeat the light sweep endlessly; for a bento card preview."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class on the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "defaultValue": "{}",
+      "description": "Inline style on the root; it merges with the card's own style."
+    }
+  ],
+  "tips": [
+    "No dependencies: the light profile is built from 33 `color-mix` stops and the rAF loop is awake only while moving.",
+    "For product cards, `mode: follow` with high `softness` feels like polished glass; for badges and small cards, `loop` with a long `interval` is calmer.",
+    "On a dark image `blendMode: screen` glows; on light content try `overlay` or `soft-light`.",
+    "Under `prefers-reduced-motion` the sweeps are off entirely; keyboard focus still gives feedback."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 338,
+  "version": 1
+}

@@ -1,0 +1,29 @@
+{
+  "description": "A media frame that takes an image from raw to complete with a mip pyramid — with no layout shift at all.",
+  "interactionType": "Non-interactive (display only)",
+  "interactionNotes": "It is a status display, not a control. It takes `status` and advances the image on a canvas through a stack of blocky versions: each step is less blurry than the next, and the edge between two steps is softened with bands so the forward passage is visible. In the error state, the \"Retry\" button (if `onRetry` is passed) sits small in the middle of the frame.",
+  "props": {
+    "status": "Current stage; advances the mip to the corresponding point.",
+    "children": "The content image. It must be an `<img>` with a `src` for the pyramid to be built.",
+    "aspectRatio": "Frame aspect ratio, in CSS form.",
+    "width": "Frame width, in pixels.",
+    "radius": "Corner rounding, in pixels.",
+    "background": "Background of the frame and of the status pill (the pill lays the same color, dimmed, over the image).",
+    "color": "Ink color: the text and icon of the status pill, and the glowing sweep.",
+    "stageDuration": "Transition duration of each stage, in milliseconds.",
+    "sweep": "The diagonal glowing sweep and the shine on the advancing mip edge.",
+    "showStatus": "Whether the status pill is shown.",
+    "hideAfter": "How long the pill stays in the \"ready\" state; zero means sample only.",
+    "labels": "Custom text for each status.",
+    "retryLabel": "Text of the retry button.",
+    "onRetry": "If passed, the retry button appears in the error state.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "This component never changes the status itself — you pass `status`. If you get its value from a real request (e.g. polling an image-generation status), that is exactly what it was built for.",
+    "The child must be a real `<img>`: the mip pyramid is built from the image's `naturalWidth`/`naturalHeight`. A div or video will not work.",
+    "The stage order is `queued → generating → refining → complete`, and each step has a fixed share of the stack in `TARGET`; jumping from `queued` to `complete` passes the whole pyramid at once, which is also useful on error and recovery.",
+    "In `status=\"error\"` the image sits at `opacity: 0.28` with a blur so the content is visible but the \"failed\" scene comes across.",
+    "With `prefers-reduced-motion` the jump happens directly (`rate = 1e9`) and the bands and shine turn off."
+  ]
+}

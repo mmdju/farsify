@@ -1,0 +1,23 @@
+{
+  "description": "A page-contents list beside the page with a dotted rail and a paper plane that travels along it as you scroll: it glides forward, banks over subheadings, and turns around and comes back if you scroll up.",
+  "interactionType": "Scroll / Click / Keyboard",
+  "interactionNotes": "As the page scrolls (or a container you pass via `containerRef`), the plane moves forward along the rail and the traversed portion fills in; any heading that reaches the sight line activates and highlights its row and also gets `aria-current`. Click any row to smoothly scroll the page to that heading; until your first scroll the plane stays on that row, because headings near the end do not come up to the top anchor. If you scroll back up, the plane turns at the rail's head and returns facing up — and with `prefers-reduced-motion` the travel and turn are removed and the plane moves without motion.",
+  "props": {
+    "items": "The page headings. Each item is `{ id, label, depth }`: `id` must be exactly the id of that heading in the DOM, and `depth` (0 and up) sets the subheading indentation.",
+    "containerRef": "The scroll container of the content. Omit it to read height and scroll from the window itself; in a scrollable frame (such as a docs panel) pass this one, and the headings must be inside that same container.",
+    "offset": "Distance of the \"sight line\" from the top of the container, in pixels. A heading reaching this height becomes active; a lower value means earlier activation.",
+    "indent": "Indentation per depth level, in pixels. Zero means a flat hierarchy and a straight rail.",
+    "planeColor": "Color of the plane — the thing that moves up and down the rail. Any CSS value is accepted; omit it to take its own text color (the default behavior).",
+    "title": "Title above the list. It also becomes the navigation's `aria-label`.",
+    "aria-label": "Accessible name of the navigation; if passed, it replaces `title` and the visual title stays untouched.",
+    "className": "Extra class for the root; set the column width from here."
+  },
+  "tips": [
+    "In right-to-left the rail sits by the right edge (the start side) and the indentation grows to the left; the mirroring happens on a decorative `-scale-x-100` layer, so do not flip any coordinates by hand — the list itself works in both directions with `dir`.",
+    "Each item's `id` must be the id of the real heading on the page; an item whose element cannot be found is ignored in the progress calculation and the plane does not stop on it.",
+    "For a page that scrolls itself (not the window), pass `containerRef` and make sure the container has `position: relative` or whatever other geometric anchor you need; the calculation uses the list rows' `offsetTop` and does not care about the container's scroll.",
+    "The component does not set the column width itself; pin it with `className=\"w-56\"` or whatever width fits your Persian text so long labels wrap safely.",
+    "With `prefers-reduced-motion` the spring travel and the turn are removed; the list, the rail fill and `aria-current` stay in place.",
+    "`planeColor` is the component's only color and it applies to the plane itself, not the rail; the rail is built from the theme text color so two colors in one column do not get busy. For a brand plane, pass your project's `var(--brand)`."
+  ]
+}

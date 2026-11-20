@@ -1,0 +1,193 @@
+{
+  "slug": "bell-toggle",
+  "name": "Bell Toggle",
+  "description": "A subscribe-to-updates button that rings the bell when switched on, sends out ripple rings and swaps its text with a crossfade; it also has a notification-count badge.",
+  "category": "actions",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Clicking or pressing `Space`/`Enter` toggles the state: the bell shakes several times, two ring waves radiate from each side, and the button text changes with a crossfade and a gradual reveal. The button widens or narrows to fit the new text, and the count badge is visible only in the on state.",
+  "props": [
+    {
+      "name": "offLabel",
+      "type": "string",
+      "defaultValue": "\"باخبرم کن\"",
+      "description": "Text of the off state."
+    },
+    {
+      "name": "onLabel",
+      "type": "string",
+      "defaultValue": "\"باخبرت می‌کنم\"",
+      "description": "Text of the on state."
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "description": "Custom icon; if omitted, the default bell."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": "Extra accessible name."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Text and icon color in the off state."
+    },
+    {
+      "name": "background",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Button surface in the off state."
+    },
+    {
+      "name": "onColor",
+      "type": "string",
+      "defaultValue": "\"#18181b\"",
+      "description": "Text and icon color in the on state."
+    },
+    {
+      "name": "onBackground",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Button surface in the on state."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "defaultValue": "\"md\"",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "description": "Size of the button, icon and text."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "22",
+      "description": "Corner rounding, pixels."
+    },
+    {
+      "name": "ringAmplitude",
+      "type": "number",
+      "defaultValue": "17",
+      "description": "Amplitude of the bell's shake, degrees."
+    },
+    {
+      "name": "ringPasses",
+      "type": "number",
+      "defaultValue": "5",
+      "description": "Number of back-and-forth shakes."
+    },
+    {
+      "name": "ringDecay",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Rate at which the shake fades out."
+    },
+    {
+      "name": "ringDuration",
+      "type": "number",
+      "defaultValue": "820",
+      "description": "Total duration of the shake, milliseconds."
+    },
+    {
+      "name": "ringPivot",
+      "type": "number",
+      "defaultValue": "16",
+      "description": "Hinge point, as a percentage of the icon height from the top."
+    },
+    {
+      "name": "crossfadeMs",
+      "type": "number",
+      "defaultValue": "200",
+      "description": "Duration of the text crossfade, milliseconds."
+    },
+    {
+      "name": "revealBounce",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Spring bounce on switching on, 0 to 1."
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Number of unread notifications; visible only in the on state."
+    },
+    {
+      "name": "badge",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the count badge is shown."
+    },
+    {
+      "name": "badgeColor",
+      "type": "string",
+      "defaultValue": "\"#ef4444\"",
+      "description": "Badge color."
+    },
+    {
+      "name": "badgeTextColor",
+      "type": "string",
+      "defaultValue": "\"#ffffff\"",
+      "description": "Badge number color."
+    },
+    {
+      "name": "waves",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Ripple waves on switching on."
+    },
+    {
+      "name": "clapper",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "An outline bell with a clapper instead of a solid icon."
+    },
+    {
+      "name": "pressed",
+      "type": "boolean",
+      "description": "Controlled state."
+    },
+    {
+      "name": "defaultPressed",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Initial state in uncontrolled mode."
+    },
+    {
+      "name": "onChange",
+      "type": "(pressed: boolean) => void",
+      "description": "Called on every change."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dimmed and unresponsive to input."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "The icon is the button's first child, so under `dir=\"rtl\"` it settles on the right on its own and the text on the left — exactly the intended layout, without `order`.",
+    "In RTL the badge moves toward the text (left), because it is positioned with `inset-inline-end`; if you have placed it manually, in Persian it sticks to the icon's edge and overlaps it.",
+    "Supply `count` from your own data source (for example the number of unread notifications); in the site demo, so that the badge is visible in the on state, it has a manual slider and also an automatic timer.",
+    "Reduce `ringAmplitude` and `ringPasses` if the button repeats in a busy list; a full five-pass shake grabs attention at first glance but across ten buttons it creates clutter.",
+    "With `prefers-reduced-motion` the shake and waves are removed and the text crossfade is shortened; the on/off state is read from color and text."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 400,
+  "version": 1
+}

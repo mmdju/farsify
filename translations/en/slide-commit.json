@@ -1,0 +1,35 @@
+{
+  "description": "A button whose handle you must drag all the way to confirm; the result is shown with a spinner and then a success or rejection chip.",
+  "interactionType": "Drag / Keyboard",
+  "interactionNotes": "Drag the handle to the side. If you pull too little, it springs back and hits the home wall; if you reach the end, it confirms. With the keyboard: the right or up arrow moves forward (a tenth of the track per press) and `End` confirms directly; the left or down arrow moves back, and `Home` or `Escape` returns it to the start.",
+  "props": {
+    "label": "The text in the middle of the chip; it clears as you drag.",
+    "doneLabel": "The text next to the check mark after confirmation.",
+    "errorLabel": "Replaces the hint text, in the danger color, after a rejection.",
+    "onConfirm": "Called when the handle reaches the end. If it returns a Promise, a spinner is shown.",
+    "onDone": "Called when the completed chip opens.",
+    "onError": "Called with the rejection reason; otherwise the component swallows it.",
+    "trackColor": "The track behind the handle.",
+    "handleColor": "The handle and the fill it drags; its arrow color is chosen for legibility over it.",
+    "successColor": "The fill of the completed chip.",
+    "dangerColor": "The handle and error text color after a rejection.",
+    "width": "Track width; the travel distance scales with it.",
+    "height": "Track height; the handle is 8 pixels smaller.",
+    "radius": "Track corner radius; the handle corner is 4 pixels smaller so they stay concentric.",
+    "speed": "Speed of opening and returning after release.",
+    "returnBounce": "The energy left when returning to the home wall; zero means it stops immediately.",
+    "landingDip": "How much the track dips when the completed chip lands; zero turns it off.",
+    "holdMs": "How long the completed chip stays before it collapses; zero means it stays until remount.",
+    "disabled": "Dims it and ignores input.",
+    "autoPreview": "Site preview only: it drags the handle to the end with animation and releases it; the rubber stretch and the spring return follow the real path.",
+    "icon": "Replaces the arrow inside the handle.",
+    "className": "Extra class for the root element."
+  },
+  "tips": [
+    "If `onConfirm` returns a Promise, a spinner is shown — that's the right way to wire it to the network. If it fails, the handle shakes and returns, so the user knows it didn't work without your page showing a separate message.",
+    "The spinner deliberately stays for at least 300 milliseconds. Without that, a fast response would make it skip a frame and vanish, and the user would never see \"in progress\".",
+    "Labels are UI, not data — they are shown on the chip itself, exposed as `aria-label` and announced in the live region. So keep them Persian; only change them if you supply your own label.",
+    "Unlike most right-to-left components, **nothing here mirrors and nothing should**: all the geometry is physical and the arrow points the same way the handle moves. So the right key means \"forward\", exactly like the drag direction.",
+    "`holdMs={0}` keeps the completed chip until the component remounts — for when you show the result somewhere else."
+  ]
+}

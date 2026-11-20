@@ -1,0 +1,36 @@
+{
+  "description": "A like pill that beats on every press: the heart contracts, springs out of place, and the counter digit rolls up one step like an odometer.",
+  "interactionType": "Click / Touch / Keyboard",
+  "interactionNotes": "Click the pill or press it with `Enter`/`Space` to toggle between liked and not liked and move the count up or down by one. With mouse and touch the full beat plays — the heart contracts to `dotSize` and overshoots its mark by `overshoot`, the pill shrinks by `beat` percent and the changed digit rolls over `rollDuration`. With the keyboard the beat is skipped: state and count change instantly so the user does not wait for the animation. If `prefers-reduced-motion` is on, the pointer path becomes that same instant swap.",
+  "props": {
+    "liked": "Controlled state; pass it to own the state. An external change settles without playing the beat.",
+    "defaultLiked": "Initial state in uncontrolled mode.",
+    "count": "The number shown; each press adds or subtracts one. Rendering uses Persian digits and a thousands separator.",
+    "onChange": "Gives the new state and count on every press.",
+    "showCount": "Whether the count is shown; turning it off collapses the pill into a circle.",
+    "icon": "Built-in glyph or any custom element.",
+    "idleOutline": "Whether the idle icon is outlined; turning it off gives a dimmed solid version.",
+    "size": "Icon size, px; padding, gap and counter size derive from it.",
+    "corner": "Pill corner radius, px.",
+    "likedColor": "Color after liking, the hover tint and the focus ring.",
+    "idleColor": "Color before liking.",
+    "pillColor": "Background of the pill that beats beneath the icon.",
+    "textColor": "Counter color.",
+    "duration": "Total beat duration, ms; the return always happens within 40% of it.",
+    "dotSize": "Ratio the icon shrinks to at the return moment.",
+    "overshoot": "How far it overshoots the target on the return; zero means no spring.",
+    "beat": "Percentage the pill shrinks by at the return moment.",
+    "rollDuration": "Duration of the changed digit's roll, ms.",
+    "disabled": "Dimmed and unresponsive to input.",
+    "label": "Accessible name; the counter is appended to it.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "To connect to a server, take `onChange` and pass `liked` and `count` **after** the successful response — controlled mode settles an external change without playing the beat, so it does not beat twice.",
+    "The demo starts with `count={1204}` but the component itself defaults to `0`; pass the real count (e.g. the server's total likes) from the parent and do not rely on the demo value.",
+    "The odometer roll turns only that one cell when a single digit changes; if the string length changes (999 → 1,000) the whole number shifts at once — the default behavior.",
+    "The built-in icon sits inside a scalable SVG group and its stroke width comes from `--ph-stroke` (`1.5 × size / 24`). If you pass `icon` as a `ReactNode`, that element replaces the whole `<svg>` and the beat applies to the outer `<span>` — so match its stroke width to `size` yourself.",
+    "With `prefers-reduced-motion`, both the beat and the roll turn off and the color changes with a soft transition; the count still updates immediately, so nothing is lost.",
+    "This component **does not get RTL**, and that is deliberate: the layout is LTR-safe (`inline-flex` and `padding-inline-end` mirror themselves) and the beat axis is a symmetric scale around the center. Only the text and digits were made Persian — the same rule as `jelly-radio`."
+  ]
+}

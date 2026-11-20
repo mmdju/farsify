@@ -1,0 +1,50 @@
+.memories {
+  --mm-title: var(--foreground, #0a0a0a);
+  --mm-frame-bg: var(--muted, #f4f4f5);
+  --mm-frame-line: var(--border, rgb(0 0 0 / 0.1));
+  --mm-solid-bg: var(--foreground, #0a0a0a);
+  --mm-solid-ink: var(--background, #fafafa);
+  --mm-ghost-bg: var(--background, #fafafa);
+  --mm-ghost-ink: var(--foreground, #0a0a0a);
+  --mm-ghost-line: var(--border, rgb(0 0 0 / 0.1));
+  --mm-ghost-hover: var(--accent, #e4e4e7);
+  --mm-dot: var(--border, rgb(0 0 0 / 0.1));
+}
+
+.memories__title {
+  color: var(--mm-title);
+}
+
+.memories__frame {
+  background: var(--mm-frame-bg);
+  border: 1px solid var(--mm-frame-line);
+}
+
+.memories__solid {
+  background: var(--mm-solid-bg);
+  color: var(--mm-solid-ink);
+}
+
+.memories__ghost {
+  background: var(--mm-ghost-bg);
+  color: var(--mm-ghost-ink);
+  border: 1px solid var(--mm-ghost-line);
+  transition: background-color 150ms ease;
+}
+
+.memories__ghost:hover {
+  background: var(--mm-ghost-hover);
+}
+
+.memories__dot {
+  background: var(--mm-dot);
+}
+
+.memories__dot--on {
+  background: var(--mm-solid-bg);
+}
+
+.memories__focusable:focus-visible {
+  outline: 2px solid var(--mm-solid-bg);
+  outline-offset: 3px;
+}

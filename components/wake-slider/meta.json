@@ -1,0 +1,150 @@
+{
+  "slug": "wake-slider",
+  "name": "Wake Slider",
+  "description": "A slider built from slim bars; dragging sends a wave of height through them that traces the path of movement.",
+  "category": "inputs",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Drag / Click / Keyboard",
+  "interactionNotes": "Drag or click on the track; the bars next to the handle rise like a wave, and the faster you drag the taller they get. The handle lags behind the movement and then settles, so it has a sense of weight. The arrow keys work too and mirror in right-to-left.",
+  "props": [
+    {
+      "name": "value",
+      "type": "number",
+      "description": "Controlled value. Leave it out to keep it internal."
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "defaultValue": "50",
+      "description": "Initial value when not controlled."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: number) => void",
+      "description": "Called on every value change."
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Minimum value."
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "defaultValue": "100",
+      "description": "Maximum value."
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Step of value changes."
+    },
+    {
+      "name": "bars",
+      "type": "number",
+      "defaultValue": "32",
+      "description": "Number of bars; more means a smoother wave and heavier rendering."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "56",
+      "description": "Full height of the bars, in pixels."
+    },
+    {
+      "name": "restHeight",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "Bar height at rest."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "4",
+      "description": "Spacing between the bars."
+    },
+    {
+      "name": "fillColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Color of the filled bars."
+    },
+    {
+      "name": "trackColor",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Color of the empty bars."
+    },
+    {
+      "name": "crestColor",
+      "type": "string",
+      "description": "Color of the wave crest layer; empty means the same as the fill color."
+    },
+    {
+      "name": "sensitivity",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Wave sensitivity to drag speed."
+    },
+    {
+      "name": "reach",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "The maximum distance the wave reaches from the handle."
+    },
+    {
+      "name": "skew",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "Asymmetry of the wave: behind is taller than ahead."
+    },
+    {
+      "name": "glide",
+      "type": "number",
+      "defaultValue": "0.3",
+      "description": "Glide of the handle toward the target; low means lazier."
+    },
+    {
+      "name": "smoothing",
+      "type": "number",
+      "defaultValue": "100",
+      "description": "Smoothing of the computed speed."
+    },
+    {
+      "name": "showValue",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Show the value number next to the track."
+    },
+    {
+      "name": "formatValue",
+      "type": "(value: number) => string",
+      "description": "Formatting of the displayed number."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Disable the whole control."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"مقدار\"",
+      "description": "Screen reader label."
+    }
+  ],
+  "tips": [
+    "Want a tall wave? Raise `reach` and `sensitivity` together — either one alone has little effect.",
+    "For a \"heavier\" feel, bring `glide` down; for \"fast and nimble\", raise it.",
+    "On mobile, 32 bars render together; if something gets slow, reduce `bars`."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 341,
+  "version": 1
+}

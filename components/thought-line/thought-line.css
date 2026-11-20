@@ -1,0 +1,60 @@
+@keyframes thought-line-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes thought-line-shimmer {
+  from {
+    background-position: -125% 0;
+  }
+  to {
+    background-position: 125% 0;
+  }
+}
+
+.thought-line {
+  letter-spacing: normal;
+}
+
+.thought-line button {
+  font-family: inherit;
+  font-size: var(--tl-font);
+}
+
+.thought-line__num {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.thought-line__digit {
+  display: inline-block;
+  width: 0.616em;
+  text-align: center;
+}
+
+.thought-line button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--tl-color) 45%, transparent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thought-line,
+  .thought-line * {
+    transition-duration: 0.01ms !important;
+  }
+
+  .thought-line [data-shimmer] {
+    animation: none !important;
+    background-image: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+  }
+}

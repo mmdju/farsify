@@ -1,0 +1,162 @@
+{
+  "slug": "peek-rating",
+  "name": "Peek Rating",
+  "description": "A row of stars where the star under the pointer lifts and grows while a bubble shows that step's label; clicking commits and clicking again clears.",
+  "category": "inputs",
+  "dependencies": [],
+  "interactionType": "Hover / Horizontal drag / Keyboard",
+  "interactionNotes": "Move the pointer over the row so the star beneath it lifts and the bubble shows that step's label. Pressing and dragging horizontally gives a preview value and releasing commits that same value; on touch, a vertical drag scrolls the page and selection only happens with horizontal pressure. Clicking the current star again sets the value to zero. Arrow keys, Home/End, Space/Enter and Backspace/Delete also work.",
+  "props": [
+    {
+      "name": "value",
+      "type": "number",
+      "description": "Controlled mode; pass it to own the value control."
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Initial value in uncontrolled mode."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: number) => void",
+      "description": "Called on every commit; zero means cleared."
+    },
+    {
+      "name": "onPreview",
+      "type": "(value: number | null) => void",
+      "description": "Gives the step under the pointer on every pointer move; `null` on leave."
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "defaultValue": "5",
+      "description": "Number of stars."
+    },
+    {
+      "name": "shape",
+      "type": "\"star\" | \"heart\" | \"bolt\"",
+      "defaultValue": "\"star\"",
+      "options": [
+        "star",
+        "heart",
+        "bolt"
+      ],
+      "description": "Built-in glyph."
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "description": "Custom glyph instead of the built-in one."
+    },
+    {
+      "name": "labels",
+      "type": "string[]",
+      "defaultValue": "[]",
+      "description": "Label for each step, used for the bubble and the star's accessible name."
+    },
+    {
+      "name": "activeColor",
+      "type": "string",
+      "defaultValue": "\"#f5b400\"",
+      "description": "Color of lit stars and the focus ring."
+    },
+    {
+      "name": "idleColor",
+      "type": "string",
+      "defaultValue": "\"#52525b\"",
+      "description": "Color of unlit stars."
+    },
+    {
+      "name": "tipColor",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Background of the tooltip bubble."
+    },
+    {
+      "name": "tipTextColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Text color of the bubble."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "defaultValue": "28",
+      "description": "Glyph size, in pixels; spacing, bubble height and star height derive from it."
+    },
+    {
+      "name": "lift",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "How many pixels the star under the pointer lifts."
+    },
+    {
+      "name": "magnify",
+      "type": "number",
+      "defaultValue": "1.15",
+      "description": "Magnification of the star under the pointer."
+    },
+    {
+      "name": "riseDuration",
+      "type": "number",
+      "defaultValue": "320",
+      "description": "Rise and settle duration, in milliseconds."
+    },
+    {
+      "name": "popScale",
+      "type": "number",
+      "defaultValue": "1.3",
+      "description": "Strength of the selected star's spring on commit."
+    },
+    {
+      "name": "showTip",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the tooltip bubble is shown."
+    },
+    {
+      "name": "allowClear",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether clicking the same star again clears the rating."
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Display only; stars become `<span>`s and the root takes the `img` role."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dimmed and unresponsive to input."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"امتیاز\"",
+      "description": "Accessible name of the radio group."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "For a rating form, wire `onChange` to state and pass `defaultValue`; to display a stored rating just use `readOnly` with `value` — in that mode the stars are not buttons and the root becomes a readable image (\"3 of 5\").",
+    "`onPreview` is for what a screen reader or a label next to the form needs; it receives `null` on pointer leave, so you can restore the helper text to the committed value right away.",
+    "Pass labels **in Persian** and make their count at least equal to `count`: the bubble text comes from `labels` and each star's accessible name becomes \"2 of 5, fairly good\". If you do not pass them, only the step's Persian numeral is shown.",
+    "This component does not get RTL because it does not need to: the component handles mirroring itself in JS (both the star index and the bubble position), so in Persian the first star starts from the right side and everything stays in place.",
+    "The glyphs are inline and copied from `@hugeicons/core-free-icons` so no external UI dependency is added; they have `fill=\"currentColor\"`, so the glyph comes out solid and takes its color from `activeColor`/`idleColor`.",
+    "With `prefers-reduced-motion` the lift and magnification are removed entirely but the preview color stays — feedback is not lost, only its motion is reduced."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 457,
+  "version": 1
+}

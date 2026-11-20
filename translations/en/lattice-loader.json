@@ -1,0 +1,36 @@
+{
+  "description": "A grid of tiny cells that runs through preset patterns and finally settles into a check or a cross, with a label and an elapsed-time counter.",
+  "interactionType": "State-driven / Autonomous",
+  "interactionNotes": "The component takes no input and is driven by `status`. In \"working\" the cells light up one by one with pattern-induced delay and the counter ticks in tenths of a second; moving to \"done\" or \"error\" stops the grid, fades the runner layer and the end mark (check or cross) settles in with a slight scale-up while the label swaps with a fade and blur removal.",
+  "props": {
+    "label": "Label for the working state.",
+    "doneLabel": "The label that comes before the finish time.",
+    "errorLabel": "The label that comes before the failure time.",
+    "status": "The current status.",
+    "pattern": "Name of a preset pattern, or a custom pattern with a `cells` array.",
+    "grid": "Grid size; any value other than 4 is rounded to 3.",
+    "shape": "Shape of the cells.",
+    "color": "Color of the cells in the working state.",
+    "doneColor": "Color of the finish mark.",
+    "errorColor": "Color of the failure mark.",
+    "cellSize": "Side of each cell, in pixels.",
+    "gap": "Spacing between cells, in pixels.",
+    "fontSize": "Text size in pixels; the gap between grid and label is derived from it too.",
+    "step": "Duration of one unit, in milliseconds; the whole cycle = `loop × step × scale`.",
+    "idleOpacity": "Brightness of the cells that are off.",
+    "glow": "Glow halo behind the lit cells.",
+    "glowColor": "Halo color; empty means the same color as the cell.",
+    "showTimer": "Whether the elapsed-time counter is shown.",
+    "elapsed": "Elapsed time in seconds; if provided, the internal counter is turned off.",
+    "className": "Extra class for the root.",
+    "style": "Inline style; it rides on the component's variables."
+  },
+  "tips": [
+    "`doneLabel` and `errorLabel` come **before** the time and the counter sits behind them, so it reads \"done in 1.4 seconds\"; if you know the number of steps, pass `elapsed` so the time comes from your own source instead of the component's stopwatch.",
+    "You get ten preset patterns and each only makes sense on some grids: `arrow`/`dots`/`ripple`/`spiral` only on 3×3 and `sweep`/`spin`/`rain`/`pulse` only on 4×4. `orbit` and `snake` have both. If a pattern is not available for the requested grid, it falls back to that grid's default automatically.",
+    "For a custom pattern, pass an object instead of a name: `pattern={{ cells: [...], loop: 5, scale: 1.2 }}`. An array shorter than the grid is padded with holes automatically and a longer one is trimmed; `null` means a cell that never lights up.",
+    "For a light, low-contrast grid turn on `glow` and give `glowColor` your brand color — since the cells are tiny, the halo is the only thing you notice at first glance.",
+    "The whole motion is in CSS, not in JavaScript; only the counter advances on a 100 ms timer. So dozens of loaders on one page carry no noticeable cost.",
+    "The end time is announced from `performance.now()` rather than from ticking a count; if the browser sleeps the tab, the counter does not lag behind."
+  ]
+}

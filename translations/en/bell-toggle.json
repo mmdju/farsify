@@ -1,0 +1,42 @@
+{
+  "description": "A subscribe-to-updates button that rings the bell when switched on, sends out ripple rings and swaps its text with a crossfade; it also has a notification-count badge.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Clicking or pressing `Space`/`Enter` toggles the state: the bell shakes several times, two ring waves radiate from each side, and the button text changes with a crossfade and a gradual reveal. The button widens or narrows to fit the new text, and the count badge is visible only in the on state.",
+  "props": {
+    "offLabel": "Text of the off state.",
+    "onLabel": "Text of the on state.",
+    "icon": "Custom icon; if omitted, the default bell.",
+    "label": "Extra accessible name.",
+    "color": "Text and icon color in the off state.",
+    "background": "Button surface in the off state.",
+    "onColor": "Text and icon color in the on state.",
+    "onBackground": "Button surface in the on state.",
+    "size": "Size of the button, icon and text.",
+    "radius": "Corner rounding, pixels.",
+    "ringAmplitude": "Amplitude of the bell's shake, degrees.",
+    "ringPasses": "Number of back-and-forth shakes.",
+    "ringDecay": "Rate at which the shake fades out.",
+    "ringDuration": "Total duration of the shake, milliseconds.",
+    "ringPivot": "Hinge point, as a percentage of the icon height from the top.",
+    "crossfadeMs": "Duration of the text crossfade, milliseconds.",
+    "revealBounce": "Spring bounce on switching on, 0 to 1.",
+    "count": "Number of unread notifications; visible only in the on state.",
+    "badge": "Whether the count badge is shown.",
+    "badgeColor": "Badge color.",
+    "badgeTextColor": "Badge number color.",
+    "waves": "Ripple waves on switching on.",
+    "clapper": "An outline bell with a clapper instead of a solid icon.",
+    "pressed": "Controlled state.",
+    "defaultPressed": "Initial state in uncontrolled mode.",
+    "onChange": "Called on every change.",
+    "disabled": "Dimmed and unresponsive to input.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "The icon is the button's first child, so under `dir=\"rtl\"` it settles on the right on its own and the text on the left — exactly the intended layout, without `order`.",
+    "In RTL the badge moves toward the text (left), because it is positioned with `inset-inline-end`; if you have placed it manually, in Persian it sticks to the icon's edge and overlaps it.",
+    "Supply `count` from your own data source (for example the number of unread notifications); in the site demo, so that the badge is visible in the on state, it has a manual slider and also an automatic timer.",
+    "Reduce `ringAmplitude` and `ringPasses` if the button repeats in a busy list; a full five-pass shake grabs attention at first glance but across ten buttons it creates clutter.",
+    "With `prefers-reduced-motion` the shake and waves are removed and the text crossfade is shortened; the on/off state is read from color and text."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "description": "A button that only fills while held; releasing early empties it, and the fill edge advances with a water ripple.",
+  "interactionType": "Hold / Keyboard / Touch",
+  "interactionNotes": "Hold the button so it fills from one edge; releasing before it finishes empties it with the same ease, and a release under 250 milliseconds counts as a tap. Space and Enter also start holding, and Escape cancels. The pointer leaving or the window being hidden also cancels, so nothing is half-confirmed. After completion the label fades/blurs to \"Deleted\" and, if `resetAfter` is positive, the button returns to idle.",
+  "props": {
+    "children": "The button text in the normal state.",
+    "doneLabel": "The button text after the hold completes.",
+    "icon": "Optional icon beside the normal text.",
+    "doneIcon": "Optional icon beside the done text.",
+    "backgroundColor": "Background of the button.",
+    "fillColor": "Color of the fill and the glow.",
+    "textColor": "Text color in the normal state.",
+    "fillTextColor": "Text color over the filled part.",
+    "size": "Height and font size: 36 / 44 / 52 pixels.",
+    "radius": "Corner radius, pixels.",
+    "fillDirection": "Fill direction. In RTL, \"right\" is still the start edge and it does not flip.",
+    "holdTime": "How many milliseconds to hold for confirmation.",
+    "releaseTime": "Duration of emptying after release or when returning to idle.",
+    "pressScale": "Button scale while holding with the pointer.",
+    "wave": "Toggles the ripple on the fill edge.",
+    "waveAmplitude": "Wave amplitude, pixels.",
+    "glow": "Glow around the button while holding and when done.",
+    "resetAfter": "How many milliseconds after confirming to return to idle; zero means never.",
+    "disabled": "Dims and ignores input.",
+    "autoPreview": "Site preview only: it runs the full hold-and-release cycle itself so the fill and the springy pop can be seen.",
+    "onHold": "Called when the hold completes.",
+    "onTap": "Called when the release came before 250 milliseconds (a tap).",
+    "className": "Extra class for the root element."
+  },
+  "tips": [
+    "Use `onHold` for the final action and `onTap` for a guidance message (\"Hold to delete\") — keep the two apart, and a tap never counts as confirmation.",
+    "Do not set `holdTime` shorter than 600ms; below that a tap and a hold cannot be told apart and the user deletes without meaning to. The component itself defaults to 2000ms.",
+    "If you want the button to stay on \"Deleted\" after confirming, pass `resetAfter={0}` — otherwise it returns to idle after 1200ms. For list rows, zero is usually the right choice.",
+    "In Persian the fill direction does not flip: `fillDirection=\"right\"` fills from the start edge of the sentence, which is what a Persian reader's eye expects; use \"up\" for tall and narrow buttons.",
+    "The screen-reader text is generated automatically from `holdTime` (\"Hold for 2 seconds to confirm\") and announced with Persian digits; for actions other than delete, change `children` and `doneLabel` — you do not need to supply the assistive text by hand.",
+    "With `prefers-reduced-motion` the ripple and pulse turn off and the fill is shown only by a change in opacity; the hold logic and timing stay untouched."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "description": "A navigation column whose selection indicator is a small dot; when the row changes, the dot jumps outward from the text along a shallow arc instead of a plain slide.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Click any row to select it; the dot jumps from the center of the current row along a small outward arc to the center of the new row. The greater the distance, the shallower the arc, so a long jump doesn't build a giant curve. Rows can have group headings (`{ label, heading: true }`): a heading isn't selectable but counts toward the index numbering. If you provide `href` the row becomes a link, otherwise a button; in both cases `onChange` is called. With `prefers-reduced-motion` the dot moves without an arc and instantly.",
+  "props": {
+    "items": "The rows. Each item is either a string, or `{ label, href }`, or `{ label, heading: true }` for a group heading. Headings count in the index but aren't selectable.",
+    "value": "Selected index in controlled mode. This is what you use to keep it in sync with the route.",
+    "defaultValue": "Initial index in uncontrolled mode.",
+    "onChange": "Returns the new index on every selection.",
+    "dotColor": "Dot color. Any CSS value is accepted; if your project has no `--brand`, it falls back to the text color.",
+    "className": "Outer class on the `ul`; set the column width from here."
+  },
+  "tips": [
+    "The brand color sits on the dot only; headings are white and the same size as the rows so the hierarchy is built from weight, not from the accent color.",
+    "`next/link` is deliberately not imported — the shipped version has to compile in a project without Next too. If you want smooth navigation, supply `value` from the route.",
+    "The arc direction is read from the element's own `dir`: in right-to-left the dot jumps outward to the right and in left-to-right outward to the left — don't mirror anything by hand.",
+    "Position is computed with DOM measurement and rounded to device pixel boundaries, so on a 1.25x display the dot isn't blurry or jittery.",
+    "For long lists a fixed height with `overflow-y-auto` is better than an endless column; the dot is measured inside that same frame."
+  ]
+}

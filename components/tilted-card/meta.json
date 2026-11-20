@@ -1,0 +1,237 @@
+{
+  "slug": "tilted-card",
+  "name": "Tilted Card",
+  "description": "A 3D card that tilts toward the pointer as it moves; a light glare slides across its surface, its shadow shifts beneath it, its layers float, and a click shows its back.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Hover / Click / Keyboard / Gyroscope",
+  "interactionNotes": "As the pointer moves over the card, the card tilts toward it and the glare and shadow shift with the same angle; a small caption also follows the pointer. If you provide `backContent`, a click or Enter flips the card (dragging the pointer more than 6 pixels cancels the flip so it is not confused with text selection). On mobile, tilting works by tilting the phone itself (on iOS it asks permission on the first touch). With `prefers-reduced-motion` the tilt amplitude drops to 30% and the drifting caption turns off.",
+  "props": [
+    {
+      "name": "imageSrc",
+      "type": "string",
+      "description": "The image that fills the card's surface."
+    },
+    {
+      "name": "altText",
+      "type": "string",
+      "defaultValue": "\"تصویرِ کارت\"",
+      "description": "Alt text for the image — when the card is interactive, it also goes into `aria-label`."
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "description": "Content on the card — over the image or instead of it."
+    },
+    {
+      "name": "captionText",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "The text of the small caption that follows the pointer and skates off with the speed of movement."
+    },
+    {
+      "name": "showTooltip",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Show the follower caption on hover."
+    },
+    {
+      "name": "overlayContent",
+      "type": "ReactNode",
+      "defaultValue": "null",
+      "description": "Content that floats in front of the card's surface, in a layer above it."
+    },
+    {
+      "name": "displayOverlayContent",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Show `overlayContent`."
+    },
+    {
+      "name": "overlayDepth",
+      "type": "number",
+      "defaultValue": "30",
+      "description": "How far the overlay layer comes in front of the surface, in pixels."
+    },
+    {
+      "name": "backContent",
+      "type": "ReactNode",
+      "defaultValue": "null",
+      "description": "Content on the back of the card. A click, tap, or Enter flips the card."
+    },
+    {
+      "name": "flipOnClick",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Flip the card on click. It needs `backContent`."
+    },
+    {
+      "name": "flipped",
+      "type": "boolean",
+      "description": "Which side to show. Do not set it to let the click flip it itself."
+    },
+    {
+      "name": "onFlip",
+      "type": "(flipped: boolean) => void",
+      "description": "Reports the new side on every flip."
+    },
+    {
+      "name": "onClick",
+      "type": "(event) => void",
+      "description": "Called on click or keyboard activation."
+    },
+    {
+      "name": "containerWidth",
+      "type": "number | string",
+      "defaultValue": "\"100%\"",
+      "description": "Width of the area that reacts to the pointer."
+    },
+    {
+      "name": "containerHeight",
+      "type": "number | string",
+      "defaultValue": "\"300px\"",
+      "description": "Height of that same area."
+    },
+    {
+      "name": "imageWidth",
+      "type": "number | string",
+      "defaultValue": "\"300px\"",
+      "description": "Width of the card itself."
+    },
+    {
+      "name": "imageHeight",
+      "type": "number | string",
+      "defaultValue": "\"300px\"",
+      "description": "Height of the card itself."
+    },
+    {
+      "name": "rotateAmplitude",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "How far the card tilts toward the pointer, in degrees. The maximum is 60."
+    },
+    {
+      "name": "scaleOnHover",
+      "type": "number",
+      "defaultValue": "1.05",
+      "description": "How much it grows on hover."
+    },
+    {
+      "name": "perspective",
+      "type": "number | string",
+      "defaultValue": "800",
+      "description": "Viewing distance, in pixels. Lower means a harsher 3D effect."
+    },
+    {
+      "name": "radius",
+      "type": "number | string",
+      "defaultValue": "15",
+      "description": "Corner radius of the card."
+    },
+    {
+      "name": "smoothness",
+      "type": "number",
+      "defaultValue": "0.6",
+      "description": "0 to 1. Low means glued to the pointer, high means slipping and catching up gently with a small wobble."
+    },
+    {
+      "name": "glare",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "Intensity of the light glare that slides over the surface and edges as it tilts, 0 to 1."
+    },
+    {
+      "name": "glareColor",
+      "type": "string",
+      "defaultValue": "\"#ffffff\"",
+      "description": "Glare color."
+    },
+    {
+      "name": "shadow",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "Intensity of the soft shadow under the card, which shifts and widens as it lifts, 0 to 1."
+    },
+    {
+      "name": "parallax",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "How much the image and layers shift with the tilt. Zero flattens everything."
+    },
+    {
+      "name": "axis",
+      "type": "\"both\" | \"horizontal\" | \"vertical\"",
+      "defaultValue": "\"both\"",
+      "options": [
+        "both",
+        "horizontal",
+        "vertical"
+      ],
+      "description": "Restricts the tilt to horizontal or vertical."
+    },
+    {
+      "name": "reverse",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Tilt away from the pointer instead of toward it."
+    },
+    {
+      "name": "trackWindow",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "The card follows the pointer across the whole page, not just on hover."
+    },
+    {
+      "name": "floating",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "At rest, the card stays afloat with a gentle shimmer."
+    },
+    {
+      "name": "gyroscope",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Tilt the card by tilting the phone or tablet; on iOS it asks permission on the first touch."
+    },
+    {
+      "name": "intro",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "When the card first comes into view, it springs up and settles into place."
+    },
+    {
+      "name": "introDelay",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "How many milliseconds to wait before entering — for staggering a row of cards."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "Inline style for the root."
+    },
+    {
+      "name": "TiltedCardLayer",
+      "type": "component",
+      "description": "Wrap content in `<TiltedCardLayer depth={30}>` to float it above the card's surface; a larger `depth` is further forward, and a negative one is further back."
+    }
+  ],
+  "tips": [
+    "Nothing about the geometry is mirrored: the tilt, the shadow direction, and the glare are pure physics and `dir` has no effect on them — the Persian text on the card and the follower caption render right-to-left automatically. Placing the meta and buttons on the cover is layout, not physics, and in the demo it is arranged with logical `start`/`end`.",
+    "Build the floating layer with `TiltedCardLayer`: `<TiltedCardLayer depth={28}>` comes forward as the card tilts and gives real 3D depth — a negative depth goes behind the image.",
+    "The back of the card can be anything: a tracklist, a form, a QR code. Until you pass `backContent` the card is not interactive, and clickability is off for that reason.",
+    "Accidental flips do not collide with text selection behind the card: dragging the pointer more than 6 pixels (a 6-pixel threshold) cancels the flip click.",
+    "For a row of cards, stagger `introDelay` (like the default `index * 110`) so the cards come up one by one.",
+    "On mobile you have two ways to tilt: touch (highly responsive, as per the default) and the gyroscope, which also handles the iOS permission on the first touch."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 707,
+  "version": 1
+}

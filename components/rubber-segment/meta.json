@@ -1,0 +1,144 @@
+{
+  "slug": "rubber-segment",
+  "name": "Rubber Segment",
+  "description": "A segmented bar with a rubbery glass thumb: it stretches as it jumps, sets an anchor and glides into the new cell with momentum.",
+  "category": "navigation",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Click / Drag / Keyboard",
+  "interactionNotes": "Clicking any cell makes the glass thumb spring to that cell, stretching mid-flight and squashing its trailing edge. Dragging the thumb across the bar lets you move between cells; releasing with speed gives momentum and settles it on the nearest cell. Arrow keys also work — in RTL `ArrowLeft` moves forward.",
+  "props": [
+    {
+      "name": "items",
+      "type": "Array<string | RubberSegmentItem>",
+      "description": "The options; a string or a `{ value, label, icon }` object."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Controlled mode; pass it to own the value control."
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "description": "Initial value in uncontrolled mode; if omitted, the first option."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string, index: number) => void",
+      "description": "Called on every settled change."
+    },
+    {
+      "name": "trackColor",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Background of the bar."
+    },
+    {
+      "name": "thumbColor",
+      "type": "string",
+      "defaultValue": "\"#fafafa\"",
+      "description": "Color of the glass thumb."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "\"#fafafa\"",
+      "description": "Text color of inactive options."
+    },
+    {
+      "name": "activeTextColor",
+      "type": "string",
+      "defaultValue": "\"#18181b\"",
+      "description": "Text color of the one the thumb sits on."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "defaultValue": "\"md\"",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "description": "Bar and text size."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "10",
+      "description": "Corner rounding, in pixels."
+    },
+    {
+      "name": "inset",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "Inner margin of the thumb from the bar's edge, in pixels."
+    },
+    {
+      "name": "equalSlots",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Equal width for all options."
+    },
+    {
+      "name": "stretch",
+      "type": "number",
+      "defaultValue": "100",
+      "description": "Stretch percentage during the jump; zero means no stretch."
+    },
+    {
+      "name": "squash",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "Squash amount of the trailing edge, in pixels."
+    },
+    {
+      "name": "speed",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Animation speed multiplier; 1 is the default."
+    },
+    {
+      "name": "glide",
+      "type": "number",
+      "defaultValue": "75",
+      "description": "Momentum glide on release, 0 to 100."
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether dragging the thumb across the bar is enabled."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dimmed and unresponsive to input."
+    },
+    {
+      "name": "aria-label",
+      "type": "string",
+      "defaultValue": "\"انتخابِ بخش\"",
+      "description": "Accessible name of the radio group."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "For Persian, a three-to-four option bar is the sweet spot; keep `equalSlots` on so the cells are the same size and the thumb does not wobble in the middle.",
+    "This component needs no manual mirroring: the reading direction of the layout comes from the page's own flex, and the arrow keys swap based on `direction` — in RTL `ArrowLeft` moves forward.",
+    "If the indicators are too low-contrast (a light background with a light bar), make `trackColor` one step darker than the surface, not one step lighter; this is the only place where the bar's contrast shows.",
+    "With `prefers-reduced-motion` the spring jump becomes a simple change; momentum and stretch also turn off but selection still works correctly."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 498,
+  "version": 1
+}

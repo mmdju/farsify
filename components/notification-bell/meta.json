@@ -1,0 +1,77 @@
+{
+  "slug": "notification-bell",
+  "name": "Notification Bell",
+  "description": "A round bell that carries the number of unread notifications; it rattles as the count goes up, the clapper lags behind and the badge digits roll like an odometer.",
+  "category": "actions",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "It is a button, but its personality comes from the data, not from the click: every time `count` goes up the bell swings around its top hinge, the clapper lags behind on its own spring and the digits roll in the direction of the change. At `max` the badge becomes \"+\" and at zero it fades out completely. The click itself is normal button behavior (focus, hover, press) and `onClick` is free.",
+  "props": [
+    {
+      "name": "count",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Number of unread notifications. Every increase rattles the bell; a decrease or staying the same has no rattle."
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "defaultValue": "99",
+      "description": "From this number up the badge shows \"99+\" and the digits do not roll."
+    },
+    {
+      "name": "variant",
+      "type": "\"count\" | \"dot\"",
+      "defaultValue": "\"count\"",
+      "options": [
+        "count",
+        "dot"
+      ],
+      "description": "`count` shows the number, `dot` shows just a dot — for when the count does not matter."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "defaultValue": "48",
+      "description": "Button diameter in pixels; the bell, badge and badge font are all scaled from it."
+    },
+    {
+      "name": "color",
+      "type": "\"red\" | \"orange\" | \"green\" | \"blue\" | \"violet\"",
+      "defaultValue": "\"red\"",
+      "options": [
+        "red",
+        "orange",
+        "green",
+        "blue",
+        "violet"
+      ],
+      "description": "Badge color; the same five default system colors."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dimmed and unresponsive to the pointer."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra class for the button itself."
+    }
+  ],
+  "tips": [
+    "Pass `count` from your own data source; the bell rattles as soon as the number goes up, so no `ref` or manual method is needed.",
+    "The rattle only comes from the count **increasing**. That is deliberate: reading notifications should not shake the bell.",
+    "The digits are Persian and sit in fixed-width boxes because `tabular-nums` has no effect on Peyda's Persian numerals; do not swap them by hand.",
+    "The badge sits on the `inline-end` side — in Persian that means the top-left corner. If the `dir` prop on the parent changes, it mirrors itself.",
+    "The remaining `<button>` props (such as `onClick` and `aria-label`) go straight to the button; for a custom label, replace the default screen-reader text with `aria-label`.",
+    "With `prefers-reduced-motion` the rattle and rolling are removed: the badge appears and the digits jump in place, but the counting logic is untouched."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 354,
+  "version": 1
+}

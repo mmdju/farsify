@@ -1,0 +1,38 @@
+{
+  "description": "A glass button with a band of light circling its edge: it is drawn toward the cursor, dims with distance, and flashes once on click.",
+  "interactionType": "Hover / Click / Touch",
+  "interactionNotes": "The light travels along the button's perimeter, not inside it: as the cursor comes near, it sticks to the nearest point on the edge and dims with distance; inside the button it slides slightly toward the cursor, and a click gives a brief shine. With `autoAnimate`, it circles the edge by itself when the cursor is away. The light is rendered in WebGL2; if the browser doesn't support it, the glass body and text stay in place with CSS.",
+  "props": {
+    "children": "The button's label or content.",
+    "href": "If given, the button becomes a link (`<a>`); without it, a `<button>`.",
+    "size": "Size; padding and font change together.",
+    "radius": "Corner radius, pixels. Above half the height means a pill.",
+    "tint": "The glass body color; any CSS color format.",
+    "tintOpacity": "Body color density, 0 to 1. Zero to put a gradient behind the button.",
+    "blur": "Blur behind the button, pixels.",
+    "textColor": "Label color; it also accepts `currentColor`.",
+    "lineColor": "Color of the light on the edge.",
+    "baseColor": "Color of the thin hairline that is always visible beneath the light.",
+    "intensity": "Brightness of the edge light.",
+    "idleIntensity": "How much light remains when the cursor is away, 0 to 1.",
+    "shineSize": "How much of the perimeter the light covers at its peak, in degrees.",
+    "shineFade": "How far the light fades out, in degrees.",
+    "thickness": "Width of the lit edge, pixels.",
+    "glow": "Soft halo around the edge and inside the glass; zero means just the sharp line.",
+    "followMouse": "Whether the light sticks to the point on the edge nearest the cursor.",
+    "proximity": "The distance closer than which the light starts following, pixels.",
+    "autoAnimate": "Whether the light circles the edge by itself when the cursor is away.",
+    "speed": "Speed of the automatic circling.",
+    "disabled": "Turns off the button and the light.",
+    "onClick": "Click; on `<button>`.",
+    "className": "Extra class for the button itself.",
+    "style": "Inline style (applied after the color variables)."
+  },
+  "tips": [
+    "It looks best on a dark surface; for a light theme, make the glass and text dark (the demo's default does this).",
+    "`href` renders a plain `<a>` so the code works in any project; if you want Next's soft navigation, navigate to the destination in `onClick` with `router.push`.",
+    "Take the body color from `tint`, not `background`. If you pass `bg-brand-grad`, set `tintOpacity={0}` so the flat color doesn't sit on top of the gradient.",
+    "For small buttons, lower `thickness` and `glow` — a wide light on a short height reads as a mistake.",
+    "The ring only spins while something is changing; at rest and in a hidden tab it does zero work."
+  ]
+}

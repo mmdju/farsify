@@ -1,0 +1,116 @@
+{
+  "slug": "refine-frame",
+  "name": "Refine Frame",
+  "description": "A media frame that takes an image from raw to complete with a mip pyramid — with no layout shift at all.",
+  "category": "status",
+  "dependencies": [],
+  "interactionType": "Non-interactive (display only)",
+  "interactionNotes": "It is a status display, not a control. It takes `status` and advances the image on a canvas through a stack of blocky versions: each step is less blurry than the next, and the edge between two steps is softened with bands so the forward passage is visible. In the error state, the \"Retry\" button (if `onRetry` is passed) sits small in the middle of the frame.",
+  "props": [
+    {
+      "name": "status",
+      "type": "\"queued\" | \"generating\" | \"refining\" | \"complete\" | \"error\"",
+      "defaultValue": "\"generating\"",
+      "options": [
+        "queued",
+        "generating",
+        "refining",
+        "complete",
+        "error"
+      ],
+      "description": "Current stage; advances the mip to the corresponding point."
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "description": "The content image. It must be an `<img>` with a `src` for the pyramid to be built."
+    },
+    {
+      "name": "aspectRatio",
+      "type": "string",
+      "defaultValue": "\"4 / 3\"",
+      "description": "Frame aspect ratio, in CSS form."
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "defaultValue": "320",
+      "description": "Frame width, in pixels."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "16",
+      "description": "Corner rounding, in pixels."
+    },
+    {
+      "name": "background",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Background of the frame and of the status pill (the pill lays the same color, dimmed, over the image)."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Ink color: the text and icon of the status pill, and the glowing sweep."
+    },
+    {
+      "name": "stageDuration",
+      "type": "number",
+      "defaultValue": "400",
+      "description": "Transition duration of each stage, in milliseconds."
+    },
+    {
+      "name": "sweep",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The diagonal glowing sweep and the shine on the advancing mip edge."
+    },
+    {
+      "name": "showStatus",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the status pill is shown."
+    },
+    {
+      "name": "hideAfter",
+      "type": "number",
+      "defaultValue": "1200",
+      "description": "How long the pill stays in the \"ready\" state; zero means sample only."
+    },
+    {
+      "name": "labels",
+      "type": "Partial<Record<RefineFrameStatus, string>>",
+      "description": "Custom text for each status."
+    },
+    {
+      "name": "retryLabel",
+      "type": "string",
+      "defaultValue": "\"تلاش مجدد\"",
+      "description": "Text of the retry button."
+    },
+    {
+      "name": "onRetry",
+      "type": "() => void",
+      "description": "If passed, the retry button appears in the error state."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "This component never changes the status itself — you pass `status`. If you get its value from a real request (e.g. polling an image-generation status), that is exactly what it was built for.",
+    "The child must be a real `<img>`: the mip pyramid is built from the image's `naturalWidth`/`naturalHeight`. A div or video will not work.",
+    "The stage order is `queued → generating → refining → complete`, and each step has a fixed share of the stack in `TARGET`; jumping from `queued` to `complete` passes the whole pyramid at once, which is also useful on error and recovery.",
+    "In `status=\"error\"` the image sits at `opacity: 0.28` with a blur so the content is visible but the \"failed\" scene comes across.",
+    "With `prefers-reduced-motion` the jump happens directly (`rate = 1e9`) and the bands and shine turn off."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 458,
+  "version": 1
+}

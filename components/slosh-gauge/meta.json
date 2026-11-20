@@ -1,0 +1,139 @@
+{
+  "slug": "slosh-gauge",
+  "name": "Slosh Gauge",
+  "description": "A vertical level gauge; its liquid chases the value, tilts while moving, and splashes against the wall when it fills or empties.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Drag / Click / Keyboard",
+  "interactionNotes": "In interactive mode, dragging or clicking on the body moves the level up and down. If you drag from the middle of the handle, it moves smoothly and continuously; if you click elsewhere, the level springs to that spot. The tilt direction comes from velocity, so the faster you drag, the more the level tilts. The up and down keys, Page and Home/End work too, and Escape cancels a drag.",
+  "props": [
+    {
+      "name": "value",
+      "type": "number",
+      "description": "Controlled value. Omit it to keep it internal."
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "defaultValue": "60",
+      "description": "Initial value when not controlled."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: number) => void",
+      "description": "Called on every value change."
+    },
+    {
+      "name": "interactive",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Whether the user can change the level or it's read-only."
+    },
+    {
+      "name": "showValue",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Show the level number on the gauge itself."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Disables dragging and the keyboard."
+    },
+    {
+      "name": "liquidColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Color of the liquid inside the tank."
+    },
+    {
+      "name": "glassColor",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Glass color — that is, the empty tank background."
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "defaultValue": "88",
+      "description": "Gauge width, pixels."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "180",
+      "description": "Gauge height, pixels."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "20",
+      "description": "Corner radius; it is itself constrained by the width and height."
+    },
+    {
+      "name": "ticks",
+      "type": "number",
+      "defaultValue": "4",
+      "description": "Number of guide lines beside the gauge; zero means none."
+    },
+    {
+      "name": "viscosity",
+      "type": "number",
+      "defaultValue": "0.15",
+      "description": "Thickness of the liquid; the higher it is, the later it settles and the less it sloshes. Zero means immediately."
+    },
+    {
+      "name": "tilt",
+      "type": "number",
+      "defaultValue": "0.45",
+      "description": "How strongly the level tilts with movement velocity."
+    },
+    {
+      "name": "splash",
+      "type": "number",
+      "defaultValue": "0.42",
+      "description": "Velocity bounce coefficient when the level hits the top or bottom; higher means more splash."
+    },
+    {
+      "name": "unit",
+      "type": "string",
+      "defaultValue": "\"٪\"",
+      "description": "Display unit next to the number."
+    },
+    {
+      "name": "digits",
+      "type": "\"fa\" | \"en\"",
+      "defaultValue": "\"fa\"",
+      "options": [
+        "fa",
+        "en"
+      ],
+      "description": "Display digits on the gauge: Persian or Latin."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"سطح مخزن\"",
+      "description": "Screen reader label."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra classes on the element itself."
+    }
+  ],
+  "tips": [
+    "`digits` only changes the **visible** text; `aria-valuenow` and `aria-valuemin/max` always stay raw Latin numbers — screen readers read Persian digits poorly.",
+    "`viscosity` zero means the spring steps aside and the level settles at once; use this for a simple display that only needs to show the number.",
+    "For a water-like feel, lower `viscosity` and raise `splash`; for a honey-like feel, the opposite.",
+    "Dragging beside the handle is smooth and clicking elsewhere is springy; if you want only one of them, keep `interactive` on but don't wire `onChange`.",
+    "The tilt sign comes from the **direction** of velocity, so as the spring returns the level tilts the opposite way — that's what gives it the liquid feel.",
+    "With `prefers-reduced-motion` the spring is damped (no splash and no tilt) but the final value is the same; users sensitive to motion lose nothing."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 427,
+  "version": 1
+}

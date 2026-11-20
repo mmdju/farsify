@@ -1,0 +1,33 @@
+{
+  "description": "A grayscale gallery that gains color under a follow spot: only within the light's radius do the photos show their true hue and their edges show their own accent color.",
+  "interactionType": "Hover",
+  "interactionNotes": "The spotlight follows the pointer with an adjustable lag and, on exit, turns off over the \"fade out\" of a second or so. In \"card\" mode, instead of a global light, hovering each card colors only that card. The light coordinates are physical and need no mirroring in RTL; the texts lay out right-to-left by themselves.",
+  "props": {
+    "items": "The cards; each has `image` (required), `title`, `subtitle`, `accent` (the edge glow hue) and an optional `url`. Without them, six sample cards appear.",
+    "columns": "The grid columns; combined with `minCardWidth`, and at a low width it reduces by itself.",
+    "minCardWidth": "Minimum width of each card, pixels.",
+    "gap": "Spacing between the cards.",
+    "radius": "Radius of the global spotlight.",
+    "softness": "Softness of the light's edge; zero is a sharp disc, one is a complete blur from the center.",
+    "damping": "The lag of the light's pursuit; zero sticks to the pointer.",
+    "fadeOut": "The time in seconds to turn off after the pointer leaves.",
+    "grayscale": "How grayscale the normal state is; 0 means always colored.",
+    "dim": "Darkness behind the light.",
+    "glow": "The hue of the light that settles on the card under the spotlight.",
+    "borderGlow": "Glow of the card edges in their own hue.",
+    "reveal": "A global light under the pointer, or each card coloring independently on hover.",
+    "aspectRatio": "Image ratio of the cards; such as \"1 / 1\" or \"16 / 10\".",
+    "cardRadius": "Corner radius of the cards.",
+    "showInfo": "The title and subtitle on the cards.",
+    "frame": "Glass frame around the grid.",
+    "theme": "Palette of the frame and the tiles.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "Each card's `accent` hue is visible only under the light: the card's edge and the colored wash beneath the image light up in that same hue — great for the gallery's visual categorization (each topic a hue).",
+    "`reveal=\"card\"` is better for touch rows: a global spotlight makes no sense on a touch screen and each card colors independently on hover.",
+    "Halve `grayscale` so the gallery stays \"colored by cool light\" — it gives an appealing middle state that is neither black and white nor fully colored.",
+    "With a long `fadeOut`, the light's shutdown becomes drawn out and cinematic; with zero it is instant — for busy galleries instant is better.",
+    "It has no dependency and no permanent rAF loop: the light's falloff is a pre-built 13-stop gradient that only moves with two coordinate variables."
+  ]
+}

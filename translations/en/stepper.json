@@ -1,0 +1,38 @@
+{
+  "description": "Walk the user through steps one at a time; you can use numbers, dots, or bars as indicators, lay the flow out horizontally or vertically, and swap each step's content with a smooth transition.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Clicking any indicator takes you straight to that step; in linear mode only the steps you have already reached are open. The back/next buttons mirror themselves in RTL, and on the last step the button becomes \"Finish\". The panel height also eases open between steps.",
+  "props": {
+    "children": "The steps; each inside a `<Step>` with a `title`, a `description`, and an optional `icon`.",
+    "step": "If you want to own the current step yourself, pass this together with `onStepChange`; without it, the component starts from `initialStep`.",
+    "initialStep": "The step shown first.",
+    "onStepChange": "Called every time the step changes.",
+    "onFinalStepCompleted": "When the last step is passed.",
+    "indicator": "The shape of the indicators in horizontal layout; vertical always uses numbers.",
+    "orientation": "Indicators above the content or in a rail beside it; below 520 pixels the rail collapses on its own.",
+    "transition": "How content moves between steps; the height eases in every mode too.",
+    "linear": "Linear navigation: you can only go back to steps you have already reached.",
+    "disableStepIndicators": "Turns off clicking on the indicators.",
+    "renderStepIndicator": "Render your own custom indicator.",
+    "showFooter": "Whether the back/next buttons are shown.",
+    "backButtonText": "Text of the back button; the default is Persian.",
+    "nextButtonText": "Text of the next button.",
+    "completeButtonText": "Text of the next button on the final step.",
+    "backButtonProps": "Extra props for the back button, such as `disabled`.",
+    "nextButtonProps": "Extra props for the next button.",
+    "completedContent": "Content that takes the place of the steps; if omitted, the buttons collapse and only the checks remain.",
+    "theme": "Palette for the frame and controls; you can also override the colors from outside with the `--stepper-*` variables.",
+    "accentColor": "Color of completed steps, the progress bar, and the next button; the text color on top is derived automatically from the color's lightness.",
+    "frame": "The glass frame around the stepper.",
+    "radius": "Corner roundness of the frame, in pixels.",
+    "width": "Maximum width of the stepper.",
+    "className": "Extra class for the root.",
+    "style": "Inline style for the root."
+  },
+  "tips": [
+    "If it is a real form, turn on `linear`; that way the user cannot jump from step 2 to 4, and only the steps they have reached are open.",
+    "On mobile the layout becomes vertical and compact on its own; you do not need to write a media query.",
+    "Provide `completedContent` so a finish screen takes the place of the steps; otherwise only the checks and indicators remain.",
+    "Got several steppers one after another? Just change each one's `initialStep`; to sync with outside state, pass `step` and `onStepChange` as well."
+  ]
+}

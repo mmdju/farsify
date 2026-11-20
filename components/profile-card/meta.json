@@ -1,0 +1,166 @@
+{
+  "slug": "profile-card",
+  "name": "Profile Card",
+  "description": "A holographic profile card with spring tilt under the pointer, a patternable holo layer, light glare and parallax depth — plus a status indicator and a contact button.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Hover / Touch / Gyroscope",
+  "interactionNotes": "The card tilts under the pointer with a spring, the light rotates with it and the hologram layer shifts in place; on touch the same happens with your finger, and with `enableMobileTilt` tilting the phone also moves the card (on iOS it asks for permission on the first touch). Entry is a stretched 1.4-second spring. The geometry is not mirrored: tilt and light are physical.",
+  "props": [
+    {
+      "name": "avatarUrl",
+      "type": "string",
+      "description": "Portrait on the tile."
+    },
+    {
+      "name": "iconUrl",
+      "type": "string",
+      "description": "Image for the hologram pattern; without it a soft gradient is used."
+    },
+    {
+      "name": "miniAvatarUrl",
+      "type": "string",
+      "description": "Small round avatar next to the handle in the footer."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "defaultValue": "\"نامِ تو\"",
+      "description": "Name on the tile — the default is a placeholder, not an invented person."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "\"عنوانِ شغلی\"",
+      "description": "Below the name."
+    },
+    {
+      "name": "handle",
+      "type": "string",
+      "defaultValue": "\"username\"",
+      "description": "The handle in the footer (without @; it is added for you)."
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "defaultValue": "\"آنلاین\"",
+      "description": "Status text below the handle."
+    },
+    {
+      "name": "statusColor",
+      "type": "string",
+      "defaultValue": "\"#22c55e\"",
+      "description": "Color of the status indicator."
+    },
+    {
+      "name": "contactText",
+      "type": "string",
+      "defaultValue": "\"پیام\"",
+      "description": "Text of the contact button."
+    },
+    {
+      "name": "showUserInfo",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the handle/status/contact footer is shown."
+    },
+    {
+      "name": "onContactClick",
+      "type": "() => void",
+      "description": "Click of the contact button."
+    },
+    {
+      "name": "contactHref",
+      "type": "string",
+      "description": "If passed, the contact button becomes a real link (new tab, `rel=noreferrer`)."
+    },
+    {
+      "name": "theme",
+      "type": "\"dark\" | \"light\"",
+      "defaultValue": "\"dark\"",
+      "description": "Frame and tile palette."
+    },
+    {
+      "name": "backdropColor",
+      "type": "string",
+      "description": "Background color of the tile; the hologram foil derives from how dark or light this color is. Omitting it means the theme tile."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "16",
+      "description": "Card corner radius."
+    },
+    {
+      "name": "holo",
+      "type": "number",
+      "defaultValue": "0.8",
+      "description": "Hologram layer intensity; 0 to 1."
+    },
+    {
+      "name": "glare",
+      "type": "number",
+      "defaultValue": "0.5",
+      "description": "Intensity of the following light glare; 0 to 1."
+    },
+    {
+      "name": "enableTilt",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Tilt with pointer/touch."
+    },
+    {
+      "name": "tiltStrength",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "Maximum tilt angle, in degrees."
+    },
+    {
+      "name": "parallax",
+      "type": "number",
+      "defaultValue": "8",
+      "description": "Layer movement with the pointer, in pixels."
+    },
+    {
+      "name": "enableMobileTilt",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Gyroscope tilt on mobile."
+    },
+    {
+      "name": "mobileTiltSensitivity",
+      "type": "number",
+      "defaultValue": "5",
+      "description": "Gyroscope sensitivity."
+    },
+    {
+      "name": "intro",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "The 1.4-second entry spring."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Auto demo: an imaginary pointer slowly circles the card so tilt, glare and hologram are visible in non-interactive previews (bento/list). It turns off with `prefers-reduced-motion`."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "⚠️ This component's CSS variable prefix is `--pfc-*`, not `--pc-*` — that prefix belongs to sponsor-card in this repo (precedent: paper-crumple with `--pcr-*`). The names were changed mechanically and no value differs.",
+    "The hologram foil derives from how dark or light `backdropColor` is (dark surface = color-dodge, light = multiply) — so the backdrop color also changes the hologram's character, not just the background.",
+    "The text defaults (\"online\"/\"message\") were made Persian; pass the Persian name and title from props and set the Persian line's `line-height` deliberately (1.25 for the name / 1.45 for the title — above the font ink).",
+    "On mobile you get two separate sensations: touching the card itself and — with `enableMobileTilt` — tilting the phone itself; the iOS permission pattern is automatic.",
+    "In the light theme the foil gets `invert(1) hue-rotate(180deg)` — pass the dark color pattern so it looks right in both themes."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 474,
+  "version": 1
+}

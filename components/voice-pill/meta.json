@@ -1,0 +1,181 @@
+{
+  "slug": "voice-pill",
+  "name": "Voice Pill",
+  "description": "A voice-recording button that opens like a messaging app: you hold it, it shows a waveform, and you slide aside to cancel.",
+  "category": "actions",
+  "dependencies": [],
+  "interactionType": "Hold / Drag / Keyboard",
+  "interactionNotes": "Hold the button to start recording; the timer and waveform open right there. If you drag your finger toward cancel, the color and text warn you, and releasing in that state cancels the recording instead of sending it. With a keyboard, Space starts and Escape cancels.",
+  "props": [
+    {
+      "name": "accentColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Accent color of the recording state."
+    },
+    {
+      "name": "iconColor",
+      "type": "string",
+      "defaultValue": "\"#a1a1aa\"",
+      "description": "Color of the microphone icon at rest."
+    },
+    {
+      "name": "background",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Background color of the pill."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "defaultValue": "40",
+      "description": "Diameter of the button in the closed state, in pixels."
+    },
+    {
+      "name": "shape",
+      "type": "VoicePillShape",
+      "defaultValue": "\"pill\"",
+      "options": [
+        "pill",
+        "rounded"
+      ],
+      "description": "Shape when open: pill or rounded."
+    },
+    {
+      "name": "reach",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "How far the pill opens ahead of the button."
+    },
+    {
+      "name": "showTime",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Show the recording time."
+    },
+    {
+      "name": "waveform",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Show the waveform."
+    },
+    {
+      "name": "slideToCancel",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Cancel by sliding aside."
+    },
+    {
+      "name": "cancelDistance",
+      "type": "number",
+      "defaultValue": "64",
+      "description": "How far you have to drag to cancel."
+    },
+    {
+      "name": "attack",
+      "type": "number",
+      "defaultValue": "40",
+      "description": "How fast the wave reacts to louder sound, in milliseconds."
+    },
+    {
+      "name": "release",
+      "type": "number",
+      "defaultValue": "240",
+      "description": "How fast the wave returns, in milliseconds."
+    },
+    {
+      "name": "sensitivity",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Waveform sensitivity."
+    },
+    {
+      "name": "floor",
+      "type": "number",
+      "defaultValue": "0.1",
+      "description": "The minimum height the wave bars have."
+    },
+    {
+      "name": "openDuration",
+      "type": "number",
+      "defaultValue": "200",
+      "description": "Opening duration, in milliseconds."
+    },
+    {
+      "name": "pressScale",
+      "type": "number",
+      "defaultValue": "0.95",
+      "description": "Button scale while pressed."
+    },
+    {
+      "name": "mode",
+      "type": "VoicePillMode",
+      "defaultValue": "\"auto\"",
+      "options": [
+        "auto",
+        "hold",
+        "toggle"
+      ],
+      "description": "Whether it works by holding or by a single tap."
+    },
+    {
+      "name": "holdAfter",
+      "type": "number",
+      "defaultValue": "300",
+      "description": "In auto mode, how long a hold means recording."
+    },
+    {
+      "name": "reactive",
+      "type": "VoicePillSource",
+      "defaultValue": "\"simulated\"",
+      "options": [
+        "simulated",
+        "mic"
+      ],
+      "description": "Where the wave comes from: simulated or a real microphone."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Disable the button."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"ضبطِ صدا\"",
+      "description": "Screen reader label."
+    },
+    {
+      "name": "onStart",
+      "type": "(info) => void",
+      "description": "When recording starts."
+    },
+    {
+      "name": "onStop",
+      "type": "(info) => void",
+      "description": "When recording ends; the reason comes with it."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Automatic waveform preview without interaction; for a showcase card."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class on the root."
+    }
+  ],
+  "tips": [
+    "mic mode needs a real microphone and the browser will ask for permission; for a demo, simulated mode is hassle-free.",
+    "For a button that starts with one tap and ends with another, use toggle mode.",
+    "If you turn off slide-to-cancel, the user can finish recording only by releasing."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 674,
+  "version": 1
+}

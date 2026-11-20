@@ -1,0 +1,36 @@
+{
+  "description": "A bento grid with follow-the-pointer border glow, surface spotlight, springy tilt and magnetism, click ripple and star particles — with six built-in visuals from a chart to an integrations hub.",
+  "interactionType": "Hover / Click / Keyboard",
+  "interactionNotes": "Light near a card lights its border in the glow hue and casts a spotlight on the card itself; with tilt and magnetism the card under the pointer comes alive, and a click sends a ripple out from the click point and replays that card's inner animations. With the keyboard, Enter/Space fires the same click. The geometry is not mirrored: light and tilt are pointer physics, and the chart's time axis stays left-to-right on purpose (a chart convention).",
+  "props": {
+    "items": "The cards; each has `title`, `description`, `label`, `icon`, `visual` (the name of one of the six visuals or any ReactNode), `image`, `content`, `href` and `colSpan`/`rowSpan`. Without them, six sample cards are shown.",
+    "columns": "Grid columns; at narrow widths it becomes two or one column on its own (minimum cell 150px).",
+    "rowHeight": "Height of each grid row, in pixels.",
+    "gap": "Spacing between cards.",
+    "radius": "Corner radius of the cards; the inner padding is derived from this number too.",
+    "theme": "Overall palette; it can also be changed with the `--mb-*` variables.",
+    "glowColor": "Hue of the border glow and the accent of the visuals; omitting it means the theme ink.",
+    "textAutoHide": "Text fades out on pointer interaction so the visual can breathe.",
+    "enableBorderGlow": "Border glow as the light gets close.",
+    "enableSpotlight": "Spotlight on the card surface.",
+    "spotlightRadius": "Radius of the spotlight and reach of the border glow.",
+    "enableStars": "Star particles on a canvas that only come alive inside the light.",
+    "particleCount": "Number of particles per card (0 to 120).",
+    "enableTilt": "Springy tilt of the card under the pointer.",
+    "enableMagnetism": "Pulling the card toward the pointer.",
+    "clickEffect": "Click ripple + replay of that card's inner animations.",
+    "intro": "Staggered entrance of the cards + an opening ripple when they come into view.",
+    "disableAnimations": "Turns motion off entirely (it also respects `prefers-reduced-motion`).",
+    "onItemClick": "Click on any card.",
+    "className": "Extra class for the root.",
+    "style": "Inline style for the root."
+  },
+  "tips": [
+    "The engine only runs rAF when something is moving — zero CPU work at rest; and with `prefers-reduced-motion` everything settles instantly.",
+    "The `glowColor` hue does two jobs: the cards' border and the accent of the inner visuals (chart line, peak bar, flow rail) — one color makes the whole bento a family.",
+    "The star particles (`enableStars`) are deliberately visible only inside the spotlight radius — they are dead with the spotlight off; pass the two together.",
+    "The six inner visuals come through `visual`, and with `content` you can put in entirely your own content; `colSpan`/`rowSpan` builds the irregular bento layout.",
+    "In the light theme the presets' bright hues get darker (orange → #ea580c, and so on) — if you pass a custom color, check it in both themes.",
+    "Text on the cards fades out during interaction (`textAutoHide`) so the visuals can breathe — turn it off for text-only cards."
+  ]
+}

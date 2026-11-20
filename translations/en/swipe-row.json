@@ -1,0 +1,39 @@
+{
+  "description": "A row whose hidden actions are revealed by swiping to the side; a full swipe performs the action itself.",
+  "interactionType": "Drag / Keyboard",
+  "interactionNotes": "Drag the row to the side to bring the actions out from the edge. If you pull too little it springs back; if you pass the threshold it stays there. Pull all the way and release to run the action directly. With a keyboard, the arrow keys open and close the row.",
+  "props": {
+    "children": "The content of the row itself.",
+    "actions": "The actions that come out when you swipe.",
+    "actionColor": "Background of the action area.",
+    "drawerColor": "Color of the drawer, beneath the row.",
+    "rowColor": "Color of the row itself.",
+    "textColor": "Text color of the row.",
+    "height": "Height of the row.",
+    "radius": "Corner radius.",
+    "actionWidth": "Width of each action.",
+    "direction": "The direction the row moves as it opens; the drawer comes out from the opposite edge.",
+    "snapBounce": "Spring bounce when it snaps into place.",
+    "resistance": "Resistance against over-dragging.",
+    "collapseMs": "Duration of the collapse after an action runs.",
+    "commitAt": "From what percentage of the width a drag counts as a full swipe.",
+    "fullSwipe": "Whether a full swipe runs the action directly.",
+    "disabled": "Disables dragging.",
+    "open": "Controlled open state.",
+    "onOpenChange": "Called when the row opens or closes.",
+    "onCommit": "Called after the swipe completes; the moment the action is committed.",
+    "onAction": "A simpler version of `onCommit`; for when only the result matters.",
+    "autoPreview": "Rows open and close one after another by themselves; for a showcase card.",
+    "closeOnAction": "Whether the row closes itself after an action is chosen.",
+    "haptic": "A short vibration on touch devices at the moment the swipe commits.",
+    "label": "The default row text, when you have not passed anything to `rows`.",
+    "className": "Extra class on the root.",
+    "style": "Inline style on the root."
+  },
+  "tips": [
+    "The first action in the list is the primary one — the one a full swipe runs. The rest are laid out after it.",
+    "With `dismiss` on an action, that one also collapses the row; without it, the drawer only closes.",
+    "The texts are Persian and the rest of the behavior is the default — including the `direction` default, which brings the drawer out from the right.",
+    "`onCommit` is called after the collapse animation finishes — if you change the list right there, the user will not see a jump."
+  ]
+}

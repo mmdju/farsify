@@ -1,0 +1,67 @@
+{
+  "slug": "theme-selector",
+  "name": "ThemeSelector",
+  "description": "Two small cards, each showing a theme as a miniature preview of a browser window; click either one or move with the arrow keys and the selection ring settles on it while its label lights up.",
+  "category": "inputs",
+  "dependencies": [],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "This is a radiogroup with two options: a click selects an option, and the arrows (plus Home/End) move through the options with a roving tabindex and select as they go. Hovering an unselected option shows a subtle ring, and the active option always has a ring with a bold label. Keyboard focus turns on the brand's third ring. `value` makes it controlled — `null` means nothing is selected — and `disabled` dims the whole group and makes it inert. The previews scale with container queries and stay intact at any card size.",
+  "props": [
+    {
+      "name": "themes",
+      "type": "ThemeOption[]",
+      "defaultValue": "DEFAULT_THEMES",
+      "description": "The theme options; each has a `value`, a label, and a six-color palette for painting the preview (sidebar/panel/border/strong/muted/tile). You can supply your own palette."
+    },
+    {
+      "name": "value",
+      "type": "string | null",
+      "description": "Controlled value; `undefined` means the component holds its own state, and `null` means controlled with nothing selected (for example before the theme is known on the client)."
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "defaultValue": "themes[0].value",
+      "description": "The initially selected option in uncontrolled mode; if you do not pass it, the first option is selected."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "description": "Called on every new selection; in controlled mode it is the only way to learn about the user's choice."
+    },
+    {
+      "name": "labels",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Show the Persian label (\"Dark\"/\"Light\") under each card; the label lights up when selected."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dims the whole group and makes it ignore the pointer and the keyboard (`aria-disabled` is set too)."
+    },
+    {
+      "name": "itemClassName",
+      "type": "string",
+      "description": "Extra class for each option's button — for example, to change the width of the cards."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra class for the group container (it sits on `flex gap-5`)."
+    }
+  ],
+  "tips": [
+    "Besides clicking and the arrows, `Home` selects the first option and `End` the last — standard radiogroup behavior, which this component has too.",
+    "If you pass `value={null}` nothing is selected and all options stay reachable with Tab; it is made for the \"the user's theme is not known yet\" case.",
+    "The previews are drawn with the `cqw` unit against a container query; the bigger the card, the bigger the drawing, without stretching — for larger cards just pass `itemClassName=\"w-56\"`.",
+    "The arrows are physical (`ArrowRight` is the next option), as per the default; the cards, however, lay out right-to-left in RTL, and the inner drawing keeps its default shape with `dir=\"ltr\"`.",
+    "The colors inside each `ThemeOption` are drawing data and stay as hex (intentionally); the component's own frame (card surface, label ink, focus ring) reads from the site tokens.",
+    "With `prefers-reduced-motion` the transitions of the rings and labels are turned off; the selection moves instantly without motion."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 285,
+  "version": 1
+}

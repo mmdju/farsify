@@ -1,0 +1,46 @@
+@keyframes slc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slc-spinner {
+  animation: slc-spin 1s linear infinite;
+  animation-play-state: paused;
+}
+
+.slc-root[data-phase="pending"] .slc-spinner {
+  animation-play-state: running;
+}
+
+.slc-root {
+  letter-spacing: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slc-root,
+  .slc-root * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes slc-breathe {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  .slc-spinner {
+    animation: slc-breathe 1.4s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+
+  .slc-root[data-phase="pending"] .slc-spinner {
+    animation-play-state: running;
+  }
+}

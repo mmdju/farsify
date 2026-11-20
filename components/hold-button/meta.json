@@ -1,0 +1,168 @@
+{
+  "slug": "hold-button",
+  "name": "Hold Button",
+  "description": "A button that only fills while held; releasing early empties it, and the fill edge advances with a water ripple.",
+  "category": "actions",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Hold / Keyboard / Touch",
+  "interactionNotes": "Hold the button so it fills from one edge; releasing before it finishes empties it with the same ease, and a release under 250 milliseconds counts as a tap. Space and Enter also start holding, and Escape cancels. The pointer leaving or the window being hidden also cancels, so nothing is half-confirmed. After completion the label fades/blurs to \"Deleted\" and, if `resetAfter` is positive, the button returns to idle.",
+  "props": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "defaultValue": "\"برای حذف نگه دار\"",
+      "description": "The button text in the normal state."
+    },
+    {
+      "name": "doneLabel",
+      "type": "ReactNode",
+      "defaultValue": "\"حذف شد\"",
+      "description": "The button text after the hold completes."
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "description": "Optional icon beside the normal text."
+    },
+    {
+      "name": "doneIcon",
+      "type": "ReactNode",
+      "description": "Optional icon beside the done text."
+    },
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "defaultValue": "\"#27272a\"",
+      "description": "Background of the button."
+    },
+    {
+      "name": "fillColor",
+      "type": "string",
+      "defaultValue": "\"#5227FF\"",
+      "description": "Color of the fill and the glow."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "\"#f5f5f5\"",
+      "description": "Text color in the normal state."
+    },
+    {
+      "name": "fillTextColor",
+      "type": "string",
+      "defaultValue": "\"#ffffff\"",
+      "description": "Text color over the filled part."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "defaultValue": "\"md\"",
+      "options": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "description": "Height and font size: 36 / 44 / 52 pixels."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "14",
+      "description": "Corner radius, pixels."
+    },
+    {
+      "name": "fillDirection",
+      "type": "\"right\" | \"up\"",
+      "defaultValue": "\"right\"",
+      "options": [
+        "right",
+        "up"
+      ],
+      "description": "Fill direction. In RTL, \"right\" is still the start edge and it does not flip."
+    },
+    {
+      "name": "holdTime",
+      "type": "number",
+      "defaultValue": "2000",
+      "description": "How many milliseconds to hold for confirmation."
+    },
+    {
+      "name": "releaseTime",
+      "type": "number",
+      "defaultValue": "200",
+      "description": "Duration of emptying after release or when returning to idle."
+    },
+    {
+      "name": "pressScale",
+      "type": "number",
+      "defaultValue": "0.97",
+      "description": "Button scale while holding with the pointer."
+    },
+    {
+      "name": "wave",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Toggles the ripple on the fill edge."
+    },
+    {
+      "name": "waveAmplitude",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "Wave amplitude, pixels."
+    },
+    {
+      "name": "glow",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Glow around the button while holding and when done."
+    },
+    {
+      "name": "resetAfter",
+      "type": "number",
+      "defaultValue": "1200",
+      "description": "How many milliseconds after confirming to return to idle; zero means never."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Dims and ignores input."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only: it runs the full hold-and-release cycle itself so the fill and the springy pop can be seen."
+    },
+    {
+      "name": "onHold",
+      "type": "() => void",
+      "description": "Called when the hold completes."
+    },
+    {
+      "name": "onTap",
+      "type": "() => void",
+      "description": "Called when the release came before 250 milliseconds (a tap)."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root element."
+    }
+  ],
+  "tips": [
+    "Use `onHold` for the final action and `onTap` for a guidance message (\"Hold to delete\") — keep the two apart, and a tap never counts as confirmation.",
+    "Do not set `holdTime` shorter than 600ms; below that a tap and a hold cannot be told apart and the user deletes without meaning to. The component itself defaults to 2000ms.",
+    "If you want the button to stay on \"Deleted\" after confirming, pass `resetAfter={0}` — otherwise it returns to idle after 1200ms. For list rows, zero is usually the right choice.",
+    "In Persian the fill direction does not flip: `fillDirection=\"right\"` fills from the start edge of the sentence, which is what a Persian reader's eye expects; use \"up\" for tall and narrow buttons.",
+    "The screen-reader text is generated automatically from `holdTime` (\"Hold for 2 seconds to confirm\") and announced with Persian digits; for actions other than delete, change `children` and `doneLabel` — you do not need to supply the assistive text by hand.",
+    "With `prefers-reduced-motion` the ripple and pulse turn off and the fill is shown only by a change in opacity; the hold logic and timing stay untouched."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 399,
+  "version": 1
+}

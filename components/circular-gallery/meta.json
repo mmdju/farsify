@@ -1,0 +1,160 @@
+{
+  "slug": "circular-gallery",
+  "name": "Circular Gallery",
+  "description": "An arced strip of image cards wrapped around an invisible cylinder: it turns with drag or mouse wheel, fades at both edges, and picks up a subtle wave during a fast spin. Clicking a card opens it — it scales up, its description appears, and the rest dim and lose their color.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Drag / Mouse wheel / Keyboard / Click",
+  "interactionNotes": "Drag or spin with the mouse wheel — motion is inertial and snaps to the nearest card when it stops. The arrows and PageUp/PageDown step card by card, and Home/End jump to the two ends. Clicking a card opens it (a second click or Escape closes it), and hover lifts the card slightly.",
+  "props": [
+    {
+      "name": "items",
+      "type": "Array<{ image: string; text?: string; description?: string; alt?: string }>",
+      "defaultValue": "۱۲ عکسِ نمونه",
+      "description": "The gallery images; `text` is the label under the card, `description` is the copy in the open state, and `alt` is the alternative text. Images are center-cropped, so an aspect ratio close to the card's gives the cleanest result."
+    },
+    {
+      "name": "bend",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "Depth of the rail's arc; zero means a flat row. Negative bends the arc the other way."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "'#ffffff'",
+      "description": "Color of the labels, the keyboard focus ring, and the placeholder for an image that is loading."
+    },
+    {
+      "name": "borderRadius",
+      "type": "number",
+      "defaultValue": "0.05",
+      "description": "Corner rounding of the cards relative to their shorter side (0 to 0.5)."
+    },
+    {
+      "name": "font",
+      "type": "string",
+      "defaultValue": "'bold 30px Figtree'",
+      "description": "Label font as a full CSS shorthand. If it stays at the default, the typeface loads from Google Fonts; for Persian, pass your own font."
+    },
+    {
+      "name": "fontUrl",
+      "type": "string",
+      "defaultValue": "—",
+      "description": "URL of a custom font file or stylesheet; if you pass one, the default fetch is skipped and the family comes from here instead."
+    },
+    {
+      "name": "scrollSpeed",
+      "type": "number",
+      "defaultValue": "2",
+      "description": "Response multiplier for dragging and the mouse wheel."
+    },
+    {
+      "name": "scrollEase",
+      "type": "number",
+      "defaultValue": "0.05",
+      "description": "Springiness of the target chase (0.001 to 1); lower is softer and slower."
+    },
+    {
+      "name": "itemSize",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Card size multiplier relative to the scene height (0.2 to 2)."
+    },
+    {
+      "name": "itemAspect",
+      "type": "number",
+      "defaultValue": "0.78",
+      "description": "Width-to-height ratio of the cards; below 1 they become more vertical."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "0.26",
+      "description": "Spacing between cards relative to card width."
+    },
+    {
+      "name": "wave",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Surface wave that travels across the cards during a fast spin; zero means no wave."
+    },
+    {
+      "name": "fadeEdges",
+      "type": "number",
+      "defaultValue": "0.12",
+      "description": "Width of the fade at both scene edges relative to the width (0 to 0.5); zero means a hard cut."
+    },
+    {
+      "name": "shadow",
+      "type": "number",
+      "defaultValue": "0.25",
+      "description": "Strength of the soft shadow under the cards; zero means no shadow."
+    },
+    {
+      "name": "grayscale",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Keep inactive cards black and white and color them on hover or activation."
+    },
+    {
+      "name": "showTitles",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Show the label under the cards."
+    },
+    {
+      "name": "snap",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "After release, snap to the nearest card and activate it."
+    },
+    {
+      "name": "autoScroll",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Gentle automatic drift after 1.8 seconds of stillness; it stops on hover, drag, an open card, or keyboard focus."
+    },
+    {
+      "name": "openOnClick",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "A click on a card opens it; turn it off so a click only activates the card."
+    },
+    {
+      "name": "intro",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Staggered entrance animation of the cards on first render."
+    },
+    {
+      "name": "onItemClick",
+      "type": "(item: GalleryItem, index: number) => void",
+      "defaultValue": "—",
+      "description": "Called when any card is clicked (before it opens)."
+    },
+    {
+      "name": "onActiveChange",
+      "type": "(index: number) => void",
+      "defaultValue": "—",
+      "description": "Called when the active card changes (rotation, snap, or keyboard)."
+    },
+    {
+      "name": "dpr",
+      "type": "number",
+      "defaultValue": "دستگاه",
+      "description": "Render pixel ratio; it defaults to the device's and is capped at 2."
+    }
+  ],
+  "tips": [
+    "Zero dependencies: the engine is raw WebGL2 — a texture atlas of all the images is built once and each card is drawn with a single draw call.",
+    "If WebGL2 is unavailable the scene stays silent — that is the default behavior too; the accessibility labels for the keyboard are always there.",
+    "For a 'display row' gallery set `itemAspect` below 1 and `gap` high; for a wide grid, `itemAspect` above 1 with a low `bend`.",
+    "Under `prefers-reduced-motion` the intro becomes instant, the wave and drift are off, and snapping happens immediately; manual dragging is untouched.",
+    "The component's default font (Figtree) comes from Google Fonts; for Persian, pass your own font to `font` so no external request is made."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 1240,
+  "version": 1
+}

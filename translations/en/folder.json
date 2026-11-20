@@ -1,0 +1,43 @@
+{
+  "description": "A three-dimensional folder whose flap opens on click; the papers come out, peek when hovered, and can be dropped anywhere by dragging.",
+  "interactionType": "Click / Drag / Hover / Keyboard",
+  "interactionNotes": "Clicking the folder body opens and closes it; while open, hovering a paper lifts it, a click zooms it, and dragging takes it out of the folder. Clicking outside or Escape closes it. Papers that came out go back by dragging them into the folder again.",
+  "props": {
+    "items": "What the folder holds, at most 6 entries. Each entry can be a string, `{ title, description }`, `{ image, title, alt }`, `{ content }`, or a React element.",
+    "children": "Custom documents as children; each child becomes a paper (it takes precedence over `items`).",
+    "mode": "`flap` keeps the folder upright and opens its flap; `book` lays it flat and turns the cover like a book.",
+    "variant": "The folder's material; `glass` makes the flap refractive glass and shows the papers inside through it.",
+    "layout": "Arrangement of the papers when the folder is open: free spread, vertical stack, or tidy row.",
+    "color": "Color of the folder; shadows and the light/dark layers are derived from it. Omit it to stay in tune with the mono surface theme; the blue `#3b82f6` is only the accent of the dock's blue slot.",
+    "paperColor": "Color of the papers.",
+    "label": "Text of the tab label; the tab grows to fit the text.",
+    "tabPosition": "Where the tab sits on the top edge (in right-to-left layout, `right` is the start side).",
+    "openOn": "Open on click, or while the pointer is over the folder.",
+    "open": "Controlled state; pass `onOpenChange` alongside it.",
+    "defaultOpen": "The folder starts open.",
+    "onOpenChange": "Called on every open or close.",
+    "onItemClick": "On clicking a paper, when the folder is open or the paper has been taken out.",
+    "onItemDrop": "On releasing a dragged paper; `inside` says whether it landed inside the folder or outside.",
+    "draggable": "Allow dragging papers out of the folder and dropping them anywhere.",
+    "zoomOnClick": "Clicking a paper brings it close; another click, Escape, or an outside click returns it.",
+    "peek": "On hover the papers peek out a little; in flap mode, the paper under the pointer lifts more.",
+    "intro": "When it comes into view, the papers drop in and the folder closes over them.",
+    "size": "Overall scale of the folder.",
+    "frost": "Amount of glass frosting, 0 to 1; only with `variant='glass'`.",
+    "tilt": "How much the folder tilts toward the pointer, 0 to 1.5.",
+    "speed": "Speed of all animations.",
+    "bounce": "How much the flap/cover/papers bounce when settling, 0 to 1.",
+    "closeOnOutsideClick": "Close on an outside click or Escape.",
+    "theme": "Matches the shadows and focus to a dark or light theme.",
+    "className": "Extra class for the root.",
+    "style": "Inline style; it sits after the color variables."
+  },
+  "tips": [
+    "Keep the label short and Persian; the tab grows with the text width and does not overflow the edge.",
+    "The paper drawing reads direction from CSS; keep `dir=\"rtl\"` on the page or parent so Persian lines are laid out from the right.",
+    "`variant='glass'` gives the best result on WebGL2; without it you still get the same CSS glass with `backdrop-filter`.",
+    "Papers can be dragged out and dropped back in; `onItemDrop` tells you which case happened.",
+    "Under `prefers-reduced-motion` the intro and the springs calm down; content and accessibility stay untouched.",
+    "For narrow cards lower `size`; the spread-open papers need more width than the folder itself."
+  ]
+}
