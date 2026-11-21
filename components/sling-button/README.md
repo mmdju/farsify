@@ -45,18 +45,26 @@ export function SendButton() {
   );
 }
 
-// کششِ محورِ عمودی، لنت بزرگ‌تر و پرتابی خشک‌تر
-<SlingButton
-  size={72}
-  maxPull={260}
-  armAt={64}
-  axis="vertical"
-  recoil={0.05}
-  particles={0}
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* کششِ محورِ عمودی، لنت بزرگ‌تر و پرتابی خشک‌تر */}
+      <SlingButton
+        size={72}
+        maxPull={260}
+        armAt={64}
+        axis="vertical"
+        recoil={0.05}
+        particles={0}
+      />
 
-// بدونِ ارسال با ضربه — فقط کشیدنِ مسلح می‌فرستد
-<SlingButton tapSends={false} onSend={handleSend} />
+      {/* بدونِ ارسال با ضربه — فقط کشیدنِ مسلح می‌فرستد */}
+      <SlingButton tapSends={false} onSend={handleSend} />
+    </>
+  );
+}
+
 ```
 
 ## Props

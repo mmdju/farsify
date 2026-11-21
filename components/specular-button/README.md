@@ -31,23 +31,31 @@ export function HeroActions() {
   );
 }
 
-// روی گرادیانت: بدنه‌ی شیشه خاموش تا رنگِ پشت دیده شود
-<SpecularButton
-  href="/components"
-  tint="var(--brand)"
-  tintOpacity={0}
-  className="bg-gradient-to-b from-blue-500 to-blue-600"
-  textColor="#ffffff"
-  lineColor="#ffffff"
-  radius={12}
->
-  دیدن کامپوننت‌ها
-</SpecularButton>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* روی گرادیانت: بدنه‌ی شیشه خاموش تا رنگِ پشت دیده شود */}
+      <SpecularButton
+        href="/components"
+        tint="var(--brand)"
+        tintOpacity={0}
+        className="bg-gradient-to-b from-blue-500 to-blue-600"
+        textColor="#ffffff"
+        lineColor="#ffffff"
+        radius={12}
+      >
+        دیدن کامپوننت‌ها
+      </SpecularButton>
 
-// نورِ خودگردان روی سطحِ تیره
-<SpecularButton autoAnimate speed={0.5} idleIntensity={0.6}>
-  ادامه
-</SpecularButton>
+      {/* نورِ خودگردان روی سطحِ تیره */}
+      <SpecularButton autoAnimate speed={0.5} idleIntensity={0.6}>
+        ادامه
+      </SpecularButton>
+    </>
+  );
+}
+
 ```
 
 ## Props
@@ -58,7 +66,7 @@ export function HeroActions() {
 | `href` | `string` | — | — | If given, the button becomes a link (`<a>`); without it, a `<button>`. |
 | `size` | `"sm" | "md" | "lg"` (`sm` · `md` · `lg`) | `"md"` | — | Size; padding and font change together. |
 | `radius` | `number` | `12` | — | Corner radius, pixels. Above half the height means a pill. |
-| `tint` | `string` | `var(--brand)` | — | The glass body color; any CSS color format. |
+| `tint` | `string` | `var(--primary)` | — | The glass body color; any CSS color format. |
 | `tintOpacity` | `number` | `1` | — | Body color density, 0 to 1. Zero to put a gradient behind the button. |
 | `blur` | `number` | `0` | — | Blur behind the button, pixels. |
 | `textColor` | `string` | `#ffffff` | — | Label color; it also accepts `currentColor`. |
@@ -78,6 +86,8 @@ export function HeroActions() {
 | `onClick` | `MouseEventHandler` | — | — | Click; on `<button>`. |
 | `className` | `string` | `''` | — | Extra class for the button itself. |
 | `style` | `CSSProperties` | — | — | Inline style (applied after the color variables). |
+| `target` | `string` | — | — | وقتی `href` دادی، مقصدِ باز شدنِ پیوند: `"_blank"` برای تبِ تازه. |
+| `rel` | `string` | — | — | مقدارِ `rel` پیوند؛ با `target="_blank"` معمولاً `"noreferrer noopener"`. |
 
 ## Tips
 

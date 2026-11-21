@@ -35,20 +35,28 @@ export function DeleteAccount() {
   );
 }
 
-// کنشِ دیگر و متنِ تمام‌شده‌ی خودش — رهاشده پس از تأیید، روی «ارسال شد» می‌ماند
-<HoldButton doneLabel="ارسال شد" resetAfter={0}>
-  برای ارسال نگه دارید
-</HoldButton>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* کنشِ دیگر و متنِ تمام‌شده‌ی خودش — رهاشده پس از تأیید، روی «ارسال شد» می‌ماند */}
+      <HoldButton doneLabel="ارسال شد" resetAfter={0}>
+        برای ارسال نگه دارید
+      </HoldButton>
 
-// دکمه‌ی بلند و باریک: پر شدن از پایین، موجِ افقی، بی‌هاله
-<HoldButton
-  size="lg"
-  radius={999}
-  fillDirection="up"
-  waveAmplitude={10}
-  glow={false}
-  pressScale={0.94}
-/>
+      {/* دکمه‌ی بلند و باریک: پر شدن از پایین، موجِ افقی، بی‌هاله */}
+      <HoldButton
+        size="lg"
+        radius={999}
+        fillDirection="up"
+        waveAmplitude={10}
+        glow={false}
+        pressScale={0.94}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props

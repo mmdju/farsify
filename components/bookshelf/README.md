@@ -27,23 +27,31 @@ export function ReadingCorner() {
   return <Bookshelf />;
 }
 
-// کتاب‌های خودت — هر پارچه، هر فویل و هر متنی
-<Bookshelf
-  books={[
-    {
-      id: "diary",
-      title: "دفترِ روزانه",
-      author: "خودم",
-      cloth: "#3b4a6b",
-      foil: "#e9d7a8",
-      blurb: "یک سال نوشتن، بی هیچ قاعده‌ای.",
-      content: <p>هر بلندی که به کتاب بدهی، خودش درست صفحه‌بندی می‌شود.</p>,
-    },
-  ]}
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* کتاب‌های خودت — هر پارچه، هر فویل و هر متنی */}
+      <Bookshelf
+        books={[
+          {
+            id: "diary",
+            title: "دفترِ روزانه",
+            author: "خودم",
+            cloth: "#3b4a6b",
+            foil: "#e9d7a8",
+            blurb: "یک سال نوشتن، بی هیچ قاعده‌ای.",
+            content: <p>هر بلندی که به کتاب بدهی، خودش درست صفحه‌بندی می‌شود.</p>,
+          },
+        ]}
+      />
 
-// قفسهٔ جمع‌وجورتر
-<Bookshelf count={3} />
+      {/* قفسهٔ جمع‌وجورتر */}
+      <Bookshelf count={3} />
+    </>
+  );
+}
+
 ```
 
 ## Props

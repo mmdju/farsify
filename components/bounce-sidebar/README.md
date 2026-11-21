@@ -67,11 +67,11 @@ const index = items.findIndex(
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `items` | `BounceSidebarItem[]` | `[{ label: "عمومی", heading: true }, { label: "داشبورد", href: "/" }, "امنیت"]` | yes | The rows. Each item is either a string, or `{ label, href }`, or `{ label, heading: true }` for a group heading. Headings count in the index but aren't selectable. |
+| `items` | `BounceSidebarItem[]` | — | yes | The rows. Each item is either a string, or `{ label, href }`, or `{ label, heading: true }` for a group heading. Headings count in the index but aren't selectable. |
 | `value` | `number` | — | — | Selected index in controlled mode. This is what you use to keep it in sync with the route. |
 | `defaultValue` | `number` | `0` | — | Initial index in uncontrolled mode. |
 | `onChange` | `(index: number) => void` | — | — | Returns the new index on every selection. |
-| `dotColor` | `string` | `var(--brand, currentColor)` | — | Dot color. Any CSS value is accepted; if your project has no `--brand`, it falls back to the text color. |
+| `dotColor` | `string` | `var(--primary, currentColor)` | — | Dot color. Any CSS value is accepted; if your project has no `--brand`, it falls back to the text color. |
 | `className` | `string` | — | — | Outer class on the `ul`; set the column width from here. |
 
 ## Tips

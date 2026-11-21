@@ -42,7 +42,7 @@
     {
       "name": "color",
       "type": "string",
-      "defaultValue": "تم‌آگاه (#f4f4f5 / #27272a)",
+      "defaultValue": "تم‌آگاه (#fafafa / #27272a)",
       "description": "Color of the active pill. Pass a hex or `rgb()`; the text color inside is chosen automatically."
     },
     {

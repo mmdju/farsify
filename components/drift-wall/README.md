@@ -37,17 +37,25 @@ export function DriftingWall() {
   );
 }
 
-// دیوارِ پس‌زمینه: با هاور بایستد و لبه‌ها بیشتر محو شوند
-<DriftWall items={tiles} pauseOnHover fade={0.4} columns={6} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* دیوارِ پس‌زمینه: با هاور بایستد و لبه‌ها بیشتر محو شوند */}
+      <DriftWall items={tiles} pauseOnHover fade={0.4} columns={6} />
 
-// دیوارِ ایستای سه‌بعدی که فقط با نشانگر نفس می‌کشد
-<DriftWall items={tiles} speed={0} parallax={0.9} depth={180} />
+      {/* دیوارِ ایستای سه‌بعدی که فقط با نشانگر نفس می‌کشد */}
+      <DriftWall items={tiles} speed={0} parallax={0.9} depth={180} />
 
-// رانشِ تندِ پرانرژی به سمتِ پایین
-<DriftWall items={tiles} speed={95} direction="down" variance={0.3} />
+      {/* رانشِ تندِ پرانرژی به سمتِ پایین */}
+      <DriftWall items={tiles} speed={95} direction="down" variance={0.3} />
 
-// کاشی‌های سیاه‌وسفید که زیرِ نشانگر رنگ می‌گیرند
-<DriftWall items={tiles} grayscale dim={0.7} lift={96} />
+      {/* کاشی‌های سیاه‌وسفید که زیرِ نشانگر رنگ می‌گیرند */}
+      <DriftWall items={tiles} grayscale dim={0.7} lift={96} />
+    </>
+  );
+}
+
 ```
 
 ## Props

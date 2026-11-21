@@ -19,7 +19,7 @@ const SIZES = {
 const PAD = 4;
 const GAP = 1;
 const MENU_GAP = 6;
-const DEFAULT_OPTIONS = ["One", "Two", "Three"];
+const DEFAULT_OPTIONS = ["یک", "دو", "سه"];
 
 const ARROW_DOWN_ICON = [
   "M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9",
@@ -263,6 +263,7 @@ export default function GlideSelect({
     }
     const go = (i: number) => {
       e.preventDefault();
+      if (n === 0) return;
       instant.current = true;
       setActive(Math.min(n - 1, Math.max(0, i)));
     };

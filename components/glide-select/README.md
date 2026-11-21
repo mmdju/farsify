@@ -44,11 +44,19 @@ export function ExportPicker() {
   );
 }
 
-// بدونِ برچسبِ کنارِ گزینه‌ها و با منوی عریض‌تر
-<GlideSelect options={["XS", "S", "M", "L", "XL"]} showTags={false} menuWidth={220} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* بدونِ برچسبِ کنارِ گزینه‌ها و با منوی عریض‌تر */}
+      <GlideSelect options={["XS", "S", "M", "L", "XL"]} showTags={false} menuWidth={220} />
 
-// منو بالای دکمه باز شود و به لبه‌ی پایان بچسبد
-<GlideSelect options={FORMATS} placement="top" align="right" />
+      {/* منو بالای دکمه باز شود و به لبه‌ی پایان بچسبد */}
+      <GlideSelect options={FORMATS} placement="top" align="right" />
+    </>
+  );
+}
+
 ```
 
 ## Props

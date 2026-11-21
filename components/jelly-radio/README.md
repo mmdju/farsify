@@ -53,10 +53,10 @@ export function VolumeLevel() {
 | `defaultValue` | `string` | — | — | The selected option in uncontrolled mode; defaults to the first option. |
 | `onChange` | `(value: string, index: number) => void` | — | — | Returns the new option's value and index on every selection. |
 | `size` | `sm | md | lg` (`sm` · `md` · `lg`) | `md` | — | Chip size: sm 28, md 36 and lg 44 pixels. |
-| `chipColor` | `string` | `#27272a` | — | Background color of the inactive chips. |
-| `activeColor` | `string` | `#f5f5f5` | — | Background color of the selected chip. |
-| `textColor` | `string` | `#f5f5f5` | — | Text color of the inactive chips; the same color is used when the pointer moves over them. |
-| `activeTextColor` | `string` | `#18181b` | — | Text color of the selected chip. |
+| `chipColor` | `string` | `#232323` | — | Background color of the inactive chips. |
+| `activeColor` | `string` | `#fafafa` | — | Background color of the selected chip. |
+| `textColor` | `string` | `#fafafa` | — | Text color of the inactive chips; the same color is used when the pointer moves over them. |
+| `activeTextColor` | `string` | `#0a0a0a` | — | Text color of the selected chip. |
 | `gap` | `number` | `8` | — | Spacing between chips, in pixels. |
 | `radius` | `number` | `18` | — | Corner radius of the chips; for a fully pill-shaped chip, pass half the height. |
 | `swell` | `number` | `0.2` | — | How much larger the active chip grows, relative to its own size. |

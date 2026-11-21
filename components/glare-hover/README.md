@@ -31,17 +31,25 @@ export function GlareCard() {
   );
 }
 
-// نوارِ نور زیرِ نشانگر با فنر برود — حسِ شیشه‌ی صیقلی
-<GlareHover width="300px" height="390px" mode="follow" softness={0.9} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* نوارِ نور زیرِ نشانگر با فنر برود — حسِ شیشه‌ی صیقلی */}
+      <GlareHover width="300px" height="390px" mode="follow" softness={0.9} />
 
-// در لوپِ آرام خودش بدرخشد — برای بج و کارتِ کوچک
-<GlareHover width="220px" height="80px" mode="loop" interval={4} glareSize={18} />
+      {/* در لوپِ آرام خودش بدرخشد — برای بج و کارتِ کوچک */}
+      <GlareHover width="220px" height="80px" mode="loop" interval={4} glareSize={18} />
 
-// جفتِ خطِ نورِ پرکنتراست با لبه‌ی تیز
-<GlareHover width="300px" height="390px" variant="twin" glareOpacity={0.8} glareSize={55} borderRadius="6px" />
+      {/* جفتِ خطِ نورِ پرکنتراست با لبه‌ی تیز */}
+      <GlareHover width="300px" height="390px" variant="twin" glareOpacity={0.8} glareSize={55} borderRadius="6px" />
 
-// نورِ رنگیِ خودت با ترکیبِ نرم روی محتوای روشن
-<GlareHover glareColor="#f5b400" blendMode="soft-light" glareOpacity={0.7} />
+      {/* نورِ رنگیِ خودت با ترکیبِ نرم روی محتوای روشن */}
+      <GlareHover glareColor="#f5b400" blendMode="soft-light" glareOpacity={0.7} />
+    </>
+  );
+}
+
 ```
 
 ## Props

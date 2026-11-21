@@ -45,18 +45,26 @@ export function OrderReceived() {
   return <PackageBox slip={SLIP} />;
 }
 
-// باز/بستهٔ کنترل‌شده از بیرون
-const [open, setOpen] = useState(false);
-<PackageBox slip={SLIP} open={open} onOpenChange={setOpen} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  const [open, setOpen] = useState(false);
 
-// رنگِ مقوا و مهر — تنها رنگ‌های کامپوننت
-<PackageBox slip={SLIP} colors={{ box: "#b07b4a", accent: "#c2552b" }} />
+  return (
+    <>
+      {/* باز/بستهٔ کنترل‌شده از بیرون */}
+      <PackageBox slip={SLIP} open={open} onOpenChange={setOpen} />
 
-// داخلِ قابِ کوتاه: سقفِ ارتفاع + رزروِ فضا تا صفحه نپرد
-<PackageBox slip={SLIP} maxWidth={320} maxHeight={420} reserveSpace />
+      {/* رنگِ مقوا و مهر — تنها رنگ‌های کامپوننت */}
+      <PackageBox slip={SLIP} colors={{ box: "#b07b4a", accent: "#c2552b" }} />
 
-// بدونِ نوارچسب یا بدونِ نشانه‌های حمل
-<PackageBox slip={SLIP} tape={false} symbols={false} />
+      {/* داخلِ قابِ کوتاه: سقفِ ارتفاع + رزروِ فضا تا صفحه نپرد */}
+      <PackageBox slip={SLIP} maxWidth={320} maxHeight={420} reserveSpace />
+
+      {/* بدونِ نوارچسب یا بدونِ نشانه‌های حمل */}
+      <PackageBox slip={SLIP} tape={false} symbols={false} />
+    </>
+  );
+}
 ```
 
 ## Props

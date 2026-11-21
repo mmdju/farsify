@@ -39,13 +39,13 @@
     {
       "name": "trackColor",
       "type": "string",
-      "defaultValue": "#27272a (تیره) · #d4d4d8 (روشن)",
+      "defaultValue": "#232323",
       "description": "Track color in the off state."
     },
     {
       "name": "trackOnColor",
       "type": "string",
-      "defaultValue": "#f5f5f5 (تیره) · #18181b (روشن)",
+      "defaultValue": "#fafafa",
       "description": "Track color in the on state."
     },
     {

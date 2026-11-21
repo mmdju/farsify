@@ -38,7 +38,7 @@
     {
       "name": "tint",
       "type": "string",
-      "defaultValue": "var(--brand)",
+      "defaultValue": "var(--primary)",
       "description": "The glass body color; any CSS color format."
     },
     {
@@ -152,6 +152,16 @@
       "name": "style",
       "type": "CSSProperties",
       "description": "Inline style (applied after the color variables)."
+    },
+    {
+      "name": "target",
+      "type": "string",
+      "description": "وقتی `href` دادی، مقصدِ باز شدنِ پیوند: `\"_blank\"` برای تبِ تازه."
+    },
+    {
+      "name": "rel",
+      "type": "string",
+      "description": "مقدارِ `rel` پیوند؛ با `target=\"_blank\"` معمولاً `\"noreferrer noopener\"`."
     }
   ],
   "tips": [

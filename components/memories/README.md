@@ -27,19 +27,27 @@ export function MemoryCorner() {
   return <Memories />;
 }
 
-// کارت‌های خودت — هر عکس و هر برچسب و تاریخی
-<Memories
-  cards={[
-    { label: "سفرِ شمال", date: "۳ مرداد ۱۴۰۳", src: "/photos/north.jpg" },
-    { label: "عروسیِ سارا", date: "۱۲ شهریور ۱۴۰۳", src: "/photos/wedding.jpg" },
-  ]}
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* کارت‌های خودت — هر عکس و هر برچسب و تاریخی */}
+      <Memories
+        cards={[
+          { label: "سفرِ شمال", date: "۳ مرداد ۱۴۰۳", src: "/photos/north.jpg" },
+          { label: "عروسیِ سارا", date: "۱۲ شهریور ۱۴۰۳", src: "/photos/wedding.jpg" },
+        ]}
+      />
 
-// هندسهٔ دِک — فنِ بازتر با کارتهای بزرگتر
-<Memories spread={110} fanAngle={16} cardWidth={220} />
+      {/* هندسهٔ دِک — فنِ بازتر با کارتهای بزرگتر */}
+      <Memories spread={110} fanAngle={16} cardWidth={220} />
 
-// بی‌فن — دِکِ تخت و مرتب
-<Memories spread={90} fanAngle={0} />
+      {/* بی‌فن — دِکِ تخت و مرتب */}
+      <Memories spread={90} fanAngle={0} />
+    </>
+  );
+}
+
 ```
 
 ## Props

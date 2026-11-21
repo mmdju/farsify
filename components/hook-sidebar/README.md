@@ -64,12 +64,12 @@ const index = items.findIndex((item) => item.href === pathname);
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `items` | `HookSidebarItem[]` | `["حساب کاربری", "اعلان‌ها", "امنیت"]` | yes | The rows. Each item is either a string or `{ label, href }`; items with `href` render as links, the rest as buttons. |
+| `items` | `HookSidebarItem[]` | — | yes | The rows. Each item is either a string or `{ label, href }`; items with `href` render as links, the rest as buttons. |
 | `label` | `string` | — | — | Heading above the column. It also becomes the navigation `aria-label` unless you provide your own `aria-label`. |
 | `value` | `number` | — | — | Selected index in controlled mode. This is the one to use for syncing with the route (e.g. with `usePathname`). |
 | `defaultValue` | `number` | `0` | — | Initial index in uncontrolled mode. |
 | `onChange` | `(index: number) => void` | — | — | Returns the new index on every selection. |
-| `color` | `string` | `var(--brand, currentColor)` | — | Color of the active line. Any CSS value works; if your project has no `--brand`, it falls back to the text color. |
+| `color` | `string` | `var(--primary, currentColor)` | — | Color of the active line. Any CSS value works; if your project has no `--brand`, it falls back to the text color. |
 | `dashed` | `boolean` | `true` | — | Dashed line (default) or a solid line. |
 | `className` | `string` | — | — | Outer class on the `nav`; set the column width here. |
 

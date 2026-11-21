@@ -26,6 +26,28 @@
       "description": "The initial selected value. Leave it empty so the first child of the open section is selected."
     },
     {
+      "name": "activeLabelColor",
+      "type": "string",
+      "description": "رنگِ برچسبِ گزینه‌ی انتخاب‌شده؛ ندادی، همون `accentColor` استفاده می‌شه."
+    },
+    {
+      "name": "sectionFontSize",
+      "type": "number",
+      "description": "اندازه‌ی قلمِ عنوانِ بخش‌ها، پیکسل؛ ندادی، اندازه‌ی پیش‌فرض می‌مونه."
+    },
+    {
+      "name": "sectionClassName",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "کلاسِ اضافه برای ردیفِ عنوانِ هر بخش."
+    },
+    {
+      "name": "dimInactiveSections",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "بخش‌های بسته کم‌رنگ‌تر از بخشِ باز نشان داده بشن."
+    },
+    {
       "name": "onSelect",
       "type": "(value, item) => void",
       "description": "Called when a child or a leaf is selected."

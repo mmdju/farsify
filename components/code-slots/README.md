@@ -59,15 +59,23 @@ export function OneTimeCode() {
   );
 }
 
-// کدِ هشت‌رقمی، پوشیده، با خانه‌های بزرگ‌تر
-<CodeSlots length={8} mask slotSize={56} gap={10} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* کدِ هشت‌رقمی، پوشیده، با خانه‌های بزرگ‌تر */}
+      <CodeSlots length={8} mask slotSize={56} gap={10} />
 
-// نشستنی خشک و هم‌زمان — بدونِ جهشِ فنر و بدونِ خطِ پله‌ای
-<CodeSlots bounce={0} cascade={0} rise={0} />
+      {/* نشستنی خشک و هم‌زمان — بدونِ جهشِ فنر و بدونِ خطِ پله‌ای */}
+      <CodeSlots bounce={0} cascade={0} rise={0} />
 
-// در حالتِ خطا، خودِ کامپوننت خانه‌ها را از آخر به اول خالی می‌کند و تهش
-// onChange("") می‌دهد؛ لازم نیست خودت پاکش کنی
-<CodeSlots value={code} status="error" onChange={setCode} />
+      {/* در حالتِ خطا، خودِ کامپوننت خانه‌ها را از آخر به اول خالی می‌کند و تهش */}
+      {/* onChange("") می‌دهد؛ لازم نیست خودت پاکش کنی */}
+      <CodeSlots value={code} status="error" onChange={setCode} />
+    </>
+  );
+}
+
 ```
 
 ## Props

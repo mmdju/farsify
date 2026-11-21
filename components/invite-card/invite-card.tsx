@@ -148,18 +148,35 @@ const InviteCard = ({
   const interactionKilledRef = useRef(false);
   const activeTouchRef = useRef<number | null>(null);
   const cycleRef = useRef(Math.random() * 8);
+  const rootRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     setAutoDrive(autoPreview);
   }, [autoPreview, replay]);
 
   useEffect(() => {
-    if (!autoDrive) return;
+    if (!autoDrive || shouldReduceMotion) return;
+
     interactionKilledRef.current = false;
     let raf = 0;
     let last = performance.now();
+    let visible = true;
+    let observer: IntersectionObserver | null = null;
+    const node = rootRef.current;
+    if (node && typeof IntersectionObserver !== "undefined") {
+      observer = new IntersectionObserver((entries) => {
+        visible = entries.some((entry) => entry.isIntersecting);
+        last = performance.now();
+      });
+      observer.observe(node);
+    }
+
     const frame = (now: number) => {
       const dt = Math.min((now - last) / 1000 || 0, 0.05);
       last = now;
+      if (!visible) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       cycleRef.current += dt;
       const t = cycleRef.current;
       const x = 0.5 + 0.42 * Math.sin(t * 0.8);
@@ -167,16 +184,15 @@ const InviteCard = ({
       glowX.set(x * 100);
       glowY.set(y * 100);
       glowOpacity.set(glow);
-      if (!shouldReduceMotion) {
-        rotateX.set((y - 0.5) * tilt);
-        rotateY.set((x - 0.5) * -tilt);
-        translateZ.set(20);
-      }
+      rotateX.set((y - 0.5) * tilt);
+      rotateY.set((x - 0.5) * -tilt);
+      translateZ.set(20);
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
     return () => {
       cancelAnimationFrame(raf);
+      observer?.disconnect();
       if (interactionKilledRef.current) return;
       rotateX.set(0);
       rotateY.set(0);
@@ -279,6 +295,7 @@ const InviteCard = ({
 
   return (
     <div
+      ref={rootRef}
       className={cn(
         "w-full max-w-[375px] p-5 [perspective:1000px]",
         className,
@@ -350,3 +367,4 @@ const InviteCard = ({
 };
 
 export default InviteCard;
+export { InviteCard };

@@ -40,29 +40,37 @@ export function PosterWall() {
   );
 }
 
-// چرخ ماوس و کشیدن از قبل فعال‌اند؛ صحنه باید ارتفاعِ قطعی داشته باشد
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* چرخ ماوس و کشیدن از قبل فعال‌اند؛ صحنه باید ارتفاعِ قطعی داشته باشد */}
 
-// دیوارِ گالریِ سه‌ستونه با پوسترهای عمودی و گوشه‌ی گرد
-<FlyingPosters
-  items={posters}
-  planeWidth={220}
-  planeHeight={300}
-  columns={3}
-  radius={14}
-  axis="diagonal"
-/>
+      {/* دیوارِ گالریِ سه‌ستونه با پوسترهای عمودی و گوشه‌ی گرد */}
+      <FlyingPosters
+        items={posters}
+        planeWidth={220}
+        planeHeight={300}
+        columns={3}
+        radius={14}
+        axis="diagonal"
+      />
 
-// رانشِ آرام وقتی کسی اسکرول نمی‌کند + خمِ هنگامِ اسکرولِ تند
-<FlyingPosters items={posters} speed={-24} lean={0.6} shading={0.3} />
+      {/* رانشِ آرام وقتی کسی اسکرول نمی‌کند + خمِ هنگامِ اسکرولِ تند */}
+      <FlyingPosters items={posters} speed={-24} lean={0.6} shading={0.3} />
 
-// پوسترهای کروی‌گوشه با محوِ لبه‌ها
-<FlyingPosters items={posters} radius={28} fade={0.55} />
+      {/* پوسترهای کروی‌گوشه با محوِ لبه‌ها */}
+      <FlyingPosters items={posters} radius={28} fade={0.55} />
 
-// کلیکِ کوتاه روی هر پوستر
-<FlyingPosters
-  items={posters}
-  onItemClick={(item, index) => console.log(item.image, index)}
-/>
+      {/* کلیکِ کوتاه روی هر پوستر */}
+      <FlyingPosters
+        items={posters}
+        onItemClick={(item, index) => console.log(item.image, index)}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props

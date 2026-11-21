@@ -13,7 +13,6 @@
       "name": "items",
       "type": "BounceSidebarItem[]",
       "required": true,
-      "defaultValue": "[{ label: \"عمومی\", heading: true }, { label: \"داشبورد\", href: \"/\" }, \"امنیت\"]",
       "description": "The rows. Each item is either a string, or `{ label, href }`, or `{ label, heading: true }` for a group heading. Headings count in the index but aren't selectable."
     },
     {
@@ -35,7 +34,7 @@
     {
       "name": "dotColor",
       "type": "string",
-      "defaultValue": "var(--brand, currentColor)",
+      "defaultValue": "var(--primary, currentColor)",
       "description": "Dot color. Any CSS value is accepted; if your project has no `--brand`, it falls back to the text color."
     },
     {

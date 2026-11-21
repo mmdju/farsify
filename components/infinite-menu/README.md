@@ -49,14 +49,22 @@ export function Gallery() {
   );
 }
 
-// بدونِ کنشِ بیرونی؛ فلش پنهان می‌ماند و فقط عنوان/توضیح می‌آید
-<InfiniteMenu items={photos} showInfo />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* بدونِ کنشِ بیرونی؛ فلش پنهان می‌ماند و فقط عنوان/توضیح می‌آید */}
+      <InfiniteMenu items={photos} showInfo />
 
-// برای ساختنِ فلشِ کنش، onItemClick یا link بده؛ وگرنه کلیک فقط می‌چرخاند
-<InfiniteMenu items={photos} onItemClick={(item) => console.log(item)} />
+      {/* برای ساختنِ فلشِ کنش، onItemClick یا link بده؛ وگرنه کلیک فقط می‌چرخاند */}
+      <InfiniteMenu items={photos} onItemClick={(item) => console.log(item)} />
 
-// کارتِ سبک‌تر برای موبایل: کاشی‌های درشت‌تر و تعدادِ کمتر
-<InfiniteMenu items={photos} count={90} tileSize={0.9} dim={0.25} />
+      {/* کارتِ سبک‌تر برای موبایل: کاشی‌های درشت‌تر و تعدادِ کمتر */}
+      <InfiniteMenu items={photos} count={90} tileSize={0.9} dim={0.25} />
+    </>
+  );
+}
+
 ```
 
 ## Props

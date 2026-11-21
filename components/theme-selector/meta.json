@@ -1,6 +1,6 @@
 {
   "slug": "theme-selector",
-  "name": "ThemeSelector",
+  "name": "Theme Selector",
   "description": "Two small cards, each showing a theme as a miniature preview of a browser window; click either one or move with the arrow keys and the selection ring settles on it while its label lights up.",
   "category": "inputs",
   "dependencies": [],

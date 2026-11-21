@@ -33,20 +33,28 @@ export function ImageResult() {
   );
 }
 
-// قابِ بزرگ‌تر، بدونِ قرصِ وضعیت، با متنِ دلخواه
-<RefineFrame
-  status="refining"
-  width={480}
-  showStatus={false}
-  labels={{ refining: "در حال جزئیات" }}
->
-  <img src="/hero.jpg" alt="" />
-</RefineFrame>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* قابِ بزرگ‌تر، بدونِ قرصِ وضعیت، با متنِ دلخواه */}
+      <RefineFrame
+        status="refining"
+        width={480}
+        showStatus={false}
+        labels={{ refining: "در حال جزئیات" }}
+      >
+        <img src="/hero.jpg" alt="" />
+      </RefineFrame>
 
-// حالتِ خطا با دکمه‌ی تلاشِ مجدد
-<RefineFrame status="error" onRetry={() => refetch()} retryLabel="دوباره بساز">
-  <img src="/failed.jpg" alt="" />
-</RefineFrame>
+      {/* حالتِ خطا با دکمه‌ی تلاشِ مجدد */}
+      <RefineFrame status="error" onRetry={() => refetch()} retryLabel="دوباره بساز">
+        <img src="/failed.jpg" alt="" />
+      </RefineFrame>
+    </>
+  );
+}
+
 ```
 
 ## Props

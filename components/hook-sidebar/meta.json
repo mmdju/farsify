@@ -13,7 +13,6 @@
       "name": "items",
       "type": "HookSidebarItem[]",
       "required": true,
-      "defaultValue": "[\"حساب کاربری\", \"اعلان‌ها\", \"امنیت\"]",
       "description": "The rows. Each item is either a string or `{ label, href }`; items with `href` render as links, the rest as buttons."
     },
     {
@@ -40,7 +39,7 @@
     {
       "name": "color",
       "type": "string",
-      "defaultValue": "var(--brand, currentColor)",
+      "defaultValue": "var(--primary, currentColor)",
       "description": "Color of the active line. Any CSS value works; if your project has no `--brand`, it falls back to the text color."
     },
     {

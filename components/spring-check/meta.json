@@ -40,19 +40,19 @@
     {
       "name": "color",
       "type": "string",
-      "defaultValue": "#ffffff (تیره) · #18181b (روشن)",
+      "defaultValue": "#ffffff",
       "description": "Ink color: the box outline, the text and the line through the text all use it. Its default changes with the theme."
     },
     {
       "name": "fillColor",
       "type": "string",
-      "defaultValue": "#ffffff (تیره) · #18181b (روشن)",
+      "defaultValue": "#ffffff",
       "description": "Fill color of the box in the checked state."
     },
     {
       "name": "checkColor",
       "type": "string",
-      "defaultValue": "#0b0b0f (تیره) · #ffffff (روشن)",
+      "defaultValue": "#0a0a0a",
       "description": "Color of the check itself; it must contrast with fillColor."
     },
     {
@@ -121,6 +121,6 @@
   ],
   "hasCss": true,
   "assets": [],
-  "lines": 231,
+  "lines": 232,
   "version": 1
 }

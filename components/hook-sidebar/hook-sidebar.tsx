@@ -229,7 +229,7 @@ export default function HookSidebar({
             className: cn(
               "w-full rounded-lg py-1.5 ps-5 pe-2 text-start text-sm transition-colors duration-200",
               "motion-reduce:transition-none",
-              "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-brand",
+              "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-primary",
               isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
             ),
           };

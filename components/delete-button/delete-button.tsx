@@ -86,7 +86,7 @@ const RECESS = "bg-accent dark:bg-muted";
 const GLYPH = "text-muted-foreground";
 
 const FOCUS =
-  "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-fg-40";
+  "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-foreground";
 
 const LIFT =
   "shadow-[0_0.5px_1px_rgb(0_0_0/0.05),0_1px_3px_rgb(0_0_0/0.08),inset_0_0.5px_0_rgb(255_255_255/0.9)] dark:shadow-[0_0.5px_1px_rgb(0_0_0/0.35),0_1.5px_4px_rgb(0_0_0/0.25),inset_0_0.5px_0_rgb(255_255_255/0.07)]";

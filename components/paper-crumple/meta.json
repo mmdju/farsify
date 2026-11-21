@@ -15,6 +15,7 @@
     {
       "name": "src",
       "type": "string",
+      "required": true,
       "description": "URL of the image the paper is built from. Required; the remote image must allow CORS."
     },
     {

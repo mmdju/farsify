@@ -1,4 +1,4 @@
-# ThemeSelector
+# Theme Selector
 
 Two small cards, each showing a theme as a miniature preview of a browser window; click either one or move with the arrow keys and the selection ring settles on it while its label lights up.
 
@@ -30,42 +30,50 @@ export function ThemePicker() {
   return <ThemeSelector value={theme} onChange={setTheme} />;
 }
 
-// نام‌کنترل‌شده — گزینه‌ی نخست انتخاب است؛ برچسب‌ها هم اختیاری‌اند
-<ThemeSelector defaultValue="light" labels={false} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* نام‌کنترل‌شده — گزینه‌ی نخست انتخاب است؛ برچسب‌ها هم اختیاری‌اند */}
+      <ThemeSelector defaultValue="light" labels={false} />
 
-// پالتِ خودت — هر گزینه شش رنگِ نقاشیِ پیش‌نمایش را می‌گیرد
-<ThemeSelector
-  themes={[
-    {
-      value: "midnight",
-      label: "نیمه‌شب",
-      colors: {
-        sidebar: "#1C1C1E",
-        panel: "#111112",
-        border: "transparent",
-        strong: "#4A4A50",
-        muted: "#2C2C30",
-        tile: "#232326",
-      },
-    },
-    {
-      value: "paper",
-      label: "کاغذ",
-      colors: {
-        sidebar: "#FAFAFC",
-        panel: "#FFFFFF",
-        border: "rgba(0, 0, 0, 0.06)",
-        strong: "#D6D6DE",
-        muted: "#EBEBF0",
-        tile: "#F2F2F6",
-      },
-    },
-  ]}
-  itemClassName="w-56"
-/>
+      {/* پالتِ خودت — هر گزینه شش رنگِ نقاشیِ پیش‌نمایش را می‌گیرد */}
+      <ThemeSelector
+        themes={[
+          {
+            value: "midnight",
+            label: "نیمه‌شب",
+            colors: {
+              sidebar: "#1C1C1E",
+              panel: "#111112",
+              border: "transparent",
+              strong: "#4A4A50",
+              muted: "#2C2C30",
+              tile: "#232326",
+            },
+          },
+          {
+            value: "paper",
+            label: "کاغذ",
+            colors: {
+              sidebar: "#FAFAFC",
+              panel: "#FFFFFF",
+              border: "rgba(0, 0, 0, 0.06)",
+              strong: "#D6D6DE",
+              muted: "#EBEBF0",
+              tile: "#F2F2F6",
+            },
+          },
+        ]}
+        itemClassName="w-56"
+      />
 
-// پیش از آن‌که تمِ کاربر معلوم شود — هیچ گزینه‌ای انتخاب نیست و همه با tab در دسترس‌اند
-<ThemeSelector value={null} />
+      {/* پیش از آن‌که تمِ کاربر معلوم شود — هیچ گزینه‌ای انتخاب نیست و همه با tab در دسترس‌اند */}
+      <ThemeSelector value={null} />
+    </>
+  );
+}
+
 ```
 
 ## Props

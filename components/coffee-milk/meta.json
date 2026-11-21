@@ -1,6 +1,6 @@
 {
   "slug": "coffee-milk",
-  "name": "CoffeeMilk",
+  "name": "Coffee Milk",
   "description": "A ratio bar whose two shares grow and shrink as you drag it; coffee and milk, with it always clear which side has more.",
   "category": "showcase",
   "dependencies": [

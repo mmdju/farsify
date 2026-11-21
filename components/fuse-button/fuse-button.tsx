@@ -171,9 +171,12 @@ export default function FuseButton({
     onPhaseChange,
     commitOn,
     settle,
+    doneLabel,
   });
-  latest.current = { onCommit, onUndo, onFuseEnd, onPhaseChange, commitOn, settle };
+  latest.current = { onCommit, onUndo, onFuseEnd, onPhaseChange, commitOn, settle, doneLabel };
   const statusId = useId();
+  const [announcement, setAnnouncement] = useState("");
+  const announceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const preset = SIZES[size] ?? SIZES.md;
 
   const go = (next: FusePhase) => {
@@ -208,6 +211,9 @@ export default function FuseButton({
       l.onFuseEnd?.();
       if (l.commitOn === "fuseEnd") l.onCommit?.("fuseEnd");
       lastInput.current = "pointer";
+      setAnnouncement(l.doneLabel || "");
+      if (announceTimer.current) clearTimeout(announceTimer.current);
+      announceTimer.current = setTimeout(() => setAnnouncement(""), 2500);
       go(l.settle === "stay" ? "settled" : "idle");
     };
     anim.current = a;
@@ -218,6 +224,8 @@ export default function FuseButton({
     if (disabled || phaseRef.current !== "idle") return;
     windowRef.current = undoWindow;
     light();
+    setAnnouncement("");
+    if (announceTimer.current) clearTimeout(announceTimer.current);
     pause.current.canHoverPause = false;
     pause.current.hover = false;
     if (commitOn === "press") onCommit?.("press");
@@ -257,6 +265,7 @@ export default function FuseButton({
     return () => {
       document.removeEventListener("visibilitychange", onVisibility);
       anim.current?.cancel();
+      if (announceTimer.current) clearTimeout(announceTimer.current);
     };
   }, []);
 
@@ -444,7 +453,7 @@ export default function FuseButton({
         role="status"
         aria-live="polite"
       >
-        {phase === "idle" ? "" : doneLabel}
+        {announcement || (phase === "armed" ? undoLabel : phase === "settled" ? doneLabel : "")}
       </span>
     </span>
   );

@@ -141,6 +141,11 @@ const AccordionGallery = ({
     } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
       e.preventDefault();
       setActive((i - 1 + count) % count);
+    } else if (e.key === "Enter" || e.key === " ") {
+      if (!items[i]?.link) {
+        e.preventDefault();
+        setActive(i);
+      }
     }
   };
 
@@ -161,7 +166,7 @@ const AccordionGallery = ({
       ref={rootRef}
       className={`accordion-gallery${vertical ? " accordion-gallery--vertical" : ""}${className ? ` ${className}` : ""}`}
       style={rootStyle}
-      role="list"
+      role="group"
       aria-label="گالریِ آکاردئونیِ تصویر"
     >
       {items.map((item, i) => {
@@ -196,7 +201,7 @@ const AccordionGallery = ({
             onMouseEnter={() => handleEnter(i)}
             onFocus={() => setActive(i)}
             onKeyDown={(e) => handleKeyDown(i, e)}
-            role="listitem"
+            role={item.link ? undefined : "button"}
             tabIndex={0}
             aria-current={isActive ? "true" : undefined}
             aria-label={item.label}

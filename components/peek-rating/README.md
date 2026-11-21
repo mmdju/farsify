@@ -44,21 +44,29 @@ export function ProductScore() {
   );
 }
 
-// بدون کنترل — مقدارِ اولیه‌ی ۳ از ۵
-<PeekRating defaultValue={3} labels={LABELS} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* بدون کنترل — مقدارِ اولیه‌ی ۳ از ۵ */}
+      <PeekRating defaultValue={3} labels={LABELS} />
 
-// فقط نمایش: ستاره‌ها دکمه نیستند و ریشه نقشِ img می‌گیرد
-<PeekRating value={4} readOnly ariaLabel="امتیازِ این محصول" />
+      {/* فقط نمایش: ستاره‌ها دکمه نیستند و ریشه نقشِ img می‌گیرد */}
+      <PeekRating value={4} readOnly ariaLabel="امتیازِ این محصول" />
 
-// قلبِ صورتی، ده پله، بدونِ حبابِ راهنما
-<PeekRating
-  shape="heart"
-  count={10}
-  activeColor="#e5484d"
-  showTip={false}
-  lift={9}
-  magnify={1.25}
-/>
+      {/* قلبِ صورتی، ده پله، بدونِ حبابِ راهنما */}
+      <PeekRating
+        shape="heart"
+        count={10}
+        activeColor="#e5484d"
+        showTip={false}
+        lift={9}
+        magnify={1.25}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props

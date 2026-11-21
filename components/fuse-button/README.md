@@ -38,14 +38,22 @@ export function ArchiveButton() {
   );
 }
 
-// پنجره‌ی کوتاه‌تر — فیوز در دو ثانیه می‌سوزد
-<FuseButton undoWindow={2000} label="حذف" doneLabel="حذف شد" fuseColor="#e5484d" />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* پنجره‌ی کوتاه‌تر — فیوز در دو ثانیه می‌سوزد */}
+      <FuseButton undoWindow={2000} label="حذف" doneLabel="حذف شد" fuseColor="#e5484d" />
 
-// خطی روی لبه‌ی پایین، به‌جای حلقه‌ی دورِ قرص
-<FuseButton fuse="bottom" fuseThickness={2} />
+      {/* خطی روی لبه‌ی پایین، به‌جای حلقه‌ی دورِ قرص */}
+      <FuseButton fuse="bottom" fuseThickness={2} />
 
-// ثبت فقط پس از پایانِ فیوز — بدونِ راهِ بازگرداندنِ میانِ راه
-<FuseButton commitOn="fuseEnd" settle="stay" label="ارسال" doneLabel="ارسال شد" />
+      {/* ثبت فقط پس از پایانِ فیوز — بدونِ راهِ بازگرداندنِ میانِ راه */}
+      <FuseButton commitOn="fuseEnd" settle="stay" label="ارسال" doneLabel="ارسال شد" />
+    </>
+  );
+}
+
 ```
 
 ## Props

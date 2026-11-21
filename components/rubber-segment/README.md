@@ -37,26 +37,34 @@ export function ViewSwitch() {
   );
 }
 
-// گزینه‌ها می‌توانند شیء باشند — برای آیکن یا مقدارِ جدا از برچسب
-<RubberSegment
-  items={[
-    { value: "mobile", label: "موبایل" },
-    { value: "tablet", label: "تبلت" },
-    { value: "desktop", label: "دسکتاپ" },
-  ]}
-  defaultValue="tablet"
-  size="lg"
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* گزینه‌ها می‌توانند شیء باشند — برای آیکن یا مقدارِ جدا از برچسب */}
+      <RubberSegment
+        items={[
+          { value: "mobile", label: "موبایل" },
+          { value: "tablet", label: "تبلت" },
+          { value: "desktop", label: "دسکتاپ" },
+        ]}
+        defaultValue="tablet"
+        size="lg"
+      />
 
-// بدونِ کشیدگی و بدونِ کشیدن؛ انتخاب فقط با کلیک
-<RubberSegment items={["روز", "هفته", "ماه"]} stretch={0} draggable={false} />
+      {/* بدونِ کشیدگی و بدونِ کشیدن؛ انتخاب فقط با کلیک */}
+      <RubberSegment items={["روز", "هفته", "ماه"]} stretch={0} draggable={false} />
+    </>
+  );
+}
+
 ```
 
 ## Props
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `items` | `Array<string | RubberSegmentItem>` | — | — | The options; a string or a `{ value, label, icon }` object. |
+| `items` | `Array<string | RubberSegmentItem>` | — | yes | The options; a string or a `{ value, label, icon }` object. |
 | `value` | `string` | — | — | Controlled mode; pass it to own the value control. |
 | `defaultValue` | `string` | — | — | Initial value in uncontrolled mode; if omitted, the first option. |
 | `onChange` | `(value: string, index: number) => void` | — | — | Called on every settled change. |

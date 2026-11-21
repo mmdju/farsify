@@ -36,11 +36,19 @@ export function GlowNotice() {
   );
 }
 
-// اگر رنگت هگز است، درون‌خطی به «H S L» ترجمه کن
-<BorderGlow glowColor={hexToHsl("#f5daa3")} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* اگر رنگت هگز است، درون‌خطی به «H S L» ترجمه کن */}
+      <BorderGlow glowColor={hexToHsl("#f5daa3")} />
 
-// کارتِ لمس‌نپذیر (پیش‌نمایشِ فهرست) با جاروی تکرارشونده زنده می‌ماند
-<BorderGlow animated sweepLoop />
+      {/* کارتِ لمس‌نپذیر (پیش‌نمایشِ فهرست) با جاروی تکرارشونده زنده می‌ماند */}
+      <BorderGlow animated sweepLoop />
+    </>
+  );
+}
+
 ```
 
 ## Props
@@ -59,6 +67,7 @@ export function GlowNotice() {
 | `colors` | `string[]` | `سه فام` | — | The three colors of the edge mesh; they are spread across seven fixed points of the frame so the card border becomes multi-hue. |
 | `fillOpacity` | `number` | `0.5` | — | Strength of the colored mesh fill inside the card near the edges; 0 to 1. |
 | `sweepLoop` | `boolean` | `false` | — | Re-run the entry sweep once it finishes — for non-interactive previews where the card has to stay alive. This option belongs to this component only. |
+| `paused` | `boolean` | `false` | — | انیمیشنِ درخشش و جارو رو نگه می‌داره؛ کارت سرِ جاش می‌مونه. |
 | `className` | `string` | `""` | — | Extra class for the card. |
 
 ## Tips

@@ -79,6 +79,12 @@
       "description": "Re-run the entry sweep once it finishes — for non-interactive previews where the card has to stay alive. This option belongs to this component only."
     },
     {
+      "name": "paused",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "انیمیشنِ درخشش و جارو رو نگه می‌داره؛ کارت سرِ جاش می‌مونه."
+    },
+    {
       "name": "className",
       "type": "string",
       "defaultValue": "\"\"",

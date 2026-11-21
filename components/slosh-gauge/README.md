@@ -37,23 +37,31 @@ export function TankLevel() {
   );
 }
 
-// فقط نمایش — کاربر نمی‌تواند تغییرش دهد
-<SloshGauge defaultValue={72} unit="٪" />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* فقط نمایش — کاربر نمی‌تواند تغییرش دهد */}
+      <SloshGauge defaultValue={72} unit="٪" />
 
-// ارقام لاتین و مایعِ رنگی، با تیکِ بیشتر
-<SloshGauge
-  defaultValue={45}
-  digits="en"
-  unit="%"
-  ticks={8}
-  liquidColor="#007bff"
-  glassColor="#1c1c1f"
-  width={110}
-  height={220}
-/>
+      {/* ارقام لاتین و مایعِ رنگی، با تیکِ بیشتر */}
+      <SloshGauge
+        defaultValue={45}
+        digits="en"
+        unit="%"
+        ticks={8}
+        liquidColor="#007bff"
+        glassColor="#1c1c1f"
+        width={110}
+        height={220}
+      />
 
-// بی‌درنگ، بدونِ فنر و پاشش — برای نمایشگری که فقط عدد می‌خواهد
-<SloshGauge value={30} interactive viscosity={0} tilt={0} splash={0} />
+      {/* بی‌درنگ، بدونِ فنر و پاشش — برای نمایشگری که فقط عدد می‌خواهد */}
+      <SloshGauge value={30} interactive viscosity={0} tilt={0} splash={0} />
+    </>
+  );
+}
+
 ```
 
 ## Props

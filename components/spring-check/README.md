@@ -36,18 +36,26 @@ export function TodoItem() {
   );
 }
 
-// بدون کنترل — مقدار اولیه‌ی تیک‌خورده
-<SpringCheck label="هماهنگی جلسه" defaultChecked />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* بدون کنترل — مقدار اولیه‌ی تیک‌خورده */}
+      <SpringCheck label="هماهنگی جلسه" defaultChecked />
 
-// رنگ برند، خانه‌ی بزرگ‌تر و خط از وسط
-<SpringCheck
-  label="به‌روزرسانی تغییرات"
-  color="var(--color-brand)"
-  fillColor="var(--color-brand)"
-  checkColor="#ffffff"
-  boxSize={34}
-  strike="center"
-/>
+      {/* رنگ برند، خانه‌ی بزرگ‌تر و خط از وسط */}
+      <SpringCheck
+        label="به‌روزرسانی تغییرات"
+        color="var(--color-brand)"
+        fillColor="var(--color-brand)"
+        checkColor="#ffffff"
+        boxSize={34}
+        strike="center"
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props
@@ -59,9 +67,9 @@ export function TodoItem() {
 | `defaultChecked` | `boolean` | `false` | — | Initial state in uncontrolled mode. |
 | `onChange` | `(checked: boolean) => void` | — | — | Returns the new state on every change. |
 | `disabled` | `boolean` | `false` | — | Dims it and makes it unclickable. |
-| `color` | `string` | `#ffffff (تیره) · #18181b (روشن)` | — | Ink color: the box outline, the text and the line through the text all use it. Its default changes with the theme. |
-| `fillColor` | `string` | `#ffffff (تیره) · #18181b (روشن)` | — | Fill color of the box in the checked state. |
-| `checkColor` | `string` | `#0b0b0f (تیره) · #ffffff (روشن)` | — | Color of the check itself; it must contrast with fillColor. |
+| `color` | `string` | `#ffffff` | — | Ink color: the box outline, the text and the line through the text all use it. Its default changes with the theme. |
+| `fillColor` | `string` | `#ffffff` | — | Fill color of the box in the checked state. |
+| `checkColor` | `string` | `#0a0a0a` | — | Color of the check itself; it must contrast with fillColor. |
 | `boxSize` | `number` | `28` | — | Side of the box, pixels. Below 24 the outline thickness goes from 2 to 1.5. |
 | `boxRadius` | `number` | `9` | — | Corner radius of the box; at half of boxSize it becomes fully round. |
 | `fontSize` | `number` | `18` | — | Font size of the text; the strikethrough thickness is calculated from it too. |

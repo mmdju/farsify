@@ -39,29 +39,37 @@ export function GalleryStrip() {
   );
 }
 
-// قابِ سوم موقعِ ورود باز باشد و برچسب‌ها تمام‌رنگ بمانند
-<AccordionGallery items={shots} defaultIndex={2} grayscale={false} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* قابِ سوم موقعِ ورود باز باشد و برچسب‌ها تمام‌رنگ بمانند */}
+      <AccordionGallery items={shots} defaultIndex={2} grayscale={false} />
 
-// ستونِ عمودیِ کنارِ صفحه با خمِ تند و پارالاکسِ قوی
-<AccordionGallery
-  items={shots}
-  orientation="vertical"
-  height={300}
-  expandRatio={0.62}
-  tilt={14}
-  parallax={0.9}
-/>
+      {/* ستونِ عمودیِ کنارِ صفحه با خمِ تند و پارالاکسِ قوی */}
+      <AccordionGallery
+        items={shots}
+        orientation="vertical"
+        height={300}
+        expandRatio={0.62}
+        tilt={14}
+        parallax={0.9}
+      />
 
-// باز شدن فقط با کلیک + رنگِ لهجه‌ی خودت
-<AccordionGallery
-  items={shots}
-  trigger="click"
-  accentColor="#f5b400"
-  duration={0.4}
-/>
+      {/* باز شدن فقط با کلیک + رنگِ لهجه‌ی خودت */}
+      <AccordionGallery
+        items={shots}
+        trigger="click"
+        accentColor="#f5b400"
+        duration={0.4}
+      />
 
-// بدونِ برچسب، فقط تصویر
-<AccordionGallery items={shots} showLabels={false} radius={28} />
+      {/* بدونِ برچسب، فقط تصویر */}
+      <AccordionGallery items={shots} showLabels={false} radius={28} />
+    </>
+  );
+}
+
 ```
 
 ## Props

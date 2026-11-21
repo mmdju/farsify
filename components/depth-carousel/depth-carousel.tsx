@@ -470,6 +470,9 @@ const DepthCarousel = ({
       onPointerCancel={onPointerEnd}
       onKeyDown={onKeyDown}
     >
+      <span className="sr-only" role="status">
+        اسلاید {faNum(active + 1)} از {faNum(count)}
+      </span>
       <div className="depth-carousel__stage">
         {data.map((item, i) => (
           <div

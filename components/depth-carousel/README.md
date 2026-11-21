@@ -38,23 +38,31 @@ export function DepthRail() {
   );
 }
 
-// ریلِ عمیقِ تند: عمقِ زیاد، دیدِ نزدیک و تاریِ سنگین
-<DepthCarousel items={shots} depth={300} perspective={1100} blur={10} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* ریلِ عمیقِ تند: عمقِ زیاد، دیدِ نزدیک و تاریِ سنگین */}
+      <DepthCarousel items={shots} depth={300} perspective={1100} blur={10} />
 
-// ریلِ تخت و آرام: بدونِ خم، گردگوشه و گذارِ کشیده
-<DepthCarousel
-  items={shots}
-  tilt={0}
-  radius={28}
-  duration={1200}
-  falloff={0.35}
-/>
+      {/* ریلِ تخت و آرام: بدونِ خم، گردگوشه و گذارِ کشیده */}
+      <DepthCarousel
+        items={shots}
+        tilt={0}
+        radius={28}
+        duration={1200}
+        falloff={0.35}
+      />
 
-// گردشِ خودکار هر ۴ ثانیه — با هاور موقتاً می‌ایستد
-<DepthCarousel items={shots} autoplay autoplayDelay={4000} />
+      {/* گردشِ خودکار هر ۴ ثانیه — با هاور موقتاً می‌ایستد */}
+      <DepthCarousel items={shots} autoplay autoplayDelay={4000} />
 
-// بدونِ فلش و نقطه؛ فقط کشیدن و چرخِ ماوس
-<DepthCarousel items={shots} showControls={false} showIndicators={false} />
+      {/* بدونِ فلش و نقطه؛ فقط کشیدن و چرخِ ماوس */}
+      <DepthCarousel items={shots} showControls={false} showIndicators={false} />
+    </>
+  );
+}
+
 ```
 
 ## Props

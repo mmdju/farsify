@@ -33,15 +33,23 @@ export function MagneticButton() {
   );
 }
 
-// چند آهنربای کنارِ هم: همه با هم میدان می‌سازند
-<Magnet exclusive={false} padding={90} maxOffset={18}>
-  <span className="chip">خانه</span>
-</Magnet>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* چند آهنربای کنارِ هم: همه با هم میدان می‌سازند */}
+      <Magnet exclusive={false} padding={90} maxOffset={18}>
+        <span className="chip">خانه</span>
+      </Magnet>
 
-// پیش‌نمایشِ بی‌تعامل (کارت/گالری): نشانگرِ خیالی مدار می‌زند
-<Magnet autoPreview padding={120}>
-  <div className="card">…</div>
-</Magnet>
+      {/* پیش‌نمایشِ بی‌تعامل (کارت/گالری): نشانگرِ خیالی مدار می‌زند */}
+      <Magnet autoPreview padding={120}>
+        <div className="card">…</div>
+      </Magnet>
+    </>
+  );
+}
+
 ```
 
 ## Props

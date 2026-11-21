@@ -38,14 +38,22 @@ export function BuildRow({ status, progress }: {
   );
 }
 
-// پیشرفت با درصدِ ۰ تا ۱۰۰ هم کار می‌کند، نه فقط نسبتِ ۰ تا ۱
-<StatusMark status="running" progress={62} label="در حال آپلود" />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* پیشرفت با درصدِ ۰ تا ۱۰۰ هم کار می‌کند، نه فقط نسبتِ ۰ تا ۱ */}
+      <StatusMark status="running" progress={62} label="در حال آپلود" />
 
-// بدونِ برچسب، فقط گلیف — با نامِ دسترس‌پذیرِ خودکار
-<StatusMark status="done" doneColor="var(--color-brand)" />
+      {/* بدونِ برچسب، فقط گلیف — با نامِ دسترس‌پذیرِ خودکار */}
+      <StatusMark status="done" doneColor="var(--color-brand)" />
 
-// لغو‌شده با خط‌خوردگیِ دیرهنگام
-<StatusMark status="cancelled" strike strikeDelay={120} label="درخواستِ منقضی" />
+      {/* لغو‌شده با خط‌خوردگیِ دیرهنگام */}
+      <StatusMark status="cancelled" strike strikeDelay={120} label="درخواستِ منقضی" />
+    </>
+  );
+}
+
 ```
 
 ## Props

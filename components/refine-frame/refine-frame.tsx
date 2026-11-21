@@ -361,7 +361,6 @@ const RefineFrame: React.FC<RefineFrameProps> = ({
       wake();
     };
     img.addEventListener("load", start, { once: true });
-    img.addEventListener("error", start, { once: true });
     if (img.complete && img.naturalWidth) start();
     let retry = 0;
     const watch = setInterval(() => {
@@ -376,7 +375,6 @@ const RefineFrame: React.FC<RefineFrameProps> = ({
       gone = true;
       clearInterval(watch);
       img.removeEventListener("load", start);
-      img.removeEventListener("error", start);
     };
   }, [children, status]);
 

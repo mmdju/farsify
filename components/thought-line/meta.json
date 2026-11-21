@@ -133,6 +133,17 @@
       "name": "onSettle",
       "type": "(seconds: number) => void",
       "description": "When it settles, with the total duration."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "کلاسِ اضافه برای خودِ نوار."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "description": "استایلِ درون‌خطی؛ متغیرهای CSS هم قبول می‌شن (`--tl-timer` و مانندش)."
     }
   ],
   "tips": [

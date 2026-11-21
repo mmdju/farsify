@@ -38,28 +38,36 @@ export function RadiusField() {
   );
 }
 
-// بدون کنترل — خودش مقدار را نگه می‌دارد
-<ScrubField label="حاشیه" defaultValue={16} min={0} max={64} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* بدون کنترل — خودش مقدار را نگه می‌دارد */}
+      <ScrubField label="حاشیه" defaultValue={16} min={0} max={64} />
 
-// گامِ ریزِ نیم‌واحدی، با قرصِ اختلاف خاموش
-<ScrubField
-  label="شفافیت"
-  suffix="٪"
-  defaultValue={1.5}
-  min={0}
-  max={10}
-  step={0.5}
-  showDelta={false}
-/>
+      {/* گامِ ریزِ نیم‌واحدی، با قرصِ اختلاف خاموش */}
+      <ScrubField
+        label="شفافیت"
+        suffix="٪"
+        defaultValue={1.5}
+        min={0}
+        max={10}
+        step={0.5}
+        showDelta={false}
+      />
 
-// رنگ برند — لهجه هم تهیِ مقدار است هم قرصِ اختلاف
-<ScrubField
-  label="ضخامت"
-  suffix="px"
-  accent="var(--color-brand)"
-  chipColor="#18181b"
-  size="lg"
-/>
+      {/* رنگ برند — لهجه هم تهیِ مقدار است هم قرصِ اختلاف */}
+      <ScrubField
+        label="ضخامت"
+        suffix="px"
+        accent="var(--color-brand)"
+        chipColor="#18181b"
+        size="lg"
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props

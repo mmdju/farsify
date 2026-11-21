@@ -33,31 +33,39 @@ export function PayButton() {
   );
 }
 
-// با Promise: چرخنده نشان داده می‌شود، بعد از resolve
-// قرصِ سبز باز می‌شود و با reject تکان می‌خورد
-<SlideCommit
-  label="برای حذف بکشید"
-  doneLabel="حذف شد"
-  errorLabel="حذف انجام نشد"
-  successColor="#22c55e"
-  dangerColor="#e5484d"
-  onConfirm={async () => {
-    const res = await fetch("/api/delete", { method: "POST" });
-    if (!res.ok) throw new Error("حذف نشد");
-  }}
-  onDone={() => router.refresh()}
-  onError={(reason) => console.error(reason)}
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* با Promise: چرخنده نشان داده می‌شود، بعد از resolve */}
+      {/* قرصِ سبز باز می‌شود و با reject تکان می‌خورد */}
+      <SlideCommit
+        label="برای حذف بکشید"
+        doneLabel="حذف شد"
+        errorLabel="حذف انجام نشد"
+        successColor="#22c55e"
+        dangerColor="#e5484d"
+        onConfirm={async () => {
+          const res = await fetch("/api/delete", { method: "POST" });
+          if (!res.ok) throw new Error("حذف نشد");
+        }}
+        onDone={() => router.refresh()}
+        onError={(reason) => console.error(reason)}
+      />
 
-// موفقیتِ بی‌درنگ: بدون Promise، بی‌چرخنده و بی‌مکث
-<SlideCommit
-  label="برای تأیید بکشید"
-  width={220}
-  height={48}
-  radius={12}
-  holdMs={0}
-  onConfirm={() => setDone(true)}
-/>
+      {/* موفقیتِ بی‌درنگ: بدون Promise، بی‌چرخنده و بی‌مکث */}
+      <SlideCommit
+        label="برای تأیید بکشید"
+        width={220}
+        height={48}
+        radius={12}
+        holdMs={0}
+        onConfirm={() => setDone(true)}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props

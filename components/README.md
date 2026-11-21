@@ -17,7 +17,7 @@
 | [Comet Dial](comet-dial/) | `comet-dial` |
 | [Stepper](stepper/) | `stepper` |
 | [Elastic Slider](elastic-slider/) | `elastic-slider` |
-| [ThemeSelector](theme-selector/) | `theme-selector` |
+| [Theme Selector](theme-selector/) | `theme-selector` |
 
 ## Buttons (12)
 
@@ -84,7 +84,7 @@
 | [Counter](counter/) | `counter` |
 | [Glass Icons](glass-icons/) | `glass-icons` |
 | [Package Box](package-box/) | `package-box` |
-| [CoffeeMilk](coffee-milk/) | `coffee-milk` |
+| [Coffee Milk](coffee-milk/) | `coffee-milk` |
 | [Memories](memories/) | `memories` |
 | [Bookshelf](bookshelf/) | `bookshelf` |
 | [Holographic Referral Card](invite-card/) | `invite-card` |

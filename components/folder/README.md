@@ -39,31 +39,39 @@ export function ProjectFolder() {
   );
 }
 
-// آبی را فقط وقتی بخواهی پوشه از سطحِ خنثی جدا شود بده
-<Folder
-  items={documents}
-  label="پروژه‌ها"
-  color="#3b82f6"
-  theme="dark"
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* آبی را فقط وقتی بخواهی پوشه از سطحِ خنثی جدا شود بده */}
+      <Folder
+        items={documents}
+        label="پروژه‌ها"
+        color="#3b82f6"
+        theme="dark"
+      />
 
-// حالتِ کتابی و شیشه‌ای؛ کاغذها با کشیدن بیرون می‌آیند
-<Folder
-  items={documents}
-  label="آرشیو"
-  mode="book"
-  variant="glass"
-  layout="row"
-  frost={0.6}
-/>
+      {/* حالتِ کتابی و شیشه‌ای؛ کاغذها با کشیدن بیرون می‌آیند */}
+      <Folder
+        items={documents}
+        label="آرشیو"
+        mode="book"
+        variant="glass"
+        layout="row"
+        frost={0.6}
+      />
 
-// کنترل از بیرون: باز/بسته را خودت مدیریت کن
-<Folder
-  items={documents}
-  label="پرونده‌ها"
-  open={open}
-  onOpenChange={setOpen}
-/>
+      {/* کنترل از بیرون: باز/بسته را خودت مدیریت کن */}
+      <Folder
+        items={documents}
+        label="پرونده‌ها"
+        open={open}
+        onOpenChange={setOpen}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props

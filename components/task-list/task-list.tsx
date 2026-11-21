@@ -113,7 +113,7 @@ const CARD = cn(
 );
 
 const FOCUS =
-  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-brand";
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-primary";
 
 function useTiming() {
   const reduced = useReducedMotion() ?? false;

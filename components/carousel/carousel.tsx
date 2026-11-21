@@ -867,6 +867,9 @@ export default function Carousel({
       tabIndex={0}
     >
       <div ref={stageRef} className="carousel-stage">
+        <span className="sr-only" role="status">
+          اسلاید {toFaDigits(active + 1)} از {toFaDigits(count)}
+        </span>
         <div
           ref={viewportRef}
           className="carousel-viewport"

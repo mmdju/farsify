@@ -70,7 +70,7 @@ import { TaskItem } from "@/components/farsify/task-list";
 | `onTasksChange` | `(tasks: Task[]) => void` | — | — | Returns the full, updated list on every check/uncheck. |
 | `size` | `"sm" | "md" | "lg"` | `"md"` | — | Row and font size; text comes from the project scale, not a raw number. |
 | `accent` | `string` | `currentColor` | — | Fill color of the box. Any CSS value works; it defaults to the row's text color, so it changes with the theme. |
-| `checkColor` | `string` | `var(--page, #ffffff)` | — | Color of the check itself, on the filled box. It must contrast with `accent` — it defaults to the page color. |
+| `checkColor` | `string` | `var(--background, #ffffff)` | — | Color of the check itself, on the filled box. It must contrast with `accent` — it defaults to the page color. |
 | `className` | `string` | — | — | Outer class on the `ul`; set the list width here. |
 
 ## Tips

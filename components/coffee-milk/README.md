@@ -1,4 +1,4 @@
-# CoffeeMilk
+# Coffee Milk
 
 A ratio bar whose two shares grow and shrink as you drag it; coffee and milk, with it always clear which side has more.
 
@@ -30,14 +30,22 @@ export function BrewSetup() {
   return <CoffeeMilk value={coffee} onChange={setCoffee} />;
 }
 
-// کنترل‌نشده — خودش حالتش را نگه می‌دارد
-<CoffeeMilk defaultValue={65} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* کنترل‌نشده — خودش حالتش را نگه می‌دارد */}
+      <CoffeeMilk defaultValue={65} />
 
-// برچسب‌های دلخواه — هر نسبتی که بخوای
-<CoffeeMilk leftLabel="کار" rightLabel="استراحت" defaultValue={70} />
+      {/* برچسب‌های دلخواه — هر نسبتی که بخوای */}
+      <CoffeeMilk leftLabel="کار" rightLabel="استراحت" defaultValue={70} />
 
-// رنگ‌های دلخواه؛ جوهرِ برچسب‌ها با متغیرهای --cm-*-word/num جدا عوض می‌شه
-<CoffeeMilk coffeeFill="#8a5a2b" milkFill="#dbe4ee" />
+      {/* رنگ‌های دلخواه؛ جوهرِ برچسب‌ها با متغیرهای --cm-*-word/num جدا عوض می‌شه */}
+      <CoffeeMilk coffeeFill="#8a5a2b" milkFill="#dbe4ee" />
+    </>
+  );
+}
+
 ```
 
 ## Props

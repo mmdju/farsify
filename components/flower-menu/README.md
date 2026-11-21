@@ -25,28 +25,35 @@ import { useState } from "react";
 import { FlowerMenu } from "@/components/farsify/flower-menu";
 import { Home, Search } from "lucide-react";
 
-// ساده‌ترین حالت — خودش باز و بسته می‌شود
-<FlowerMenu />
-
 // کنترل‌شده — باز و بسته دستِ تو
 export function QuickActions() {
   const [open, setOpen] = useState(false);
   return <FlowerMenu open={open} onOpenChange={setOpen} />;
 }
 
-// مرکزِ آبیِ برند و شکوفای پهن‌تر
-<FlowerMenu accent="var(--color-brand)" radius={110} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* ساده‌ترین حالت — خودش باز و بسته می‌شود */}
+      <FlowerMenu />
 
-// فنرِ تندتر و پله‌ی کوتاه — حسِ یک‌باره شکوفا شدن
-<FlowerMenu stiffness={700} damping={12} stagger={12} />
+      {/* مرکزِ آبیِ برند و شکوفای پهن‌تر */}
+      <FlowerMenu accent="var(--color-brand)" radius={110} />
 
-// آیتم‌های خودت — برچسب به aria-label می‌رود چون منو متنِ دیدنی ندارد
-<FlowerMenu
-  items={[
-    { id: "home", label: "خانه", icon: Home },
-    { id: "search", label: "جست‌وجو", icon: Search },
-  ]}
-/>
+      {/* فنرِ تندتر و پله‌ی کوتاه — حسِ یک‌باره شکوفا شدن */}
+      <FlowerMenu stiffness={700} damping={12} stagger={12} />
+
+      {/* آیتم‌های خودت — برچسب به aria-label می‌رود چون منو متنِ دیدنی ندارد */}
+      <FlowerMenu
+        items={[
+          { id: "home", label: "خانه", icon: Home },
+          { id: "search", label: "جست‌وجو", icon: Search },
+        ]}
+      />
+    </>
+  );
+}
 ```
 
 ## Props

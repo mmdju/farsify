@@ -322,7 +322,7 @@ const DriftWall = ({
     [tileWidth, tileHeight, gap, radius, perspective, lift, dim, grayscale, overlayColor, fade, style]
   );
 
-  const renderTile = (item: DriftWallItem, id: string, colIndex: number) => {
+  const renderTile = (item: DriftWallItem, id: string, colIndex: number, tabbable: boolean) => {
     const inner = (
       <span className="drift-wall__inner">
         <img src={item.image} alt={item.title ?? ""} loading="lazy" decoding="async" draggable={false} />
@@ -344,7 +344,7 @@ const DriftWall = ({
       );
     }
     return (
-      <div key={id} tabIndex={0} role="img" aria-label={item.title ?? "کاشی"} {...commonProps}>
+      <div key={id} tabIndex={tabbable ? 0 : -1} role="img" aria-label={item.title ?? "کاشی"} {...commonProps}>
         {inner}
       </div>
     );
@@ -378,7 +378,9 @@ const DriftWall = ({
                 }}
               >
                 {copies.map((_, copyIndex) =>
-                  col.map((item, itemIndex) => renderTile(item, `${c}-${copyIndex}-${itemIndex}`, c))
+                  col.map((item, itemIndex) =>
+                    renderTile(item, `${c}-${copyIndex}-${itemIndex}`, c, copyIndex === 0)
+                  )
                 )}
               </div>
             </div>

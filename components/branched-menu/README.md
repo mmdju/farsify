@@ -68,6 +68,10 @@ export function DocsNav() {
 | `items` | `BranchedMenuItem[]` | `DEFAULT_ITEMS` | — | The sections. Each section has a `label` and a list of children (`value`, `label`, `icon`), or is itself a leaf with a `value`. |
 | `defaultOpen` | `number | number[]` | `0` | — | Which sections are open at first. A negative number means none. |
 | `defaultActive` | `string` | `""` | — | The initial selected value. Leave it empty so the first child of the open section is selected. |
+| `activeLabelColor` | `string` | — | — | رنگِ برچسبِ گزینه‌ی انتخاب‌شده؛ ندادی، همون `accentColor` استفاده می‌شه. |
+| `sectionFontSize` | `number` | — | — | اندازه‌ی قلمِ عنوانِ بخش‌ها، پیکسل؛ ندادی، اندازه‌ی پیش‌فرض می‌مونه. |
+| `sectionClassName` | `string` | `""` | — | کلاسِ اضافه برای ردیفِ عنوانِ هر بخش. |
+| `dimInactiveSections` | `boolean` | `false` | — | بخش‌های بسته کم‌رنگ‌تر از بخشِ باز نشان داده بشن. |
 | `onSelect` | `(value, item) => void` | — | — | Called when a child or a leaf is selected. |
 | `onToggle` | `(index, open) => void` | — | — | Called when a section opens or closes. |
 | `color` | `string` | `"#f5f5f5"` | — | Ink color. The lines and the unstyled text are blends of this same color. |

@@ -40,11 +40,19 @@ export function PostLike() {
   );
 }
 
-// بدون کنترل — خودش وضعیت و شمار را نگه می‌دارد
-<PulseHeart count={1204} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* بدون کنترل — خودش وضعیت و شمار را نگه می‌دارد */}
+      <PulseHeart count={1204} />
 
-// ستاره به‌جای قلب، بدونِ شمار
-<PulseHeart icon="star" showCount={false} likedColor="#f5b942" />
+      {/* ستاره به‌جای قلب، بدونِ شمار */}
+      <PulseHeart icon="star" showCount={false} likedColor="#f5b942" />
+    </>
+  );
+}
+
 ```
 
 ## Props

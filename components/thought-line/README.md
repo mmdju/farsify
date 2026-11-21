@@ -85,6 +85,8 @@ export function AssistantStatus() {
 | `elapsed` | `number` | — | — | Elapsed time; omit it to have it count on its own. |
 | `showTimer` | `boolean` | `false` | — | Show the elapsed time. |
 | `onSettle` | `(seconds: number) => void` | — | — | When it settles, with the total duration. |
+| `className` | `string` | `""` | — | کلاسِ اضافه برای خودِ نوار. |
+| `style` | `CSSProperties` | — | — | استایلِ درون‌خطی؛ متغیرهای CSS هم قبول می‌شن (`--tl-timer` و مانندش). |
 
 ## Tips
 

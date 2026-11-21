@@ -40,9 +40,17 @@ export function SpeakerCard() {
   );
 }
 
-// نورِ مشترک: ردیفی از کارت‌ها با همان proximity یک نور می‌گیرند
-<SpotlightCard proximity={80}>کارتِ اول</SpotlightCard>
-<SpotlightCard proximity={80}>کارتِ دوم</SpotlightCard>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* نورِ مشترک: ردیفی از کارت‌ها با همان proximity یک نور می‌گیرند */}
+      <SpotlightCard proximity={80}>کارتِ اول</SpotlightCard>
+      <SpotlightCard proximity={80}>کارتِ دوم</SpotlightCard>
+    </>
+  );
+}
+
 ```
 
 ## Props

@@ -13,7 +13,6 @@
       "name": "items",
       "type": "RailTocItem[]",
       "required": true,
-      "defaultValue": "[{ id: \"intro\", label: \"مقدمه\" }, { id: \"install\", label: \"نصب\", depth: 1 }]",
       "description": "The page headings. Each item is `{ id, label, depth }`: `id` must be exactly the id of that heading in the DOM, and `depth` (0 and up) sets the subheading indentation."
     },
     {

@@ -39,47 +39,55 @@ export function AppDock() {
   );
 }
 
-// داکِ شبکه‌های اجتماعی — آیکن‌ها می‌تونن لینک واقعی هم باشن
-<GlassIcons
-  items={[
-    {
-      icon: <Github size={24} strokeWidth={1.8} />,
-      color: "linear-gradient(135deg, #4a4752, #1d1b22)",
-      label: "GitHub",
-      href: "https://github.com",
-      target: "_blank",
-    },
-  ]}
-  size={56}
-  gap={22}
-  columns={6}
-  roundness={1}
-  plate="circle"
-  spread={0.12}
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* داکِ شبکه‌های اجتماعی — آیکن‌ها می‌تونن لینک واقعی هم باشن */}
+      <GlassIcons
+        items={[
+          {
+            icon: <Github size={24} strokeWidth={1.8} />,
+            color: "linear-gradient(135deg, #4a4752, #1d1b22)",
+            label: "GitHub",
+            href: "https://github.com",
+            target: "_blank",
+          },
+        ]}
+        size={56}
+        gap={22}
+        columns={6}
+        roundness={1}
+        plate="circle"
+        spread={0.12}
+      />
 
-// شیشه‌ی کاملِ شفاف — چیزی که پشتِ کامپوننت باشه خم می‌شه
-<GlassIcons
-  plate="none"
-  refraction={0.9}
-  dispersion={0.6}
-  frost={0.15}
-  tintOpacity={0.06}
-  items={items}
-/>
+      {/* شیشه‌ی کاملِ شفاف — چیزی که پشتِ کامپوننت باشه خم می‌شه */}
+      <GlassIcons
+        plate="none"
+        refraction={0.9}
+        dispersion={0.6}
+        frost={0.15}
+        tintOpacity={0.06}
+        items={items}
+      />
 
-// داکِ فشرده با برچسبِ همیشگی
-<GlassIcons
-  size={60}
-  gap={16}
-  columns={6}
-  roundness={0.42}
-  plate="offset"
-  spread={0.35}
-  hover="float"
-  labels="always"
-  items={dockItems}
-/>
+      {/* داکِ فشرده با برچسبِ همیشگی */}
+      <GlassIcons
+        size={60}
+        gap={16}
+        columns={6}
+        roundness={0.42}
+        plate="offset"
+        spread={0.35}
+        hover="float"
+        labels="always"
+        items={dockItems}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props

@@ -32,11 +32,19 @@ export function PhotoStrip() {
   return <Carousel items={photos} baseWidth={640} peek={64} frame={false} effect="scale" loop autoplay indicator="bars" />;
 }
 
-// هر محتوایی: کامپوننتِ خودت به‌جای کارت
-<Carousel items={[<MyCard key="a" />, <MyCard key="b" />]} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* هر محتوایی: کامپوننتِ خودت به‌جای کارت */}
+      <Carousel items={[<MyCard key="a" />, <MyCard key="b" />]} />
 
-// استوریِ عمودیِ مکعبی
-<Carousel baseWidth={270} aspectRatio={0.62} effect="cube" loop autoplay />
+      {/* استوریِ عمودیِ مکعبی */}
+      <Carousel baseWidth={270} aspectRatio={0.62} effect="cube" loop autoplay />
+    </>
+  );
+}
+
 ```
 
 ## Props

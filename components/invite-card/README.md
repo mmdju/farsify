@@ -34,19 +34,27 @@ export function EventInvite() {
   );
 }
 
-// با نشان و شمارهٔ بلیتِ خودت — لوگو آدرسِ عکس، شئِ {src, alt} یا هر ReactNode
-<InviteCard
-  logo={<MyLogo className="size-7 rounded-full" />}
-  secondLogo={{ src: "/partner.png", alt: "همکار" }}
-  secondLogoHref="https://example.com"
-  secondLogoAriaLabel="وب‌سایتِ همکار"
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* با نشان و شمارهٔ بلیتِ خودت — لوگو آدرسِ عکس، شئِ {src, alt} یا هر ReactNode */}
+      <InviteCard
+        logo={<MyLogo className="size-7 rounded-full" />}
+        secondLogo={{ src: "/partner.png", alt: "همکار" }}
+        secondLogoHref="https://example.com"
+        secondLogoAriaLabel="وب‌سایتِ همکار"
+      />
 
-// کج‌شدنِ تیزتر و فنرِ پرتحرک — شخصیتِ جسور
-<InviteCard tilt={30} stiffness={420} damping={20} />
+      {/* کج‌شدنِ تیزتر و فنرِ پرتحرک — شخصیتِ جسور */}
+      <InviteCard tilt={30} stiffness={420} damping={20} />
 
-// گوشهٔ گردتر، برقِ ملایم و فنرِ کشیده — شخصیتِ آرام
-<InviteCard radius={24} tilt={10} glow={0.6} stiffness={120} />
+      {/* گوشهٔ گردتر، برقِ ملایم و فنرِ کشیده — شخصیتِ آرام */}
+      <InviteCard radius={24} tilt={10} glow={0.6} stiffness={120} />
+    </>
+  );
+}
+
 ```
 
 ## Props

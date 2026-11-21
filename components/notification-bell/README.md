@@ -37,11 +37,19 @@ export function Header({ unread }: { unread: number }) {
   );
 }
 
-// فقط نشان بده که اعلانِ تازه هست، بی‌عدد
-<NotificationBell count={1} variant="dot" color="blue" />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* فقط نشان بده که اعلانِ تازه هست، بی‌عدد */}
+      <NotificationBell count={1} variant="dot" color="blue" />
 
-// اندازه و سرریز را خودت تعیین کن
-<NotificationBell count={128} max={9} size={56} color="violet" />
+      {/* اندازه و سرریز را خودت تعیین کن */}
+      <NotificationBell count={128} max={9} size={56} color="violet" />
+    </>
+  );
+}
+
 ```
 
 ## Props

@@ -44,19 +44,27 @@ export function MainMenu() {
   );
 }
 
-// تمِ روشن، رنگِ برند و قرصِ بزرگ‌تر
-<GooeyNav
-  items={items}
-  theme="light"
-  color="#007bff"
-  size="lg"
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* تمِ روشن، رنگِ برند و قرصِ بزرگ‌تر */}
+      <GooeyNav
+        items={items}
+        theme="light"
+        color="#007bff"
+        size="lg"
+      />
 
-// بدونِ ناوبری: آیتم‌ها دکمه می‌شوند و فقط onChange می‌آید
-<GooeyNav
-  items={[{ label: "روزانه" }, { label: "هفتگی" }, { label: "ماهانه" }]}
-  onChange={(index) => console.log(index)}
-/>
+      {/* بدونِ ناوبری: آیتم‌ها دکمه می‌شوند و فقط onChange می‌آید */}
+      <GooeyNav
+        items={[{ label: "روزانه" }, { label: "هفتگی" }, { label: "ماهانه" }]}
+        onChange={(index) => console.log(index)}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props
@@ -68,7 +76,7 @@ export function MainMenu() {
 | `activeIndex` | `number` | — | — | Controlled state; pass it with `onChange` to keep control of the selection yourself. |
 | `onChange` | `(index: number, item: GooeyNavItem) => void` | — | — | On every selection, returns the index and the item itself. |
 | `theme` | `"dark" | "light"` (`dark` · `light`) | `"dark"` | — | Theme of the frame and text; the pill color is derived from its own luminance. |
-| `color` | `string` | `تم‌آگاه (#f4f4f5 / #27272a)` | — | Color of the active pill. Pass a hex or `rgb()`; the text color inside is chosen automatically. |
+| `color` | `string` | `تم‌آگاه (#fafafa / #27272a)` | — | Color of the active pill. Pass a hex or `rgb()`; the text color inside is chosen automatically. |
 | `activeTextColor` | `string` | — | — | Text color inside the pill. Omit it to have it derived from the luminance of `color`. |
 | `colors` | `string[]` | `[]` | — | Color of the droplets; they blend when they meet. Empty means the pill color itself. |
 | `size` | `"sm" | "md" | "lg"` (`sm` · `md` · `lg`) | `"md"` | — | Size of the pill and the type. |

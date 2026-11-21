@@ -52,7 +52,7 @@ export function CrumplableNote() {
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `src` | `string` | — | — | URL of the image the paper is built from. Required; the remote image must allow CORS. |
+| `src` | `string` | — | yes | URL of the image the paper is built from. Required; the remote image must allow CORS. |
 | `alt` | `string` | `""` | — | Alternative text for the image — used both for the fallback `<img>` and in the button's screen-reader label. |
 | `backSrc` | `string` | `""` | — | Image for the back of the paper. If omitted, the paper's back is `paperColor`. |
 | `width` | `number` | `320` | — | Paper width, in pixels. Together with `height` it sets the paper's aspect ratio. |

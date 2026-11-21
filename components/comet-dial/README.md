@@ -38,14 +38,22 @@ export function VolumeDial() {
   );
 }
 
-// درجه، با دنباله‌ی بلندتر و ضخامتِ بیشتر
-<CometDial unit="°" cometReach={240} thickness={7} accent="var(--color-brand)" />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* درجه، با دنباله‌ی بلندتر و ضخامتِ بیشتر */}
+      <CometDial unit="°" cometReach={240} thickness={7} accent="var(--color-brand)" />
 
-// بدونِ یکا — فقط عددِ وسط، با فنرِ نرم‌تر
-<CometDial unit="" speed={10} tapBounce={0.05} />
+      {/* بدونِ یکا — فقط عددِ وسط، با فنرِ نرم‌تر */}
+      <CometDial unit="" speed={10} tapBounce={0.05} />
 
-// صفحه‌ی غیرفعال، برای نمایشِ مقدارِ ثبت‌شده
-<CometDial value={40} disabled label="تنظیمِ فعلی" />
+      {/* صفحه‌ی غیرفعال، برای نمایشِ مقدارِ ثبت‌شده */}
+      <CometDial value={40} disabled label="تنظیمِ فعلی" />
+    </>
+  );
+}
+
 ```
 
 ## Props

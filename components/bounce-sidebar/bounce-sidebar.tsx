@@ -209,7 +209,7 @@ export default function BounceSidebar({
         const itemClassName = cn(
           "flex w-full items-center rounded-lg p-1 text-start text-sm transition-colors duration-200",
           "cursor-pointer motion-reduce:transition-none",
-          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-brand",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-primary",
           isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
         );
         const shared = {

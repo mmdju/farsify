@@ -12,6 +12,7 @@
     {
       "name": "items",
       "type": "Array<string | RubberSegmentItem>",
+      "required": true,
       "description": "The options; a string or a `{ value, label, icon }` object."
     },
     {

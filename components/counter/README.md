@@ -51,16 +51,24 @@ export function BetaCountdown() {
   );
 }
 
-// قالب‌بندی با Intl — ارز، درصد و نگارشِ فشرده، همه با ارقامِ همان locale
-<Counter value={48203.17} format={{ style: "currency", currency: "IRR" }} decimals={2} />
-<Counter value={0.0342} format={{ style: "percent" }} decimals={2} />
-<Counter value={48203} format={{ notation: "compact" }} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* قالب‌بندی با Intl — ارز، درصد و نگارشِ فشرده، همه با ارقامِ همان locale */}
+      <Counter value={48203.17} format={{ style: "currency", currency: "IRR" }} decimals={2} />
+      <Counter value={0.0342} format={{ style: "percent" }} decimals={2} />
+      <Counter value={48203} format={{ notation: "compact" }} />
 
-// فنرِ شخصی‌سازی‌شده: جهشِ بلند و موجِ پله‌ای از راستِ عدد
-<Counter value={99999} bounce={0.5} stagger={0.12} duration={1.1} />
+      {/* فنرِ شخصی‌سازی‌شده: جهشِ بلند و موجِ پله‌ای از راستِ عدد */}
+      <Counter value={99999} bounce={0.5} stagger={0.12} duration={1.1} />
 
-// خاموشِ بی‌سروصدا — مناسبِ گوشیِ ضعیف و قاب‌های ریز
-<Counter value={42} motionBlur={false} intro={false} tabular={false} />
+      {/* خاموشِ بی‌سروصدا — مناسبِ گوشیِ ضعیف و قاب‌های ریز */}
+      <Counter value={42} motionBlur={false} intro={false} tabular={false} />
+    </>
+  );
+}
+
 ```
 
 ## Props

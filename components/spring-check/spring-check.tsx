@@ -61,12 +61,13 @@ const zetaOf = (bounce: number) =>
 
 const readings = (t: number, doneOpacity: number, strikeLag: number) => {
   const held = clamp01(t);
+  const lag = Math.min(Math.max(0, strikeLag), RULE_END - 0.01);
   return {
     fill: `scale(${Math.max(t, 0)})`,
     box: `scale(${1 + SWELL * Math.max(0, t - 1)})`,
     tick: 1 - held,
     word: 1 - (1 - doneOpacity) * held,
-    rule: `scaleX(${clamp01((held - strikeLag) / (RULE_END - strikeLag))})`,
+    rule: `scaleX(${clamp01((held - lag) / (RULE_END - lag))})`,
   };
 };
 

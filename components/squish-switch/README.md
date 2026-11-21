@@ -36,17 +36,25 @@ export function AutoSave() {
   );
 }
 
-// بدون کنترل — روشن از اول
-<SquishSwitch label="اعلان‌ها" defaultChecked />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* بدون کنترل — روشن از اول */}
+      <SquishSwitch label="اعلان‌ها" defaultChecked />
 
-// رنگ برند و کشش بیشتر
-<SquishSwitch
-  label="همگام‌سازی خودکار"
-  trackOnColor="var(--color-brand)"
-  thumbOnColor="#ffffff"
-  stretch={60}
-  speed={70}
-/>
+      {/* رنگ برند و کشش بیشتر */}
+      <SquishSwitch
+        label="همگام‌سازی خودکار"
+        trackOnColor="var(--color-brand)"
+        thumbOnColor="#ffffff"
+        stretch={60}
+        speed={70}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props
@@ -58,8 +66,8 @@ export function AutoSave() {
 | `onChange` | `(checked: boolean) => void` | — | — | Returns the new state on every change. |
 | `label` | `string` | — | — | The text next to the switch. If given, clicking it also toggles the switch (via `htmlFor`). |
 | `disabled` | `boolean` | `false` | — | Dims it and makes it non-interactive. |
-| `trackColor` | `string` | `#27272a (تیره) · #d4d4d8 (روشن)` | — | Track color in the off state. |
-| `trackOnColor` | `string` | `#f5f5f5 (تیره) · #18181b (روشن)` | — | Track color in the on state. |
+| `trackColor` | `string` | `#232323` | — | Track color in the off state. |
+| `trackOnColor` | `string` | `#fafafa` | — | Track color in the on state. |
 | `thumbColor` | `string` | `ترکیبِ دو رنگ نوار` | — | Handle color in the off state. Leave it empty to build it from a mix of `trackOnColor` and `trackColor`. |
 | `thumbOnColor` | `string` | `همان trackColor` | — | Handle color in the on state. Leave it empty to use `trackColor` itself. |
 | `width` | `number` | `76` | — | Track width, pixels. |

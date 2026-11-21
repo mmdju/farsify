@@ -42,7 +42,7 @@ import {
 const SURFACE = "bg-accent";
 const GLYPH = "text-muted-foreground";
 const FOCUS =
-  "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-fg-40";
+  "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-foreground";
 
 const COLORS = {
   red: "#FF3B30",

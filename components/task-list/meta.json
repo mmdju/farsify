@@ -41,7 +41,7 @@
     {
       "name": "checkColor",
       "type": "string",
-      "defaultValue": "var(--page, #ffffff)",
+      "defaultValue": "var(--background, #ffffff)",
       "description": "Color of the check itself, on the filled box. It must contrast with `accent` — it defaults to the page color."
     },
     {

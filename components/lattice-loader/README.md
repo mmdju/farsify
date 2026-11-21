@@ -49,19 +49,27 @@ export function ThinkingRow() {
   );
 }
 
-// شبکه‌ی ۴×۴ با هاله — برای پس‌زمینه‌ی روشن
-<LatticeLoader status="working" grid={4} pattern="pulse" glow glowColor="var(--color-brand)" />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* شبکه‌ی ۴×۴ با هاله — برای پس‌زمینه‌ی روشن */}
+      <LatticeLoader status="working" grid={4} pattern="pulse" glow glowColor="var(--color-brand)" />
 
-// الگوی اختصاصی: هر عدد یعنی خانه‌ای که با آن تأخیر روشن می‌شود،
-// null یعنی خانه‌ای که هرگز روشن نمی‌شود
-<LatticeLoader
-  pattern={{ cells: [0, 2, null, 4, 1, 3, null, 5, 0], loop: 6, scale: 1.2 }}
-  cellSize={8}
-  gap={3}
-/>
+      {/* الگوی اختصاصی: هر عدد یعنی خانه‌ای که با آن تأخیر روشن می‌شود، */}
+      {/* null یعنی خانه‌ای که هرگز روشن نمی‌شود */}
+      <LatticeLoader
+        pattern={{ cells: [0, 2, null, 4, 1, 3, null, 5, 0], loop: 6, scale: 1.2 }}
+        cellSize={8}
+        gap={3}
+      />
 
-// زمان از بیرون می‌آید و کرنومترِ داخلی خاموش می‌شود
-<LatticeLoader status={status} elapsed={1.4} showTimer />
+      {/* زمان از بیرون می‌آید و کرنومترِ داخلی خاموش می‌شود */}
+      <LatticeLoader status={status} elapsed={1.4} showTimer />
+    </>
+  );
+}
+
 ```
 
 ## Props

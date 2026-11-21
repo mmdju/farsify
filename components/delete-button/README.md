@@ -35,11 +35,19 @@ export function ReportRow({ id }: { id: string }) {
   );
 }
 
-// رنگِ تأیید را عوض کن (هر مقدارِ CSS قبول است)
-<DeleteButton accent="#e11d48" onConfirm={remove} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* رنگِ تأیید را عوض کن (هر مقدارِ CSS قبول است) */}
+      <DeleteButton accent="#e11d48" onConfirm={remove} />
 
-// وقتی حذف مجاز نیست
-<DeleteButton disabled />
+      {/* وقتی حذف مجاز نیست */}
+      <DeleteButton disabled />
+    </>
+  );
+}
+
 ```
 
 ## Props

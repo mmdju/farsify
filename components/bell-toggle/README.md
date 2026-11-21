@@ -38,11 +38,19 @@ export function SubscribeBell() {
   );
 }
 
-// زنگوله‌ی خطی، بدونِ موج، با شمارشِ بیشتر
-<BellToggle clapper waves={false} count={12} onBackground="var(--color-brand)" />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* زنگوله‌ی خطی، بدونِ موج، با شمارشِ بیشتر */}
+      <BellToggle clapper waves={false} count={12} onBackground="var(--color-brand)" />
 
-// بدونِ بادکنک و با لرزشِ آرام‌تر — مناسبِ فهرستِ شلوغ
-<BellToggle badge={false} ringAmplitude={8} ringPasses={2} size="sm" />
+      {/* بدونِ بادکنک و با لرزشِ آرام‌تر — مناسبِ فهرستِ شلوغ */}
+      <BellToggle badge={false} ringAmplitude={8} ringPasses={2} size="sm" />
+    </>
+  );
+}
+
 ```
 
 ## Props

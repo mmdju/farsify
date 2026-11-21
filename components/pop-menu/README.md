@@ -43,16 +43,24 @@ export function ControlledMenu() {
   );
 }
 
-// عریض‌تر با فنرِ نرم‌تر
-<PopMenu width={244} stiffness={300} damping={40} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* عریض‌تر با فنرِ نرم‌تر */}
+      <PopMenu width={244} stiffness={300} damping={40} />
 
-// آیتمِ خطر — قرمز می‌شود و با انتخاب، منو را می‌بندد
-<PopMenu
-  items={[
-    { id: "rename", label: "تغییر نام" },
-    { id: "remove", label: "حذف", danger: true },
-  ]}
-/>
+      {/* آیتمِ خطر — قرمز می‌شود و با انتخاب، منو را می‌بندد */}
+      <PopMenu
+        items={[
+          { id: "rename", label: "تغییر نام" },
+          { id: "remove", label: "حذف", danger: true },
+        ]}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props

@@ -1,4 +1,28 @@
 "use client";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+function toFaDigits(input: string | number) {
+  return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
+}
+
+function groupNumber(value: number, decimals = 0) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}
+
+function formatFa(value: number, decimals = 0) {
+  return toFaDigits(
+    groupNumber(value, decimals).replace(/,/g, "٬").replace(/\./g, "٫"),
+  );
+}
 
 import {
   Children,
@@ -9,12 +33,14 @@ import {
   useLayoutEffect,
   useMemo,
   useRef,
+  useState,
   type CSSProperties,
   type HTMLAttributes,
   type KeyboardEvent as ReactKeyboardEvent,
   type ReactElement,
   type ReactNode
 } from "react";
+
 import "./card-swap.css";
 
 const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
@@ -328,6 +354,7 @@ const CardSwap = forwardRef<CardSwapHandle, CardSwapProps>(
     ref
   ) => {
     const rootRef = useRef<HTMLDivElement>(null);
+  const [frontIndex, setFrontIndex] = useState(0);
     const stageRef = useRef<HTMLDivElement>(null);
     const slotRefs = useRef<(HTMLDivElement | null)[]>([]);
     const shadeRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -675,6 +702,7 @@ const CardSwap = forwardRef<CardSwapHandle, CardSwapProps>(
           if (card.phase === "rest") card.nudge = 0;
         });
         s.onChange?.(state.order[0]);
+        setFrontIndex(state.order[0]);
         wake();
         schedule();
       };
@@ -958,6 +986,9 @@ const CardSwap = forwardRef<CardSwapHandle, CardSwapProps>(
         <div className="card-swap-sizer" aria-hidden="true">
           <span />
         </div>
+        <span className="sr-only" role="status">
+          کارت {toFaDigits(frontIndex + 1)} از {toFaDigits(cards.length)}
+        </span>
         <div ref={stageRef} className="card-swap-stage">
           {cards.map((card, index) => (
             <div

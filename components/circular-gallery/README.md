@@ -37,20 +37,28 @@ export function CurvedWall() {
   );
 }
 
-// قوسِ تندِ درشت‌گوشه با موجِ قوی و سایه‌ی عمیق
-<CircularGallery items={shots} bend={4.5} itemSize={1.25} wave={2} shadow={0.45} />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* قوسِ تندِ درشت‌گوشه با موجِ قوی و سایه‌ی عمیق */}
+      <CircularGallery items={shots} bend={4.5} itemSize={1.25} wave={2} shadow={0.45} />
 
-// ردیفِ تقریباً تخت و پرفاصله با چرخشِ کشسان
-<CircularGallery items={shots} bend={1.5} gap={0.5} scrollEase={0.02} wave={0} />
+      {/* ردیفِ تقریباً تخت و پرفاصله با چرخشِ کشسان */}
+      <CircularGallery items={shots} bend={1.5} gap={0.5} scrollEase={0.02} wave={0} />
 
-// کارت‌های غیرفعال سیاه‌وسفید؛ رنگ فقط با هاور و فعال‌شدن
-<CircularGallery items={shots} grayscale />
+      {/* کارت‌های غیرفعال سیاه‌وسفید؛ رنگ فقط با هاور و فعال‌شدن */}
+      <CircularGallery items={shots} grayscale />
 
-// راندشِ آرامِ خودکار پس از سکون — با هاور می‌ایستد
-<CircularGallery items={shots} autoScroll={0.7} />
+      {/* راندشِ آرامِ خودکار پس از سکون — با هاور می‌ایستد */}
+      <CircularGallery items={shots} autoScroll={0.7} />
 
-// قلمِ فارسیِ خودت برای برچسب‌ها (به‌جای واکشیِ گوگل‌فونت)
-<CircularGallery items={shots} font='700 30px "Peyda"' />
+      {/* قلمِ فارسیِ خودت برای برچسب‌ها (به‌جای واکشیِ گوگل‌فونت) */}
+      <CircularGallery items={shots} font='700 30px "Peyda"' />
+    </>
+  );
+}
+
 ```
 
 ## Props

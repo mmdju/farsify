@@ -100,7 +100,7 @@ const DEFAULT_ITEMS: FlowerMenuItem[] = [
 ];
 
 const FOCUS =
-  "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-fg-40";
+  "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-foreground";
 
 const parseRgb = (value: string): [number, number, number] | null => {
   const input = String(value).trim();

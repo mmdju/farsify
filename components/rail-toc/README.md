@@ -36,22 +36,30 @@ export function ArticleToc() {
   return <RailToc items={SECTIONS} />;
 }
 
-// خطِ دید پایین‌تر، زیرسرفصل‌های عمیق‌تر و عنوانِ دلخواه
-<RailToc items={SECTIONS} offset={140} indent={22} title="فهرستِ این راهنما" />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
 
-// رنگِ هواپیما — تنها رنگِ تزئینیِ کامپوننت
-<RailToc items={SECTIONS} planeColor="#0a84ff" />
+  return (
+    <>
+      {/* خطِ دید پایین‌تر، زیرسرفصل‌های عمیق‌تر و عنوانِ دلخواه */}
+      <RailToc items={SECTIONS} offset={140} indent={22} title="فهرستِ این راهنما" />
 
-// داخلِ پنلی که خودش اسکرول می‌شود — ظرف را بده تا اندازه از همان خوانده شود
-const scrollerRef = useRef<HTMLDivElement>(null);
-<RailToc items={SECTIONS} containerRef={scrollerRef} />
+      {/* رنگِ هواپیما — تنها رنگِ تزئینیِ کامپوننت */}
+      <RailToc items={SECTIONS} planeColor="#0a84ff" />
+
+      {/* داخلِ پنلی که خودش اسکرول می‌شود — ظرف را بده تا اندازه از همان خوانده شود */}
+      <RailToc items={SECTIONS} containerRef={scrollerRef} />
+    </>
+  );
+}
 ```
 
 ## Props
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `items` | `RailTocItem[]` | `[{ id: "intro", label: "مقدمه" }, { id: "install", label: "نصب", depth: 1 }]` | yes | The page headings. Each item is `{ id, label, depth }`: `id` must be exactly the id of that heading in the DOM, and `depth` (0 and up) sets the subheading indentation. |
+| `items` | `RailTocItem[]` | — | yes | The page headings. Each item is `{ id, label, depth }`: `id` must be exactly the id of that heading in the DOM, and `depth` (0 and up) sets the subheading indentation. |
 | `containerRef` | `React.RefObject<HTMLElement | null>` | — | — | The scroll container of the content. Omit it to read height and scroll from the window itself; in a scrollable frame (such as a docs panel) pass this one, and the headings must be inside that same container. |
 | `offset` | `number` | `96` | — | Distance of the "sight line" from the top of the container, in pixels. A heading reaching this height becomes active; a lower value means earlier activation. |
 | `indent` | `number` | `14` | — | Indentation per depth level, in pixels. Zero means a flat hierarchy and a straight rail. |
