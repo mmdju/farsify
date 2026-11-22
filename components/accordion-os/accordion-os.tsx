@@ -234,7 +234,6 @@ export default function AccordionOS({
               return (
                 <motion.div
                   key={item.id ?? index}
-                  animate={{ width: isOpen ? 290 : "auto" }}
                   transition={spring}
                   onClick={() => handleToggle(index)}
                   onKeyDown={(e) => {
@@ -278,35 +277,16 @@ export default function AccordionOS({
                     </div>
                   </div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="claim-content"
-                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                        animate={{
-                          opacity: 1,
-                          height: "auto",
-                          marginTop: 12,
-                          transition: {
-                            height: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
-                            opacity: { duration: 0.22, delay: 0.04 },
-                          },
-                        }}
-                        exit={{
-                          opacity: 0,
-                          height: 0,
-                          marginTop: 0,
-                          transition: {
-                            height: { duration: 0.26, ease: [0.16, 1, 0.3, 1] },
-                            opacity: { duration: 0.18 },
-                          },
-                        }}
-                        className="accordion-os-claim-container"
-                      >
-                        <p className="accordion-os-claim-text">{item.claim}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <div
+                    className={`accordion-os-claim-container${
+                      isOpen ? " accordion-os-claim-container-open" : ""
+                    }`}
+                    aria-hidden={!isOpen}
+                  >
+                    <div className="accordion-os-claim-inner">
+                      <p className="accordion-os-claim-text">{item.claim}</p>
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}

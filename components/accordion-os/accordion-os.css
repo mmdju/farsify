@@ -133,9 +133,28 @@
 }
 
 .accordion-os-claim-container {
-  overflow: hidden;
-  width: 100%;
+  display: grid;
+  grid-template-rows: 0fr;
+  inline-size: 100%;
+
   contain: inline-size;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  transition:
+    grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-top 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.22s ease;
+}
+
+.accordion-os-claim-container-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 12px;
+}
+
+.accordion-os-claim-inner {
+  min-height: 0;
 }
 
 .accordion-os-claim-text {
@@ -144,6 +163,12 @@
   line-height: 1.5;
   color: #4b5563;
   word-break: break-word;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-os-claim-container {
+    transition: none;
+  }
 }
 
 .accordion-os-bottom-deck {
