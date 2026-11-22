@@ -52,7 +52,7 @@
 | [Rail TOC](rail-toc/) | `rail-toc` |
 | [Flower Menu](flower-menu/) | `flower-menu` |
 | [Pop Menu](pop-menu/) | `pop-menu` |
-| [Bottom Menu](bottom-menu/) | `bottom-menu` |
+| [Gooey Navbar](gooey-navbar/) | `gooey-navbar` |
 
 ## Loaders & status (4)
 

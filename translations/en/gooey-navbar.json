@@ -1,0 +1,34 @@
+{
+  "description": "A liquid navigation bar: the active item sits in a solid pill, and a gap opens around whichever item you hover or select while the two pills bend into a curved neck, so the bar reads as a single drop of liquid being stretched.",
+  "interactionType": "Click / Hover / Keyboard",
+  "interactionNotes": "Hovering or selecting an item opens a gap around it and the neighbouring pills reach towards each other with a curved neck. The gaps are spring driven, so they overshoot a little and settle back. Every item is a real link: a click calls `onSelect` and, by default, prevents the browser from following `href`. Tab reaches each item and shows a focus outline. With `prefers-reduced-motion`, the gaps jump straight to their place instead of springing.",
+  "props": {
+    "items": "The links. Each item has a `label`, a `link` and an optional fixed `width`; without a width the pill measures the rendered label plus `paddingX`.",
+    "defaultActiveIndex": "Which item starts selected when the bar keeps its own state.",
+    "activeIndex": "Controlled selection; pass it with `onSelect` to own the state yourself.",
+    "onSelect": "Runs on every click with the index and the item.",
+    "pillColor": "Fill of the pills and of the liquid neck between them.",
+    "textColor": "Label color, and the color of the active dot.",
+    "hoverTextColor": "Label color of the item under the pointer.",
+    "fontSize": "Label size, pixels; the pill height follows it together with `paddingY`.",
+    "paddingX": "Horizontal padding inside each pill; it is part of the measured width.",
+    "paddingY": "Vertical padding; the pill height is `fontSize` plus twice this.",
+    "cornerRadius": "Corner radius of the pills, clamped to half the pill height.",
+    "gap": "Space between the pills at rest.",
+    "neighborPush": "How far the gap opens around the hovered or active item, pixels.",
+    "anchorEdge": "Which edge stays put while the gaps push the bar wider. It is logical, so `start` means the right edge in a right-to-left page.",
+    "neckRatio": "Thickness of the liquid neck as a fraction of the pill height.",
+    "stiffness": "Spring stiffness of the gaps; higher snaps faster.",
+    "damping": "Spring damping; lower lets the gaps overshoot more.",
+    "mass": "Spring mass; heavier moves slower.",
+    "className": "Extra class for the root box."
+  },
+  "tips": [
+    "Keep the labels short: each pill measures the rendered label plus `paddingX`, so a very long one makes a very wide pill.",
+    "The labels are measured again once the web font finishes loading, which keeps the pills aligned when the project uses a custom Persian font.",
+    "Use `start` and `end` for `anchorEdge`, not left and right: the geometry is mirrored for right-to-left, so `start` pins the bar to the right edge.",
+    "Pass `activeIndex` with `onSelect` to control the selection; without them the bar remembers the last click itself.",
+    "Clicks call `preventDefault()`, so handle the destination in `onSelect` or swap the anchor for your router's link.",
+    "Hover needs a real pointer; on touch the pill and its dot still mark the active item, but the liquid neck stays away."
+  ]
+}
