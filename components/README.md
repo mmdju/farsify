@@ -2,7 +2,7 @@
 
 **64 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
-## Inputs (12)
+## Inputs (13)
 
 | Component | ID |
 | --- | --- |
@@ -17,7 +17,8 @@
 | [Comet Dial](comet-dial/) | `comet-dial` |
 | [Stepper](stepper/) | `stepper` |
 | [Elastic Slider](elastic-slider/) | `elastic-slider` |
-| [Theme Selector](theme-selector/) | `theme-selector` |
+| [ThemeSelector](theme-selector/) | `theme-selector` |
+| [Set Timer](set-timer/) | `set-timer` |
 
 ## Buttons (13)
 
