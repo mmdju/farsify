@@ -31,6 +31,7 @@
 | [Pulse Heart](pulse-heart/) | `pulse-heart` |
 | [Fuse Button](fuse-button/) | `fuse-button` |
 | [Delete Button](delete-button/) | `delete-button` |
+| [Countdown Delete](countdown-delete/) | `countdown-delete` |
 | [Hold Button](hold-button/) | `hold-button` |
 | [Notification Bell](notification-bell/) | `notification-bell` |
 | [Bell Toggle](bell-toggle/) | `bell-toggle` |
