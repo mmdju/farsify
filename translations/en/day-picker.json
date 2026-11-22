@@ -6,7 +6,9 @@
     "defaultDay": "Starting weekday, counted from Saturday (0) to Friday (6).",
     "defaultFrequency": "Starting repeat interval.",
     "onChange": "Runs on every interval or weekday pick with the whole current value.",
-    "className": "Extra class for the outer block."
+    "className": "Extra class for the outer block.",
+    "autoPreview": "Site preview only — the picker opens, picks weekly and confirms by itself. Leave it off in normal use; a real `onChange` never fires while it runs.",
+    "accentColor": "Accent of the confirm button and the selected chip; leave it empty to keep the theme's primary color."
   },
   "tips": [
     "`defaultDay` counts from Saturday (0) to Friday (6), so it matches the Persian week without any mapping.",

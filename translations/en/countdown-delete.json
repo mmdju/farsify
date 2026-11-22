@@ -9,7 +9,8 @@
     "deleteColor": "Color of the delete pill, the undo circle, the countdown chip and the cancel label.",
     "softColor": "Background of the cancel pill while the countdown runs.",
     "onCountdownEnd": "Fires once when the countdown reaches zero, right before the button reverts to its delete state. Hand the actual deletion work to this.",
-    "className": "Extra class for the root box."
+    "className": "Extra class for the root box.",
+    "autoPreview": "Site preview only — the button counts down to zero and returns by itself. Leave it off in normal use; `onCountdownEnd` never fires while it runs."
   },
   "tips": [
     "This is a two-step delete: the first click only arms the countdown and every second of it stays cancelable — gentler than a confirm dialog for irreversible actions.",

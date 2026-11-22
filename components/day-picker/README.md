@@ -14,35 +14,41 @@ A repeat-interval picker: a compact card shows the current frequency, springs op
 npx shadcn@latest add @farsify/day-picker
 ```
 
+Or copy `components/day-picker/day-picker.tsx` from this repository into your project.
+
 ## Usage
 
 ```tsx
 "use client";
 
-import { useState } from "react";
 import { DayPicker } from "@/components/farsify/day-picker";
 
-export function Schedule() {
-  const [value, setValue] = useState({ day: 0, frequency: "weekly" as const });
-
+export function ReminderSetting() {
   return (
-    <DayPicker
-      defaultFrequency="weekly"
-      defaultDay={0}
-      onChange={setValue}
-    />
+    <div className="flex items-center justify-between gap-3">
+      <span className="min-w-0 truncate text-sm">یادآوریِ گزارش</span>
+      <DayPicker
+        defaultFrequency="weekly"
+        defaultDay={2}
+        onChange={(value) => saveSchedule(value)}
+      />
+    </div>
   );
 }
-```
 
-The card keeps its own state, so `defaultDay` and `defaultFrequency` are only the starting point. Pass `onChange` when the rest of the page needs the choice:
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* از سه‌شنبه، هر ماه */}
+      <DayPicker defaultFrequency="monthly" onChange={saveSchedule} />
 
-```tsx
-<DayPicker
-  onChange={({ day, frequency }) => {
-    console.log(frequency, day);
-  }}
-/>
+      {/* در چیدمانِ باریک‌تر پهن‌ترش کن */}
+      <DayPicker className="max-w-sm" onChange={saveSchedule} />
+    </>
+  );
+}
+
 ```
 
 ## Props
@@ -50,9 +56,11 @@ The card keeps its own state, so `defaultDay` and `defaultFrequency` are only th
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
 | `defaultDay` | `number` | `0` | — | Starting weekday, counted from Saturday (0) to Friday (6). |
-| `defaultFrequency` | `"daily" \| "weekly" \| "monthly" \| "yearly"` (`daily` → `weekly` → `monthly` → `yearly`) | `"daily"` | — | Starting repeat interval. |
+| `defaultFrequency` | `"daily" | "weekly" | "monthly" | "yearly"` | `"daily"` | — | Starting repeat interval. |
 | `onChange` | `(value: { day: number; frequency: DayFrequency }) => void` | — | — | Runs on every interval or weekday pick with the whole current value. |
+| `autoPreview` | `boolean` | `false` | — | Site preview only — the picker opens, picks weekly and confirms by itself. Leave it off in normal use; a real `onChange` never fires while it runs. |
 | `className` | `string` | `""` | — | Extra class for the outer block. |
+| `accentColor` | `string` | `""` | — | Accent of the confirm button and the selected chip; leave it empty to keep the theme's primary color. |
 
 ## Tips
 
@@ -62,3 +70,4 @@ The card keeps its own state, so `defaultDay` and `defaultFrequency` are only th
 - Use `onChange` to mirror the choice into your own state, a query string or a form field.
 - The card is `max-w-xs` and fills the width it is given up to that; widen it with `className` when the surrounding layout is narrow.
 - With `prefers-reduced-motion` the springs land instantly and the weekday row does not stagger.
+

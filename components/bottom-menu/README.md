@@ -14,39 +14,45 @@ A bottom toolbar where every icon owns a small panel above it: notes and capture
 npx shadcn@latest add @farsify/bottom-menu
 ```
 
-Or copy `components/bottom-menu/bottom-menu.tsx` from this repository into your project. It needs `motion` and `lucide-react`, which most projects already have.
+Or copy `components/bottom-menu/bottom-menu.tsx` from this repository into your project.
 
 ## Usage
 
 ```tsx
 "use client";
 
-import BottomMenu from "@/components/farsify/bottom-menu";
+import { BottomMenu } from "@/components/farsify/bottom-menu";
 
-export function AppShell() {
+export function AppDock() {
   return (
-    <div className="fixed inset-x-0 bottom-6 z-50 flex justify-center">
+    <div className="fixed inset-x-0 bottom-0 flex justify-center pb-4">
       <BottomMenu />
     </div>
   );
 }
-```
 
-The panels open upwards, so the bar wants empty space above it. Labels, icons and every menu entry live in the arrays at the top of the file:
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* نوار در یک کارت، نه کلِ صفحه */}
+      <div className="relative h-64 overflow-hidden rounded-2xl border border-neutral-200">
+        <div className="absolute inset-x-0 bottom-3 flex justify-center">
+          <BottomMenu />
+        </div>
+      </div>
+    </>
+  );
+}
 
-```tsx
-const MAIN_NAV = [
-  { icon: Plus, view: "home", label: "افزودن" },
-  { icon: Search, view: "search", label: "جستجو" },
-  { icon: Bell, view: "notifications", label: "اعلان‌ها" },
-  { icon: UserPen, view: "profile", label: "حساب من" },
-  { icon: Sun, view: "theme", label: "پوسته" },
-];
 ```
 
 ## Props
 
-This component takes no props. The bar, its panels and the Persian copy are all in the file, so changing the wording or the number of icons is a data edit. Colors come from the shadcn tokens, which means the bar follows the project theme; if you want the theme row to switch it, connect that click to your theme provider in the `theme` case.
+| Prop | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `autoPreview` | `boolean` | `false` | — | Site preview only — the toolbar tours its own panels and closes again. Leave it off in normal use. |
+| `accentColor` | `string` | `""` | — | Tint of the active icon and the picked theme row; mixed into the page, so any accent stays readable in both themes. |
 
 ## Tips
 
@@ -56,3 +62,4 @@ This component takes no props. The bar, its panels and the Persian copy are all 
 - Colors are shadcn tokens (`background`, `border`, `muted`, `accent`, `foreground`, `destructive`), so it follows the project's light and dark themes with no extra wiring.
 - The theme row only highlights the choice in its own state; connect it to your theme provider when you want the click to change the site.
 - The panel closes on Escape as well as on an outside click, so the bar never traps the keyboard.
+

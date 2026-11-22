@@ -21,35 +21,40 @@ Or copy `components/save-button/save-button.tsx` from this repository into your 
 ```tsx
 "use client";
 
-import SaveButton from "@/components/farsify/save-button";
+import { SaveButton } from "@/components/farsify/save-button";
 
-export function SaveDraft() {
-  async function save() {
-    await fetch("/api/draft", { method: "PUT" });
-  }
-
-  return <SaveButton onSave={save} />;
+export function SettingsRow() {
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <span className="min-w-0 truncate text-sm">تغییراتِ پروفایل</span>
+      <SaveButton onSave={saveProfile} ariaLabel="ذخیرهٔ تغییرات" />
+    </div>
+  );
 }
 
-// Custom copy and colors
-<SaveButton
-  onSave={save}
-  idleLabel="ثبت تغییرات"
-  loadingLabel="در حال ثبت"
-  successLabel="ثبت شد"
-  backgroundColor="#18181b"
-  textColor="#fafafa"
-/>
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* زمان‌بندیِ دلخواه: لودینگ تا settle شدنِ پرامیس */}
+      <SaveButton onSave={upload} loadingLabel="در حال ارسال" successLabel="ارسال شد" />
 
-// A form that is not ready yet
-<SaveButton onSave={save} disabled />
+      {/* رنگِ تیک را عوض کن (هر مقدارِ CSS قبول است) */}
+      <SaveButton successColor="#e11d48" onSave={save} />
+
+      {/* وقتی ذخیره مجاز نیست */}
+      <SaveButton disabled />
+    </>
+  );
+}
+
 ```
 
 ## Props
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `onSave` | `() => void \| Promise<void>` | — | — | Called when the button is pressed. Return a promise and the loading state lasts exactly until it settles; a rejection returns the button to idle. |
+| `onSave` | `() => void | Promise<void>` | — | — | Called when the button is pressed. Return a promise and the loading state lasts exactly until it settles; a rejection returns the button to idle. |
 | `idleLabel` | `string` | `"ذخیره"` | — | Label in the idle state. |
 | `loadingLabel` | `string` | `"در حال ذخیره"` | — | Label while the save is running. |
 | `successLabel` | `string` | `"ذخیره شد"` | — | Label after a successful save. |
@@ -59,6 +64,7 @@ export function SaveDraft() {
 | `textColor` | `string` | `"#fafafa"` | — | Label and icon color. |
 | `successColor` | `string` | `"#22c55e"` | — | Badge color in the success state. |
 | `disabled` | `boolean` | `false` | — | Dims the button and blocks input. |
+| `autoPreview` | `boolean` | `false` | — | Site preview only — the button saves, shows the tick and repeats by itself. Leave it off in normal use; `onSave` never fires while it runs. |
 | `ariaLabel` | `string` | — | — | Accessible name, for when you do not want the visible label alone to name the button. |
 | `className` | `string` | — | — | Extra class for the root wrapper. |
 
@@ -69,3 +75,4 @@ export function SaveDraft() {
 - The labels animate word by word, never letter by letter: splitting Persian letters across elements breaks their joining.
 - Colors default to the neutral dark pill; `backgroundColor` and `textColor` accept any CSS color, a theme variable included.
 - The badge sits on the inline-end corner and its ring separates it from the page, so keep the badge inside the root wrapper when you restyle it.
+

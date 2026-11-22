@@ -46,7 +46,16 @@ export interface InputSwitchOption {
 export interface InputSwitchProps {
   options?: InputSwitchOption[];
   defaultOption?: number;
+  activeOption?: number;
+  onOptionChange?: (index: number) => void;
+  value?: string;
+  onChange?: (value: string) => void;
   onSubmit?: (value: string) => void;
+  pillColor?: string;
+  buttonColor?: string;
+  buttonTextColor?: string;
+  textColor?: string;
+  placeholderColor?: string;
   className?: string;
 }
 
@@ -58,9 +67,11 @@ const DEFAULT_OPTIONS: InputSwitchOption[] = [
 const AnimatedPlaceholder = ({
   text,
   reduce,
+  color,
 }: {
   text: string;
   reduce: boolean;
+  color: string;
 }) => (
   <span className="inline-flex gap-x-[0.3em] overflow-hidden whitespace-nowrap">
     {text
@@ -88,34 +99,55 @@ const AnimatedPlaceholder = ({
 export default function InputSwitch({
   options = DEFAULT_OPTIONS,
   defaultOption = 0,
+  activeOption,
+  onOptionChange,
+  value,
+  onChange,
   onSubmit,
+  pillColor = "#232323",
+  buttonColor = "#3a3a3a",
+  buttonTextColor = "#fafafa",
+  textColor = "#fafafa",
+  placeholderColor = "",
   className,
 }: InputSwitchProps) {
   const reduce = useReducedMotion() ?? false;
-  const [activeIndex, setActiveIndex] = useState(() =>
+  const [innerIndex, setInnerIndex] = useState(() =>
     Math.min(Math.max(0, defaultOption), options.length - 1),
   );
-  const [value, setValue] = useState("");
+  const [innerValue, setInnerValue] = useState("");
+  const activeIndex = Math.min(
+    Math.max(0, activeOption ?? innerIndex),
+    options.length - 1,
+  );
+  const text = value ?? innerValue;
   const current = options[activeIndex] ?? DEFAULT_OPTIONS[0];
   const CurrentIcon = current.icon ?? Sparkles;
+  const placeholder = placeholderColor || `color-mix(in srgb, ${textColor} 55%, ${pillColor})`;
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") onSubmit?.(value);
+    if (event.key === "Enter") onSubmit?.(text);
   };
 
   return (
     <div
       className={cn(
-        "flex w-full max-w-sm items-center justify-center overflow-hidden rounded-full bg-muted px-1 py-1",
+        "flex w-full max-w-sm items-center justify-center overflow-hidden rounded-full px-1 py-1",
         className,
       )}
+      style={{ backgroundColor: pillColor }}
     >
       <motion.button
         type="button"
-        onClick={() => setActiveIndex((prev) => (prev + 1) % options.length)}
+        onClick={() => {
+          const next = (activeIndex + 1) % options.length;
+          if (activeOption === undefined) setInnerIndex(next);
+          onOptionChange?.(next);
+        }}
         whileTap={reduce ? undefined : { scale: 0.96 }}
         aria-label={`تغییر پیشنهاد: ${current.text}`}
-        className="flex shrink-0 cursor-pointer items-center justify-center gap-1.5 overflow-hidden rounded-full bg-background p-2.5 shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+        style={{ backgroundColor: buttonColor, color: buttonTextColor }}
+        className="flex shrink-0 cursor-pointer items-center justify-center gap-1.5 overflow-hidden rounded-full p-2.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
       >
         <span className="relative size-5 shrink-0 overflow-hidden">
           <AnimatePresence mode="wait" initial={false}>
@@ -143,14 +175,17 @@ export default function InputSwitch({
               }
               className="absolute inset-0 flex items-center justify-center"
             >
-              <CurrentIcon aria-hidden className="size-5 text-foreground" />
+              <CurrentIcon aria-hidden className="size-5" />
             </motion.span>
           </AnimatePresence>
         </span>
-        <ChevronsUpDown aria-hidden className="size-3 shrink-0 text-muted-foreground" />
+        <ChevronsUpDown
+          aria-hidden
+          className="size-3 shrink-0 opacity-60"
+        />
       </motion.button>
       <div className="relative min-w-0 flex-1">
-        {!value && (
+        {!text && (
           <div
             aria-hidden
             className="pointer-events-none absolute inset-y-0 start-0 flex w-full items-center overflow-hidden ps-1.5"
@@ -164,30 +199,38 @@ export default function InputSwitch({
                 transition={
                   reduce ? { duration: 0 } : { duration: 0.15, ease: EASE }
                 }
-                className="block overflow-hidden whitespace-nowrap text-sm text-muted-foreground"
+                style={{ color: placeholder }}
+                className="block overflow-hidden whitespace-nowrap text-sm"
               >
-                <AnimatedPlaceholder text={current.text} reduce={reduce} />
+                <AnimatedPlaceholder text={current.text} reduce={reduce} color={placeholder} />
               </motion.span>
             </AnimatePresence>
           </div>
         )}
         <input
           type="text"
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
+          value={text}
+          onChange={(event) => {
+            if (value === undefined) setInnerValue(event.target.value);
+            onChange?.(event.target.value);
+          }}
           onKeyDown={handleKeyDown}
           aria-label={current.text}
-          className="h-9 w-full bg-transparent ps-1.5 text-sm text-foreground outline-none"
+          style={{ color: textColor }}
+          className="h-9 w-full bg-transparent ps-1.5 text-sm outline-none"
         />
       </div>
       <button
         type="button"
-        onClick={() => onSubmit?.(value)}
+        onClick={() => onSubmit?.(text)}
         aria-label="ارسال"
-        className="flex shrink-0 cursor-pointer items-center justify-center self-stretch rounded-full bg-background px-3 py-2.5 shadow-sm transition-transform duration-150 ease-in-out active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+        style={{ backgroundColor: buttonColor, color: buttonTextColor }}
+        className="flex shrink-0 cursor-pointer items-center justify-center self-stretch rounded-full px-3 py-2.5 transition-transform duration-150 ease-in-out active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
       >
-        <ArrowLeft aria-hidden className="h-4 w-4 text-foreground" />
+        <ArrowLeft aria-hidden className="h-4 w-4" />
       </button>
     </div>
   );
 }
+
+export { InputSwitch };

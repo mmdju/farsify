@@ -28,24 +28,24 @@
     {
       "name": "activeLabelColor",
       "type": "string",
-      "description": "رنگِ برچسبِ گزینه‌ی انتخاب‌شده؛ ندادی، همون `accentColor` استفاده می‌شه."
+      "description": "Color of the active section's label; falls back to the accent color."
     },
     {
       "name": "sectionFontSize",
       "type": "number",
-      "description": "اندازه‌ی قلمِ عنوانِ بخش‌ها، پیکسل؛ ندادی، اندازه‌ی پیش‌فرض می‌مونه."
+      "description": "Font size of the section labels in pixels."
     },
     {
       "name": "sectionClassName",
       "type": "string",
       "defaultValue": "\"\"",
-      "description": "کلاسِ اضافه برای ردیفِ عنوانِ هر بخش."
+      "description": "Extra class for the section labels."
     },
     {
       "name": "dimInactiveSections",
       "type": "boolean",
       "defaultValue": "false",
-      "description": "بخش‌های بسته کم‌رنگ‌تر از بخشِ باز نشان داده بشن."
+      "description": "Dim the sections that are not currently active."
     },
     {
       "name": "onSelect",

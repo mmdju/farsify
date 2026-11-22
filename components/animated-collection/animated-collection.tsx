@@ -1,17 +1,6 @@
 "use client";
-
-import { useId, useState } from "react";
-import {
-  AnimatePresence,
-  LayoutGroup,
-  motion,
-  useReducedMotion,
-  type Transition,
-} from "motion/react";
-import { LayoutGrid, Layers, List, type LucideIcon } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -21,6 +10,32 @@ const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 function toFaDigits(input: string | number) {
   return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
 }
+
+function groupNumber(value: number, decimals = 0) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}
+
+function formatFa(value: number, decimals = 0) {
+  return toFaDigits(
+    groupNumber(value, decimals).replace(/,/g, "٬").replace(/\./g, "٫"),
+  );
+}
+
+import { useEffect, useId, useState } from "react";
+import {
+  AnimatePresence,
+  LayoutGroup,
+  motion,
+  useReducedMotion,
+  type Transition,
+} from "motion/react";
+import { LayoutGrid, Layers, List, type LucideIcon } from "lucide-react";
+
+const AUTO_START_MS = 700;
+const AUTO_VIEW_MS = 2200;
 
 export interface CollectionItem {
   id: string;
@@ -36,7 +51,29 @@ export interface AnimatedCollectionProps {
   title?: string;
   items?: CollectionItem[];
   defaultView?: ViewMode;
+  accentColor?: string;
+  radius?: number;
+  showMeta?: boolean;
+  autoPreview?: boolean;
   className?: string;
+}
+
+function inkOn(color: string) {
+  const match = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(color.trim());
+  if (!match) return "#ffffff";
+  const hex =
+    match[1].length === 3
+      ? match[1]
+          .split("")
+          .map((chunk) => chunk + chunk)
+          .join("")
+      : match[1];
+  const value = parseInt(hex, 16);
+  const lum =
+    0.2126 * ((value >> 16) & 255) +
+    0.7152 * ((value >> 8) & 255) +
+    0.0722 * (value & 255);
+  return lum > 150 ? "#0a0a0a" : "#ffffff";
 }
 
 const artwork = (hue: number) =>
@@ -59,6 +96,8 @@ const DEFAULT_ITEMS: CollectionItem[] = [
   },
 ];
 
+const VIEWS: ViewMode[] = ["list", "card", "pack"];
+
 const snappySpring: Transition = {
   type: "spring",
   stiffness: 350,
@@ -80,6 +119,10 @@ export default function AnimatedCollection({
   title = "کالکشن من",
   items = DEFAULT_ITEMS,
   defaultView = "list",
+  accentColor = "",
+  radius = 24,
+  showMeta = true,
+  autoPreview = false,
   className,
 }: AnimatedCollectionProps) {
   const [view, setView] = useState<ViewMode>(defaultView);
@@ -90,6 +133,31 @@ export default function AnimatedCollection({
   const tabsId = `${groupId}-tabs`;
   const itemsId = `${groupId}-items`;
   const pillId = `${groupId}-active-tab`;
+
+  useEffect(() => {
+    if (!autoPreview) return;
+    let alive = true;
+    let step = VIEWS.indexOf(defaultView);
+    const pending: number[] = [];
+    const at = (ms: number, fn: () => void) => {
+      pending.push(
+        window.setTimeout(() => {
+          if (alive) fn();
+        }, ms),
+      );
+    };
+    const advance = () => {
+      step = (step + 1) % VIEWS.length;
+      setView(VIEWS[step]);
+      at(AUTO_VIEW_MS, advance);
+    };
+    at(AUTO_START_MS, advance);
+    return () => {
+      alive = false;
+      pending.forEach((timer) => window.clearTimeout(timer));
+      setView(defaultView);
+    };
+  }, [autoPreview, defaultView]);
 
   return (
     <div
@@ -120,6 +188,7 @@ export default function AnimatedCollection({
                 label="لیست"
                 layoutId={pillId}
                 transition={spring}
+                accent={accentColor}
               />
               <Tab
                 active={view === "card"}
@@ -128,6 +197,7 @@ export default function AnimatedCollection({
                 label="کارت"
                 layoutId={pillId}
                 transition={spring}
+                accent={accentColor}
               />
               <Tab
                 active={view === "pack"}
@@ -136,6 +206,7 @@ export default function AnimatedCollection({
                 label="بسته"
                 layoutId={pillId}
                 transition={spring}
+                accent={accentColor}
               />
             </div>
           </LayoutGroup>
@@ -180,6 +251,9 @@ export default function AnimatedCollection({
                     layout
                     initial={false}
                     transition={spring}
+                    style={
+                      view === "list" ? undefined : { borderRadius: radius }
+                    }
                     className={cn(
                       "relative shrink-0 overflow-hidden bg-muted outline outline-1 outline-black/10 dark:outline-white/10",
                       view === "list" && "size-16 rounded-2xl",
@@ -198,6 +272,9 @@ export default function AnimatedCollection({
                       width={400}
                       height={400}
                       draggable={false}
+                      style={
+                        view === "list" ? undefined : { borderRadius: radius }
+                      }
                       className={cn(
                         "pointer-events-none m-0! block size-full object-cover p-0! select-none",
                         view === "list" && "rounded-2xl",
@@ -208,7 +285,7 @@ export default function AnimatedCollection({
                   </motion.div>
 
                   <AnimatePresence mode="popLayout" initial={false}>
-                    {view !== "pack" && (
+                    {view !== "pack" && showMeta && (
                       <motion.div
                         key={`${item.id}-info`}
                         layout
@@ -269,6 +346,7 @@ function Tab({
   label,
   layoutId,
   transition,
+  accent = "",
 }: {
   active: boolean;
   onClick: () => void;
@@ -276,13 +354,16 @@ function Tab({
   label: string;
   layoutId: string;
   transition: Transition;
+  accent?: string;
 }) {
+  const ink = accent ? inkOn(accent) : undefined;
   return (
     <button
       type="button"
       role="tab"
       aria-selected={active}
       onClick={onClick}
+      style={active && accent ? { color: ink } : undefined}
       className={cn(
         "relative flex h-10 min-w-[5.75rem] cursor-pointer items-center justify-center gap-2 rounded-full px-4 text-sm font-medium outline-none transition-[color,background-color,box-shadow,transform] duration-150 ease-out",
         "active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-foreground/25",
@@ -292,6 +373,7 @@ function Tab({
       {active && (
         <motion.div
           layoutId={layoutId}
+          style={accent ? { backgroundColor: accent } : undefined}
           className="pointer-events-none absolute inset-0 rounded-full bg-primary shadow-[0_1px_2px_rgb(0_0_0/.12)]"
           transition={transition}
         />

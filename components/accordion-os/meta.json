@@ -3,7 +3,9 @@
   "name": "Accordion OS",
   "description": "A photo-backed accordion styled like an OS launcher: the open item widens into a pill that reveals its numbered badge and a short line of copy, the closed items stay as slim title pills, and the photo crossfades behind — with a prev/next deck and counter in the corner, auto-play and full keyboard control.",
   "category": "showcase",
-  "dependencies": ["motion"],
+  "dependencies": [
+    "motion"
+  ],
   "interactionType": "Auto-play / Click / Keyboard",
   "interactionNotes": "Clicking a pill opens it and clicking it again closes it. The deck in the bottom corner steps backward and forward, and the window-level keys do the same: ArrowRight/ArrowDown/S forward, ArrowLeft/ArrowUp/W back, Escape closes everything, and the number keys 1–5 jump straight to an item (ignored beyond the list length). Auto-play advances on its own interval and pauses while the pointer is over the card.",
   "props": [
@@ -16,7 +18,7 @@
     {
       "name": "staticImage",
       "type": "string",
-      "defaultValue": "گرادیانِ نمونهٔ SVG",
+      "defaultValue": "پس‌زمینهٔ SVGِ نمونه",
       "description": "The photo shown while every item is closed — the resting backdrop behind the title pills."
     },
     {
@@ -64,7 +66,6 @@
     {
       "name": "onItemChange",
       "type": "(index: number | null) => void",
-      "defaultValue": "—",
       "description": "Called with the open item's index whenever it changes, or `null` when everything is closed."
     }
   ],
@@ -77,6 +78,6 @@
   ],
   "hasCss": true,
   "assets": [],
-  "lines": 388,
+  "lines": 405,
   "version": 1
 }

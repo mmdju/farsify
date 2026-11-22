@@ -23,9 +23,59 @@
       "description": "Which preset starts active; clamped into range."
     },
     {
+      "name": "activeOption",
+      "type": "number",
+      "description": "Controlled preset index; without it the bar keeps its own state and `defaultOption` is just the starting point."
+    },
+    {
+      "name": "onOptionChange",
+      "type": "(index: number) => void",
+      "description": "Called with the next preset index when the side button is pressed."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Controlled typed value; without it the input keeps its own text."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "description": "Called with the typed text on every keystroke."
+    },
+    {
       "name": "onSubmit",
       "type": "(value: string) => void",
       "description": "Called with the typed value when Enter is pressed inside the input or the end-side arrow is clicked."
+    },
+    {
+      "name": "pillColor",
+      "type": "string",
+      "defaultValue": "#232323",
+      "description": "The pill surface."
+    },
+    {
+      "name": "buttonColor",
+      "type": "string",
+      "defaultValue": "#3a3a3a",
+      "description": "The two round buttons: the preset cycler and submit."
+    },
+    {
+      "name": "buttonTextColor",
+      "type": "string",
+      "defaultValue": "#fafafa",
+      "description": "Icons inside the round buttons."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "#fafafa",
+      "description": "Typed text and the cycle chevrons."
+    },
+    {
+      "name": "placeholderColor",
+      "type": "string",
+      "defaultValue": "ترکیبِ خودکارِ متن و نوار",
+      "description": "Placeholder hint; an empty value derives a matte mix of the text and pill colors."
     },
     {
       "name": "className",
@@ -42,6 +92,6 @@
   ],
   "hasCss": false,
   "assets": [],
-  "lines": 194,
+  "lines": 237,
   "version": 1
 }

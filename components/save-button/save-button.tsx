@@ -1,4 +1,28 @@
 "use client";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+function toFaDigits(input: string | number) {
+  return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
+}
+
+function groupNumber(value: number, decimals = 0) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}
+
+function formatFa(value: number, decimals = 0) {
+  return toFaDigits(
+    groupNumber(value, decimals).replace(/,/g, "٬").replace(/\./g, "٫"),
+  );
+}
 
 import {
   useCallback,
@@ -9,12 +33,9 @@ import {
 } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Check, LoaderCircle } from "lucide-react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
 
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+const AUTO_START_MS = 700;
+const AUTO_REST_MS = 1100;
 
 export type SaveStatus = "idle" | "loading" | "success";
 
@@ -29,6 +50,7 @@ export interface SaveButtonProps {
   textColor?: string;
   successColor?: string;
   disabled?: boolean;
+  autoPreview?: boolean;
   ariaLabel?: string;
   className?: string;
 }
@@ -44,6 +66,7 @@ export function SaveButton({
   textColor = "#fafafa",
   successColor = "#22c55e",
   disabled = false,
+  autoPreview = false,
   ariaLabel,
   className,
 }: SaveButtonProps) {
@@ -61,6 +84,35 @@ export function SaveButton({
   const later = useCallback((callback: () => void, ms: number) => {
     timers.current.push(window.setTimeout(callback, ms));
   }, []);
+
+  useEffect(() => {
+    if (!autoPreview || disabled) return;
+    let alive = true;
+    const pending: number[] = [];
+    const at = (ms: number, fn: () => void) => {
+      pending.push(
+        window.setTimeout(() => {
+          if (alive) fn();
+        }, ms),
+      );
+    };
+    const cycle = () => {
+      setStatus("loading");
+      at(loadingMs, () => {
+        setStatus("success");
+        at(successMs, () => {
+          setStatus("idle");
+          at(AUTO_REST_MS, cycle);
+        });
+      });
+    };
+    at(AUTO_START_MS, cycle);
+    return () => {
+      alive = false;
+      pending.forEach((timer) => window.clearTimeout(timer));
+      setStatus("idle");
+    };
+  }, [autoPreview, disabled, loadingMs, successMs]);
 
   const run = async () => {
     if (status !== "idle" || disabled) return;

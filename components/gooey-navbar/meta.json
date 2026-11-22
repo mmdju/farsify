@@ -87,7 +87,6 @@
       "name": "anchorEdge",
       "type": "\"start\" | \"center\" | \"end\"",
       "defaultValue": "\"center\"",
-      "options": ["start", "center", "end"],
       "description": "Which edge stays put while the gaps push the bar wider. It is logical, so `start` means the right edge in a right-to-left page."
     },
     {
@@ -131,6 +130,6 @@
   ],
   "hasCss": false,
   "assets": [],
-  "lines": 464,
+  "lines": 482,
   "version": 1
 }

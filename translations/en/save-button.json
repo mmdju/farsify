@@ -14,7 +14,8 @@
     "successColor": "Badge color in the success state.",
     "disabled": "Dims the button and blocks input.",
     "ariaLabel": "Accessible name, for when you do not want the visible label alone to name the button.",
-    "className": "Extra class for the root wrapper."
+    "className": "Extra class for the root wrapper.",
+    "autoPreview": "Site preview only — the button saves, shows the tick and repeats by itself. Leave it off in normal use; `onSave` never fires while it runs."
   },
   "tips": [
     "Return a promise from `onSave` and the loading state lasts exactly as long as the request; the built-in timer is only a stand-in for prototypes.",

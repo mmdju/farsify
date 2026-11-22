@@ -1,8 +1,8 @@
 # Components
 
-**64 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**72 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
-## Inputs (13)
+## Inputs (15)
 
 | Component | ID |
 | --- | --- |
@@ -17,10 +17,12 @@
 | [Comet Dial](comet-dial/) | `comet-dial` |
 | [Stepper](stepper/) | `stepper` |
 | [Elastic Slider](elastic-slider/) | `elastic-slider` |
-| [ThemeSelector](theme-selector/) | `theme-selector` |
+| [Theme Selector](theme-selector/) | `theme-selector` |
+| [Day Picker](day-picker/) | `day-picker` |
+| [Set Timer](set-timer/) | `set-timer` |
 | [Input Switch](input-switch/) | `input-switch` |
 
-## Buttons (13)
+## Buttons (14)
 
 | Component | ID |
 | --- | --- |
@@ -31,15 +33,15 @@
 | [Pulse Heart](pulse-heart/) | `pulse-heart` |
 | [Fuse Button](fuse-button/) | `fuse-button` |
 | [Delete Button](delete-button/) | `delete-button` |
-| [Countdown Delete](countdown-delete/) | `countdown-delete` |
 | [Hold Button](hold-button/) | `hold-button` |
 | [Notification Bell](notification-bell/) | `notification-bell` |
 | [Bell Toggle](bell-toggle/) | `bell-toggle` |
 | [Magnet](magnet/) | `magnet` |
 | [Specular Button](specular-button/) | `specular-button` |
 | [Save Button](save-button/) | `save-button` |
+| [Countdown Delete](countdown-delete/) | `countdown-delete` |
 
-## Navigation (11)
+## Navigation (12)
 
 | Component | ID |
 | --- | --- |
@@ -53,6 +55,7 @@
 | [Rail TOC](rail-toc/) | `rail-toc` |
 | [Flower Menu](flower-menu/) | `flower-menu` |
 | [Pop Menu](pop-menu/) | `pop-menu` |
+| [Bottom Menu](bottom-menu/) | `bottom-menu` |
 | [Gooey Navbar](gooey-navbar/) | `gooey-navbar` |
 
 ## Loaders & status (4)
@@ -64,7 +67,7 @@
 | [Status Mark](status-mark/) | `status-mark` |
 | [Refine Frame](refine-frame/) | `refine-frame` |
 
-## Showcase (26)
+## Showcase (27)
 
 | Component | ID |
 | --- | --- |
@@ -81,7 +84,6 @@
 | [Infinite Menu](infinite-menu/) | `infinite-menu` |
 | [Flying Posters](flying-posters/) | `flying-posters` |
 | [Accordion Gallery](accordion-gallery/) | `accordion-gallery` |
-| [Accordion OS](accordion-os/) | `accordion-os` |
 | [Depth Carousel](depth-carousel/) | `depth-carousel` |
 | [Circular Gallery](circular-gallery/) | `circular-gallery` |
 | [Drift Wall](drift-wall/) | `drift-wall` |
@@ -95,3 +97,4 @@
 | [Holographic Referral Card](invite-card/) | `invite-card` |
 | [Scroll Panels](scroll-panels/) | `scroll-panels` |
 | [Animated Collection](animated-collection/) | `animated-collection` |
+| [Accordion OS](accordion-os/) | `accordion-os` |

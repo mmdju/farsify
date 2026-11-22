@@ -70,7 +70,7 @@ export function TravelDeck() {
 | `onCardClick` | `(index: number) => void` | — | — | A click on any card (even the back ones). |
 | `onChange` | `(index: number) => void` | — | — | On every swap of the front card. |
 | `className` | `string` | `''` | — | Extra class for the root. |
-| `customClass` | `string` | — | — | کلاسِ اضافه برای هر کارتِ داخلی (`Card`)، جدا از کلاسِ ریشه. |
+| `customClass` | `string` | — | — | Extra class on the card container. |
 
 ## Tips
 

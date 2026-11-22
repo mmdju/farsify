@@ -6,7 +6,11 @@
     "title": "The heading above the tab switcher.",
     "items": "The collection items; each has `id`, `title`, `subtitle`, `idNumber` and `image` (any `<img>` source, such as a URL or an inline SVG data URI). Without them, two sample items appear.",
     "defaultView": "The view the collection starts in.",
-    "className": "Extra class for the outer block."
+    "className": "Extra class for the outer block.",
+    "autoPreview": "Site preview only — the collection walks list, card and pack by itself. Leave it off in normal use; a real interaction never fires while it runs.",
+    "accentColor": "Accent of the active view tab; leave it empty to keep the theme's primary color.",
+    "radius": "Corner radius of the card and pack images in pixels; the list thumbnails keep their own small radius.",
+    "showMeta": "Show the subtitle and year under each title, or keep only the title."
   },
   "tips": [
     "`image` accepts any `<img>` source — a remote URL, a local path or an inline SVG data URI; the built-in samples are inline gradients, so the component makes no external requests.",

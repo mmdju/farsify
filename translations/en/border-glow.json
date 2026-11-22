@@ -15,7 +15,8 @@
     "colors": "The three colors of the edge mesh; they are spread across seven fixed points of the frame so the card border becomes multi-hue.",
     "fillOpacity": "Strength of the colored mesh fill inside the card near the edges; 0 to 1.",
     "sweepLoop": "Re-run the entry sweep once it finishes — for non-interactive previews where the card has to stay alive. This option belongs to this component only.",
-    "className": "Extra class for the card."
+    "className": "Extra class for the card.",
+    "paused": "Freeze the glow animation without unmounting the card; the current sweep stays where it is."
   },
   "tips": [
     "All the magic is in CSS: JavaScript only writes two variables (`--edge-proximity` and `--cursor-angle`) on pointer move; so the card is cheap and you can place dozens of them side by side.",

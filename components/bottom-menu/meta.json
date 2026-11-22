@@ -3,10 +3,26 @@
   "name": "Bottom Menu",
   "description": "A bottom toolbar where every icon owns a small panel above it: notes and capture shortcuts, a search field with quick filters, notification categories, account links, and a theme switch. Moving between icons morphs the panel's width and height while the old content blurs out and the new one sharpens in.",
   "category": "navigation",
-  "dependencies": ["motion", "lucide-react"],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
   "interactionType": "Click / Outside click / Keyboard",
   "interactionNotes": "Click an icon to open its panel; click the same icon again, click anywhere outside or press Escape to close it. Picking another icon swaps the panel in place: the old content fades out with a blur while the panel's width and height spring to the new size, so the bar never jumps. Icons report `aria-expanded`, the theme choices use `aria-pressed`, and every control has a visible focus ring.",
-  "props": [],
+  "props": [
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only — the toolbar tours its own panels and closes again. Leave it off in normal use."
+    },
+    {
+      "name": "accentColor",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Tint of the active icon and the picked theme row; mixed into the page, so any accent stays readable in both themes."
+    }
+  ],
   "tips": [
     "Place it at the bottom of a screen: the panel opens upwards from the bar, so the component needs free space above it.",
     "Every panel is described at the top of the file as a plain array, so changing labels, icons or adding a sixth icon is a data edit rather than a JSX edit.",
@@ -17,6 +33,6 @@
   ],
   "hasCss": false,
   "assets": [],
-  "lines": 323,
+  "lines": 392,
   "version": 1
 }

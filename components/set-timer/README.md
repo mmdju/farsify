@@ -12,28 +12,46 @@ A timer that morphs in place: a small pill opens a minutes wheel, the wheel roll
 
 ```bash
 npx shadcn@latest add @farsify/set-timer
-npm install @ncdai/react-wheel-picker
 ```
 
-Or copy `components/set-timer/set-timer.tsx` from this repository into your project. The wheel package is required: the component imports `@ncdai/react-wheel-picker/style.css` at the top of the file.
+Or copy `components/set-timer/set-timer.tsx` from this repository into your project.
 
 ## Usage
 
 ```tsx
 "use client";
 
-import SetTimer from "@/components/farsify/set-timer";
+import { SetTimer } from "@/components/farsify/set-timer";
 
-export function FocusBlock() {
-  return <SetTimer />;
+export function FocusToolbar() {
+  return (
+    <div className="flex min-h-72 items-center justify-center rounded-2xl bg-neutral-950">
+      <SetTimer />
+    </div>
+  );
 }
-```
 
-Place it anywhere: it centres itself, owns its charcoal surface and does not read theme tokens.
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* روی زمینهٔ روشن هم سطحِ زغالی خودش را نگه می‌دارد */}
+      <div className="rounded-2xl bg-neutral-100 p-10">
+        <SetTimer />
+      </div>
+    </>
+  );
+}
+
+```
 
 ## Props
 
-This component takes no props. The minutes bounds (1–60), the starting minutes (5) and the Persian copy live in the file, so edit them there when you need different wording or a longer range.
+| Prop | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `autoPreview` | `boolean` | `false` | — | Site preview only — the timer opens the wheel, rolls it and runs, then cancels. Leave it off in normal use. |
+| `progressColor` | `string` | `"#ff9f0a"` | — | Color of the countdown ring, the pause face and the minute highlight. |
+| `surfaceColor` | `string` | `"#2c2c2c"` | — | The charcoal surface behind the whole timer; any CSS color works and the white text stays on top. |
 
 ## Tips
 
@@ -42,3 +60,4 @@ This component takes no props. The minutes bounds (1–60), the starting minutes
 - The wheel loops infinitely and the minutes stay between 1 and 60; those bounds live in the file, not in props.
 - Numbers are Persian digits through `toFaDigits`, including the countdown and the accessible label.
 - Colors are fixed to the dark charcoal surface with an orange progress ring and a green start button, so the timer reads the same in light and dark themes.
+

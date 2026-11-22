@@ -46,6 +46,12 @@
       "description": "Fires once when the countdown reaches zero, right before the button reverts to its delete state. Hand the actual deletion work to this."
     },
     {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only — the button counts down to zero and returns by itself. Leave it off in normal use; `onCountdownEnd` never fires while it runs."
+    },
+    {
       "name": "className",
       "type": "string",
       "description": "Extra class for the root box."
@@ -60,6 +66,6 @@
   ],
   "hasCss": false,
   "assets": [],
-  "lines": 269,
+  "lines": 303,
   "version": 1
 }

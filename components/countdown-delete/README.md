@@ -21,23 +21,38 @@ Or copy `components/countdown-delete/countdown-delete.tsx` from this repository 
 ```tsx
 "use client";
 
-import CountdownDelete from "@/components/farsify/countdown-delete";
+import { CountdownDelete } from "@/components/farsify/countdown-delete";
 
-export function DangerZone({ onWipe }: { onWipe: () => void }) {
+export function DangerZone() {
   return (
-    <CountdownDelete
-      countdown={5}
-      deleteColor="#e5484d"
-      onCountdownEnd={onWipe}
-    />
+    <div className="flex flex-col items-start gap-3">
+      <span className="text-sm text-neutral-500">این کنش برگشت‌ناپذیر است</span>
+      <CountdownDelete
+        countdown={5}
+        onCountdownEnd={() => deleteAccount()}
+      />
+    </div>
   );
 }
 
-// متن دکمه‌ها را عوض کن
-<CountdownDelete deleteLabel="حذف حساب" cancelLabel="منصرف شدم" />
+// ---------- نمونه‌های استفاده ----------
+export function Examples() {
+  return (
+    <>
+      {/* رنگِ حذف را عوض کن (سطحِ لغو هم‌خانواده می‌ماند) */}
+      <CountdownDelete deleteColor="#e11d48" onCountdownEnd={remove} />
 
-// رنگ‌ها را با تم خودت هماهنگ کن
-<CountdownDelete deleteColor="#e11d48" softColor="#fdeff0" />
+      {/* شمارشِ کوتاه‌تر برای کارهای سبک‌تر */}
+      <CountdownDelete
+        deleteLabel="پاک‌کردن تاریخچه"
+        cancelLabel="لغو پاک‌سازی"
+        countdown={3}
+        onCountdownEnd={clearHistory}
+      />
+    </>
+  );
+}
+
 ```
 
 ## Props
@@ -50,6 +65,7 @@ export function DangerZone({ onWipe }: { onWipe: () => void }) {
 | `deleteColor` | `string` | `"#e5484d"` | — | Color of the delete pill, the undo circle, the countdown chip and the cancel label. |
 | `softColor` | `string` | `"#fdecec"` | — | Background of the cancel pill while the countdown runs. |
 | `onCountdownEnd` | `() => void` | — | — | Fires once when the countdown reaches zero, right before the button reverts to its delete state. Hand the actual deletion work to this. |
+| `autoPreview` | `boolean` | `false` | — | Site preview only — the button counts down to zero and returns by itself. Leave it off in normal use; `onCountdownEnd` never fires while it runs. |
 | `className` | `string` | — | — | Extra class for the root box. |
 
 ## Tips
@@ -59,3 +75,4 @@ export function DangerZone({ onWipe }: { onWipe: () => void }) {
 - Keep the countdown short (3 to 10 seconds): long waits read as the app being stuck.
 - Match `deleteColor` to your danger token and pick a `softColor` that is a light tint of it, so the cancel state still whispers the same danger.
 - Under `prefers-reduced-motion` the morph, the word cascade and the fades all become instant swaps; only the countdown itself keeps ticking.
+

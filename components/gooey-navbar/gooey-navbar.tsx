@@ -1,4 +1,28 @@
 "use client";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+function toFaDigits(input: string | number) {
+  return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
+}
+
+function groupNumber(value: number, decimals = 0) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}
+
+function formatFa(value: number, decimals = 0) {
+  return toFaDigits(
+    groupNumber(value, decimals).replace(/,/g, "٬").replace(/\./g, "٫"),
+  );
+}
 
 import {
   useCallback,
@@ -9,12 +33,6 @@ import {
   useState,
   type MouseEvent,
 } from "react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 type Rect = { x: number; y: number; width: number; height: number };
 

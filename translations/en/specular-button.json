@@ -26,7 +26,9 @@
     "disabled": "Turns off the button and the light.",
     "onClick": "Click; on `<button>`.",
     "className": "Extra class for the button itself.",
-    "style": "Inline style (applied after the color variables)."
+    "style": "Inline style (applied after the color variables).",
+    "target": "Forwarded to the underlying link when `href` is used.",
+    "rel": "Forwarded to the underlying link when `href` is used."
   },
   "tips": [
     "It looks best on a dark surface; for a light theme, make the glass and text dark (the demo's default does this).",

@@ -156,12 +156,12 @@
     {
       "name": "target",
       "type": "string",
-      "description": "وقتی `href` دادی، مقصدِ باز شدنِ پیوند: `\"_blank\"` برای تبِ تازه."
+      "description": "Forwarded to the underlying link when `href` is used."
     },
     {
       "name": "rel",
       "type": "string",
-      "description": "مقدارِ `rel` پیوند؛ با `target=\"_blank\"` معمولاً `\"noreferrer noopener\"`."
+      "description": "Forwarded to the underlying link when `href` is used."
     }
   ],
   "tips": [

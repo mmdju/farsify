@@ -3,7 +3,10 @@
   "name": "Animated Collection",
   "description": "A collection block whose items spring between a stacked list, a two-column card grid and a tilted pack, driven by a pill tab switcher.",
   "category": "showcase",
-  "dependencies": ["motion", "lucide-react"],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
   "interactionType": "Click / Keyboard",
   "interactionNotes": "Clicking a pill tab morphs the whole collection: items glide to their new positions with a spring, the image boxes resize, and the info blocks blur out when the pack forms and blur back in elsewhere. In pack view a caption with the joined titles and the piece count fades in under the stack. The active tab pill slides between the tabs, every tab is a real button with a visible focus ring, and with `prefers-reduced-motion` the springs, blurs and fades become instant.",
   "props": [
@@ -22,14 +25,37 @@
       "name": "defaultView",
       "type": "\"list\" | \"card\" | \"pack\"",
       "defaultValue": "\"list\"",
-      "options": ["list", "card", "pack"],
       "description": "The view the collection starts in."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only — the collection walks list, card and pack by itself. Leave it off in normal use; a real interaction never fires while it runs."
     },
     {
       "name": "className",
       "type": "string",
       "defaultValue": "\"\"",
       "description": "Extra class for the outer block."
+    },
+    {
+      "name": "accentColor",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Accent of the active view tab; leave it empty to keep the theme's primary color."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "24",
+      "description": "Corner radius of the card and pack images in pixels; the list thumbnails keep their own small radius."
+    },
+    {
+      "name": "showMeta",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Show the subtitle and year under each title, or keep only the title."
     }
   ],
   "tips": [
@@ -42,6 +68,6 @@
   ],
   "hasCss": false,
   "assets": [],
-  "lines": 306,
+  "lines": 388,
   "version": 1
 }

@@ -150,7 +150,7 @@
     {
       "name": "customClass",
       "type": "string",
-      "description": "کلاسِ اضافه برای هر کارتِ داخلی (`Card`)، جدا از کلاسِ ریشه."
+      "description": "Extra class on the card container."
     }
   ],
   "tips": [

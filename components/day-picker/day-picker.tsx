@@ -1,14 +1,38 @@
 "use client";
-
-import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Check, ChevronsUpDown } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+function toFaDigits(input: string | number) {
+  return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
+}
+
+function groupNumber(value: number, decimals = 0) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}
+
+function formatFa(value: number, decimals = 0) {
+  return toFaDigits(
+    groupNumber(value, decimals).replace(/,/g, "٬").replace(/\./g, "٫"),
+  );
+}
+
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { Check, ChevronsUpDown } from "lucide-react";
+
+const AUTO_START_MS = 700;
+const AUTO_MENU_MS = 900;
+const AUTO_ROW_MS = 1000;
+const AUTO_DAY_MS = 800;
+const AUTO_REST_MS = 1700;
 
 const week = [
   { short: "ش", name: "شنبه" },
@@ -32,9 +56,29 @@ export type DayFrequency = (typeof frequencies)[number]["id"];
 export type DayPickerProps = {
   defaultDay?: number;
   defaultFrequency?: DayFrequency;
+  accentColor?: string;
   onChange?: (value: { day: number; frequency: DayFrequency }) => void;
+  autoPreview?: boolean;
   className?: string;
 };
+
+function inkOn(color: string) {
+  const match = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(color.trim());
+  if (!match) return "#ffffff";
+  const hex =
+    match[1].length === 3
+      ? match[1]
+          .split("")
+          .map((chunk) => chunk + chunk)
+          .join("")
+      : match[1];
+  const value = parseInt(hex, 16);
+  const lum =
+    0.2126 * ((value >> 16) & 255) +
+    0.7152 * ((value >> 8) & 255) +
+    0.0722 * (value & 255);
+  return lum > 150 ? "#0a0a0a" : "#ffffff";
+}
 
 const spring = { type: "spring", damping: 30, stiffness: 400, mass: 1 } as const;
 
@@ -44,7 +88,9 @@ const focusRing =
 export function DayPicker({
   defaultDay = 0,
   defaultFrequency = "daily",
+  accentColor = "",
   onChange,
+  autoPreview = false,
   className,
 }: DayPickerProps) {
   const reduceMotion = useReducedMotion();
@@ -54,6 +100,46 @@ export function DayPicker({
   const [frequency, setFrequency] = useState<DayFrequency>(defaultFrequency);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDayRowOpen, setIsDayRowOpen] = useState(true);
+
+  const autoDay = useRef(1);
+
+  useEffect(() => {
+    if (!autoPreview) return;
+    let alive = true;
+    const pending: number[] = [];
+    const at = (ms: number, fn: () => void) => {
+      pending.push(
+        window.setTimeout(() => {
+          if (alive) fn();
+        }, ms),
+      );
+    };
+    const cycle = () => {
+      setIsMenuOpen(true);
+      at(AUTO_MENU_MS, () => {
+        setFrequency("weekly");
+        setIsDayRowOpen(true);
+        at(AUTO_ROW_MS, () => {
+          setDay(autoDay.current % week.length);
+          autoDay.current = (autoDay.current + 2) % week.length;
+          at(AUTO_DAY_MS, () => {
+            setIsMenuOpen(false);
+            setIsDayRowOpen(false);
+            at(AUTO_REST_MS, cycle);
+          });
+        });
+      });
+    };
+    at(AUTO_START_MS, cycle);
+    return () => {
+      alive = false;
+      pending.forEach((timer) => window.clearTimeout(timer));
+      setIsMenuOpen(false);
+      setIsDayRowOpen(true);
+      setDay(defaultDay);
+      setFrequency(defaultFrequency);
+    };
+  }, [autoPreview, defaultDay, defaultFrequency]);
 
   const frequencyLabel =
     frequencies.find((item) => item.id === frequency)?.label ?? "روزانه";
@@ -117,6 +203,13 @@ export function DayPicker({
                         <motion.span
                           layoutId="day-picker-selected"
                           transition={transition}
+                          style={
+                            accentColor
+                              ? {
+                                  backgroundColor: `color-mix(in srgb, ${accentColor} 22%, transparent)`,
+                                }
+                              : undefined
+                          }
                           className="absolute inset-0 h-full w-full rounded-3xl bg-accent"
                         />
                       )}
@@ -140,6 +233,11 @@ export function DayPicker({
                   exit={{ filter: "blur(1px)", opacity: 0.6 }}
                   transition={transition}
                   aria-label="تأیید تکرار"
+                  style={
+                    accentColor
+                      ? { backgroundColor: accentColor, color: inkOn(accentColor) }
+                      : undefined
+                  }
                   className={cn(
                     "flex h-full cursor-pointer items-center justify-center rounded-3xl bg-primary px-2.5 text-primary-foreground",
                     focusRing,

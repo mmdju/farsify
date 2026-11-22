@@ -23,7 +23,9 @@
     "settleAfter": "Finish by itself after how many seconds; zero means manual.",
     "elapsed": "Elapsed time; omit it to have it count on its own.",
     "showTimer": "Show the elapsed time.",
-    "onSettle": "When it settles, with the total duration."
+    "onSettle": "When it settles, with the total duration.",
+    "className": "Extra class on the component container.",
+    "style": "Inline styles for the component container."
   },
   "tips": [
     "Add steps to the list **one at a time**, not all at once. The component checks off each step except the last, so the \"one-by-one checking\" is only visible when the list also fills up one by one.",

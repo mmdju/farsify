@@ -33,12 +33,13 @@ import {
   type Transition,
 } from "motion/react";
 
-type Bezier = [number, number, number, number];
+const AUTO_START_MS = 700;
+const AUTO_REST_MS = 1200;
 
 const LAYOUT_DURATION = 0.4;
-const LAYOUT_EASE: Bezier = [0.77, 0, 0.175, 1];
+const LAYOUT_EASE: [number, number, number, number] = [0.77, 0, 0.175, 1];
 const WORD_DURATION = 0.3;
-const WORD_EASE: Bezier = [0.785, 0.135, 0.15, 0.86];
+const WORD_EASE: [number, number, number, number] = [0.785, 0.135, 0.15, 0.86];
 const WORD_STAGGER = 0.03;
 const GUARD_MS = LAYOUT_DURATION * 1000;
 const END_HOLD_MS = 700;
@@ -50,6 +51,7 @@ export interface CountdownDeleteProps {
   deleteColor?: string;
   softColor?: string;
   onCountdownEnd?: () => void;
+  autoPreview?: boolean;
   className?: string;
 }
 
@@ -60,6 +62,7 @@ export default function CountdownDelete({
   deleteColor = "#e5484d",
   softColor = "#fdecec",
   onCountdownEnd,
+  autoPreview = false,
   className,
 }: CountdownDeleteProps) {
   const reduce = useReducedMotion();
@@ -79,6 +82,37 @@ export default function CountdownDelete({
     setTimeout(() => setIsAnimating(false), GUARD_MS);
   };
 
+  useEffect(() => {
+    if (!autoPreview) return;
+    let alive = true;
+    const pending: number[] = [];
+    const at = (ms: number, fn: () => void) => {
+      pending.push(
+        window.setTimeout(() => {
+          if (alive) fn();
+        }, ms),
+      );
+    };
+    const cycle = () => {
+      if (!alive) return;
+      setIsAnimating(true);
+      setIsDeleting(true);
+      firedRef.current = false;
+      setCount(total);
+      at(
+        GUARD_MS + total * 1000 + END_HOLD_MS + AUTO_REST_MS,
+        cycle,
+      );
+    };
+    at(AUTO_START_MS, cycle);
+    return () => {
+      alive = false;
+      pending.forEach((timer) => window.clearTimeout(timer));
+      setIsAnimating(false);
+      setIsDeleting(false);
+    };
+  }, [autoPreview, total]);
+
   const handleClick = (next: boolean) => {
     if (isAnimating) return;
     swapTo(next);
@@ -94,11 +128,11 @@ export default function CountdownDelete({
     if (!isDeleting || count !== 0) return;
     if (!firedRef.current) {
       firedRef.current = true;
-      onCountdownEnd?.();
+      if (!autoPreview) onCountdownEnd?.();
     }
     const timer = setTimeout(() => swapTo(false), END_HOLD_MS);
     return () => clearTimeout(timer);
-  }, [isDeleting, count, onCountdownEnd]);
+  }, [isDeleting, count, autoPreview, onCountdownEnd]);
 
   const blurClose = reduce ? "blur(0px)" : "blur(1px)";
 
@@ -240,7 +274,7 @@ export default function CountdownDelete({
 
             <motion.span
               layoutId="countdown-delete-text"
-              className="relative top-[-2px] flex gap-x-[0.3em] font-medium"
+              className="relative flex gap-x-[0.3em] font-medium"
               style={{ color: deleteColor }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

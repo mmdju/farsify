@@ -2,7 +2,11 @@
   "description": "A timer that morphs in place: a small pill opens a minutes wheel, the wheel rolls into a running countdown whose border drains with the remaining time, and it can be paused or cancelled without leaving the same surface.",
   "interactionType": "Click / Drag / Scroll / Keyboard",
   "interactionNotes": "Clicking the pill opens a minutes wheel: drag it, scroll it, or focus it and use the arrow keys, Page Up/Down, Home or End. Start drops the surface into a countdown whose border unwinds clockwise; the pause button swaps to resume with a short rolling label, and cancel returns to the pill. When the countdown reaches zero it goes back to the wheel. Focus follows the layer that stays active, and `prefers-reduced-motion` removes the springs, the label roll and the smooth wheel settle.",
-  "props": {},
+  "props": {
+    "autoPreview": "Site preview only — the timer opens the wheel, rolls it and runs, then cancels. Leave it off in normal use.",
+    "progressColor": "Color of the countdown ring, the pause face and the minute highlight.",
+    "surfaceColor": "The charcoal surface behind the whole timer; any CSS color works and the white text stays on top."
+  },
   "tips": [
     "The minutes wheel is `@ncdai/react-wheel-picker`; the component imports its stylesheet itself, so the package has to be installed in the project.",
     "All four faces are one surface that animates its width, height and radius, so nothing jumps when the timer opens, runs or resets.",

@@ -86,8 +86,8 @@ export function Examples() {
 | `onClick` | `MouseEventHandler` | — | — | Click; on `<button>`. |
 | `className` | `string` | `''` | — | Extra class for the button itself. |
 | `style` | `CSSProperties` | — | — | Inline style (applied after the color variables). |
-| `target` | `string` | — | — | وقتی `href` دادی، مقصدِ باز شدنِ پیوند: `"_blank"` برای تبِ تازه. |
-| `rel` | `string` | — | — | مقدارِ `rel` پیوند؛ با `target="_blank"` معمولاً `"noreferrer noopener"`. |
+| `target` | `string` | — | — | Forwarded to the underlying link when `href` is used. |
+| `rel` | `string` | — | — | Forwarded to the underlying link when `href` is used. |
 
 ## Tips
 

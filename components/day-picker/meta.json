@@ -3,7 +3,10 @@
   "name": "Day Picker",
   "description": "A repeat-interval picker: a compact card shows the current frequency, springs open into a row of daily, weekly, monthly and yearly options, and reveals a weekday row when the interval is weekly, so a schedule is two taps away.",
   "category": "inputs",
-  "dependencies": ["motion", "lucide-react"],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
   "interactionType": "Click / Keyboard",
   "interactionNotes": "Clicking the frequency chip opens the menu: the label blurs out, the four intervals spring in, and a check button replaces the chip. Picking an interval keeps the menu open, and choosing weekly drops a weekday row under it whose chips arrive one after another. The check closes the menu and hides the weekday row. Everything is a button, so Tab reaches each choice and the focus outline is visible. With `prefers-reduced-motion` the springs become instant and the weekday stagger is removed.",
   "props": [
@@ -17,7 +20,6 @@
       "name": "defaultFrequency",
       "type": "\"daily\" | \"weekly\" | \"monthly\" | \"yearly\"",
       "defaultValue": "\"daily\"",
-      "options": ["daily", "weekly", "monthly", "yearly"],
       "description": "Starting repeat interval."
     },
     {
@@ -26,10 +28,22 @@
       "description": "Runs on every interval or weekday pick with the whole current value."
     },
     {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only — the picker opens, picks weekly and confirms by itself. Leave it off in normal use; a real `onChange` never fires while it runs."
+    },
+    {
       "name": "className",
       "type": "string",
       "defaultValue": "\"\"",
       "description": "Extra class for the outer block."
+    },
+    {
+      "name": "accentColor",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Accent of the confirm button and the selected chip; leave it empty to keep the theme's primary color."
     }
   ],
   "tips": [
@@ -42,6 +56,6 @@
   ],
   "hasCss": false,
   "assets": [],
-  "lines": 223,
+  "lines": 321,
   "version": 1
 }

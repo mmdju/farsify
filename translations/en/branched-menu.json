@@ -21,7 +21,11 @@
     "drawDuration": "Duration of drawing the active colored line, milliseconds.",
     "foldDuration": "Duration of each section opening and closing, milliseconds.",
     "autoPreview": "Site preview only: keeps the sections open and selects children one by one; every few steps a section actually folds and unfolds so the path line is drawn anew.",
-    "className": "Extra class on the menu root."
+    "className": "Extra class on the menu root.",
+    "activeLabelColor": "Color of the active section's label; falls back to the accent color.",
+    "sectionFontSize": "Font size of the section labels in pixels.",
+    "sectionClassName": "Extra class for the section labels.",
+    "dimInactiveSections": "Dim the sections that are not currently active."
   },
   "tips": [
     "You can also give the colors with a CSS variable: `accentColor=\"var(--color-brand)\"` so the active line matches your site's brand.",

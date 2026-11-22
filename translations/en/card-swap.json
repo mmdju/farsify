@@ -26,7 +26,8 @@
     "theme": "Palette of the tile, border and dimming; it can also be changed with `--swap-*` variables.",
     "onCardClick": "A click on any card (even the back ones).",
     "onChange": "On every swap of the front card.",
-    "className": "Extra class for the root."
+    "className": "Extra class for the root.",
+    "customClass": "Extra class on the card container."
   },
   "tips": [
     "The root fits itself into any box: `fit()` measures the container's width/height ratio and scales the whole stack — in a list card and bento it hosts with no configuration at all.",

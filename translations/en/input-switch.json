@@ -6,7 +6,16 @@
     "options": "Prompt presets to cycle through; each entry has a `text` and an optional lucide `icon`. Defaults to a search and an image-generation preset.",
     "defaultOption": "Which preset starts active; clamped into range.",
     "onSubmit": "Called with the typed value when Enter is pressed inside the input or the end-side arrow is clicked.",
-    "className": "Extra class for the root pill."
+    "className": "Extra class for the root pill.",
+    "activeOption": "Controlled preset index; without it the bar keeps its own state and `defaultOption` is just the starting point.",
+    "onOptionChange": "Called with the next preset index when the side button is pressed.",
+    "value": "Controlled typed value; without it the input keeps its own text.",
+    "onChange": "Called with the typed text on every keystroke.",
+    "pillColor": "The pill surface.",
+    "buttonColor": "The two round buttons: the preset cycler and submit.",
+    "buttonTextColor": "Icons inside the round buttons.",
+    "textColor": "Typed text and the cycle chevrons.",
+    "placeholderColor": "Placeholder hint; an empty value derives a matte mix of the text and pill colors."
   },
   "tips": [
     "This is an AI-style prompt bar: the small button on the start side cycles through presets, each with its own icon and animated placeholder.",

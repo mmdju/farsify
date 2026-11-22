@@ -1,19 +1,38 @@
 "use client";
-
-import { useCallback, useEffect, useState } from "react";
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion,
-  type Transition,
-} from "motion/react";
-import "./accordion-os.css";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 
 function toFaDigits(input: string | number) {
   return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
 }
+
+function groupNumber(value: number, decimals = 0) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}
+
+function formatFa(value: number, decimals = 0) {
+  return toFaDigits(
+    groupNumber(value, decimals).replace(/,/g, "٬").replace(/\./g, "٫"),
+  );
+}
+
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  type Transition,
+} from "motion/react";
+
+import "./accordion-os.css";
 
 export interface AccordionItem {
   id?: string | number;
@@ -43,52 +62,52 @@ const artwork = (hue: number) =>
 const DEFAULT_ITEMS: AccordionItem[] = [
   {
     id: 1,
-    title: "مرکز‌یابی",
+    title: "برنامه‌ریزیِ مسیر",
     badge: "01",
     claim:
-      "گِل رو ببر دقیقاً وسطِ چرخ. تا وقتی لرزشش راه نیفتاده، هیچ کاری که بعدش بکنی دوام نمیاره.",
-    image: artwork(18),
-    alt: "مرکزآوردن گِل خیس روی چرخ سفالگری",
+      "مسیر رو قبل از شروع روی نقشه بشکن؛ خروج، کمپ و قله رو با ساعتِ طلایی هم‌سنگ کن تا وسطِ راه غافلگیر نشی.",
+    image: artwork(205),
+    alt: "سِلِ کوهستانیِ صخره‌ای در نورِ روز",
   },
   {
     id: 2,
-    title: "کشیدن دیواره",
+    title: "انتخابِ کمپگاه",
     badge: "02",
     claim:
-      "دو انگشت داخل، یکی بیرون. آروم و یکنواخت بکش؛ دیواره یا بلند می‌شه یا فرو می‌ریزه.",
-    image: artwork(30),
-    alt: "کشیدن دیوارهٔ کاسه روی چرخ",
+      "کمپ رو کنارِ آب و دور از بسترِ سیل بزن؛ زمینِ هموار و بادپناه، نیمه‌شبِ راحت می‌سازه.",
+    image: artwork(190),
+    alt: "دریاچهٔ کوهستانی در میانِ تپه‌ها",
   },
   {
     id: 3,
-    title: "آماده‌سازی لعاب",
+    title: "برپاییِ اردو",
     badge: "03",
     claim:
-      "اکسیدها رو توی کاسه‌های کوچیک ترکیب کن و روی خرده‌کاشی تست بزن. آخرِ کار کوره‌ست که نظر نهایی رو میده.",
-    image: artwork(190),
-    alt: "کاسه‌های لعاب رنگی روی میز استودیو",
+      "چادر رو پشت به باد بشکن و گِل‌میخ‌ها رو کج بکوب؛ یه زیراندازِ درست، خوابِ گرم میاره.",
+    image: artwork(145),
+    alt: "جنگلِ انبوهِ کاج در مسیرِ کمپ",
   },
   {
     id: 4,
-    title: "تراش‌کاری",
+    title: "شبِ کمپ",
     badge: "04",
     claim:
-      "حلقهٔ پایه رو وقتی کاسه هنوز چرم‌سفتی داره برش بزن. یه برشِ عمیقِ اضافه، ماه‌ها کار رو می‌فرسته توی حلب.",
-    image: artwork(45),
-    alt: "تراش کاسهٔ سرامیکی پهن در استودیو",
+      "آتیش رو کوچک و نزدیکِ سنگ نگه دار و آبِ فردا رو همین امشب جوش بیار؛ ستاره‌ها بهترین ساعته.",
+    image: artwork(250),
+    alt: "آسمانِ شبِ پرستاره بالای کمپ",
   },
   {
     id: 5,
-    title: "کار نهایی",
+    title: "قله‌پیمایی",
     badge: "05",
     claim:
-      "صدای ترکِ موقع خنک‌شدن، درهایی که جا می‌شینن و دسته‌هایی که برای چایِ داغ کلفتِ کافی‌ان. کوره امضاش رو زده.",
-    image: artwork(210),
-    alt: "کاسه و گلدان‌های دست‌ساز سرامیکی در ویترین",
+      "ساعتِ طلایی راه افتن؛ قبل از آفتابِ تند روی قله باش و برای برگشت انرژی نگه دار.",
+    image: artwork(30),
+    alt: "قلهٔ برفی در افقِ صبحگاهی",
   },
 ];
 
-const DEFAULT_STATIC_IMAGE = artwork(25);
+const DEFAULT_STATIC_IMAGE = artwork(210);
 
 const springPhysics: Transition = {
   type: "spring",
@@ -116,6 +135,7 @@ export default function AccordionOS({
   onItemChange,
 }: AccordionOSProps) {
   const reduce = useReducedMotion();
+  const rootRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(defaultActiveIndex);
   const [isHovered, setIsHovered] = useState(false);
   const spring: Transition = reduce ? { duration: 0 } : springPhysics;
@@ -157,6 +177,7 @@ export default function AccordionOS({
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
+      if (!rootRef.current?.contains(target)) return;
       const tag = target?.tagName?.toLowerCase();
       if (tag === "input" || tag === "textarea" || target?.isContentEditable) {
         return;
@@ -188,6 +209,7 @@ export default function AccordionOS({
 
   return (
     <div
+      ref={rootRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`accordion-os-root ${className}`}
@@ -231,11 +253,6 @@ export default function AccordionOS({
                   <div className="accordion-os-title-stack">
                     <motion.div
                       className="accordion-os-icon-btn"
-                      animate={{
-                        backgroundColor: isOpen ? "rgba(2, 2, 2, 0.9)" : "rgba(255, 255, 255, 0.8)",
-                        color: isOpen ? "#ffffff" : "rgb(2, 2, 2)",
-                        borderColor: isOpen ? "rgba(0, 0, 0, 0.8)" : "rgba(2, 2, 2, 0.2)",
-                      }}
                       whileHover={{ scale: 1.08 }}
                       whileTap={{ scale: 0.94 }}
                       transition={soft}
@@ -308,7 +325,7 @@ export default function AccordionOS({
           >
             <img
               src={staticImage}
-              alt="سفال‌های دست‌ساز روی قفسهٔ استودیو"
+              alt="کمپ در غروبِ کوهستان"
               className="accordion-os-image"
               loading="eager"
               decoding="async"

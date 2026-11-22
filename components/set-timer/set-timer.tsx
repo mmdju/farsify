@@ -1,4 +1,28 @@
 "use client";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+function toFaDigits(input: string | number) {
+  return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
+}
+
+function groupNumber(value: number, decimals = 0) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}
+
+function formatFa(value: number, decimals = 0) {
+  return toFaDigits(
+    groupNumber(value, decimals).replace(/,/g, "٬").replace(/\./g, "٫"),
+  );
+}
 
 import "@ncdai/react-wheel-picker/style.css";
 
@@ -11,27 +35,23 @@ import {
 } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import * as WheelPickerPrimitive from "@ncdai/react-wheel-picker";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 type WheelPickerOption<T extends WheelPickerPrimitive.WheelPickerValue = string> =
   WheelPickerPrimitive.WheelPickerOption<T>;
 
-const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-
-function toFaDigits(input: string | number) {
-  return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
-}
-
 type TimerMode = "compact" | "picker" | "running" | "paused";
 
-const SURFACE_COLOR = "#2c2c2c";
-const PROGRESS_COLOR = "#ff9f0a";
+const DEFAULT_SURFACE = "#2c2c2c";
+const DEFAULT_PROGRESS = "#ff9f0a";
 const GO_COLOR = "#34c759";
+
+const AUTO_START_MS = 700;
+const AUTO_OPEN_MS = 650;
+const AUTO_STEP_MS = 520;
+const AUTO_STEPS = 3;
+const AUTO_HOLD_MS = 700;
+const AUTO_RUN_MS = 4000;
+const AUTO_REST_MS = 1500;
 
 const SURFACE_DIMENSIONS: Record<
   TimerMode,
@@ -73,7 +93,7 @@ function formatTime(seconds: number) {
   return toFaDigits(`${minutes}:${String(rest).padStart(2, "0")}`);
 }
 
-function TimerIcon() {
+function TimerIcon({ ink }: { ink: string }) {
   return (
     <svg
       width="40"
@@ -88,7 +108,7 @@ function TimerIcon() {
       <circle cx="20" cy="22" r="9" fill="currentColor" />
       <path
         d="M20 22v-4.75"
-        stroke={SURFACE_COLOR}
+        stroke={ink}
         strokeWidth="2.25"
         strokeLinecap="round"
       />
@@ -168,9 +188,11 @@ function BlurBand({
 function MinutePicker({
   selectedMinutes,
   onChange,
+  surface,
 }: {
   selectedMinutes: number;
   onChange: (minutes: number) => void;
+  surface: string;
 }) {
   const bandHeight = `calc(50% - ${OPTION_ITEM_HEIGHT / 2}px)`;
 
@@ -217,7 +239,7 @@ function MinutePicker({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: `linear-gradient(to bottom, ${SURFACE_COLOR} 0%, transparent 22%, transparent 78%, ${SURFACE_COLOR} 100%)`,
+          backgroundImage: `linear-gradient(to bottom, ${surface} 0%, transparent 22%, transparent 78%, ${surface} 100%)`,
         }}
       />
 
@@ -239,12 +261,14 @@ function TimerBorder({
   width,
   height,
   borderRadius,
+  color,
 }: {
   remainingSeconds: number;
   totalSeconds: number;
   width: number;
   height: number;
   borderRadius: number;
+  color: string;
 }) {
   const reduceMotion = useReducedMotion();
   const progress = totalSeconds === 0 ? 0 : remainingSeconds / totalSeconds;
@@ -285,7 +309,7 @@ function TimerBorder({
       />
       <motion.path
         d={path}
-        stroke={PROGRESS_COLOR}
+        stroke={color}
         strokeWidth={BORDER_STROKE}
         strokeLinecap="round"
         pathLength={1}
@@ -306,7 +330,15 @@ function TimerBorder({
 const buttonBase =
   "flex cursor-pointer items-center justify-center rounded-full pb-[2px] text-[18px] font-semibold outline-none transition duration-150 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/70";
 
-export const SetTimer = () => {
+export const SetTimer = ({
+  autoPreview = false,
+  progressColor = DEFAULT_PROGRESS,
+  surfaceColor = DEFAULT_SURFACE,
+}: {
+  autoPreview?: boolean;
+  progressColor?: string;
+  surfaceColor?: string;
+}) => {
   const reduceMotion = useReducedMotion();
   const [mode, setMode] = useState<TimerMode>("compact");
   const [selectedMinutes, setSelectedMinutes] = useState(DEFAULT_MINUTES);
@@ -315,9 +347,61 @@ export const SetTimer = () => {
   const deadlineRef = useRef<number | null>(null);
   const surfaceRef = useRef<HTMLDivElement>(null);
   const restoreFocusRef = useRef(false);
+  const selectedRef = useRef(selectedMinutes);
+  selectedRef.current = selectedMinutes;
 
   const isTimerActive = mode === "running" || mode === "paused";
   const dimensions = SURFACE_DIMENSIONS[mode];
+
+  useEffect(() => {
+    if (!autoPreview) return;
+    let alive = true;
+    const pending: number[] = [];
+    const at = (ms: number, fn: () => void) => {
+      pending.push(
+        window.setTimeout(() => {
+          if (alive) fn();
+        }, ms),
+      );
+    };
+    const roll = () => {
+      const wheel = surfaceRef.current?.querySelector<HTMLElement>("[data-rwp]");
+      wheel?.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: "ArrowDown",
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
+    };
+    const cycle = () => {
+      const reset = DEFAULT_MINUTES;
+      setSelectedMinutes(reset);
+      setTotalSeconds(reset * 60);
+      setRemainingSeconds(reset * 60);
+      setMode("picker");
+      for (let step = 0; step < AUTO_STEPS; step++) {
+        at(AUTO_OPEN_MS + step * AUTO_STEP_MS, roll);
+      }
+      const startAt = AUTO_OPEN_MS + (AUTO_STEPS - 1) * AUTO_STEP_MS + AUTO_HOLD_MS;
+      at(startAt, () => {
+        deadlineRef.current = Date.now() + selectedRef.current * 60 * 1000;
+        setMode("running");
+      });
+      at(startAt + AUTO_RUN_MS, () => {
+        deadlineRef.current = null;
+        setMode("compact");
+      });
+      at(startAt + AUTO_RUN_MS + AUTO_REST_MS, cycle);
+    };
+    at(AUTO_START_MS, cycle);
+    return () => {
+      alive = false;
+      pending.forEach((timer) => window.clearTimeout(timer));
+      deadlineRef.current = null;
+      setMode("compact");
+    };
+  }, [autoPreview]);
 
   useEffect(() => {
     if (mode !== "running") return;
@@ -414,7 +498,7 @@ export const SetTimer = () => {
           : { ...SURFACE_SPRING, opacity: { duration: 0.2 } }
       }
       className="relative min-w-[250px] overflow-hidden text-white shadow-sm"
-      style={{ backgroundColor: SURFACE_COLOR }}
+      style={{ backgroundColor: surfaceColor }}
     >
       <ContentLayer isVisible={mode === "compact"}>
         <div data-timer-layer="compact" style={SURFACE_DIMENSIONS.compact}>
@@ -424,7 +508,7 @@ export const SetTimer = () => {
             className="relative flex size-full cursor-pointer items-center justify-center rounded-[42px] pb-[2px] text-[28px] font-medium outline-none transition-colors hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/70"
           >
             <span className="absolute start-[22px] top-1/2 -translate-y-1/2">
-              <TimerIcon />
+              <TimerIcon ink={surfaceColor} />
             </span>
             <span className="-translate-y-px">تایمر بذار</span>
           </button>
@@ -440,6 +524,7 @@ export const SetTimer = () => {
           <MinutePicker
             selectedMinutes={selectedMinutes}
             onChange={handleMinutesChange}
+            surface={surfaceColor}
           />
           <motion.button
             type="button"
@@ -465,6 +550,7 @@ export const SetTimer = () => {
           <TimerBorder
             remainingSeconds={remainingSeconds}
             totalSeconds={totalSeconds}
+            color={progressColor}
             {...SURFACE_DIMENSIONS.running}
           />
 
@@ -477,8 +563,8 @@ export const SetTimer = () => {
               backgroundColor:
                 mode === "paused"
                   ? "color-mix(in oklab, #34c759 20%, transparent)"
-                  : "color-mix(in oklab, #ff9f0a 20%, transparent)",
-              color: mode === "paused" ? GO_COLOR : PROGRESS_COLOR,
+                  : `color-mix(in oklab, ${progressColor} 20%, transparent)`,
+              color: mode === "paused" ? GO_COLOR : progressColor,
             }}
           >
             <AnimatePresence initial={false} mode="popLayout">

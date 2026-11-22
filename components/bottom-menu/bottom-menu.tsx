@@ -1,4 +1,28 @@
 "use client";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+function toFaDigits(input: string | number) {
+  return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
+}
+
+function groupNumber(value: number, decimals = 0) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}
+
+function formatFa(value: number, decimals = 0) {
+  return toFaDigits(
+    groupNumber(value, decimals).replace(/,/g, "٬").replace(/\./g, "٫"),
+  );
+}
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -17,12 +41,12 @@ import {
   UserPen,
   type LucideIcon,
 } from "lucide-react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
 
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+const AUTO_STEPS = ["home", "search", "notifications", "profile", "theme"] as const;
+const AUTO_START_MS = 700;
+const AUTO_VIEW_MS = 1900;
+const AUTO_THEME_MS = 1100;
+const AUTO_REST_MS = 1500;
 
 type View =
   | "default"
@@ -66,12 +90,55 @@ const THEME_OPTIONS: { key: ThemeChoice; icon: LucideIcon; text: string }[] = [
 const SHARED_ITEM =
   "group w-full rounded-[12px] px-3 py-2 text-start text-[15px] text-muted-foreground transition-all duration-75 hover:bg-muted/80 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
-const BottomMenu = () => {
+const BottomMenu = ({
+  autoPreview = false,
+  accentColor = "",
+}: {
+  autoPreview?: boolean;
+  accentColor?: string;
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const hiddenRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [view, setView] = useState<View>("default");
   const [theme, setTheme] = useState<ThemeChoice>("light");
+  const accentStyle = accentColor
+    ? { backgroundColor: `color-mix(in srgb, ${accentColor} 22%, transparent)` }
+    : undefined;
+
+  useEffect(() => {
+    if (!autoPreview) return;
+    let alive = true;
+    const pending: number[] = [];
+    const at = (ms: number, fn: () => void) => {
+      pending.push(
+        window.setTimeout(() => {
+          if (alive) fn();
+        }, ms),
+      );
+    };
+    const tour = () => {
+      let step = 0;
+      const next = () => {
+        if (step >= AUTO_STEPS.length) {
+          setView("default");
+          at(AUTO_REST_MS, tour);
+          return;
+        }
+        const view = AUTO_STEPS[step++];
+        setView(view);
+        if (view === "theme") at(AUTO_THEME_MS, () => setTheme("dark"));
+        at(AUTO_VIEW_MS, next);
+      };
+      at(AUTO_START_MS, next);
+    };
+    tour();
+    return () => {
+      alive = false;
+      pending.forEach((timer) => window.clearTimeout(timer));
+      setView("default");
+    };
+  }, [autoPreview]);
 
   useLayoutEffect(() => {
     const node = hiddenRef.current;
@@ -196,6 +263,7 @@ const BottomMenu = () => {
                 type="button"
                 onClick={() => setTheme(key)}
                 aria-pressed={theme === key}
+                style={theme === key ? accentStyle : undefined}
                 className={cn(
                   "flex items-center justify-center gap-2 rounded-[12px] px-3 py-2 text-[15px] transition-all duration-100 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
                   theme === key
@@ -300,6 +368,7 @@ const BottomMenu = () => {
               aria-label={label}
               aria-expanded={isOpen}
               onClick={() => setView(isOpen ? "default" : itemView)}
+              style={isOpen ? accentStyle : undefined}
               className={cn(
                 "rounded-[16px] p-3 transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
                 isOpen ? "bg-accent" : "hover:bg-muted",

@@ -82,7 +82,7 @@
       "name": "paused",
       "type": "boolean",
       "defaultValue": "false",
-      "description": "انیمیشنِ درخشش و جارو رو نگه می‌داره؛ کارت سرِ جاش می‌مونه."
+      "description": "Freeze the glow animation without unmounting the card; the current sweep stays where it is."
     },
     {
       "name": "className",

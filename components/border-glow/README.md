@@ -67,7 +67,7 @@ export function Examples() {
 | `colors` | `string[]` | `سه فام` | — | The three colors of the edge mesh; they are spread across seven fixed points of the frame so the card border becomes multi-hue. |
 | `fillOpacity` | `number` | `0.5` | — | Strength of the colored mesh fill inside the card near the edges; 0 to 1. |
 | `sweepLoop` | `boolean` | `false` | — | Re-run the entry sweep once it finishes — for non-interactive previews where the card has to stay alive. This option belongs to this component only. |
-| `paused` | `boolean` | `false` | — | انیمیشنِ درخشش و جارو رو نگه می‌داره؛ کارت سرِ جاش می‌مونه. |
+| `paused` | `boolean` | `false` | — | Freeze the glow animation without unmounting the card; the current sweep stays where it is. |
 | `className` | `string` | `""` | — | Extra class for the card. |
 
 ## Tips
