@@ -80,6 +80,7 @@
 | [Infinite Menu](infinite-menu/) | `infinite-menu` |
 | [Flying Posters](flying-posters/) | `flying-posters` |
 | [Accordion Gallery](accordion-gallery/) | `accordion-gallery` |
+| [Accordion OS](accordion-os/) | `accordion-os` |
 | [Depth Carousel](depth-carousel/) | `depth-carousel` |
 | [Circular Gallery](circular-gallery/) | `circular-gallery` |
 | [Drift Wall](drift-wall/) | `drift-wall` |

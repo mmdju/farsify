@@ -1,0 +1,82 @@
+{
+  "slug": "accordion-os",
+  "name": "Accordion OS",
+  "description": "A photo-backed accordion styled like an OS launcher: the open item widens into a pill that reveals its numbered badge and a short line of copy, the closed items stay as slim title pills, and the photo crossfades behind — with a prev/next deck and counter in the corner, auto-play and full keyboard control.",
+  "category": "showcase",
+  "dependencies": ["motion"],
+  "interactionType": "Auto-play / Click / Keyboard",
+  "interactionNotes": "Clicking a pill opens it and clicking it again closes it. The deck in the bottom corner steps backward and forward, and the window-level keys do the same: ArrowRight/ArrowDown/S forward, ArrowLeft/ArrowUp/W back, Escape closes everything, and the number keys 1–5 jump straight to an item (ignored beyond the list length). Auto-play advances on its own interval and pauses while the pointer is over the card.",
+  "props": [
+    {
+      "name": "items",
+      "type": "Array<{ id?: string | number; title: string; badge?: string; claim: string; image: string; alt?: string }>",
+      "defaultValue": "۵ آیتمِ نمونه",
+      "description": "The accordion entries; `title` is the pill label, `badge` is the small index shown on the open pill, `claim` is the line of copy revealed under the title, `image` is the full-bleed photo shown while the item is open and `alt` is its alternative text."
+    },
+    {
+      "name": "staticImage",
+      "type": "string",
+      "defaultValue": "گرادیانِ نمونهٔ SVG",
+      "description": "The photo shown while every item is closed — the resting backdrop behind the title pills."
+    },
+    {
+      "name": "defaultActiveIndex",
+      "type": "number | null",
+      "defaultValue": "0",
+      "description": "The item open on the first render; pass `null` to start with everything closed. It only affects that render — later changes have no effect."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    },
+    {
+      "name": "containerHeight",
+      "type": "number | string",
+      "defaultValue": "520",
+      "description": "Height of the card in pixels, or any CSS height."
+    },
+    {
+      "name": "containerWidth",
+      "type": "number | string",
+      "defaultValue": "840",
+      "description": "Width of the card in pixels, or any CSS width; the card never grows past its container."
+    },
+    {
+      "name": "autoPlay",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the open item advances on its own."
+    },
+    {
+      "name": "autoPlayInterval",
+      "type": "number",
+      "defaultValue": "3500",
+      "description": "Milliseconds between auto-play steps, clamped to at least 500."
+    },
+    {
+      "name": "pauseOnHover",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Pause auto-play while the pointer is over the card."
+    },
+    {
+      "name": "onItemChange",
+      "type": "(index: number | null) => void",
+      "defaultValue": "—",
+      "description": "Called with the open item's index whenever it changes, or `null` when everything is closed."
+    }
+  ],
+  "tips": [
+    "Pills change size through real layout values, not scale transforms, so titles never stretch or squish and the card stays sharp on every frame.",
+    "Keyboard flow is window-level: arrows or S/W step through items, 1–5 jumps straight to one, and Escape clears the selection — make sure nothing else on the page swallows those keys.",
+    "Auto-play clamps `autoPlayInterval` to 500ms and pauses on hover; with `prefers-reduced-motion` every transition becomes an instant swap and auto-play turns off.",
+    "Feed real photos through `items[].image`; the shipped defaults are inline SVG gradient data URIs, so the component renders before any asset loads.",
+    "Under 640px the card stacks: pills go full-width and the nav deck keeps the bottom corner — check the counter's legibility over busy photos."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 388,
+  "version": 1
+}
