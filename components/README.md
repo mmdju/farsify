@@ -63,7 +63,7 @@
 | [Status Mark](status-mark/) | `status-mark` |
 | [Refine Frame](refine-frame/) | `refine-frame` |
 
-## Showcase (25)
+## Showcase (26)
 
 | Component | ID |
 | --- | --- |
@@ -92,3 +92,4 @@
 | [Bookshelf](bookshelf/) | `bookshelf` |
 | [Holographic Referral Card](invite-card/) | `invite-card` |
 | [Scroll Panels](scroll-panels/) | `scroll-panels` |
+| [Animated Collection](animated-collection/) | `animated-collection` |

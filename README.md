@@ -30,7 +30,7 @@ No package to install, no build step, no link back to this site.
 | Buttons | `actions` | 12 | `magnet`, `hold-button`, `slide-commit`, `voice-pill` |
 | Navigation | `navigation` | 11 | `gooey-nav`, `branched-menu`, `rail-toc`, `carousel` |
 | Loaders & status | `status` | 4 | `lattice-loader`, `status-mark`, `thought-line`, `refine-frame` |
-| Showcase | `showcase` | 25 | `card-swap`, `glass-icons`, `tilted-card`, `paper-crumple` |
+| Showcase | `showcase` | 26 | `card-swap`, `glass-icons`, `tilted-card`, `paper-crumple` |
 
 </div>
 
