@@ -1,0 +1,18 @@
+{
+  "description": "A pill-shaped prompt input whose small side button cycles through prompt presets, each bringing its own icon and a word-by-word animated Persian placeholder; the arrow button and Enter hand the typed value over.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Click the small circular button on the start side: the current icon blurs out and the next preset's icon blurs in, and the placeholder swaps with a word-by-word cascade. Typing hides the placeholder; clearing the field brings it back. Press Enter inside the input or click the end-side arrow to submit the typed value through onSubmit. Under prefers-reduced-motion the cascades, blurs and taps become instant swaps.",
+  "props": {
+    "options": "Prompt presets to cycle through; each entry has a `text` and an optional lucide `icon`. Defaults to a search and an image-generation preset.",
+    "defaultOption": "Which preset starts active; clamped into range.",
+    "onSubmit": "Called with the typed value when Enter is pressed inside the input or the end-side arrow is clicked.",
+    "className": "Extra class for the root pill."
+  },
+  "tips": [
+    "This is an AI-style prompt bar: the small button on the start side cycles through presets, each with its own icon and animated placeholder.",
+    "Keep every preset short; the placeholder animates word by word and a long text is clipped rather than wrapped.",
+    "Hand the submitted value to `onSubmit`; both the arrow button and the Enter key deliver it, and the value stays internal so you do not manage state.",
+    "Icons come from lucide-react through the `options` prop — pass your own per preset or leave one out to fall back to the sparkles.",
+    "Under `prefers-reduced-motion` the cascades, blurs and taps become instant swaps; the cycling and submitting logic stays intact."
+  ]
+}

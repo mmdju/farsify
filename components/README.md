@@ -18,7 +18,7 @@
 | [Stepper](stepper/) | `stepper` |
 | [Elastic Slider](elastic-slider/) | `elastic-slider` |
 | [ThemeSelector](theme-selector/) | `theme-selector` |
-| [Day Picker](day-picker/) | `day-picker` |
+| [Input Switch](input-switch/) | `input-switch` |
 
 ## Buttons (13)
 
