@@ -18,7 +18,7 @@
 | [Stepper](stepper/) | `stepper` |
 | [Elastic Slider](elastic-slider/) | `elastic-slider` |
 | [ThemeSelector](theme-selector/) | `theme-selector` |
-| [Set Timer](set-timer/) | `set-timer` |
+| [Day Picker](day-picker/) | `day-picker` |
 
 ## Buttons (13)
 

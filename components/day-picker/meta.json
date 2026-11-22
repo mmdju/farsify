@@ -1,0 +1,47 @@
+{
+  "slug": "day-picker",
+  "name": "Day Picker",
+  "description": "A repeat-interval picker: a compact card shows the current frequency, springs open into a row of daily, weekly, monthly and yearly options, and reveals a weekday row when the interval is weekly, so a schedule is two taps away.",
+  "category": "inputs",
+  "dependencies": ["motion", "lucide-react"],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Clicking the frequency chip opens the menu: the label blurs out, the four intervals spring in, and a check button replaces the chip. Picking an interval keeps the menu open, and choosing weekly drops a weekday row under it whose chips arrive one after another. The check closes the menu and hides the weekday row. Everything is a button, so Tab reaches each choice and the focus outline is visible. With `prefers-reduced-motion` the springs become instant and the weekday stagger is removed.",
+  "props": [
+    {
+      "name": "defaultDay",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Starting weekday, counted from Saturday (0) to Friday (6)."
+    },
+    {
+      "name": "defaultFrequency",
+      "type": "\"daily\" | \"weekly\" | \"monthly\" | \"yearly\"",
+      "defaultValue": "\"daily\"",
+      "options": ["daily", "weekly", "monthly", "yearly"],
+      "description": "Starting repeat interval."
+    },
+    {
+      "name": "onChange",
+      "type": "(value: { day: number; frequency: DayFrequency }) => void",
+      "description": "Runs on every interval or weekday pick with the whole current value."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the outer block."
+    }
+  ],
+  "tips": [
+    "`defaultDay` counts from Saturday (0) to Friday (6), so it matches the Persian week without any mapping.",
+    "The check closes the menu; without it the menu stays open, which is what lets the weekday row appear while you pick an interval.",
+    "Only the weekly interval shows the weekday row, which keeps the card small for daily, monthly and yearly.",
+    "Use `onChange` to mirror the choice into your own state, a query string or a form field.",
+    "The card is `max-w-xs` and fills the width it is given up to that; widen it with `className` when the surrounding layout is narrow.",
+    "With `prefers-reduced-motion` the springs land instantly and the weekday row does not stagger."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 223,
+  "version": 1
+}
