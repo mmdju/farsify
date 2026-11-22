@@ -1,0 +1,14 @@
+{
+  "description": "A bottom toolbar where every icon owns a small panel above it: notes and capture shortcuts, a search field with quick filters, notification categories, account links, and a theme switch. Moving between icons morphs the panel's width and height while the old content blurs out and the new one sharpens in.",
+  "interactionType": "Click / Outside click / Keyboard",
+  "interactionNotes": "Click an icon to open its panel; click the same icon again, click anywhere outside or press Escape to close it. Picking another icon swaps the panel in place: the old content fades out with a blur while the panel's width and height spring to the new size, so the bar never jumps. Icons report `aria-expanded`, the theme choices use `aria-pressed`, and every control has a visible focus ring.",
+  "props": {},
+  "tips": [
+    "Place it at the bottom of a screen: the panel opens upwards from the bar, so the component needs free space above it.",
+    "Every panel is described at the top of the file as a plain array, so changing labels, icons or adding a sixth icon is a data edit rather than a JSX edit.",
+    "The panel measures itself with a hidden copy of the content, so the size animation needs no measuring library and no explicit widths from you.",
+    "Colors are shadcn tokens (`background`, `border`, `muted`, `accent`, `foreground`, `destructive`), so it follows the project's light and dark themes with no extra wiring.",
+    "The theme row only highlights the choice in its own state; connect it to your theme provider when you want the click to change the site.",
+    "The panel closes on Escape as well as on an outside click, so the bar never traps the keyboard."
+  ]
+}

@@ -38,7 +38,7 @@
 | [Specular Button](specular-button/) | `specular-button` |
 | [Save Button](save-button/) | `save-button` |
 
-## Navigation (10)
+## Navigation (11)
 
 | Component | ID |
 | --- | --- |
@@ -52,6 +52,7 @@
 | [Rail TOC](rail-toc/) | `rail-toc` |
 | [Flower Menu](flower-menu/) | `flower-menu` |
 | [Pop Menu](pop-menu/) | `pop-menu` |
+| [Bottom Menu](bottom-menu/) | `bottom-menu` |
 
 ## Loaders & status (4)
 
