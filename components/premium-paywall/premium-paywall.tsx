@@ -1,11 +1,11 @@
-﻿"use client";
+"use client";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-const FA_DIGITS = ["Û°", "Û±", "Û²", "Û³", "Û´", "Ûµ", "Û¶", "Û·", "Û¸", "Û¹"];
+const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 
 function toFaDigits(input: string | number) {
   return String(input).replace(/\d/g, (digit) => FA_DIGITS[Number(digit)]);
@@ -20,7 +20,7 @@ function groupNumber(value: number, decimals = 0) {
 
 function formatFa(value: number, decimals = 0) {
   return toFaDigits(
-    groupNumber(value, decimals).replace(/,/g, "Ù¬").replace(/\./g, "Ù«"),
+    groupNumber(value, decimals).replace(/,/g, "٬").replace(/\./g, "٫"),
   );
 }
 
@@ -44,18 +44,18 @@ const ANNUAL_PRICES = [100000, 180000, 240000, 300000, 400000];
 const LIFETIME_PRICES = [260000, 440000, 600000, 760000, 1000000];
 
 const CAPTIONS = [
-  "Ø¨Ø§ Ù‡Ù…ÛŒÙ† Ø­Ù…Ø§ÛŒØªØŒ Ø®Ø±Ø¬â€ŒÙ‡Ø§ÛŒ Ø§ØµÙ„ÛŒ Ø³Ø± Ø¬Ø§Ø´ Ù…ÛŒâ€ŒÙ…ÙˆÙ†Ù‡.",
-  "Ú©Ù…Ú© Ù…ÛŒâ€ŒÚ©Ù†ÛŒ Ø¢Ø±ÙˆÙ… Ùˆ Ù¾ÛŒÙˆØ³ØªÙ‡ Ø¨Ù‡ØªØ± Ø¨Ø´ÛŒÙ….",
-  "Ø¨Ù‡â€ŒØ±ÙˆØ²Ø±Ø³Ø§Ù†ÛŒâ€ŒÙ‡Ø§ÛŒ Ø³Ù†Ø¬ÛŒØ¯Ù‡ Ø±Ùˆ Ù…Ù…Ú©Ù† Ù…ÛŒâ€ŒÚ©Ù†ÛŒ.",
-  "Ø¨Ø§ Ø­ÙˆØµÙ„Ù‡ Ùˆ ÙˆØ³ÙˆØ§Ø³ Ù…ÛŒâ€ŒØ³Ø§Ø²ÛŒÙ…Ø› Ø¨Ù‡ Ù„Ø·Ù ØªÙˆ.",
-  "Ú†Ù‡ Ø­Ø§Ù„ÛŒ! Ø¯Ø§Ø±ÛŒ Ú©Ù„ Ù…Ø³ÛŒØ± Ø±Ùˆ Ø­Ù…Ø§ÛŒØª Ù…ÛŒâ€ŒÚ©Ù†ÛŒ.",
+  "با همین حمایت، خرج‌های اصلی سر جاش می‌مونه.",
+  "کمک می‌کنی آروم و پیوسته بهتر بشیم.",
+  "به‌روزرسانی‌های سنجیده رو ممکن می‌کنی.",
+  "با حوصله و وسواس می‌سازیم؛ به لطف تو.",
+  "چه حالی! داری کل مسیر رو حمایت می‌کنی.",
 ];
 
 const DEFAULT_HEADING = (
   <>
-    Ù‚ÛŒÙ…ØªØ´ Ø±Ùˆ Ø®ÙˆØ¯Øª Ø§Ù†ØªØ®Ø§Ø¨ Ú©Ù†.
+    قیمتش رو خودت انتخاب کن.
     <br />
-    Ø§Ø² Ú†ÛŒØ²ÛŒ Ú©Ù‡ Ø¨Ø±Ø§Øª Ù…Ù‡Ù…Ù‡ Ø­Ù…Ø§ÛŒØª Ú©Ù†.
+    از چیزی که برات مهمه حمایت کن.
   </>
 );
 
@@ -87,7 +87,7 @@ export default function PremiumPaywall({
   lifetimePrices = LIFETIME_PRICES,
   captions = CAPTIONS,
   heading = DEFAULT_HEADING,
-  ctaLabel = "Ø¨Ø§ Ù†Ø³Ø®Ù‡Ù” ÙˆÛŒÚ˜Ù‡ Ø§Ø¯Ø§Ù…Ù‡ Ø¨Ø¯Ù‡",
+  ctaLabel = "با نسخهٔ ویژه ادامه بده",
   accent,
   radius = 28,
   showCaptions = true,
@@ -108,7 +108,7 @@ export default function PremiumPaywall({
     stepCount - 1,
   );
   const price = prices[Math.min(activeStep, prices.length - 1)] ?? 0;
-  const suffix = activePlan === "annual" ? "ØªÙˆÙ…Ø§Ù† Ø¯Ø± Ø³Ø§Ù„" : "ØªÙˆÙ…Ø§Ù† ÛŒÚ©â€ŒØ¨Ø§Ø±Ù‡";
+  const suffix = activePlan === "annual" ? "تومان در سال" : "تومان یک‌باره";
   const accentColor = accent ?? "var(--primary)";
 
   const changePlan = (next: Plan) => {
@@ -147,7 +147,7 @@ export default function PremiumPaywall({
           step={activeStep}
           stepCount={stepCount}
           onChange={changeStep}
-          label="Ø§Ù†ØªØ®Ø§Ø¨ Ù…Ø¨Ù„Øº Ø­Ù…Ø§ÛŒØª"
+          label="انتخاب مبلغ حمایت"
           valueText={`${formatFa(price)} ${suffix}`}
           accent={accentColor}
           reduce={reduce}
@@ -195,14 +195,14 @@ function SegmentedControl({
   reduce: boolean;
 }) {
   const options: { key: Plan; label: string }[] = [
-    { key: "annual", label: "Ø³Ø§Ù„Ø§Ù†Ù‡" },
-    { key: "lifetime", label: "ÛŒÚ©â€ŒØ¨Ø§Ø±Ù‡" },
+    { key: "annual", label: "سالانه" },
+    { key: "lifetime", label: "یک‌باره" },
   ];
 
   return (
     <div
       role="group"
-      aria-label="Ø¯ÙˆØ±Ù‡Ù” Ù¾Ø±Ø¯Ø§Ø®Øª"
+      aria-label="دورهٔ پرداخت"
       className="flex gap-0.5 rounded-full bg-background p-[3px]"
     >
       {options.map((option) => (
@@ -297,7 +297,7 @@ function PriceLabel({
       >
         {chars.map((char, index) => (
           <Digit
-            key={`${chars.length - index}-${char === "Ù¬" ? "sep" : "num"}`}
+            key={`${chars.length - index}-${char === "٬" ? "sep" : "num"}`}
             char={char}
             direction={direction}
             reduce={reduce}
