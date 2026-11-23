@@ -1,0 +1,30 @@
+{
+  "description": "A support card that lets the reader pick what to pay: a segmented plan switch, a price that rolls one digit at a time, and a detent slider that steps through five amounts with a caption that crossfades at every stop.",
+  "interactionType": "Drag / Click / Keyboard",
+  "interactionNotes": "Drag anywhere on the slider track to step through the amounts: the thumb springs to the nearest detent, rubber-bands past the ends, and the fill and dots follow it while the price rolls digit by digit in the direction of the change. The segmented switch slides its pill to the other plan and the suffix swaps between a yearly and a one-time price. The slider is focusable: arrows step (in RTL the left arrow raises the amount), Home and End jump to the ends. Under prefers-reduced-motion every roll, blur and spring becomes an instant swap.",
+  "props": {
+    "plan": "Controlled plan; pass it together with `onPlanChange`, otherwise the switch never moves.",
+    "defaultPlan": "Plan on the first render in uncontrolled mode.",
+    "step": "Controlled slider position, clamped into the caption range; pass it together with `onStepChange`.",
+    "defaultStep": "Slider position on the first render in uncontrolled mode.",
+    "annualPrices": "Yearly amounts in Toman, one per slider step.",
+    "lifetimePrices": "One-time amounts in Toman, one per slider step.",
+    "captions": "One line shown under the price per slider step; its length is the number of steps.",
+    "heading": "Card title; defaults to a two-line Persian heading.",
+    "ctaLabel": "Text of the action button.",
+    "accent": "Colour of the slider fill, the lit dots, the thumb core and the caption; defaults to the primary token.",
+    "radius": "Corner rounding of the card, pixels.",
+    "showCaptions": "Whether the line under the price is rendered.",
+    "onContinue": "Called when the action button is pressed.",
+    "onPlanChange": "Called with the new plan whenever the switch changes.",
+    "onStepChange": "Called with the new slider position whenever it changes.",
+    "className": "Extra class for the root card."
+  },
+  "tips": [
+    "The slider is mirrored for RTL: the cheapest amount sits at the reading start and the value grows toward the left; the direction is read from the DOM, so the same card keeps working inside an LTR page.",
+    "Prices are plain numbers formatted with Persian digits and thousands separators at render time — pass real amounts such as 100000, not preformatted strings.",
+    "`step` indexes `captions`, so the caption list sets the number of stops; prices past that point are never reachable.",
+    "`plan` and `step` are controlled only when you pass them; pass the matching callback too, or clicking the switch and dragging the slider do nothing.",
+    "Under `prefers-reduced-motion` every digit roll, blur and spring becomes an instant swap; the price, caption and fill still update immediately."
+  ]
+}

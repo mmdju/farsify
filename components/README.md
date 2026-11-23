@@ -1,6 +1,6 @@
 # Components
 
-**72 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**73 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (15)
 
@@ -67,7 +67,7 @@
 | [Status Mark](status-mark/) | `status-mark` |
 | [Refine Frame](refine-frame/) | `refine-frame` |
 
-## Showcase (27)
+## Showcase (28)
 
 | Component | ID |
 | --- | --- |
@@ -98,3 +98,4 @@
 | [Scroll Panels](scroll-panels/) | `scroll-panels` |
 | [Animated Collection](animated-collection/) | `animated-collection` |
 | [Accordion OS](accordion-os/) | `accordion-os` |
+| [Premium Paywall](premium-paywall/) | `premium-paywall` |
