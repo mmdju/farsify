@@ -94,10 +94,11 @@ export default function FilterMenu({
   const wasOpen = useRef(false);
 
   useEffect(() => {
+    if (autoPreview) return;
     if (open) listRef.current?.focus();
     else if (wasOpen.current) triggerRef.current?.focus();
     wasOpen.current = open;
-  }, [open]);
+  }, [open, autoPreview]);
 
   const panelHeight =
     items.length * scale.row + Math.max(items.length - 1, 0) * 2 + 8;
