@@ -1,0 +1,114 @@
+{
+  "slug": "premium-paywall",
+  "name": "Premium Paywall",
+  "description": "A support card that lets the reader pick what to pay: a segmented plan switch, a price that rolls one digit at a time, and a detent slider that steps through five amounts with a caption that crossfades at every stop.",
+  "category": "showcase",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Drag / Click / Keyboard",
+  "interactionNotes": "Drag anywhere on the slider track to step through the amounts: the thumb springs to the nearest detent, rubber-bands past the ends, and the fill and dots follow it while the price rolls digit by digit in the direction of the change. The segmented switch slides its pill to the other plan and the suffix swaps between a yearly and a one-time price. The slider is focusable: arrows step (in RTL the left arrow raises the amount), Home and End jump to the ends. Under prefers-reduced-motion every roll, blur and spring becomes an instant swap.",
+  "props": [
+    {
+      "name": "plan",
+      "type": "\"annual\" | \"lifetime\"",
+      "description": "Controlled plan; pass it together with `onPlanChange`, otherwise the switch never moves."
+    },
+    {
+      "name": "defaultPlan",
+      "type": "\"annual\" | \"lifetime\"",
+      "defaultValue": "\"annual\"",
+      "description": "Plan on the first render in uncontrolled mode."
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "description": "Controlled slider position, clamped into the caption range; pass it together with `onStepChange`."
+    },
+    {
+      "name": "defaultStep",
+      "type": "number",
+      "defaultValue": "2",
+      "description": "Slider position on the first render in uncontrolled mode."
+    },
+    {
+      "name": "annualPrices",
+      "type": "number[]",
+      "defaultValue": "[100000, 180000, 240000, 300000, 400000]",
+      "description": "Yearly amounts in Toman, one per slider step."
+    },
+    {
+      "name": "lifetimePrices",
+      "type": "number[]",
+      "defaultValue": "[260000, 440000, 600000, 760000, 1000000]",
+      "description": "One-time amounts in Toman, one per slider step."
+    },
+    {
+      "name": "captions",
+      "type": "string[]",
+      "defaultValue": "[\"با همین حمایت، خرج‌های اصلی سر جاش می‌مونه.\", \"کمک می‌کنی آروم و پیوسته بهتر بشیم.\", \"به‌روزرسانی‌های سنجیده رو ممکن می‌کنی.\", \"با حوصله و وسواس می‌سازیم؛ به لطف تو.\", \"چه حالی! داری کل مسیر رو حمایت می‌کنی.\"]",
+      "description": "One line shown under the price per slider step; its length is the number of steps."
+    },
+    {
+      "name": "heading",
+      "type": "ReactNode",
+      "description": "Card title; defaults to a two-line Persian heading."
+    },
+    {
+      "name": "ctaLabel",
+      "type": "string",
+      "defaultValue": "\"با نسخهٔ ویژه ادامه بده\"",
+      "description": "Text of the action button."
+    },
+    {
+      "name": "accent",
+      "type": "string",
+      "defaultValue": "\"var(--primary)\"",
+      "description": "Colour of the slider fill, the lit dots, the thumb core and the caption; defaults to the primary token."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "28",
+      "description": "Corner rounding of the card, pixels."
+    },
+    {
+      "name": "showCaptions",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Whether the line under the price is rendered."
+    },
+    {
+      "name": "onContinue",
+      "type": "() => void",
+      "description": "Called when the action button is pressed."
+    },
+    {
+      "name": "onPlanChange",
+      "type": "(plan: \"annual\" | \"lifetime\") => void",
+      "description": "Called with the new plan whenever the switch changes."
+    },
+    {
+      "name": "onStepChange",
+      "type": "(step: number) => void",
+      "description": "Called with the new slider position whenever it changes."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the root card."
+    }
+  ],
+  "tips": [
+    "The slider is mirrored for RTL: the cheapest amount sits at the reading start and the value grows toward the left; the direction is read from the DOM, so the same card keeps working inside an LTR page.",
+    "Prices are plain numbers formatted with Persian digits and thousands separators at render time — pass real amounts such as 100000, not preformatted strings.",
+    "`step` indexes `captions`, so the caption list sets the number of stops; prices past that point are never reachable.",
+    "`plan` and `step` are controlled only when you pass them; pass the matching callback too, or clicking the switch and dragging the slider do nothing.",
+    "Under `prefers-reduced-motion` every digit roll, blur and spring becomes an instant swap; the price, caption and fill still update immediately."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 496,
+  "version": 1
+}

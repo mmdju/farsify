@@ -1,6 +1,6 @@
 # Components
 
-**72 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**76 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (15)
 
@@ -41,7 +41,7 @@
 | [Save Button](save-button/) | `save-button` |
 | [Countdown Delete](countdown-delete/) | `countdown-delete` |
 
-## Navigation (12)
+## Navigation (14)
 
 | Component | ID |
 | --- | --- |
@@ -57,8 +57,10 @@
 | [Pop Menu](pop-menu/) | `pop-menu` |
 | [Bottom Menu](bottom-menu/) | `bottom-menu` |
 | [Gooey Navbar](gooey-navbar/) | `gooey-navbar` |
+| [Discrete Tabs](discrete-tabs/) | `discrete-tabs` |
+| [Filter Menu](filter-menu/) | `filter-menu` |
 
-## Loaders & status (4)
+## Loaders & status (5)
 
 | Component | ID |
 | --- | --- |
@@ -66,8 +68,9 @@
 | [Lattice Loader](lattice-loader/) | `lattice-loader` |
 | [Status Mark](status-mark/) | `status-mark` |
 | [Refine Frame](refine-frame/) | `refine-frame` |
+| [Scan Document Button](scan-document/) | `scan-document` |
 
-## Showcase (27)
+## Showcase (28)
 
 | Component | ID |
 | --- | --- |
@@ -98,3 +101,4 @@
 | [Scroll Panels](scroll-panels/) | `scroll-panels` |
 | [Animated Collection](animated-collection/) | `animated-collection` |
 | [Accordion OS](accordion-os/) | `accordion-os` |
+| [Premium Paywall](premium-paywall/) | `premium-paywall` |

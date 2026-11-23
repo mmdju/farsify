@@ -1,0 +1,63 @@
+{
+  "slug": "discrete-tabs",
+  "name": "Discrete Tabs",
+  "description": "A row of icon pills where the active one widens to reveal its label: the pills reflow with a spring while the label materialises out of a blur.",
+  "category": "navigation",
+  "dependencies": [
+    "motion"
+  ],
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Clicking a pill makes it active: it grows, its label fades in from a blur, and the neighbouring pills slide over to make room with a spring. The first render shows the starting label without animation. Every pill is a real button, so Tab reaches them and Enter or Space activates them, with aria-pressed carrying the state. Under prefers-reduced-motion the pills take their new size instantly and the label appears without a blur.",
+  "props": [
+    {
+      "name": "tabs",
+      "type": "DiscreteTabsItem[]",
+      "defaultValue": "سه تبِ نمونه",
+      "description": "The pills, in reading order; each entry has an `id`, a Persian `title` and an optional `icon` component."
+    },
+    {
+      "name": "active",
+      "type": "string",
+      "description": "Controlled active id; pass it together with `onChange`, otherwise clicking does nothing."
+    },
+    {
+      "name": "defaultActive",
+      "type": "string",
+      "description": "Active id on the first render in uncontrolled mode; defaults to the first tab."
+    },
+    {
+      "name": "onChange",
+      "type": "(id: string) => void",
+      "description": "Called with the id of the pill that was picked."
+    },
+    {
+      "name": "accent",
+      "type": "string",
+      "defaultValue": "\"var(--foreground)\"",
+      "description": "Colour of the active pill's icon and label; the foreground token keeps it readable in both themes."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "defaultValue": "\"md\"",
+      "description": "Icon size, padding and label size of every pill."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the row."
+    }
+  ],
+  "tips": [
+    "Labels appear only on the active pill, so give every tab a `title` and an `icon`; the title is also the button's accessible name for the collapsed pills.",
+    "The row is a plain flex container, so in RTL the first tab sits on the right with no extra work — pass the tabs in reading order.",
+    "`accent` defaults to the foreground token rather than a fixed colour so the active label stays readable when the page switches themes.",
+    "Widths animate through real layout values, not scale transforms, so the labels never stretch while the row reflows.",
+    "Under `prefers-reduced-motion` the row resizes instantly and the label skips the blur; the active state and the colour change stay."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 207,
+  "version": 1
+}
