@@ -1,6 +1,6 @@
 # Components
 
-**72 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**73 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (15)
 
