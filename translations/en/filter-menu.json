@@ -1,0 +1,21 @@
+{
+  "description": "A round filter button that expands into a list of filter categories, while a second circle beside it slides away carrying the icon of whatever is selected.",
+  "interactionType": "Click / Keyboard",
+  "interactionNotes": "Clicking the circle grows it into a panel of filter rows; the row of the active filter carries a filled check and the rest a hollow ring. Picking a row applies it, folds the panel back into the circle and swaps the icon in the circle beside it. The rows arrive one after another with a small stagger. The button is a real button, opening moves focus into the list, closing returns it to the button, and Escape folds the panel. Under prefers-reduced-motion the panel changes size in one step and the rows appear without the stagger.",
+  "props": {
+    "items": "The filter rows; each entry has an `id`, a Persian `label` and an optional `icon` component.",
+    "active": "Controlled active id; pass it together with `onChange`, otherwise picking a row does nothing.",
+    "defaultActive": "Active id on the first render in uncontrolled mode; defaults to the first filter.",
+    "onChange": "Called with the id of the filter that was picked.",
+    "accent": "Fill of the check on the active row; the tick itself is drawn in the background colour.",
+    "size": "Diameter of the circles, width of the panel, icon size and row height.",
+    "className": "Extra class for the row that holds the two circles."
+  },
+  "tips": [
+    "Labels are printed on one line inside a fixed-height row, so keep each filter label short; a long label is clipped rather than wrapped.",
+    "The two circles overlap by a few pixels and the panel sits above the icon circle, so the panel grows over it instead of pushing the layout sideways.",
+    "`accent` fills the check and the tick is drawn in the background colour, so any accent stays readable in both themes.",
+    "Panel height is computed from the number of items rather than measured, which keeps the size animation from relying on layout projection.",
+    "Under `prefers-reduced-motion` the panel jumps to its new size and the rows skip the stagger; the active state and the check stay."
+  ]
+}

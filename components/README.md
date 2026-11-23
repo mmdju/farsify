@@ -1,6 +1,6 @@
 # Components
 
-**72 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**73 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (15)
 
@@ -41,7 +41,7 @@
 | [Save Button](save-button/) | `save-button` |
 | [Countdown Delete](countdown-delete/) | `countdown-delete` |
 
-## Navigation (12)
+## Navigation (13)
 
 | Component | ID |
 | --- | --- |
@@ -57,6 +57,7 @@
 | [Pop Menu](pop-menu/) | `pop-menu` |
 | [Bottom Menu](bottom-menu/) | `bottom-menu` |
 | [Gooey Navbar](gooey-navbar/) | `gooey-navbar` |
+| [Filter Menu](filter-menu/) | `filter-menu` |
 
 ## Loaders & status (4)
 
