@@ -41,7 +41,7 @@
 | [Save Button](save-button/) | `save-button` |
 | [Countdown Delete](countdown-delete/) | `countdown-delete` |
 
-## Navigation (12)
+## Navigation (13)
 
 | Component | ID |
 | --- | --- |
@@ -57,6 +57,7 @@
 | [Pop Menu](pop-menu/) | `pop-menu` |
 | [Bottom Menu](bottom-menu/) | `bottom-menu` |
 | [Gooey Navbar](gooey-navbar/) | `gooey-navbar` |
+| [Discrete Tabs](discrete-tabs/) | `discrete-tabs` |
 
 ## Loaders & status (4)
 
