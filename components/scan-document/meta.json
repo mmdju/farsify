@@ -1,0 +1,48 @@
+{
+  "slug": "scan-document",
+  "name": "Scan Document Button",
+  "description": "A scan button that folds open a small paper card while it works: the card rises from the bottom, flips twice on its vertical axis and an orange beam sweeps across it, then the button reports the result and falls back to its resting state.",
+  "category": "status",
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "interactionType": "Click / Timed",
+  "interactionNotes": "Clicking the button starts a run: the button locks itself, the card rises into place, flips twice and sweeps a glowing beam over both faces for the length of the scan, then the label switches to the done text and the whole thing resets after a short pause. Nothing else on the page is blocked. The button is a real button, so Tab reaches it and Enter or Space starts the run; while the run is going it is disabled and the label change is announced through a polite live region. Under prefers-reduced-motion the card appears without the flip or the transform, the scan is cut to under a second and the beam does not travel.",
+  "props": [
+    {
+      "name": "labels",
+      "type": "Partial<Record<ScanStatus, string>>",
+      "defaultValue": "{ idle: \"اسکن سند\", scanning: \"در حال اسکن\", done: \"انجام شد\" }",
+      "description": "Replacement text for any of the three states; the missing keys keep their Persian default."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "defaultValue": "5000",
+      "description": "Length of the scan in milliseconds; the beam and the card flip are timed from it."
+    },
+    {
+      "name": "onComplete",
+      "type": "() => void",
+      "description": "Called once the scan ends, before the button falls back to its resting state."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "\"\"",
+      "description": "Extra class for the block that holds the card and the button."
+    }
+  ],
+  "tips": [
+    "The card is decorative and hidden from assistive technology, so the status lives on the button label; give `labels` text that reads on its own.",
+    "`duration` only changes the visible scan length, so a long run still ends the same way and still fires `onComplete` once.",
+    "Under prefers-reduced-motion the scan is capped at under a second no matter what `duration` says.",
+    "The card is a fixed 110×150 box, so it fits inside a layout that already reserves about 170px of height above the button.",
+    "The button is disabled for the whole run to stop a second click from restarting the animation mid-flight."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 196,
+  "version": 1
+}

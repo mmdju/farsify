@@ -1,6 +1,6 @@
 # Components
 
-**72 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**73 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (15)
 
@@ -58,7 +58,7 @@
 | [Bottom Menu](bottom-menu/) | `bottom-menu` |
 | [Gooey Navbar](gooey-navbar/) | `gooey-navbar` |
 
-## Loaders & status (4)
+## Loaders & status (5)
 
 | Component | ID |
 | --- | --- |
@@ -66,6 +66,7 @@
 | [Lattice Loader](lattice-loader/) | `lattice-loader` |
 | [Status Mark](status-mark/) | `status-mark` |
 | [Refine Frame](refine-frame/) | `refine-frame` |
+| [Scan Document Button](scan-document/) | `scan-document` |
 
 ## Showcase (27)
 
