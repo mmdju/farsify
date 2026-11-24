@@ -1,0 +1,126 @@
+{
+  "slug": "timeline-track",
+  "name": "Timeline Track",
+  "description": "A horizontal milestone gallery where the focused card opens wide on a ruled track, its neighbours fold into narrow spines, and every move lands with a soft spring and a short squeeze.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Wheel / Drag / Keyboard",
+  "interactionNotes": "The track moves inside its own frame and never takes over the page. The wheel walks one milestone at a time while there is still a card in that direction; a horizontal drag follows the pointer, the arrow keys step through the track (mirrored in right-to-left) and Home and End jump to the ends. Clicking a narrow card pulls it to the centre. The ruler under the cards slides with the focus, and under prefers-reduced-motion the track jumps instead of gliding.",
+  "props": [
+    {
+      "name": "items",
+      "type": "TimelineItem[]",
+      "defaultValue": "—",
+      "description": "Milestones in order; each one carries a year, a title and optionally a caption, an image URL and a link."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "430",
+      "description": "Height of a focused card, px."
+    },
+    {
+      "name": "openWidth",
+      "type": "number",
+      "defaultValue": "380",
+      "description": "Width of the focused card, px."
+    },
+    {
+      "name": "shutWidth",
+      "type": "number",
+      "defaultValue": "72",
+      "description": "Width of a card that is not focused, px."
+    },
+    {
+      "name": "spacing",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "Gap between cards, px."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "14",
+      "description": "Corner radius at rest, px; it opens up while the track moves."
+    },
+    {
+      "name": "dim",
+      "type": "number",
+      "defaultValue": "0.55",
+      "description": "How far the cards away from the focus sink into the plate, 0 to 1."
+    },
+    {
+      "name": "rulerStep",
+      "type": "number",
+      "defaultValue": "96",
+      "description": "Distance between two milestones on the ruler, px."
+    },
+    {
+      "name": "showRuler",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Draws the ruler with its ticks and years."
+    },
+    {
+      "name": "background",
+      "type": "string",
+      "defaultValue": "\"#181818\"",
+      "description": "Colour of the plate; it also tints the cards that fall behind."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "\"#fafafa\"",
+      "description": "Colour of the year and the title."
+    },
+    {
+      "name": "captionColor",
+      "type": "string",
+      "defaultValue": "\"#d4d4d4\"",
+      "description": "Colour of the caption."
+    },
+    {
+      "name": "tickColor",
+      "type": "string",
+      "defaultValue": "\"#525252\"",
+      "description": "Colour of the ruler ticks."
+    },
+    {
+      "name": "labelColor",
+      "type": "string",
+      "defaultValue": "\"#a3a3a3\"",
+      "description": "Colour of the years on the ruler."
+    },
+    {
+      "name": "markerColor",
+      "type": "string",
+      "defaultValue": "\"#fafafa\"",
+      "description": "Colour of the centre marker and of the year you are standing on."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"خط زمانی رویدادها\"",
+      "description": "Accessible name of the track."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the plate."
+    }
+  ],
+  "tips": [
+    "The cards work without images: every one falls back to a drawn placeholder in its own tone, so the component ships with no asset and never requests one.",
+    "On a phone the focused card takes the width of the frame and the height is capped at 1.4 times that width; raise `height` and the cap follows.",
+    "The wheel only takes over while there is still a card to move to; at either end the page keeps scrolling normally.",
+    "Direction comes from the computed style, so the same file reads right-to-left in a Persian layout and left-to-right anywhere else. Nothing is mirrored by hand.",
+    "`dim` sets the depth: 0 flattens the row, and above 0.7 the neighbours almost disappear into the plate.",
+    "Under `prefers-reduced-motion` the track jumps straight to the chosen milestone and the spring never runs.",
+    "Give every card a `year`: the ruler labels come from it, and a missing one leaves an empty tick."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 627,
+  "version": 1
+}
