@@ -1,0 +1,29 @@
+{
+  "description": "A wooden file drawer of client testimonials: the card in front rises out of the drawer, the rest wait as coloured tabs, and every change slides on a short spring under a brass label plate and a working handle.",
+  "interactionType": "Drag / Click / Keyboard / Auto",
+  "interactionNotes": "The front card is draggable: pull it down or up past 64px, or flick it, to file it away and bring the next or previous one up. Every tab above a stacked card raises its card on click and lifts it slightly on hover. The arrow keys step through the drawer (mirrored in right-to-left), Home and End jump to the ends, and the handle on the drawer face moves forward. Autoplay walks the drawer on its own while the block is visible, pauses on hover and stays off under prefers-reduced-motion.",
+  "props": {
+    "items": "Testimonials in order; each one carries a name, a role and a quote, with an optional company, rating, image URL, link and tab label.",
+    "theme": "Palette of the drawer, its plate and the cards; the ink of each card is picked from its own colour for contrast.",
+    "material": "Face of the drawer: oak, walnut, kraft board, steel, or the theme's own front colour.",
+    "label": "Main line on the label plate.",
+    "sublabel": "Second line on the plate; it is dropped when the drawer face gets too short.",
+    "autoplay": "Walks to the next testimonial on its own while the block is on screen.",
+    "interval": "Seconds between two automatic steps.",
+    "pauseOnHover": "Stops autoplay while the pointer is over the drawer.",
+    "startIndex": "Index of the card that starts in front, counted from zero.",
+    "height": "Height of the scene, px; the drawer face keeps a fifth of it.",
+    "background": "Surface behind the drawer; transparent lets the page show through, and a colour turns it into a plate.",
+    "ariaLabel": "Accessible name of the region.",
+    "className": "Extra class for the root."
+  },
+  "tips": [
+    "Cards need no image: without `imageUrl` the footer falls back to the initials of the name on a solid disc, so nothing is requested at runtime.",
+    "The drawer, its plate and the handle come from `theme` and `material`; pass `background` when the page behind is close to the drawer, otherwise the front disappears into it.",
+    "The card height is fixed and a long quote is clipped, not scrolled: keep quotes to roughly 260 characters, or raise `height`.",
+    "On a narrow stage the component keeps 44px below the cards instead of 72px and drops the quote to 15px, so the same copy still lands above the drawer face.",
+    "Autoplay only runs while the block is on screen; hovering pauses it, and `prefers-reduced-motion` turns it off together with the drag and the entrance stagger.",
+    "`**word**` inside a quote is the highlight marker; the pill behind it is mixed from the card's own ink, so it stays readable on every palette.",
+    "The tabs truncate their label: keep `tab` short, and give each card a name that reads well on its own because the tab falls back to it."
+  ]
+}
