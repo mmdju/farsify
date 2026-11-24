@@ -1,0 +1,127 @@
+{
+  "slug": "pinfold",
+  "name": "Pinfold",
+  "description": "A pinboard of paper testimonials: pinned notes sway on the wall, can be dragged anywhere and stay there, with a shuffle and a tidy button and a board that takes any colour.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Drag / Click / Keyboard",
+  "interactionNotes": "A note is grabbed with the pointer: the paper swings on a damped spring while it moves, keeps gliding when it is flung and settles where it is let go, clamped to the board. Hovering lifts a note, pressing one raises it above the pile, and every note is reachable with Tab, where the arrow keys nudge it by 16px (48 with Shift). The two pills re-scatter the wall or snap it to a neat grid, and the calm sway pauses under prefers-reduced-motion.",
+  "props": [
+    {
+      "name": "notes",
+      "type": "PinfoldNote[]",
+      "defaultValue": "—",
+      "description": "Testimonials to pin; each one carries a quote and a name, with an optional role, image URL, link, paper colour and shape."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "defaultValue": "\"دیوار چیزهای قشنگ\"",
+      "description": "Headline on the pinned card at the top of the board."
+    },
+    {
+      "name": "subtitle",
+      "type": "string",
+      "defaultValue": "\"هر یادداشت را بکش؛ هرجا رها کردی همان‌جا می‌ماند.\"",
+      "description": "Second line under the headline; an empty string leaves it out."
+    },
+    {
+      "name": "showHeading",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Draws the pinned headline card and gives the notes the room it took."
+    },
+    {
+      "name": "boardColor",
+      "type": "string",
+      "defaultValue": "\"#1c1c1e\"",
+      "description": "Surface of the board behind the notes."
+    },
+    {
+      "name": "texture",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Fine dotted grain on the board surface."
+    },
+    {
+      "name": "columns",
+      "type": "number",
+      "defaultValue": "3",
+      "description": "Notes per row on a wide board; a narrow board caps it at two."
+    },
+    {
+      "name": "noteSize",
+      "type": "number",
+      "defaultValue": "210",
+      "description": "Side of a square note, px; tall and wide notes grow from it."
+    },
+    {
+      "name": "scatter",
+      "type": "number",
+      "defaultValue": "32",
+      "description": "How far a note drifts from the middle of its cell, 0 to 100."
+    },
+    {
+      "name": "tilt",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "Largest resting tilt of a note, degrees; 0 lines the whole wall up."
+    },
+    {
+      "name": "seed",
+      "type": "number",
+      "defaultValue": "4",
+      "description": "Arrangement number: the same seed always rebuilds the same scatter."
+    },
+    {
+      "name": "pin",
+      "type": "\"pin\" | \"tack\" | \"tape\" | \"none\"",
+      "defaultValue": "\"pin\"",
+      "options": ["pin", "tack", "tape", "none"],
+      "description": "How the notes hang: a coloured push pin, a brass tack, a strip of tape, or nothing."
+    },
+    {
+      "name": "showTools",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Shows the two pill buttons that re-scatter the wall or snap it to a grid."
+    },
+    {
+      "name": "breeze",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "A slow sway per note, each on its own period, so the wall never moves as one."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "640",
+      "description": "Height of the board, px; on a narrow board it is a minimum, not a cap."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"دیوار یادداشت‌ها\"",
+      "description": "Accessible name of the region."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the board."
+    }
+  ],
+  "tips": [
+    "Every note keeps the place it was dropped in: a drag stores a pixel offset per card, and only the tidy button clears those offsets.",
+    "`seed` is the arrangement number. The same seed rebuilds the same scatter, so a look you like can be dialled back in; the shuffle button walks the seeds for you.",
+    "Turn `scatter` and `tilt` down to 0 for a wall that reads as a neat grid, and up for a pile of papers that looks handled.",
+    "On a narrow board the component switches to two columns, squares off a wide note and can grow taller than `height` so the quotes still fit above the pins.",
+    "The note height is fixed and a long quote is clipped, not scrolled: keep quotes to roughly 120 characters, or raise `height`.",
+    "Dragging keeps its momentum after release and the paper swings on a damped spring; under `prefers-reduced-motion` both stop and a note lands exactly where it is dropped.",
+    "Keyboard: Tab reaches each note, the arrow keys move it by 16px (48 with Shift), and the note is clamped to the board. The pins and the paper grain are drawn in CSS, so nothing is loaded at runtime."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 990,
+  "version": 1
+}
