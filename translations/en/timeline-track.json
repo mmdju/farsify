@@ -1,0 +1,35 @@
+{
+  "description": "A horizontal milestone gallery where the focused card opens wide on a ruled track, its neighbours fold into narrow spines, and every move glides in on a soft spring with a short squeeze.",
+  "interactionType": "Wheel / Drag / Keyboard / Auto",
+  "interactionNotes": "The track is one continuous movement: the wheel adds to a fractional target (one 120px notch is one card), a horizontal drag follows the pointer and keeps its flick after release, and both settle on the nearest milestone. The track never takes over the page: at either end the wheel scrolls normally. The arrow keys step through the track (mirrored in right-to-left), Home and End jump to the ends, and clicking a narrow card pulls it to the centre. Autoplay walks one milestone per interval while the block is on screen and pauses under the pointer. Under prefers-reduced-motion the track jumps instead of gliding.",
+  "props": {
+    "items": "Milestones in order; each one carries a year, a title and optionally a caption, an image URL and a link.",
+    "height": "Height of a focused card, px.",
+    "openWidth": "Width of the focused card, px.",
+    "shutWidth": "Width of a card that is not focused, px.",
+    "spacing": "Gap between cards, px.",
+    "radius": "Corner radius at rest, px; it opens up while the track moves.",
+    "dim": "How far the cards away from the focus sink into the plate, 0 to 1.",
+    "rulerStep": "Distance between two milestones on the ruler, px.",
+    "showRuler": "Draws the ruler with its ticks and years.",
+    "background": "Colour of the plate; it also tints the cards that fall behind.",
+    "textColor": "Colour of the year and the title.",
+    "captionColor": "Colour of the caption.",
+    "tickColor": "Colour of the ruler ticks.",
+    "labelColor": "Colour of the years on the ruler.",
+    "markerColor": "Colour of the centre marker and of the year you are standing on.",
+    "autoplay": "Walks the track by itself, one milestone per `interval`, while the block is on screen.",
+    "interval": "Seconds between two automatic steps.",
+    "ariaLabel": "Accessible name of the track.",
+    "className": "Extra class for the plate."
+  },
+  "tips": [
+    "The cards work without images: every one falls back to a drawn placeholder in its own tone, so the component needs no asset; pass `imageUrl` for a photo card.",
+    "On a phone the focused card takes the width of the frame and the height is capped at 1.4 times that width; raise `height` and the cap follows.",
+    "The wheel only takes over while there is still a card to move to; at either end the page keeps scrolling normally.",
+    "Direction comes from the computed style, so the same file reads right-to-left in a Persian layout and left-to-right anywhere else. Nothing is mirrored by hand.",
+    "`dim` sets the depth: 0 flattens the row, and above 0.7 the neighbours almost disappear into the plate.",
+    "Set `autoplay` for a showcase strip that moves on its own; it pauses under the pointer and never starts under prefers-reduced-motion.",
+    "Give every card a `year`: the ruler labels come from it, and a missing one leaves an empty tick."
+  ]
+}

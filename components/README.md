@@ -1,6 +1,6 @@
 # Components
 
-**76 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**80 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (15)
 
@@ -70,7 +70,7 @@
 | [Refine Frame](refine-frame/) | `refine-frame` |
 | [Scan Document Button](scan-document/) | `scan-document` |
 
-## Showcase (28)
+## Showcase (32)
 
 | Component | ID |
 | --- | --- |
@@ -102,3 +102,7 @@
 | [Animated Collection](animated-collection/) | `animated-collection` |
 | [Accordion OS](accordion-os/) | `accordion-os` |
 | [Premium Paywall](premium-paywall/) | `premium-paywall` |
+| [Timeline Track](timeline-track/) | `timeline-track` |
+| [Testimonial Drawer](testimonial-drawer/) | `testimonial-drawer` |
+| [Pinfold](pinfold/) | `pinfold` |
+| [Pennant](pennant/) | `pennant` |

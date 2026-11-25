@@ -4,13 +4,13 @@
 
 # Farsify
 
-**76 components** for Persian, right-to-left React interfaces.
+**80 components** for Persian, right-to-left React interfaces.
 
 Every one is a single file you copy into your project and own from then on.
 No package to install, no build step, no link back to this site.
 
 [![License](https://img.shields.io/badge/license-FCL%201.0-0b0b0b?style=flat-square)](LICENSE.md)
-[![Components](https://img.shields.io/badge/components-76-0b0b0b?style=flat-square)](components/README.md)
+[![Components](https://img.shields.io/badge/components-80-0b0b0b?style=flat-square)](components/README.md)
 [![React](https://img.shields.io/badge/React-19-0b0b0b?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Live](https://img.shields.io/badge/live%20previews-farsifyui.ir-0b0b0b?style=flat-square)](https://farsifyui.ir)
 
@@ -30,7 +30,7 @@ No package to install, no build step, no link back to this site.
 | Buttons | `actions` | 14 | `magnet`, `hold-button`, `slide-commit`, `voice-pill` |
 | Navigation | `navigation` | 14 | `gooey-nav`, `branched-menu`, `rail-toc`, `carousel` |
 | Loaders & status | `status` | 5 | `lattice-loader`, `status-mark`, `thought-line`, `refine-frame` |
-| Showcase | `showcase` | 28 | `card-swap`, `glass-icons`, `tilted-card`, `paper-crumple` |
+| Showcase | `showcase` | 32 | `card-swap`, `glass-icons`, `tilted-card`, `paper-crumple` |
 
 </div>
 

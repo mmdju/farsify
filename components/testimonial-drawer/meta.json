@@ -1,0 +1,125 @@
+{
+  "slug": "testimonial-drawer",
+  "name": "Testimonial Drawer",
+  "description": "A wooden file drawer of testimonials: the card in front rises out of the drawer, the rest wait as coloured tabs, and every change slides on a short spring under a brass label plate and a working handle.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Drag / Click / Keyboard / Auto",
+  "interactionNotes": "The front card is draggable: pull it down or up past 64px, or flick it, to file it away and bring the next or previous one up. Every tab above a stacked card raises its card on click and lifts it slightly on hover. The arrow keys step through the drawer (mirrored in right-to-left), Home and End jump to the ends, and the handle on the drawer face moves forward. Autoplay walks the drawer on its own while the block is visible, pauses on hover and stays off under prefers-reduced-motion.",
+  "props": [
+    {
+      "name": "items",
+      "type": "DocketItem[]",
+      "defaultValue": "—",
+      "description": "Testimonials in order; each one carries a name, a role and a quote, with an optional company, rating, image URL, link and tab label."
+    },
+    {
+      "name": "theme",
+      "type": "\"orchard\" | \"atelier\" | \"tidewater\" | \"spice\" | \"riviera\" | \"sorbet\" | \"graphite\" | \"nocturne\"",
+      "defaultValue": "\"spice\"",
+      "options": [
+        "orchard",
+        "atelier",
+        "tidewater",
+        "spice",
+        "riviera",
+        "sorbet",
+        "graphite",
+        "nocturne"
+      ],
+      "description": "Palette of the drawer, its plate and the cards; the ink of each card is picked from its own colour for contrast."
+    },
+    {
+      "name": "material",
+      "type": "\"oak\" | \"walnut\" | \"kraft\" | \"steel\" | \"theme\"",
+      "defaultValue": "\"oak\"",
+      "options": [
+        "oak",
+        "walnut",
+        "kraft",
+        "steel",
+        "theme"
+      ],
+      "description": "Face of the drawer: oak, walnut, kraft board, steel, or the theme's own front colour."
+    },
+    {
+      "name": "cards",
+      "type": "string[]",
+      "description": "Paper colours of the card stack, in order; replaces the theme's own card list while the drawer still comes from `theme`."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "defaultValue": "\"پرونده\"",
+      "description": "Main line on the label plate."
+    },
+    {
+      "name": "sublabel",
+      "type": "string",
+      "defaultValue": "\"بازخورد مشتریان\"",
+      "description": "Second line on the plate; it is dropped when the drawer face gets too short."
+    },
+    {
+      "name": "autoplay",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Walks to the next testimonial on its own while the block is on screen."
+    },
+    {
+      "name": "interval",
+      "type": "number",
+      "defaultValue": "7",
+      "description": "Seconds between two automatic steps."
+    },
+    {
+      "name": "pauseOnHover",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Stops autoplay while the pointer is over the drawer."
+    },
+    {
+      "name": "startIndex",
+      "type": "number",
+      "defaultValue": "0",
+      "description": "Index of the card that starts in front, counted from zero."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "560",
+      "description": "Height of the scene, px; the drawer face keeps a fifth of it."
+    },
+    {
+      "name": "background",
+      "type": "string",
+      "defaultValue": "\"transparent\"",
+      "description": "Surface behind the drawer; transparent lets the page show through, and a colour turns it into a plate."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"نظر مشتریان\"",
+      "description": "Accessible name of the region."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the root."
+    }
+  ],
+  "tips": [
+    "Cards need no image: without `imageUrl` the footer falls back to the initials of the name on a solid disc, so nothing is requested at runtime.",
+    "The drawer, its plate and the handle come from `theme` and `material`; pass `background` when the page behind is close to the drawer, otherwise the front disappears into it.",
+    "`cards` recolours the stack without touching the drawer: pass your brand colours there and keep the material as it is.",
+    "The card height is fixed and a long quote is clipped, not scrolled: keep quotes to roughly 260 characters, or raise `height`.",
+    "On a narrow stage the component keeps 44px below the cards instead of 72px and drops the quote to 15px, so the same copy still lands above the drawer face.",
+    "Autoplay only runs while the block is on screen; hovering pauses it, and `prefers-reduced-motion` turns it off together with the drag and the entrance stagger.",
+    "`**word**` inside a quote is the highlight marker; the pill behind it is mixed from the card's own ink, so it stays readable on every palette.",
+    "The tabs truncate their label: keep `tab` short, and give each card a name that reads well on its own because the tab falls back to it."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 1185,
+  "version": 1
+}

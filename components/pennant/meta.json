@@ -1,0 +1,205 @@
+{
+  "slug": "pennant",
+  "name": "Pennant",
+  "description": "A strip of vertical testimonial flags: the open one unfolds into a full quote card with the photo, stars and a counter, and the rest wait as tall pennants that open on click or hover.",
+  "category": "showcase",
+  "dependencies": [],
+  "interactionType": "Click / Hover / Keyboard",
+  "interactionNotes": "Clicking a pennant unfolds it and folds the open one back; with `openOn: hover` the pointer does the same by itself. The card content is pinned to the edge that stays put, so the growing card reveals it instead of sliding it, and the quote mark, rule and stars arrive in a short sequence. Each pennant is a tab: Tab reaches the strip, the arrow keys move in reading order (left is forward in RTL) and Home/End jump to the ends. Autoplay advances on an interval, pauses on hover and only starts while the strip is on screen. Under prefers-reduced-motion the swap is instant and autoplay never starts.",
+  "props": [
+    {
+      "name": "items",
+      "type": "PennantItem[]",
+      "defaultValue": "—",
+      "description": "Testimonials in the strip, in reading order; each one carries a quote and a name, with an optional role, rating, photo URL, link and its own paper colour."
+    },
+    {
+      "name": "startAt",
+      "type": "number",
+      "defaultValue": "1",
+      "description": "Which testimonial is open first, counted from 1; it is clamped to the list."
+    },
+    {
+      "name": "openOn",
+      "type": "\"click\" | \"hover\"",
+      "defaultValue": "\"click\"",
+      "options": [
+        "click",
+        "hover"
+      ],
+      "description": "Whether a pennant opens on click or as soon as the pointer enters it."
+    },
+    {
+      "name": "autoplay",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Moves to the next pennant on its own while the strip is on screen."
+    },
+    {
+      "name": "interval",
+      "type": "number",
+      "defaultValue": "5",
+      "description": "Seconds between two autoplay steps."
+    },
+    {
+      "name": "pauseOnHover",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Stops autoplay while the pointer is over the strip."
+    },
+    {
+      "name": "sizing",
+      "type": "\"ratio\" | \"fill\"",
+      "defaultValue": "\"ratio\"",
+      "options": [
+        "ratio",
+        "fill"
+      ],
+      "description": "How the row height is decided: from `ratio` and the width, or filled to `height`."
+    },
+    {
+      "name": "ratio",
+      "type": "number",
+      "defaultValue": "0.62",
+      "description": "Height of the row as a share of its width, in ratio mode."
+    },
+    {
+      "name": "tabWidth",
+      "type": "number",
+      "defaultValue": "48",
+      "description": "Width of a closed pennant, px; a narrow strip shrinks it to leave the open card room."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "4",
+      "description": "Space between pennants, px."
+    },
+    {
+      "name": "inset",
+      "type": "number",
+      "defaultValue": "40",
+      "description": "Vertical breathing room around the pennants, px; the open card still fills the row."
+    },
+    {
+      "name": "hoverGrow",
+      "type": "number",
+      "defaultValue": "6",
+      "description": "How much taller a closed pennant grows under the pointer, px."
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "defaultValue": "14",
+      "description": "Corner radius of the open card, px; a closed pennant is a full pill."
+    },
+    {
+      "name": "padding",
+      "type": "number",
+      "defaultValue": "22",
+      "description": "Padding inside the open card, px."
+    },
+    {
+      "name": "showMark",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Draws the quote mark in the top corner of the card."
+    },
+    {
+      "name": "showCount",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Shows the position counter in the corner of the card, such as 02 / 06."
+    },
+    {
+      "name": "showStars",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Draws the five stars from each item's rating."
+    },
+    {
+      "name": "showRule",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Draws the thin rule above the author row."
+    },
+    {
+      "name": "tabAvatar",
+      "type": "boolean",
+      "defaultValue": "true",
+      "description": "Shows the round face at the foot of each closed pennant."
+    },
+    {
+      "name": "photoSize",
+      "type": "number",
+      "defaultValue": "52",
+      "description": "Side of the square photo in the author row, px."
+    },
+    {
+      "name": "photoRadius",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "Corner radius of that photo, px."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "defaultValue": "0.46",
+      "description": "Length of the unfold, in seconds."
+    },
+    {
+      "name": "curve",
+      "type": "\"smooth\" | \"snappy\" | \"gentle\"",
+      "defaultValue": "\"smooth\"",
+      "options": [
+        "smooth",
+        "snappy",
+        "gentle"
+      ],
+      "description": "Easing of the unfold."
+    },
+    {
+      "name": "drift",
+      "type": "number",
+      "defaultValue": "22",
+      "description": "How far the card content slides while it is hidden, px."
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "defaultValue": "440",
+      "description": "Height of the frame, px; on a narrow screen the row uses it instead of `ratio`."
+    },
+    {
+      "name": "background",
+      "type": "string",
+      "defaultValue": "\"transparent\"",
+      "description": "Surface behind the strip; `transparent` leaves the page showing through."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"نظر مشتریان\"",
+      "description": "Accessible name of the tab strip."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "''",
+      "description": "Extra class for the frame."
+    }
+  ],
+  "tips": [
+    "Keep the strip to three to six testimonials: every closed pennant takes `tabWidth + gap`, and the open card only gets what is left of the width.",
+    "`startAt` is one-based. In a right-to-left page the first item sits at the right edge and the strip opens with it.",
+    "`inset` is the vertical breathing room around the pennants, not the card padding; set it to 0 for a flush strip where every card fills the frame.",
+    "On a narrow screen the row ignores `ratio` and uses `height`, the pennants shrink to fit, and a pennant narrower than 28px drops its round face.",
+    "Each item carries its own `color` and `textColor`, so the card and its closed pennant always match; without them the strip walks a warm default set (gold, terracotta, olive, blush, cream, sage) chosen so every pair stays readable.",
+    "Quotes are clamped to six lines and the card height is fixed, so keep them near 120 characters or raise `height`.",
+    "Under `prefers-reduced-motion` the unfold is instant, autoplay never starts and the content does not drift; the arrow keys still work."
+  ],
+  "hasCss": false,
+  "assets": [],
+  "lines": 671,
+  "version": 1
+}
