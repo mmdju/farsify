@@ -347,6 +347,8 @@ export function Pinfold({
   const frame = useRef(0);
   const motion = useRef({
     down: false,
+    armed: false,
+    scale: 1,
     index: 0,
     startX: 0,
     startY: 0,
@@ -363,6 +365,7 @@ export function Pinfold({
     minY: 0,
     maxY: 0,
     lastX: 0,
+    lastY: 0,
     lastTime: 0,
     stamp: 0,
     swing: 0,
@@ -424,20 +427,32 @@ export function Pinfold({
     setShake((value) => value + 1);
   }, [action, actionNonce]);
 
-  const limits = (
-    element: HTMLElement,
-    offset: { x: number; y: number },
-  ) => {
-    const area = areaRef.current?.getBoundingClientRect();
-    const box = element.getBoundingClientRect();
-    if (!area) return { minX: -4000, maxX: 4000, minY: -4000, maxY: 4000 };
-    const baseLeft = box.left - offset.x;
-    const baseTop = box.top - offset.y;
+  const areaMetrics = () => {
+    const area = areaRef.current;
+    if (!area) return null;
+    const rect = area.getBoundingClientRect();
+    const scale = area.offsetWidth > 0 ? rect.width / area.offsetWidth : 1;
+    return { rect, scale, width: area.offsetWidth, height: area.offsetHeight };
+  };
+
+  const limits = (element: HTMLElement) => {
+    const metrics = areaMetrics();
+    const anchorEl = element.parentElement;
+    if (!metrics || !anchorEl) {
+      return { minX: -4000, maxX: 4000, minY: -4000, maxY: 4000 };
+    }
+    const anchor = anchorEl.getBoundingClientRect();
+    const width = element.offsetWidth;
+    const height = element.offsetHeight;
+    const centerX = (anchor.left - metrics.rect.left) / metrics.scale;
+    const centerY = (anchor.top - metrics.rect.top) / metrics.scale;
+    const left = centerX - width / 2;
+    const top = centerY - height / 2;
     return {
-      minX: area.left - baseLeft,
-      maxX: area.right - box.width - baseLeft,
-      minY: area.top - baseTop,
-      maxY: area.bottom - box.height - baseTop,
+      minX: -left,
+      maxX: metrics.width - width - left,
+      minY: -top,
+      maxY: metrics.height - height - top,
     };
   };
 
@@ -448,6 +463,7 @@ export function Pinfold({
     state.swing = 0;
     state.rate = 0;
     state.stamp = 0;
+    state.down = false;
     setOffsets((prev) => ({ ...prev, [state.index]: { x, y } }));
     setDrag(null);
     if (frame.current) cancelAnimationFrame(frame.current);
@@ -461,14 +477,15 @@ export function Pinfold({
         ? Math.min(0.04, (now - state.stamp) / 1000)
         : 1 / 60;
       state.stamp = now;
+      const scale = state.scale || 1;
       if (state.down) {
         state.x = clamp(
-          state.baseX + state.pointerX - state.startX,
+          state.baseX + (state.pointerX - state.startX) / scale,
           state.minX,
           state.maxX,
         );
         state.y = clamp(
-          state.baseY + state.pointerY - state.startY,
+          state.baseY + (state.pointerY - state.startY) / scale,
           state.minY,
           state.maxY,
         );
@@ -516,60 +533,87 @@ export function Pinfold({
     index: number,
   ) => {
     if (event.button !== 0) return;
+    const running = motion.current;
+    const visible =
+      drag && drag.index === index ? { x: drag.x, y: drag.y } : null;
     if (frame.current) {
       cancelAnimationFrame(frame.current);
       frame.current = 0;
-      const running = motion.current;
+      const landing =
+        running.index === index && visible
+          ? visible
+          : { x: running.x, y: running.y };
       setOffsets((prev) => ({
         ...prev,
-        [running.index]: { x: running.x, y: running.y },
+        [running.index]: landing,
       }));
     }
-    const offset = offsets[index] ?? { x: 0, y: 0 };
+    const stored = offsets[index] ?? { x: 0, y: 0 };
+    const base = visible ?? stored;
+    const metrics = areaMetrics();
     try {
       event.currentTarget.setPointerCapture(event.pointerId);
     } catch {
       void 0;
     }
     motion.current = {
-      ...motion.current,
-      down: true,
+      ...running,
+      down: false,
+      armed: true,
       index,
       startX: event.clientX,
       startY: event.clientY,
       pointerX: event.clientX,
       pointerY: event.clientY,
-      baseX: offset.x,
-      baseY: offset.y,
-      x: offset.x,
-      y: offset.y,
+      baseX: base.x,
+      baseY: base.y,
+      x: base.x,
+      y: base.y,
       vx: 0,
       vy: 0,
       lastX: event.clientX,
+      lastY: event.clientY,
       lastTime: performance.now(),
       stamp: 0,
       swing: 0,
       rate: 0,
-      ...limits(event.currentTarget, offset),
+      scale: metrics?.scale ?? 1,
+      ...limits(event.currentTarget),
     };
     raise(index);
-    setHeld(true);
-    setDrag({ index, x: offset.x, y: offset.y, angle: 0 });
-    frame.current = requestAnimationFrame(tick);
+    setDrag({ index, x: base.x, y: base.y, angle: 0 });
   };
 
   const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     const state = motion.current;
-    if (!state.down) return;
+    if (!state.armed) return;
+    if (!state.down) {
+      const travelled = Math.hypot(
+        event.clientX - state.startX,
+        event.clientY - state.startY,
+      );
+      if (travelled < 5) return;
+      state.down = true;
+      state.stamp = 0;
+      setHeld(true);
+      frame.current = requestAnimationFrame(tick);
+    }
     const now = performance.now();
     const elapsed = now - state.lastTime;
     if (elapsed > 0) {
+      const scale = state.scale || 1;
       state.vx = clamp(
-        ((event.clientX - state.lastX) / elapsed) * 1000,
+        ((event.clientX - state.lastX) / scale / elapsed) * 1000,
+        -2400,
+        2400,
+      );
+      state.vy = clamp(
+        ((event.clientY - state.lastY) / scale / elapsed) * 1000,
         -2400,
         2400,
       );
       state.lastX = event.clientX;
+      state.lastY = event.clientY;
       state.lastTime = now;
     }
     state.pointerX = event.clientX;
@@ -578,7 +622,13 @@ export function Pinfold({
 
   const endDrag = () => {
     const state = motion.current;
-    if (!state.down) return;
+    if (!state.armed) return;
+    state.armed = false;
+    if (!state.down) {
+      setDrag(null);
+      setHeld(false);
+      return;
+    }
     state.down = false;
     setHeld(false);
     if (reduce) {
@@ -600,7 +650,7 @@ export function Pinfold({
     if (!delta) return;
     event.preventDefault();
     const offset = offsets[index] ?? { x: 0, y: 0 };
-    const box = limits(event.currentTarget, offset);
+    const box = limits(event.currentTarget);
     setOffsets((prev) => ({
       ...prev,
       [index]: {
@@ -742,6 +792,7 @@ export function Pinfold({
                   onPointerMove={onPointerMove}
                   onPointerUp={endDrag}
                   onPointerCancel={endDrag}
+                  onLostPointerCapture={endDrag}
                   onKeyDown={(event) => nudge(event, index)}
                   onFocus={() => raise(index)}
                   onPointerEnter={() => setHovered(index)}

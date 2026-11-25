@@ -313,6 +313,7 @@ export function TimelineTrack({
     let velocity = 0;
     let down = false;
     let sliding = false;
+    let dragScale = 1;
 
     const onDown = (event: PointerEvent) => {
       if (event.pointerType === "mouse" && event.button !== 0) return;
@@ -325,6 +326,8 @@ export function TimelineTrack({
       lastX = event.clientX;
       lastStamp = event.timeStamp;
       velocity = 0;
+      const rect = el.getBoundingClientRect();
+      dragScale = el.offsetWidth > 0 ? rect.width / el.offsetWidth : 1;
     };
 
     const onMove = (event: PointerEvent) => {
@@ -334,13 +337,20 @@ export function TimelineTrack({
       if (!sliding && Math.abs(dx) > 6 && Math.abs(dx) > Math.abs(dy)) {
         sliding = true;
         dragged.current = true;
-        el.setPointerCapture?.(event.pointerId);
+        try {
+          el.setPointerCapture(event.pointerId);
+        } catch {
+          void 0;
+        }
       }
       if (!sliding) return;
       const perPx = 1 / Math.max(120, size.open * 0.7);
-      const next = startTarget - latest.current.direction * dx * perPx;
+      const localDx = dragScale > 0 ? dx / dragScale : dx;
+      const next = startTarget - latest.current.direction * localDx * perPx;
       const dt = Math.max(8, event.timeStamp - lastStamp);
-      velocity = (event.clientX - lastX) * perPx * latest.current.direction * (1000 / dt);
+      const localStep =
+        dragScale > 0 ? (event.clientX - lastX) / dragScale : event.clientX - lastX;
+      velocity = localStep * perPx * latest.current.direction * (1000 / dt);
       lastX = event.clientX;
       lastStamp = event.timeStamp;
       seek(next);

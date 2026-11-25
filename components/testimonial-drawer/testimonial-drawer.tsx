@@ -559,6 +559,7 @@ export function TestimonialDrawer({
     lastY: 0,
     lastTime: 0,
     speed: 0,
+    scale: 1,
   });
   const canDrag = !reduce && count > 1 && onScreen;
 
@@ -569,12 +570,19 @@ export function TestimonialDrawer({
     } catch {
       void 0;
     }
+    const stage = stageRef.current;
+    const rect = stage?.getBoundingClientRect();
+    const scale =
+      stage && rect && stage.offsetWidth > 0
+        ? rect.width / stage.offsetWidth
+        : 1;
     drag.current = {
       down: true,
       startY: event.clientY,
       lastY: event.clientY,
       lastTime: performance.now(),
       speed: 0,
+      scale: scale || 1,
     };
     setDragging(true);
     setDragY(0);
@@ -585,18 +593,21 @@ export function TestimonialDrawer({
     const state = drag.current;
     const now = performance.now();
     const elapsed = now - state.lastTime;
-    if (elapsed > 0) state.speed = ((event.clientY - state.lastY) / elapsed) * 1000;
+    if (elapsed > 0) {
+      state.speed =
+        ((event.clientY - state.lastY) / (state.scale || 1) / elapsed) * 1000;
+    }
     state.lastY = event.clientY;
     state.lastTime = now;
-    setDragY(event.clientY - state.startY);
+    setDragY((event.clientY - state.startY) / (state.scale || 1));
   };
 
   const endDrag = () => {
-    if (!drag.current.down) return;
     const state = drag.current;
-    drag.current.down = false;
+    if (!state.down) return;
+    state.down = false;
     setDragging(false);
-    const moved = dragY;
+    const moved = (state.lastY - state.startY) / (state.scale || 1);
     setDragY(0);
     if (moved > 64 || state.speed > 650) step(1);
     else if (moved < -64 || state.speed < -650) step(-1);
