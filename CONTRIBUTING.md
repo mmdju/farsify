@@ -99,7 +99,15 @@ At minimum: a one-line introduction, the install command (`npx shadcn@latest add
 node scripts/check.mjs
 ```
 
-The script validates folder structure, `meta.json` completeness, unique slugs, component counts in the READMEs, the absence of site-only tokens in component code, and that every component has an English translation that matches it.
+The script validates folder structure, `meta.json` completeness, unique slugs,
+component counts in both READMEs, the component index, the absence of site-only tokens
+and raw hex in component code, the Persian typography traps (positive tracking and alpha
+text colors), and that every component has an English translation that matches it.
+
+CI runs one more step this script cannot do without a dependency: it parses every
+`components/*/*.tsx` with esbuild, so a file with invalid TSX syntax fails before review.
+Physical-direction classes are printed as warnings, not failures; use logical
+properties (`ms-`, `start-`, `text-start`) wherever the direction is not deliberate physics.
 
 Then follow the checklist in the pull request template — themes, mobile width, console, keyboard and `prefers-reduced-motion` — and mention anything you could not test by hand in the PR notes.
 

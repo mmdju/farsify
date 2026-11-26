@@ -7,7 +7,7 @@
 **80 components** for Persian, right-to-left React interfaces.
 
 Every one is a single file you copy into your project and own from then on.
-No package to install, no build step, no link back to this site.
+No package of our own to install, no build step, no link back to this site.
 
 [![License](https://img.shields.io/badge/license-FCL%201.0-0b0b0b?style=flat-square)](LICENSE.md)
 [![Components](https://img.shields.io/badge/components-80-0b0b0b?style=flat-square)](components/README.md)
@@ -63,12 +63,16 @@ Then pull any component by name:
 npx shadcn@latest add @farsify/magnet
 ```
 
+> **Requires shadcn CLI v4 (May 2026 or newer).** Older versions do not understand
+> the `@components/` target placeholder and write the files into the wrong directory.
+
 **Prefer files?** Open `components/<slug>/` and copy `<slug>.tsx` into `components/farsify/`, plus `<slug>.css` if the component has one.
 
 ### Requirements
 
 - React 19, tested with Next.js 15. Other React setups work as well.
 - Tailwind CSS v4 and the standard shadcn theme tokens: `background`, `foreground`, `muted`, `accent`, `card`, `border`, `primary`, `ring`. Any project created with `npx shadcn init` already has them.
+- Some components use `motion` or `lucide-react`; the shadcn CLI installs the declared dependencies for you, so there is nothing to add by hand.
 - Components that need CSS bring their own prefixed variables. None of them refer to the Farsify site.
 
 > **Demo images:** a few components (galleries, photo cards) need pictures. The site uses its own photos; this repository ships none. Each affected component's README lists the default paths, so you can point them at your own images or pass them in as props.

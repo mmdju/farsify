@@ -11,10 +11,16 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Structure and metadata
+      - name: Structure, metadata and typography
         run: node scripts/check.mjs
+
+      # check.mjs reads the source as text; this step makes sure every file is
+      # valid TSX before a broken component reaches the site build.
+      - name: Parse every TSX
+        run: npx --yes esbuild@0.25.0 $(find components -name '*.tsx') --loader:.tsx=tsx --outdir=/tmp/farsify-parse --log-level=warning

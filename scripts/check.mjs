@@ -7,10 +7,13 @@
  *   • component folder structure (tsx, optional CSS, meta.json, README)
  *   • meta.json completeness, field types and unique slugs
  *   • one English translation per component
- *   • component counts in the READMEs
+ *   • component counts in the READMEs and the component index
  *   • no site-only tokens or raw hex classes in component code
+ *   • Persian typography traps: positive tracking and alpha text colors
  *   • documentation is English-only (code fences/spans excluded)
  *   • referenced image files exist
+ *
+ * CI also parses every TSX with esbuild; this script never installs anything.
  */
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
@@ -36,9 +39,59 @@ const SITE_TOKENS = [
 ];
 const PERSIAN = /[\u0600-\u06FF]/;
 
+/* Typography traps. `tracking-wide` and alpha text colors break Persian text. */
+const POSITIVE_TRACKING_CLASSES = /\btracking-(wide|wider|widest)\b/;
+const ARBITRARY_TRACKING_CLASS = /tracking-\[([^\]]+)\]/g;
+const ALPHA_TEXT_CLASS =
+  /\btext-(?!(?:xs|sm|base|lg|xl|[2-9]xl)\b)[a-z0-9[\]#-]+\/\d{1,3}\b/;
+const PHYSICAL =
+  /(?<![-\w])(?:ml|mr|pl|pr|left|right|text-left|text-right|rounded-[lr]|border-[lr])-[a-z0-9[\]-]+/;
+const CENTERING_IDIOM = /left-1\/2/;
+
+/*
+ * Two known CSS lines predate this check and sit in the site's RTL baseline.
+ * They are allowed by exact snippet; anything new fails.
+ */
+const CSS_ALPHA_ALLOW = new Set([
+  "glide-select|color: color-mix(in srgb, var(--gs-text) 55%, transparent);",
+  "refine-frame|color: color-mix(in srgb, var(--rf-ink) 80%, transparent);",
+]);
+
 const problems = [];
+const warnings = [];
 const fail = (message) => problems.push(message);
 const read = (file) => readFileSync(file, "utf8");
+
+/** True when the arbitrary tracking value is positive; tight/negative is fine. */
+const isPositiveTracking = (value) => {
+  const numeric = Number.parseFloat(value.replace(/[a-z%]+$/i, ""));
+  return Number.isFinite(numeric) && numeric > 0;
+};
+
+/** Lines that belong to a comment (`//`, `/* *\/`, `{/* *\/}`), across lines. */
+function commentLines(lines) {
+  const inside = new Array(lines.length).fill(false);
+  let open = false;
+  lines.forEach((line, index) => {
+    const trimmed = line.trimStart();
+    if (open) {
+      inside[index] = true;
+      if (line.includes("*/")) open = false;
+      return;
+    }
+    if (trimmed.startsWith("//")) {
+      inside[index] = true;
+      return;
+    }
+    const startsBlock = trimmed.startsWith("/*") || trimmed.startsWith("{/*");
+    if (!startsBlock) return;
+    inside[index] = true;
+    const opened = trimmed.lastIndexOf("/*");
+    const closed = trimmed.indexOf("*/", opened + 2);
+    if (closed === -1) open = true;
+  });
+  return inside;
+}
 
 function walk(dir) {
   return readdirSync(dir).flatMap((name) => {
@@ -164,6 +217,49 @@ for (const slug of dirs) {
   }
   if (/\[#[0-9a-fA-F]{3,8}\]/.test(code)) fail(`${slug}: raw hex inside Tailwind classes.`);
 
+  /* Typography traps in the TSX. */
+  {
+    const lines = code.split(/\r?\n/);
+    const inComment = commentLines(lines);
+    lines.forEach((line, index) => {
+      if (inComment[index]) return;
+      const arbitrary = [...line.matchAll(ARBITRARY_TRACKING_CLASS)];
+      if (
+        POSITIVE_TRACKING_CLASSES.test(line) ||
+        arbitrary.some((match) => isPositiveTracking(match[1]))
+      ) {
+        fail(`${slug}:${index + 1}: positive tracking on Persian text.`);
+      }
+      if (ALPHA_TEXT_CLASS.test(line)) {
+        fail(`${slug}:${index + 1}: alpha text color on Persian text.`);
+      }
+      if (!CENTERING_IDIOM.test(line) && PHYSICAL.test(line)) {
+        warnings.push(`${slug}:${index + 1}: physical direction class`);
+      }
+    });
+  }
+
+  /* Typography traps in the CSS. */
+  if (existsSync(cssFile)) {
+    const lines = read(cssFile).split(/\r?\n/);
+    const inComment = commentLines(lines);
+    lines.forEach((line, index) => {
+      if (inComment[index]) return;
+      const spacing = line.match(/\bletter-spacing\s*:\s*([^;]+)/);
+      if (
+        spacing &&
+        isPositiveTracking(spacing[1].trim()) &&
+        !spacing[1].includes("var(")
+      ) {
+        fail(`${slug}:${index + 1}: positive letter-spacing in CSS.`);
+      }
+      const alpha = /(^|[;{\s])color\s*:\s*[^;]*color-mix\([^;]*transparent/.test(line);
+      if (alpha && !CSS_ALPHA_ALLOW.has(`${slug}|${line.trim()}`)) {
+        fail(`${slug}:${index + 1}: alpha color on text in CSS.`);
+      }
+    });
+  }
+
   if (existsSync(readmeFile)) {
     const readme = read(readmeFile);
     if (!readme.includes(`@farsify/${slug}`)) {
@@ -199,9 +295,49 @@ for (const category of CATEGORIES) {
     fail(`README.md: category "${category}" says ${match[1]}, found ${byCategory[category]}.`);
   }
 }
+/* The component index must list every folder and the same counts. */
+const indexFile = path.join(COMPONENTS, "README.md");
+if (!existsSync(indexFile)) {
+  fail("components/README.md is missing.");
+} else {
+  const index = read(indexFile);
+  const listed = [...index.matchAll(/\]\(([a-z0-9-]+)\/\)/g)].map((match) => match[1]);
+  const uniqueListed = new Set(listed);
+  if (listed.length !== uniqueListed.size) {
+    fail("components/README.md: duplicate entries.");
+  }
+  const missing = dirs.filter((slug) => !uniqueListed.has(slug));
+  const unknown = [...uniqueListed].filter((slug) => !dirs.includes(slug));
+  if (missing.length) fail(`components/README.md: missing ${missing.join(", ")}.`);
+  if (unknown.length) fail(`components/README.md: unknown ${unknown.join(", ")}.`);
+
+  const totalClaim = index.match(/\*\*([0-9]+) components\*\*/);
+  if (!totalClaim) {
+    fail("components/README.md: component count pattern not found.");
+  } else if (Number(totalClaim[1]) !== total) {
+    fail(`components/README.md: says ${totalClaim[1]} components, found ${total}.`);
+  }
+
+  const labels = {
+    Inputs: "inputs",
+    Buttons: "actions",
+    Navigation: "navigation",
+    "Loaders & status": "status",
+    Showcase: "showcase",
+  };
+  for (const [label, id] of Object.entries(labels)) {
+    const match = index.match(new RegExp(`^## ${label} \\((\\d+)\\)$`, "m"));
+    if (!match) {
+      fail(`components/README.md: missing the "${label}" section.`);
+    } else if (Number(match[1]) !== byCategory[id]) {
+      fail(`components/README.md: "${label}" says ${match[1]}, found ${byCategory[id]}.`);
+    }
+  }
+}
+
 englishOnly("README.md", readme);
 englishOnly("CONTRIBUTING.md", read(path.join(ROOT, "CONTRIBUTING.md")));
-englishOnly("components/README.md", read(path.join(COMPONENTS, "README.md")));
+englishOnly("components/README.md", read(indexFile));
 
 /* Image references in the root README */
 for (const match of readme.matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)) {
@@ -223,6 +359,16 @@ for (const file of walk(path.join(ROOT, ".github"))) {
 }
 
 const files = existsSync(COMPONENTS) ? walk(COMPONENTS).length : 0;
+
+/* Physical direction is a warning: drag physics and centering use it on purpose. */
+if (warnings.length) {
+  console.log(
+    `\u26a0 ${warnings.length} physical-direction warning(s), not gating:`,
+  );
+  for (const warning of warnings.slice(0, 10)) console.log(`  - ${warning}`);
+  if (warnings.length > 10) console.log(`  ... ${warnings.length - 10} more`);
+}
+
 if (problems.length) {
   console.error(`\u2717 ${problems.length} problem(s) found:`);
   for (const problem of problems) console.error(`  - ${problem}`);
