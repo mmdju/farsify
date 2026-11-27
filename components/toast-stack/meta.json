@@ -1,0 +1,97 @@
+{
+  "slug": "toast-stack",
+  "name": "Toast Stack",
+  "description": "Three toasts that always stay stacked, the newest in front with a sliver of the two behind it, fanning open into a list on hover and gathering back when the pointer leaves.",
+  "category": "status",
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "interactionType": "Hover / Click / Keyboard",
+  "interactionNotes": "The three toasts sit centred in a frame the size of the open list: the newest in front, the two before it a step smaller and a peek higher, so only a sliver of each shows. Pointing at the frame fans them into a list on one spring; moving away gathers them back. Dismissing a toast slides it out and pulls the next item from the pool, a new one rising in at the front, so there are always three. The failed payment carries an action that turns it into the completed payment in place. Keyboard focus opens the stack and its buttons take focus; the two behind stay hidden from assistive technology until it opens. Under `prefers-reduced-motion` every move is instant.",
+  "props": [
+    {
+      "name": "peek",
+      "type": "number",
+      "defaultValue": "14",
+      "description": "How far each toast behind the front one sits above it while the stack is closed, px."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "defaultValue": "10",
+      "description": "Space between toasts once the list is open, px."
+    },
+    {
+      "name": "corner",
+      "type": "number",
+      "defaultValue": "20",
+      "description": "Corner radius of every toast, px."
+    },
+    {
+      "name": "surfaceColor",
+      "type": "string",
+      "defaultValue": "\"#232323\"",
+      "description": "Toast surface."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "\"#fafafa\"",
+      "description": "Title, action label and the mix the border and buttons are built from."
+    },
+    {
+      "name": "bodyColor",
+      "type": "string",
+      "defaultValue": "\"#a3a3a7\"",
+      "description": "The line under the title, and the close icon."
+    },
+    {
+      "name": "successColor",
+      "type": "string",
+      "defaultValue": "\"#22c55e\"",
+      "description": "Icon of the success toasts."
+    },
+    {
+      "name": "infoColor",
+      "type": "string",
+      "defaultValue": "\"#7aa7ff\"",
+      "description": "Icon of the info toasts."
+    },
+    {
+      "name": "warningColor",
+      "type": "string",
+      "defaultValue": "\"#f5b544\"",
+      "description": "Icon of the warning toasts."
+    },
+    {
+      "name": "errorColor",
+      "type": "string",
+      "defaultValue": "\"#e5484d\"",
+      "description": "Icon of the error toasts."
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "defaultValue": "\"اعلان‌ها\"",
+      "description": "Accessible name of the region the stack lives in."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra class for the frame."
+    }
+  ],
+  "tips": [
+    "The stack always holds three toasts: dismissing one pulls the next item from the pool and a new one rises in at the front, so it never runs empty.",
+    "Hover is the whole frame, not the toasts. The frame is the open list's height, so the list cannot slide out from under the pointer and close itself.",
+    "`peek` and `gap` both feed the frame height. Raise `peek` past roughly 26 and the back toasts start hanging above the frame's top edge.",
+    "Border, the icon well and the buttons are mixed from `textColor` and `surfaceColor`, so a light palette needs no extra props: light surface, dark text, and the edges follow.",
+    "Behind the front toast the other two are hidden from assistive technology and their buttons are off the tab order until the stack opens; the front toast is always reachable.",
+    "Under `prefers-reduced-motion` every move is instant instead of sprung."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 206,
+  "version": 1
+}

@@ -1,6 +1,6 @@
 # Components
 
-**80 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**81 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (15)
 
@@ -60,7 +60,7 @@
 | [Discrete Tabs](discrete-tabs/) | `discrete-tabs` |
 | [Filter Menu](filter-menu/) | `filter-menu` |
 
-## Loaders & status (5)
+## Loaders & status (6)
 
 | Component | ID |
 | --- | --- |
@@ -69,6 +69,7 @@
 | [Status Mark](status-mark/) | `status-mark` |
 | [Refine Frame](refine-frame/) | `refine-frame` |
 | [Scan Document Button](scan-document/) | `scan-document` |
+| [Toast Stack](toast-stack/) | `toast-stack` |
 
 ## Showcase (32)
 

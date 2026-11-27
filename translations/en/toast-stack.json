@@ -1,0 +1,27 @@
+{
+  "description": "Three toasts that always stay stacked, the newest in front with a sliver of the two behind it, fanning open into a list on hover and gathering back when the pointer leaves.",
+  "interactionType": "Hover / Click / Keyboard",
+  "interactionNotes": "The three toasts sit centred in a frame the size of the open list: the newest in front, the two before it a step smaller and a peek higher, so only a sliver of each shows. Pointing at the frame fans them into a list on one spring; moving away gathers them back. Dismissing a toast slides it out and pulls the next item from the pool, a new one rising in at the front, so there are always three. The failed payment carries an action that turns it into the completed payment in place. Keyboard focus opens the stack and its buttons take focus; the two behind stay hidden from assistive technology until it opens. Under `prefers-reduced-motion` every move is instant.",
+  "props": {
+    "peek": "How far each toast behind the front one sits above it while the stack is closed, px.",
+    "gap": "Space between toasts once the list is open, px.",
+    "corner": "Corner radius of every toast, px.",
+    "surfaceColor": "Toast surface.",
+    "textColor": "Title, action label and the mix the border and buttons are built from.",
+    "bodyColor": "The line under the title, and the close icon.",
+    "successColor": "Icon of the success toasts.",
+    "infoColor": "Icon of the info toasts.",
+    "warningColor": "Icon of the warning toasts.",
+    "errorColor": "Icon of the error toasts.",
+    "ariaLabel": "Accessible name of the region the stack lives in.",
+    "className": "Extra class for the frame."
+  },
+  "tips": [
+    "The stack always holds three toasts: dismissing one pulls the next item from the pool and a new one rises in at the front, so it never runs empty.",
+    "Hover is the whole frame, not the toasts. The frame is the open list's height, so the list cannot slide out from under the pointer and close itself.",
+    "`peek` and `gap` both feed the frame height. Raise `peek` past roughly 26 and the back toasts start hanging above the frame's top edge.",
+    "Border, the icon well and the buttons are mixed from `textColor` and `surfaceColor`, so a light palette needs no extra props: light surface, dark text, and the edges follow.",
+    "Behind the front toast the other two are hidden from assistive technology and their buttons are off the tab order until the stack opens; the front toast is always reachable.",
+    "Under `prefers-reduced-motion` every move is instant instead of sprung."
+  ]
+}
