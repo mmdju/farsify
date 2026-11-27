@@ -1,0 +1,114 @@
+.otp {
+  --otp-surface: #232323;
+  --otp-ink: #fafafa;
+  --otp-ok: #22c55e;
+
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.liq-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.otp-row {
+  position: relative;
+}
+
+.otp-row:has(.otp-field:focus-visible) {
+  border-radius: 18px;
+  outline: 2px solid color-mix(in oklab, var(--otp-ink) 40%, transparent);
+  outline-offset: 6px;
+}
+
+.otp-goo {
+  position: absolute;
+  inset: 0;
+}
+
+.otp-cell {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  background: var(--otp-surface);
+  will-change: transform;
+}
+
+.otp-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.otp-digit {
+  color: var(--otp-ink);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.otp-caret {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: 0;
+  width: 2px;
+  height: 30px;
+  border-radius: 1px;
+  background: var(--otp-ink);
+  opacity: 0;
+  transform-origin: center;
+  transition: opacity 120ms;
+  pointer-events: none;
+}
+
+.otp-caret[data-on] {
+  opacity: 1;
+}
+
+.otp-ok {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--otp-ok);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.otp-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: transparent;
+  font-size: 16px;
+  opacity: 0;
+  cursor: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .otp-caret {
+    transition: none;
+  }
+}
