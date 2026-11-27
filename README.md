@@ -4,17 +4,17 @@
 
 # Farsify
 
-**80 components** for Persian, right-to-left React interfaces.
+**81 components** for Persian, right-to-left React interfaces.
 
 Every one is a single file you copy into your project and own from then on.
 No package of our own to install, no build step, no link back to this site.
 
 [![License](https://img.shields.io/badge/license-FCL%201.0-0b0b0b?style=flat-square)](LICENSE.md)
-[![Components](https://img.shields.io/badge/components-80-0b0b0b?style=flat-square)](components/README.md)
+[![Components](https://img.shields.io/badge/components-81-0b0b0b?style=flat-square)](components/README.md)
 [![React](https://img.shields.io/badge/React-19-0b0b0b?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Live](https://img.shields.io/badge/live%20previews-farsifyui.ir-0b0b0b?style=flat-square)](https://farsifyui.ir)
 
-[Live previews](https://farsifyui.ir) · [Component index](components/README.md) · [Contributing](CONTRIBUTING.md) · [License](LICENSE.md)
+[Live previews](https://farsifyui.ir) Â· [Component index](components/README.md) Â· [Contributing](CONTRIBUTING.md) Â· [License](LICENSE.md)
 
 </div>
 
@@ -30,7 +30,7 @@ No package of our own to install, no build step, no link back to this site.
 | Buttons | `actions` | 14 | `magnet`, `hold-button`, `slide-commit`, `voice-pill` |
 | Navigation | `navigation` | 14 | `gooey-nav`, `branched-menu`, `rail-toc`, `carousel` |
 | Loaders & status | `status` | 5 | `lattice-loader`, `status-mark`, `thought-line`, `refine-frame` |
-| Showcase | `showcase` | 32 | `card-swap`, `glass-icons`, `tilted-card`, `paper-crumple` |
+| Showcase | `showcase` | 33 | `card-swap`, `glass-icons`, `tilted-card`, `paper-crumple` |
 
 </div>
 
@@ -99,4 +99,4 @@ New components, fixes and bug reports are all welcome. Read [`CONTRIBUTING.md`](
 
 ## License
 
-[Farsify Components License (FCL) v1.0](LICENSE.md). Free for personal, educational and commercial use. You can build and sell products with the components, closed-source or not, without attribution. Selling or redistributing the components themselves — alone, as a kit, or through a marketplace — is not allowed. The Farsify name and logo are not covered by the license.
+[Farsify Components License (FCL) v1.0](LICENSE.md). Free for personal, educational and commercial use. You can build and sell products with the components, closed-source or not, without attribution. Selling or redistributing the components themselves â€” alone, as a kit, or through a marketplace â€” is not allowed. The Farsify name and logo are not covered by the license.

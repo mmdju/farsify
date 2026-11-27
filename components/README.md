@@ -1,6 +1,6 @@
 # Components
 
-**80 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**81 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
 ## Inputs (15)
 
@@ -70,7 +70,7 @@
 | [Refine Frame](refine-frame/) | `refine-frame` |
 | [Scan Document Button](scan-document/) | `scan-document` |
 
-## Showcase (32)
+## Showcase (33)
 
 | Component | ID |
 | --- | --- |
@@ -106,3 +106,4 @@
 | [Testimonial Drawer](testimonial-drawer/) | `testimonial-drawer` |
 | [Pinfold](pinfold/) | `pinfold` |
 | [Pennant](pennant/) | `pennant` |
+| [Slingshot](slingshot/) | `slingshot` |
