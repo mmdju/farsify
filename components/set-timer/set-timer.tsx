@@ -30,6 +30,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type CSSProperties,
   type MouseEvent,
   type ReactNode,
 } from "react";
@@ -44,6 +45,17 @@ type TimerMode = "compact" | "picker" | "running" | "paused";
 const DEFAULT_SURFACE = "#2c2c2c";
 const DEFAULT_PROGRESS = "#ff9f0a";
 const GO_COLOR = "#34c759";
+
+function inkOn(hex: string) {
+  const raw = hex.replace("#", "");
+  const full = raw.length === 3 ? raw.replace(/./g, (c) => c + c) : raw;
+  const value = Number.parseInt(full, 16);
+  if (Number.isNaN(value)) return "#ffffff";
+  const r = ((value >> 16) & 255) / 255;
+  const g = ((value >> 8) & 255) / 255;
+  const b = (value & 255) / 255;
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.55 ? "#111111" : "#ffffff";
+}
 
 const AUTO_START_MS = 700;
 const AUTO_OPEN_MS = 650;
@@ -212,9 +224,9 @@ function MinutePicker({
             optionItem:
               "pe-16! text-[40px]! font-normal leading-none text-zinc-500 tabular-nums dark:text-zinc-500",
             highlightWrapper:
-              "rounded-2xl bg-white/[0.08] text-white dark:bg-white/[0.08] dark:text-white data-rwp-focused:inset-ring-2 data-rwp-focused:inset-ring-white/30 dark:data-rwp-focused:inset-ring-white/30",
+              "rounded-2xl bg-(--st-ink)/8 text-(--st-ink) data-rwp-focused:inset-ring-2 data-rwp-focused:inset-ring-(--st-ink)/30",
             highlightItem:
-              "pe-16! text-[40px] font-normal leading-none text-white tabular-nums",
+              "pe-16! text-[40px] font-normal leading-none text-(--st-ink) tabular-nums",
           }}
         />
       </WheelPickerPrimitive.WheelPickerWrapper>
@@ -245,7 +257,7 @@ function MinutePicker({
 
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute start-[90px] top-1/2 mt-1.5 -translate-y-1/2 text-[20px] font-medium text-white"
+        className="pointer-events-none absolute start-[90px] top-1/2 mt-1.5 -translate-y-1/2 text-[20px] font-medium text-(--st-ink)"
       >
         دقیقه
       </span>
@@ -328,7 +340,7 @@ function TimerBorder({
 }
 
 const buttonBase =
-  "flex cursor-pointer items-center justify-center rounded-full pb-[2px] text-[18px] font-semibold outline-none transition duration-150 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/70";
+  "flex cursor-pointer items-center justify-center rounded-full pb-[2px] text-[18px] font-semibold outline-none transition duration-150 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--st-ink)/70";
 
 export const SetTimer = ({
   autoPreview = false,
@@ -352,6 +364,7 @@ export const SetTimer = ({
 
   const isTimerActive = mode === "running" || mode === "paused";
   const dimensions = SURFACE_DIMENSIONS[mode];
+  const goInk = inkOn(surfaceColor) === "#111111" ? "#15803d" : GO_COLOR;
 
   useEffect(() => {
     if (!autoPreview) return;
@@ -497,15 +510,20 @@ export const SetTimer = ({
           ? { duration: 0.15 }
           : { ...SURFACE_SPRING, opacity: { duration: 0.2 } }
       }
-      className="relative min-w-[250px] overflow-hidden text-white shadow-sm"
-      style={{ backgroundColor: surfaceColor }}
+      className="relative min-w-[250px] overflow-hidden text-(--st-ink) shadow-sm"
+      style={
+        {
+          backgroundColor: surfaceColor,
+          "--st-ink": inkOn(surfaceColor),
+        } as CSSProperties
+      }
     >
       <ContentLayer isVisible={mode === "compact"}>
         <div data-timer-layer="compact" style={SURFACE_DIMENSIONS.compact}>
           <button
             type="button"
             onClick={openPicker}
-            className="relative flex size-full cursor-pointer items-center justify-center rounded-[42px] pb-[2px] text-[28px] font-medium outline-none transition-colors hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/70"
+            className="relative flex size-full cursor-pointer items-center justify-center rounded-[42px] pb-[2px] text-[28px] font-medium outline-none transition-colors hover:bg-(--st-ink)/5 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--st-ink)/70"
           >
             <span className="absolute start-[22px] top-1/2 -translate-y-1/2">
               <TimerIcon ink={surfaceColor} />
@@ -533,7 +551,7 @@ export const SetTimer = ({
             className={cn(buttonBase, "h-14 w-24 hover:brightness-125")}
             style={{
               backgroundColor: "color-mix(in oklab, #34c759 20%, transparent)",
-              color: GO_COLOR,
+              color: goInk,
             }}
           >
             شروع
@@ -564,7 +582,7 @@ export const SetTimer = ({
                 mode === "paused"
                   ? "color-mix(in oklab, #34c759 20%, transparent)"
                   : `color-mix(in oklab, ${progressColor} 20%, transparent)`,
-              color: mode === "paused" ? GO_COLOR : progressColor,
+              color: mode === "paused" ? goInk : progressColor,
             }}
           >
             <AnimatePresence initial={false} mode="popLayout">
@@ -599,7 +617,7 @@ export const SetTimer = ({
             type="button"
             onClick={cancel}
             whileTap={reduceMotion ? undefined : { scale: 0.96 }}
-            className={cn(buttonBase, "relative h-14 w-24 bg-white/10 hover:bg-white/15")}
+            className={cn(buttonBase, "relative h-14 w-24 bg-(--st-ink)/10 hover:bg-(--st-ink)/15")}
           >
             لغو
           </motion.button>

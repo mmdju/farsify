@@ -51,7 +51,7 @@ export function Examples() {
 | --- | --- | --- | --- | --- |
 | `autoPreview` | `boolean` | `false` | — | Site preview only — the timer opens the wheel, rolls it and runs, then cancels. Leave it off in normal use. |
 | `progressColor` | `string` | `"#ff9f0a"` | — | Color of the countdown ring, the pause face and the minute highlight. |
-| `surfaceColor` | `string` | `"#2c2c2c"` | — | The charcoal surface behind the whole timer; any CSS color works and the white text stays on top. |
+| `surfaceColor` | `string` | `"#2c2c2c"` | — | The surface behind the whole timer; any CSS color works and the text flips to stay readable on it. |
 
 ## Tips
 

@@ -1,8 +1,8 @@
 # Components
 
-**80 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**84 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
-## Inputs (15)
+## Inputs (17)
 
 | Component | ID |
 | --- | --- |
@@ -21,8 +21,10 @@
 | [Day Picker](day-picker/) | `day-picker` |
 | [Set Timer](set-timer/) | `set-timer` |
 | [Input Switch](input-switch/) | `input-switch` |
+| [Voice Note](voice-note/) | `voice-note` |
+| [OTP](otp/) | `otp` |
 
-## Buttons (14)
+## Buttons (15)
 
 | Component | ID |
 | --- | --- |
@@ -40,6 +42,7 @@
 | [Specular Button](specular-button/) | `specular-button` |
 | [Save Button](save-button/) | `save-button` |
 | [Countdown Delete](countdown-delete/) | `countdown-delete` |
+| [Slingshot](slingshot/) | `slingshot` |
 
 ## Navigation (14)
 
@@ -60,7 +63,7 @@
 | [Discrete Tabs](discrete-tabs/) | `discrete-tabs` |
 | [Filter Menu](filter-menu/) | `filter-menu` |
 
-## Loaders & status (5)
+## Loaders & status (6)
 
 | Component | ID |
 | --- | --- |
@@ -69,6 +72,7 @@
 | [Status Mark](status-mark/) | `status-mark` |
 | [Refine Frame](refine-frame/) | `refine-frame` |
 | [Scan Document Button](scan-document/) | `scan-document` |
+| [Toast Stack](toast-stack/) | `toast-stack` |
 
 ## Showcase (32)
 

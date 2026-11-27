@@ -26,7 +26,7 @@
       "name": "surfaceColor",
       "type": "string",
       "defaultValue": "\"#2c2c2c\"",
-      "description": "The charcoal surface behind the whole timer; any CSS color works and the white text stays on top."
+      "description": "The surface behind the whole timer; any CSS color works and the text flips to stay readable on it."
     }
   ],
   "tips": [
@@ -38,6 +38,6 @@
   ],
   "hasCss": false,
   "assets": [],
-  "lines": 613,
+  "lines": 631,
   "version": 1
 }

@@ -1,0 +1,68 @@
+.slingshot {
+  --sl-socket: #dcdce1;
+  --sl-ink: #171717;
+  --sl-mark: #fafafa;
+
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dark .slingshot {
+  --sl-socket: #2b2b2e;
+  --sl-ink: #fafafa;
+  --sl-mark: #0a0a0a;
+}
+
+.slingshot__svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.slingshot__band {
+  fill: var(--sl-socket);
+}
+
+.slingshot__dust {
+  stroke: var(--sl-ink);
+  stroke-linecap: round;
+}
+
+.slingshot__ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--sl-ink);
+  box-shadow: 0 6px 14px -6px rgb(0 0 0 / 0.6);
+  outline: none;
+  cursor: grab;
+  will-change: transform;
+}
+
+.slingshot__ball:active {
+  cursor: grabbing;
+}
+
+.slingshot__ball:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--sl-ink) 55%, transparent);
+  outline-offset: 4px;
+}
+
+.slingshot__arrow {
+  color: var(--sl-mark);
+  pointer-events: none;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slingshot__ball,
+  .slingshot__arrow {
+    will-change: auto;
+  }
+}

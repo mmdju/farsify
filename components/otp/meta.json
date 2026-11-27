@@ -1,0 +1,75 @@
+{
+  "slug": "otp",
+  "name": "OTP",
+  "description": "Four or six cells and a caret that take a one-time code: a right code draws the cells together until they fuse into one capsule that says verified, a wrong one shivers and drains.",
+  "category": "inputs",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "interactionType": "Type / Paste / Keyboard",
+  "interactionNotes": "There is one invisible input over the row and the cells are drawn underneath it, so pasting a code, the OS autofill from a notification and screen readers all land in one field. Typing moves a caret that stretches with its own speed and swells the cell it lands in. When the last digit arrives the row holds for a beat, then either the cells slide to the middle while a capsule grows out of the same point and the goo filter fuses them into one shape that reads verified, or the row shivers and the digits drain out right to left before the row empties itself. A wrong row clears on its own; a verified capsule is pressed to start over. Length changes and a new length knob both reset the row.",
+  "props": [
+    {
+      "name": "length",
+      "type": "number",
+      "defaultValue": "4",
+      "options": [
+        "4",
+        "6"
+      ],
+      "description": "How many cells: 4 or 6. Anything else is read as 6."
+    },
+    {
+      "name": "answer",
+      "type": "string (\"Accept\" | \"Reject\")",
+      "defaultValue": "\"Accept\"",
+      "options": [
+        "Accept",
+        "Reject"
+      ],
+      "description": "What a full row gets back. Anything other than `Reject` verifies it."
+    },
+    {
+      "name": "corner",
+      "type": "number",
+      "defaultValue": "12",
+      "description": "Corner radius of a cell, px, up to half the cell height; the verified capsule always wears a full pill."
+    },
+    {
+      "name": "surfaceColor",
+      "type": "string",
+      "defaultValue": "\"#232323\"",
+      "description": "Cell and capsule surface."
+    },
+    {
+      "name": "textColor",
+      "type": "string",
+      "defaultValue": "\"#fafafa\"",
+      "description": "Digits, the caret and the focus ring."
+    },
+    {
+      "name": "successColor",
+      "type": "string",
+      "defaultValue": "\"#22c55e\"",
+      "description": "The tick and the word beside it once the code verifies."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "defaultValue": "—",
+      "description": "Extra class for the wrapper."
+    }
+  ],
+  "tips": [
+    "`answer` is a demonstration knob, not validation: no code is ever checked. Send the code yourself and render the same verified state for a real sign-in.",
+    "One input holds the value; keep it invisible rather than splitting the code across six fields, which breaks paste, autofill, backspace and screen readers.",
+    "The cells sit under a blur-and-threshold filter, so anything drawn under it must be a solid shape. Never put the digits there: glyph antialiasing is below the threshold and the text disappears.",
+    "The filter's id comes from `useId`, so two instances on one page do not steal each other's filter. Keep it that way when copying the file.",
+    "Under `prefers-reduced-motion` the filter is dropped and the merge jumps to the capsule; the row still reads verified, just without the fuse.",
+    "A six-digit row is 338px wide, so give it a container at least that wide or a fit wrapper on narrow screens."
+  ],
+  "hasCss": true,
+  "assets": [],
+  "lines": 411,
+  "version": 1
+}
