@@ -1,0 +1,24 @@
+{
+  "description": "A hold-to-record voice note: the pill opens into a live wave, sliding left throws the take away, and what you keep becomes a clip with a scrubbable wave.",
+  "interactionType": "Hold / Drag / Keyboard",
+  "interactionNotes": "Press and hold the pill to record: it widens into a bar, the timer runs and the level draws itself as bars, the newest at the inline-end of the wave. Slide left while holding and the row travels with the pointer; past the throw distance the mark beside the timer turns into a red cross and the label under the pill asks you to let go, which discards the take. Releasing before that turns the take into a clip: a filled play disc, the wave and the duration, with a discard cross at the far end. Playing lights the bars as the playhead passes them and dragging across the wave scrubs. The level is a stand-in shaped like speech, so nothing ever asks for a microphone. With the pill focused, Space or Enter records while held and Escape throws the take away. Under `prefers-reduced-motion` the pill widens without the overshoot and the play mark changes instantly.",
+  "props": {
+    "bars": "How many bars the wave is drawn with, clamped to 12 to 48.",
+    "gain": "How tall a level draws, 0 to 100; at 0 the wave flattens to dots.",
+    "bounce": "How far the pill overshoots the width it opens and closes to, 0 to 100; 0 widens without a bounce.",
+    "corner": "Corner radius, px. The default is half the height, a full pill; the play disc follows the same curve.",
+    "surfaceColor": "Pill surface.",
+    "textColor": "Label, icons and the play disc, and the colour the pill's edge is mixed from.",
+    "waveColor": "The bars while recording and the recorded ones in the clip.",
+    "accentColor": "The recording dot, and the mark once the take is armed for the throw.",
+    "className": "Extra class for the wrapper."
+  },
+  "tips": [
+    "The level is a stand-in shaped like speech, so the component never asks for a microphone; swap it for a real recorder when the audio has to exist.",
+    "A take shorter than 500ms is treated as a tap and dropped, and a recording stops itself at 30 seconds.",
+    "Sliding back before letting go disarms the throw, so the same take is kept instead of discarded.",
+    "The wave is `direction: ltr` on purpose: the time axis reads left to right as it does in every player, while the row around it stays right to left.",
+    "`corner` above 28 is clamped to half the height; at 0 the pill squares off and the play disc squares with it.",
+    "Under `prefers-reduced-motion` the width change and the play mark are instant."
+  ]
+}

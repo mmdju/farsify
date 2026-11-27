@@ -4,13 +4,13 @@
 
 # Farsify
 
-**80 components** for Persian, right-to-left React interfaces.
+**81 components** for Persian, right-to-left React interfaces.
 
 Every one is a single file you copy into your project and own from then on.
 No package of our own to install, no build step, no link back to this site.
 
 [![License](https://img.shields.io/badge/license-FCL%201.0-0b0b0b?style=flat-square)](LICENSE.md)
-[![Components](https://img.shields.io/badge/components-80-0b0b0b?style=flat-square)](components/README.md)
+[![Components](https://img.shields.io/badge/components-81-0b0b0b?style=flat-square)](components/README.md)
 [![React](https://img.shields.io/badge/React-19-0b0b0b?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Live](https://img.shields.io/badge/live%20previews-farsifyui.ir-0b0b0b?style=flat-square)](https://farsifyui.ir)
 
@@ -26,7 +26,7 @@ No package of our own to install, no build step, no link back to this site.
 
 | Category | ID | Count | Examples |
 | --- | --- | --- | --- |
-| Inputs | `inputs` | 15 | `squish-switch`, `wake-slider`, `theme-selector`, `comet-dial` |
+| Inputs | `inputs` | 16 | `squish-switch`, `wake-slider`, `theme-selector`, `comet-dial` |
 | Buttons | `actions` | 14 | `magnet`, `hold-button`, `slide-commit`, `voice-pill` |
 | Navigation | `navigation` | 14 | `gooey-nav`, `branched-menu`, `rail-toc`, `carousel` |
 | Loaders & status | `status` | 5 | `lattice-loader`, `status-mark`, `thought-line`, `refine-frame` |

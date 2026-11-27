@@ -1,8 +1,8 @@
 # Components
 
-**80 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
+**81 components** in 5 categories. Each folder holds the component source, its CSS (if any), `meta.json` and a short guide.
 
-## Inputs (15)
+## Inputs (16)
 
 | Component | ID |
 | --- | --- |
@@ -21,6 +21,7 @@
 | [Day Picker](day-picker/) | `day-picker` |
 | [Set Timer](set-timer/) | `set-timer` |
 | [Input Switch](input-switch/) | `input-switch` |
+| [Voice Note](voice-note/) | `voice-note` |
 
 ## Buttons (14)
 
