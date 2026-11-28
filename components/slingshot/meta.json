@@ -1,13 +1,13 @@
 {
   "slug": "slingshot",
   "name": "Slingshot",
-  "description": "A slingshot toy: pull the ball back in its elastic socket, let go, and it flies on an arc, bounces off the plate's own edges and settles back into the socket.",
+  "description": "A slingshot toy: pull the ball back in its elastic socket, let go, and it flies on an arc, bounces off the stage's own edges and settles back into the socket.",
   "category": "actions",
   "dependencies": [
     "lucide-react"
   ],
   "interactionType": "Drag and release / Keyboard",
-  "interactionNotes": "Press the ball and pull it away from the socket: the socket stretches into a capsule that hugs both circles, the arrow inside the ball turns to the direction the throw will take, and the ball trembles once the band is nearly taut. Release and the ball leaves straight back the other way, bounces off the plate's sides and top, loses height, rolls to a stop and fades back into the socket. The further the pull, the faster the throw, and it grows faster than the pull. `power` scales that speed and `bounce` sets how lively every contact is. With the ball focused, the arrow keys aim, Space or Enter throws and Escape puts it back. Under `prefers-reduced-motion` the ball does not tremble and the throw leaves no dust.",
+  "interactionNotes": "Press the ball and pull it away from the socket: the socket stretches into a capsule that hugs both circles, the arrow inside the ball turns to the direction the throw will take, and the ball trembles once the band is nearly taut. Release and the ball leaves straight back the other way, bounces off the stage's sides and top, loses height, rolls to a stop and fades back into the socket. The further the pull, the faster the throw, and it grows faster than the pull. `power` scales that speed and `bounce` sets how lively every contact is. With the ball focused, the arrow keys aim, Space or Enter throws and Escape puts it back. Under `prefers-reduced-motion` the ball does not tremble and the throw leaves no dust.",
   "props": [
     {
       "name": "power",
@@ -49,7 +49,7 @@
       "name": "className",
       "type": "string",
       "defaultValue": "—",
-      "description": "Extra class for the plate."
+      "description": "Extra class for the stage."
     }
   ],
   "tips": [

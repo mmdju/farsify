@@ -1,6 +1,6 @@
 # Slingshot
 
-A slingshot toy: pull the ball back in its elastic socket, let go, and it flies on an arc, bounces off the plate's own edges and settles back into the socket.
+A slingshot toy: pull the ball back in its elastic socket, let go, and it flies on an arc, bounces off the stage's own edges and settles back into the socket.
 
 - **Category:** Buttons
 - **Interaction:** Drag and release / Keyboard
@@ -51,7 +51,7 @@ export function HotShot() {
 | `ballColor` | `string` | `"#fafafa"` | — | Ball, and the dust the throw leaves behind. Follows the theme unless set. |
 | `markColor` | `string` | `"#0a0a0a"` | — | Color of the arrow inside the ball. Follows the theme unless set. |
 | `ariaLabel` | `string` | `"توپ رو بکش و رها کن؛ با کلیدهای جهت‌دار نشونه بگیر و با کلید فاصله پرتش کن"` | — | Accessible name of the ball, for when the default Persian label does not fit the page. |
-| `className` | `string` | `—` | — | Extra class for the plate. |
+| `className` | `string` | `—` | — | Extra class for the stage. |
 
 ## Tips
 

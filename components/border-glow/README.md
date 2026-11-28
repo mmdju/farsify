@@ -58,7 +58,7 @@ export function Examples() {
 | `children` | `ReactNode` | — | — | Card content. |
 | `edgeSensitivity` | `number` | `30` | — | How close the pointer must be to the edge for the glow to wake; 0 to 100. A larger number means you have to come more precisely close to the border. |
 | `glowColor` | `string` | `"40 80 80"` | — | Halo color in "H S L" form — such as "40 80 80". If you have a hex, convert it inline to this same form. |
-| `backgroundColor` | `string` | `"#120F17"` | — | Card color. Its lightness sets the light-surface class and the border and shadow harmonize with it. |
+| `backgroundColor` | `string` | `"#0a0a0a"` | — | Card color. Its lightness sets the light-surface class and the border and shadow harmonize with it. |
 | `borderRadius` | `number` | `28` | — | Corner radius, pixels. |
 | `glowRadius` | `number` | `40` | — | Reach of the halo beyond the card edge, pixels. |
 | `glowIntensity` | `number` | `1.0` | — | Brightness multiplier of the halo; 0.1 to 3. |

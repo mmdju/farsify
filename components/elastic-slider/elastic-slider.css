@@ -174,7 +174,7 @@
   background: var(--elastic-slider-thumb, #ffffff);
   box-shadow:
     0 1px 4px rgba(0, 0, 0, 0.28),
-    0 0 0 0.5px rgba(0, 0, 0, 0.12);
+    0 0 0 1.5px var(--elastic-slider-range, #fafafa);
   pointer-events: none;
   will-change: transform;
 }

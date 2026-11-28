@@ -1,7 +1,7 @@
 {
-  "description": "A slingshot toy: pull the ball back in its elastic socket, let go, and it flies on an arc, bounces off the plate's own edges and settles back into the socket.",
+  "description": "A slingshot toy: pull the ball back in its elastic socket, let go, and it flies on an arc, bounces off the stage's own edges and settles back into the socket.",
   "interactionType": "Drag and release / Keyboard",
-  "interactionNotes": "Press the ball and pull it away from the socket: the socket stretches into a capsule that hugs both circles, the arrow inside the ball turns to the direction the throw will take, and the ball trembles once the band is nearly taut. Release and the ball leaves straight back the other way, bounces off the plate's sides and top, loses height, rolls to a stop and fades back into the socket. The further the pull, the faster the throw, and it grows faster than the pull. `power` scales that speed and `bounce` sets how lively every contact is. With the ball focused, the arrow keys aim, Space or Enter throws and Escape puts it back. Under `prefers-reduced-motion` the ball does not tremble and the throw leaves no dust.",
+  "interactionNotes": "Press the ball and pull it away from the socket: the socket stretches into a capsule that hugs both circles, the arrow inside the ball turns to the direction the throw will take, and the ball trembles once the band is nearly taut. Release and the ball leaves straight back the other way, bounces off the stage's sides and top, loses height, rolls to a stop and fades back into the socket. The further the pull, the faster the throw, and it grows faster than the pull. `power` scales that speed and `bounce` sets how lively every contact is. With the ball focused, the arrow keys aim, Space or Enter throws and Escape puts it back. Under `prefers-reduced-motion` the ball does not tremble and the throw leaves no dust.",
   "props": {
     "power": "Scales the throw, in percent. 100 is the tuned speed; below it the ball is lobbed, above it the ball is fired.",
     "bounce": "How much speed a contact keeps, 0 to 100. 0 drops the ball dead, 100 keeps almost all of it.",
@@ -9,7 +9,7 @@
     "ballColor": "Ball, and the dust the throw leaves behind. Follows the theme unless set.",
     "markColor": "Color of the arrow inside the ball. Follows the theme unless set.",
     "ariaLabel": "Accessible name of the ball, for when the default Persian label does not fit the page.",
-    "className": "Extra class for the plate."
+    "className": "Extra class for the stage."
   },
   "tips": [
     "`power` is read at the moment of release, so changing it while the ball sits in the socket changes the next throw; `bounce` is read every frame and can be changed mid-flight.",

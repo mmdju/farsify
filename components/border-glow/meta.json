@@ -27,7 +27,7 @@
     {
       "name": "backgroundColor",
       "type": "string",
-      "defaultValue": "\"#120F17\"",
+      "defaultValue": "\"#0a0a0a\"",
       "description": "Card color. Its lightness sets the light-surface class and the border and shadow harmonize with it."
     },
     {

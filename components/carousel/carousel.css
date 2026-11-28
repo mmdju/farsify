@@ -26,7 +26,7 @@
 }
 
 .carousel-container:focus-visible .carousel-stage {
-  outline: 2px solid var(--carousel-ink);
+  outline: 2px solid currentColor;
   outline-offset: 4px;
 }
 
@@ -230,6 +230,13 @@
   justify-content: center;
   gap: 12px;
   max-width: 100%;
+}
+
+.carousel-container:not(.has-frame) .carousel-controls {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--carousel-tile);
+  box-shadow: var(--carousel-tile-shadow);
 }
 
 .carousel-arrow {
