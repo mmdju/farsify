@@ -33,7 +33,7 @@
     {
       "name": "accent",
       "type": "string",
-      "defaultValue": "\"var(--foreground)\"",
+      "defaultValue": "\"#fafafa\"",
       "description": "Colour of the active pill's icon and label; the foreground token keeps it readable in both themes."
     },
     {

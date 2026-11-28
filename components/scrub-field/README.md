@@ -90,8 +90,8 @@ export function Examples() {
 | `showDelta` | `boolean` | `true` | — | The floating delta chip above the indicator. |
 | `showDirty` | `boolean` | `false` | — | A ring around the chip when the value differs from `defaultValue`. |
 | `showFill` | `boolean` | `true` | — | The colored fill that shows the size of the value. |
-| `accent` | `string` | `"#f5f5f5"` | — | Accent color — the value fill, the delta chip and the changed ring. |
-| `chipColor` | `string` | `"#27272a"` | — | Chip background. |
+| `accent` | `string` | `"#fafafa"` | — | Accent color — the value fill, the delta chip and the changed ring. |
+| `chipColor` | `string` | `"#232323"` | — | Chip background. |
 | `disabled` | `boolean` | `false` | — | Dims it and ignores input. |
 | `onChange` | `(value: number) => void` | — | — | On every value change — even mid-drag. |
 | `onCommit` | `(value: number) => void` | — | — | Only when the drag has ended and the value actually changed. |

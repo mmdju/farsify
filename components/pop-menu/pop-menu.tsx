@@ -128,10 +128,10 @@ const EASE_OUT_QUINT: [number, number, number, number] = [0.23, 1, 0.32, 1];
 const DANGER_TEXT = "text-[rgb(229_72_77)]";
 const DANGER_PILL = "bg-[rgb(229_72_77/0.12)]";
 
-const MUTED = "text-muted-foreground";
-const STRONG = "text-foreground";
+const MUTED = "text-neutral-300 dark:text-muted-foreground";
+const STRONG = "text-background dark:text-foreground";
 const HAIRLINE = "border-black/10 dark:border-white/10";
-const PILL = "bg-accent dark:bg-muted";
+const PILL = "bg-white/10 dark:bg-muted";
 const FOCUS =
   "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-muted-foreground";
 
@@ -288,8 +288,8 @@ const PopMenu = ({
         }}
         transition={frameTransition}
         className={cn(
-          "absolute top-0 right-0 overflow-hidden border bg-muted shadow-lg",
-          "origin-top-right dark:bg-accent",
+          "absolute top-0 right-0 overflow-hidden border bg-foreground text-background shadow-lg",
+          "origin-top-right dark:bg-accent dark:text-foreground",
           HAIRLINE,
           disabled && "cursor-not-allowed opacity-50",
         )}
@@ -309,7 +309,7 @@ const PopMenu = ({
         >
           <GlyphIcon
             shape={ICON_DOTS}
-            className="h-6 w-6 text-muted-foreground"
+            className="h-6 w-6 text-background dark:text-muted-foreground"
           />
         </motion.div>
 
@@ -385,7 +385,7 @@ const PopMenu = ({
                             : cn(MUTED, "hover:text-[rgb(229_72_77)]")
                           : isActive
                             ? STRONG
-                            : cn(MUTED, "hover:text-foreground"),
+                            : cn(MUTED, "hover:text-background dark:hover:text-foreground"),
                         FOCUS,
                       )}
                     >
@@ -406,7 +406,7 @@ const PopMenu = ({
                             "absolute start-0 top-0 bottom-0 my-auto h-5 w-[3px] rounded-full",
                             isDanger
                               ? "bg-[rgb(229_72_77)]"
-                              : !accent && "bg-foreground",
+                              : !accent && "bg-background dark:bg-foreground",
                           )}
                           style={
                             !isDanger && accent

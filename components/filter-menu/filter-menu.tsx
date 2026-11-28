@@ -72,12 +72,19 @@ const SIZES = {
 
 const SPRING = { type: "spring" as const, duration: 0.7, bounce: 0.3 };
 
+const readableOn = (color: string) => {
+  const match = /^#([0-9a-f]{6})$/i.exec(color.trim());
+  if (!match) return "var(--background)";
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(match[1].slice(i, i + 2), 16) / 255);
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.55 ? "#232323" : "#ffffff";
+};
+
 export default function FilterMenu({
   items = DEFAULT_ITEMS,
   active,
   defaultActive,
   onChange,
-  accent = "var(--foreground)",
+  accent = "#fafafa",
   size = "md",
   autoPreview = false,
   className,
@@ -143,7 +150,7 @@ export default function FilterMenu({
           borderRadius: open ? 20 : scale.circle / 2,
         }}
         transition={reduce ? { duration: 0 } : SPRING}
-        className="relative z-10 shrink-0 overflow-hidden border border-border bg-accent shadow-md"
+        className="relative z-10 shrink-0 overflow-hidden border border-white/10 bg-foreground text-background shadow-md dark:border-border dark:bg-accent dark:text-foreground"
       >
         {open ? (
           <ul
@@ -169,10 +176,10 @@ export default function FilterMenu({
                     aria-selected={isSelected}
                     onClick={() => pick(item.id)}
                     style={{ height: scale.row }}
-                    className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-2xl px-3 text-start text-[14px] font-medium text-foreground transition-colors duration-100 hover:bg-background focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary"
+                    className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-2xl px-3 text-start text-[14px] font-medium text-background transition-colors duration-100 hover:bg-white/10 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary dark:text-foreground"
                   >
                     <span className="flex items-center gap-2.5">
-                      {Icon && <Icon size={scale.icon} className="shrink-0 text-foreground" />}
+                      {Icon && <Icon size={scale.icon} className="shrink-0 text-background dark:text-foreground" />}
                       <span className="leading-[1.4]">{item.label}</span>
                     </span>
                     <span
@@ -182,7 +189,7 @@ export default function FilterMenu({
                       )}
                       style={
                         isSelected
-                          ? { backgroundColor: accent, color: "var(--background)" }
+                          ? { backgroundColor: accent, color: readableOn(accent) }
                           : undefined
                       }
                     >
@@ -200,7 +207,7 @@ export default function FilterMenu({
             aria-label="انتخاب فیلتر"
             aria-haspopup="listbox"
             onClick={() => setOpen(true)}
-            className="flex size-full items-center justify-center text-foreground focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-primary"
+            className="flex size-full items-center justify-center text-background focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-primary dark:text-foreground"
           >
             <SlidersHorizontal size={scale.icon} />
           </button>
@@ -210,7 +217,7 @@ export default function FilterMenu({
       <div
         aria-hidden="true"
         style={{ width: scale.circle, height: scale.circle }}
-        className="-ms-3 flex shrink-0 items-center justify-center rounded-full border border-border bg-accent text-foreground shadow-md"
+        className="-ms-3 flex shrink-0 items-center justify-center rounded-full border border-border bg-foreground text-background shadow-md dark:bg-accent dark:text-foreground"
       >
         {SelectedIcon && <SelectedIcon size={scale.icon} />}
       </div>

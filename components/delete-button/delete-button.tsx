@@ -79,11 +79,11 @@ const PRESS: Transition = {
 };
 const INSTANT: Transition = { duration: 0 };
 
-const ACCENT = "#007BFF";
+const ACCENT = "#e5484d";
 
-const SURFACE = "bg-muted dark:bg-accent";
+const SURFACE = "bg-foreground dark:bg-accent";
 const RECESS = "bg-accent dark:bg-muted";
-const GLYPH = "text-muted-foreground";
+const GLYPH = "text-background dark:text-muted-foreground";
 
 const FOCUS =
   "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-foreground";

@@ -47,7 +47,7 @@
     {
       "name": "accent",
       "type": "string",
-      "defaultValue": "رنگِ سطحِ فام (سفید / زغالی)",
+      "defaultValue": "رنگِ سطحِ فام (#232323)",
       "description": "Color of the center button; the petals stay neutral. Pass a hex or `rgb()` — the `+` icon's ink automatically turns dark or light to stay readable on any color."
     },
     {
@@ -106,6 +106,6 @@
   ],
   "hasCss": true,
   "assets": [],
-  "lines": 369,
+  "lines": 371,
   "version": 1
 }

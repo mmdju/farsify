@@ -12,7 +12,7 @@
     {
       "name": "accent",
       "type": "string",
-      "defaultValue": "\"#007BFF\"",
+      "defaultValue": "\"#e5484d\"",
       "description": "Color of the confirm check and the large check after deletion — the button's only touch of color."
     },
     {

@@ -78,8 +78,8 @@ export function Examples() {
 | `onConfirm` | `() => void | Promise<unknown>` | — | — | Called when the handle reaches the end. If it returns a Promise, a spinner is shown. |
 | `onDone` | `() => void` | — | — | Called when the completed chip opens. |
 | `onError` | `(reason: unknown) => void` | — | — | Called with the rejection reason; otherwise the component swallows it. |
-| `trackColor` | `string` | `"#262626"` | — | The track behind the handle. |
-| `handleColor` | `string` | `"#f5f5f5"` | — | The handle and the fill it drags; its arrow color is chosen for legibility over it. |
+| `trackColor` | `string` | `"#232323"` | — | The track behind the handle. |
+| `handleColor` | `string` | `"#fafafa"` | — | The handle and the fill it drags; its arrow color is chosen for legibility over it. |
 | `successColor` | `string` | `"#22c55e"` | — | The fill of the completed chip. |
 | `dangerColor` | `string` | `"#e5484d"` | — | The handle and error text color after a rejection. |
 | `width` | `number` | `280` | — | Track width; the travel distance scales with it. |

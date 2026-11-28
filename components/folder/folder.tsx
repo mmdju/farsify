@@ -1167,7 +1167,7 @@ const Folder = ({
   const setOpenRef = useRef(setOpen);
   setOpenRef.current = setOpen;
 
-  const tint = color ?? (theme === 'light' ? '#8c8c8c' : '#27272a');
+  const tint = color ?? '#232323';
   const rgb = parseColor(tint);
   const paper = parseColor(paperColor);
   const backTone = mixRgb(rgb, [0, 0, 0], 0.16);
@@ -2135,7 +2135,7 @@ const Folder = ({
     '--folder-tab-ink': luma(backTone) > 0.6 ? 'rgb(0 0 0)' : 'rgb(255 255 255)',
     '--folder-tab-ink-alpha': luma(backTone) > 0.6 ? '0.72' : '0.92',
     '--folder-paper': rgbString(paper),
-    '--folder-paper-ink': rgbString(mixRgb(paper, [0, 0, 0], 0.11)),
+    '--folder-paper-ink': rgbString(mixRgb(paper, [0, 0, 0], 0.42)),
     '--folder-paper-ink-strong': rgbString(mixRgb(paper, [0, 0, 0], 0.28)),
     '--folder-paper-text': rgbString(mixRgb(paper, [0, 0, 0], 0.72)),
     '--folder-w': `${g.w}px`,

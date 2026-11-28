@@ -56,7 +56,7 @@ export function Examples() {
 | `active` | `string` | — | — | Controlled active id; pass it together with `onChange`, otherwise picking a row does nothing. |
 | `defaultActive` | `string` | — | — | Active id on the first render in uncontrolled mode; defaults to the first filter. |
 | `onChange` | `(id: string) => void` | — | — | Called with the id of the filter that was picked. |
-| `accent` | `string` | `"var(--foreground)"` | — | Fill of the check on the active row; the tick itself is drawn in the background colour. |
+| `accent` | `string` | `"#fafafa"` | — | Fill of the check on the active row; the tick itself is drawn in the background colour. |
 | `size` | `"sm" | "md" | "lg"` | `"md"` | — | Diameter of the circles, width of the panel, icon size and row height. |
 | `className` | `string` | `""` | — | Extra class for the row that holds the two circles. |
 

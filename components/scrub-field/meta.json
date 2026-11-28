@@ -112,13 +112,13 @@
     {
       "name": "accent",
       "type": "string",
-      "defaultValue": "\"#f5f5f5\"",
+      "defaultValue": "\"#fafafa\"",
       "description": "Accent color — the value fill, the delta chip and the changed ring."
     },
     {
       "name": "chipColor",
       "type": "string",
-      "defaultValue": "\"#27272a\"",
+      "defaultValue": "\"#232323\"",
       "description": "Chip background."
     },
     {
@@ -159,6 +159,6 @@
   ],
   "hasCss": false,
   "assets": [],
-  "lines": 533,
+  "lines": 534,
   "version": 1
 }

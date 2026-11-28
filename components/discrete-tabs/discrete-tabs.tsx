@@ -117,7 +117,7 @@ export default function DiscreteTabs({
   active,
   defaultActive,
   onChange,
-  accent = "var(--foreground)",
+  accent = "#fafafa",
   size = "md",
   className,
 }: DiscreteTabsProps) {
@@ -157,8 +157,8 @@ export default function DiscreteTabs({
               willChange: "transform",
             }}
             className={cn(
-              "group flex cursor-pointer items-center gap-1.5 overflow-hidden rounded-[25px] border border-border bg-accent shadow-md transition-colors duration-75 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-              !isActive && "text-foreground",
+              "group flex cursor-pointer items-center gap-1.5 overflow-hidden rounded-[25px] border border-white/10 bg-foreground text-background shadow-md transition-colors duration-75 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:border-border dark:bg-accent dark:text-foreground",
+              !isActive && "text-neutral-400 dark:text-foreground",
               scale.pad,
               isActive && scale.activePad,
             )}

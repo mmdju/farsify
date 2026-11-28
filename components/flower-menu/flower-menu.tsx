@@ -327,11 +327,13 @@ const FlowerMenu: React.FC<FlowerMenuProps> = ({
                 tabIndex={isOpen ? 0 : -1}
                 onClick={() => select(point)}
                 className={cn(
-                  "flower-menu__disc absolute left-0 top-0 flex items-center justify-center rounded-full border border-border bg-card text-muted-foreground dark:text-foreground",
+                  "flower-menu__disc absolute left-0 top-0 flex items-center justify-center rounded-full border border-border",
+                  accent ? "" : "bg-card text-muted-foreground dark:text-foreground",
                   FOCUS,
                   isOpen ? "pointer-events-auto" : "pointer-events-none",
                 )}
                 style={{
+                  ...(accent ? { background: accent, color: contrastInk(accent) } : {}),
                   width: discSize,
                   height: discSize,
                   marginLeft: -discSize / 2,

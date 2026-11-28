@@ -197,7 +197,7 @@ export default function ScanDocument({
         aria-busy={status === "scanning"}
         disabled={status !== "idle"}
         onClick={handleScan}
-        className="group flex cursor-pointer items-center justify-center gap-1.5 rounded-full border border-border bg-accent px-4 py-2 text-sm font-medium text-foreground shadow-md transition-[background-color,transform] duration-150 ease-out hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-accent disabled:active:scale-100 motion-reduce:active:scale-100"
+        className="group flex cursor-pointer items-center justify-center gap-1.5 rounded-full border border-white/10 bg-foreground px-4 py-2 text-sm font-medium text-background shadow-md transition-[background-color,transform] duration-150 ease-out hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-foreground disabled:active:scale-100 motion-reduce:active:scale-100 dark:border-border dark:bg-accent dark:text-foreground dark:disabled:hover:bg-accent"
       >
         <ScanText size={17} strokeWidth={1.8} className="shrink-0" />
         <span className="-translate-y-px leading-[1.4]">{text[status]}</span>

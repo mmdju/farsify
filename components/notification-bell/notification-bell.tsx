@@ -39,8 +39,8 @@ import {
   type MotionValue,
 } from "motion/react";
 
-const SURFACE = "bg-accent";
-const GLYPH = "text-muted-foreground";
+const SURFACE = "bg-foreground text-background dark:bg-accent dark:text-foreground";
+const GLYPH = "text-neutral-300 dark:text-muted-foreground";
 const FOCUS =
   "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-foreground";
 

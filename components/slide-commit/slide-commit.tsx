@@ -184,7 +184,7 @@ const SlideCommit = ({
   onConfirm,
   onDone,
   onError,
-  trackColor = "#262626",
+  trackColor = "#232323",
   handleColor = "#fafafa",
   successColor = "#22c55e",
   dangerColor = "#e5484d",

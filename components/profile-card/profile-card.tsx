@@ -60,19 +60,19 @@ const THEMES: Record<Palette, Record<string, string>> = {
     "--pfc-shade": "rgba(0, 0, 0, 0.45)"
   },
   light: {
-    "--pfc-frame": "rgba(240, 240, 240, 0.96)",
-    "--pfc-frame-edge": "rgba(0, 0, 0, 0.08)",
-    "--pfc-frame-highlight": "rgba(255, 255, 255, 0.98)",
-    "--pfc-frame-shadow": "0 22px 44px -22px rgba(0, 0, 0, 0.16), 0 6px 16px -10px rgba(0, 0, 0, 0.1)",
-    "--pfc-tile": "linear-gradient(180deg, #ffffff 0%, #f4f4f5 100%)",
-    "--pfc-tile-edge": "rgba(0, 0, 0, 0.08)",
-    "--pfc-tile-highlight": "rgba(255, 255, 255, 1)",
-    "--pfc-tile-shadow": "0 4px 10px -5px rgba(0, 0, 0, 0.12)",
-    "--pfc-ink": "#0a0a0a",
-    "--pfc-muted": "#525252",
-    "--pfc-hover": "brightness(0.97)",
+    "--pfc-frame": "rgba(24, 24, 24, 0.96)",
+    "--pfc-frame-edge": "rgba(255, 255, 255, 0.12)",
+    "--pfc-frame-highlight": "rgba(255, 255, 255, 0.16)",
+    "--pfc-frame-shadow": "0 22px 44px -22px rgba(0, 0, 0, 0.4), 0 6px 16px -10px rgba(0, 0, 0, 0.24)",
+    "--pfc-tile": "linear-gradient(180deg, #232323 0%, #141414 100%)",
+    "--pfc-tile-edge": "rgba(255, 255, 255, 0.12)",
+    "--pfc-tile-highlight": "rgba(255, 255, 255, 0.16)",
+    "--pfc-tile-shadow": "0 4px 10px -5px rgba(0, 0, 0, 0.35)",
+    "--pfc-ink": "#fafafa",
+    "--pfc-muted": "#a3a3a3",
+    "--pfc-hover": "brightness(1.08)",
     "--pfc-press": "brightness(0.92)",
-    "--pfc-shade": "rgba(0, 0, 0, 0.12)"
+    "--pfc-shade": "rgba(0, 0, 0, 0.3)"
   }
 };
 
@@ -83,9 +83,9 @@ const FOILS: Record<Palette, Record<string, string>> = {
     "--pfc-sheen": "rgba(255, 255, 255, 0.16)"
   },
   light: {
-    "--pfc-blend": "multiply",
-    "--pfc-holo-filter": "grayscale(1) invert(1)",
-    "--pfc-sheen": "rgba(255, 255, 255, 0)"
+    "--pfc-blend": "color-dodge",
+    "--pfc-holo-filter": "grayscale(1)",
+    "--pfc-sheen": "rgba(255, 255, 255, 0.16)"
   }
 };
 

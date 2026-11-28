@@ -637,7 +637,7 @@ export function VoicePillBase({
         ) : null}
         {slideToCancel ? (
           <span
-            className="pointer-events-none absolute inset-y-0 end-full inline-flex items-center justify-center gap-[3px] leading-[1.6] font-medium tracking-normal [width:var(--vp-extra)] [color:var(--vp-accent)] [font-size:var(--vp-time-size)] [opacity:var(--vp-cancel)]"
+            className="pointer-events-none absolute inset-y-0 end-full inline-flex items-center justify-center gap-[3px] leading-[1.6] font-medium tracking-normal [width:var(--vp-extra)] [color:var(--foreground)] [font-size:var(--vp-time-size)] [opacity:var(--vp-cancel)]"
             aria-hidden="true"
           >
             <CancelArrowIcon size={12} strokeWidth={2.2} />

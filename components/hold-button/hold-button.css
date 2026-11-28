@@ -1,9 +1,9 @@
 .hold-button {
   --hb-radius: 14px;
   --hb-bg: #232323;
-  --hb-fill: #5227ff;
+  --hb-fill: #fafafa;
   --hb-text: #fafafa;
-  --hb-fill-text: #ffffff;
+  --hb-fill-text: #0a0a0a;
   --hb-hover-tint: #ffffff;
   --hb-hold: 2000ms;
   --hb-release: 200ms;

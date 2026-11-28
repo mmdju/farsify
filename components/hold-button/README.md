@@ -67,10 +67,10 @@ export function Examples() {
 | `doneLabel` | `ReactNode` | `"حذف شد"` | — | The button text after the hold completes. |
 | `icon` | `ReactNode` | — | — | Optional icon beside the normal text. |
 | `doneIcon` | `ReactNode` | — | — | Optional icon beside the done text. |
-| `backgroundColor` | `string` | `"#27272a"` | — | Background of the button. |
-| `fillColor` | `string` | `"#5227FF"` | — | Color of the fill and the glow. |
-| `textColor` | `string` | `"#f5f5f5"` | — | Text color in the normal state. |
-| `fillTextColor` | `string` | `"#ffffff"` | — | Text color over the filled part. |
+| `backgroundColor` | `string` | `"#232323"` | — | Background of the button. |
+| `fillColor` | `string` | `"#fafafa"` | — | Color of the fill and the glow. |
+| `textColor` | `string` | `"#fafafa"` | — | Text color in the normal state. |
+| `fillTextColor` | `string` | `"#0a0a0a"` | — | Text color over the filled part. |
 | `size` | `"sm" | "md" | "lg"` (`sm` · `md` · `lg`) | `"md"` | — | Height and font size: 36 / 44 / 52 pixels. |
 | `radius` | `number` | `14` | — | Corner radius, pixels. |
 | `fillDirection` | `"right" | "up"` (`right` · `up`) | `"right"` | — | Fill direction. In RTL, "right" is still the start edge and it does not flip. |

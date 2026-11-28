@@ -34,25 +34,25 @@
     {
       "name": "backgroundColor",
       "type": "string",
-      "defaultValue": "\"#27272a\"",
+      "defaultValue": "\"#232323\"",
       "description": "Background of the button."
     },
     {
       "name": "fillColor",
       "type": "string",
-      "defaultValue": "\"#5227FF\"",
+      "defaultValue": "\"#fafafa\"",
       "description": "Color of the fill and the glow."
     },
     {
       "name": "textColor",
       "type": "string",
-      "defaultValue": "\"#f5f5f5\"",
+      "defaultValue": "\"#fafafa\"",
       "description": "Text color in the normal state."
     },
     {
       "name": "fillTextColor",
       "type": "string",
-      "defaultValue": "\"#ffffff\"",
+      "defaultValue": "\"#0a0a0a\"",
       "description": "Text color over the filled part."
     },
     {

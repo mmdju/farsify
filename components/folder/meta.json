@@ -54,7 +54,7 @@
     {
       "name": "color",
       "type": "string",
-      "defaultValue": "تم‌آگاه (#8c8c8c / #27272a)",
+      "defaultValue": "تم‌آگاه (#232323)",
       "description": "Color of the folder; shadows and the light/dark layers are derived from it. Omit it to stay in tune with the mono surface theme; the blue `#3b82f6` is only the accent of the dock's blue slot."
     },
     {

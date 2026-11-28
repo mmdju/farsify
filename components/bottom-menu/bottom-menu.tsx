@@ -88,7 +88,7 @@ const THEME_OPTIONS: { key: ThemeChoice; icon: LucideIcon; text: string }[] = [
 ];
 
 const SHARED_ITEM =
-  "group w-full rounded-[12px] px-3 py-2 text-start text-[15px] text-muted-foreground transition-all duration-75 hover:bg-muted/80 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+  "group w-full rounded-[12px] px-3 py-2 text-start text-[15px] text-neutral-400 transition-all duration-75 hover:bg-white/10 hover:text-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:text-muted-foreground dark:hover:bg-muted/80 dark:hover:text-foreground";
 
 const BottomMenu = ({
   autoPreview = false,
@@ -181,7 +181,7 @@ const BottomMenu = ({
               >
                 <Icon
                   size={20}
-                  className="shrink-0 text-muted-foreground transition-all duration-75 group-hover:text-foreground"
+                  className="shrink-0 text-neutral-400 transition-all duration-75 group-hover:text-background dark:text-muted-foreground dark:group-hover:text-foreground"
                 />
                 <span className="transition-all duration-75">{text}</span>
               </button>
@@ -195,13 +195,13 @@ const BottomMenu = ({
             <div className="relative">
               <Search
                 size={17}
-                className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                className="pointer-events-none absolute start-3 top-1/2 -translate-y-1/2 text-neutral-400 dark:text-muted-foreground"
               />
               <input
                 type="text"
                 aria-label="جستجو"
                 placeholder="جستجو…"
-                className="w-full rounded-[12px] border border-border bg-muted/80 py-[6px] pe-3 ps-9 text-[14.5px] text-foreground placeholder:text-muted-foreground focus:border-transparent focus:ring-2 focus:ring-ring focus:outline-none"
+                className="w-full rounded-[12px] border border-border bg-white/10 py-[6px] pe-3 ps-9 text-[14.5px] text-background placeholder:text-neutral-400 focus:border-transparent focus:ring-2 focus:ring-ring focus:outline-none dark:bg-muted/80 dark:text-foreground dark:placeholder:text-muted-foreground"
               />
             </div>
             <div className="flex gap-1.5">
@@ -211,12 +211,12 @@ const BottomMenu = ({
                   type="button"
                   className={cn(
                     SHARED_ITEM,
-                    "flex flex-1 items-center justify-center gap-1.5 bg-muted hover:bg-accent",
+                    "flex flex-1 items-center justify-center gap-1.5 bg-white/10 hover:bg-white/20 dark:bg-muted dark:hover:bg-accent",
                   )}
                 >
                   <Icon
                     size={14}
-                    className="shrink-0 text-muted-foreground transition-all duration-75 group-hover:text-foreground"
+                    className="shrink-0 text-neutral-400 transition-all duration-75 group-hover:text-background dark:text-muted-foreground dark:group-hover:text-foreground"
                   />
                   <span className="transition-all duration-75">{text}</span>
                 </button>
@@ -267,8 +267,8 @@ const BottomMenu = ({
                 className={cn(
                   "flex items-center justify-center gap-2 rounded-[12px] px-3 py-2 text-[15px] transition-all duration-100 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
                   theme === key
-                    ? "bg-accent text-foreground"
-                    : "text-muted-foreground hover:bg-muted",
+                    ? "bg-white/15 text-background dark:bg-accent dark:text-foreground"
+                    : "text-neutral-400 hover:bg-white/10 dark:text-muted-foreground dark:hover:bg-muted",
                 )}
               >
                 <Icon
@@ -276,8 +276,8 @@ const BottomMenu = ({
                   className={cn(
                     "shrink-0",
                     theme === key
-                      ? "text-foreground"
-                      : "text-muted-foreground",
+                      ? "text-background dark:text-foreground"
+                      : "text-neutral-400 dark:text-muted-foreground",
                   )}
                 />
                 <span>{text}</span>
@@ -303,7 +303,7 @@ const BottomMenu = ({
         aria-hidden="true"
         className="pointer-events-none invisible absolute -start-[9999px] -top-[9999px]"
       >
-        <div className="rounded-[18px] border border-border bg-background/95 py-1">
+        <div className="rounded-[18px] border border-white/10 bg-foreground/95 py-1 text-background dark:border-border dark:bg-background/95 dark:text-foreground">
           {content}
         </div>
       </div>
@@ -335,7 +335,7 @@ const BottomMenu = ({
             }}
             transition={{ duration: 0.3, ease: [0.45, 0, 0.25, 1] }}
             style={{ transformOrigin: "bottom center" }}
-            className="absolute bottom-[70px] overflow-hidden rounded-[18px] border border-border bg-background/95 backdrop-blur-xl"
+            className="absolute bottom-[70px] overflow-hidden rounded-[18px] border border-white/10 bg-foreground/95 text-background backdrop-blur-xl dark:border-border dark:bg-background/95 dark:text-foreground"
           >
             <AnimatePresence initial={false} mode="popLayout">
               <motion.div
@@ -357,7 +357,7 @@ const BottomMenu = ({
         role="toolbar"
         aria-label="منوی پایین"
         aria-orientation="horizontal"
-        className="z-10 mt-3 flex items-center gap-1 rounded-[18px] border border-border bg-background/95 p-1 backdrop-blur-xl"
+        className="z-10 mt-3 flex items-center gap-1 rounded-[18px] border border-white/10 bg-foreground/95 p-1 text-background backdrop-blur-xl dark:border-border dark:bg-background/95 dark:text-foreground"
       >
         {MAIN_NAV.map(({ icon: Icon, view: itemView, label }) => {
           const isOpen = view === itemView;
@@ -371,13 +371,13 @@ const BottomMenu = ({
               style={isOpen ? accentStyle : undefined}
               className={cn(
                 "rounded-[16px] p-3 transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
-                isOpen ? "bg-accent" : "hover:bg-muted",
+                isOpen ? "bg-white/15" : "hover:bg-white/10",
               )}
             >
               <Icon
                 className={cn(
                   "transition-all",
-                  isOpen ? "text-foreground" : "text-muted-foreground",
+                  isOpen ? "text-background dark:text-foreground" : "text-neutral-400 dark:text-muted-foreground",
                 )}
               />
             </button>

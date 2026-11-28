@@ -66,7 +66,7 @@ export function Examples() {
 | `radius` | `number` | `88` | — | Radius of the bloom circle in pixels — the distance from each petal's center to the center of the menu. |
 | `discSize` | `number` | `46` | — | Size of each petal. |
 | `centerSize` | `number` | `58` | — | Size of the center button. |
-| `accent` | `string` | `رنگِ سطحِ فام (سفید / زغالی)` | — | Color of the center button; the petals stay neutral. Pass a hex or `rgb()` — the `+` icon's ink automatically turns dark or light to stay readable on any color. |
+| `accent` | `string` | `رنگِ سطحِ فام (#232323)` | — | Color of the center button; the petals stay neutral. Pass a hex or `rgb()` — the `+` icon's ink automatically turns dark or light to stay readable on any color. |
 | `stagger` | `number` | `35` | — | Staggered delay of each petal in milliseconds; closing uses the same step but reversed. |
 | `stiffness` | `number` | `300` | — | Stiffness of the opening spring — higher means snappier. |
 | `damping` | `number` | `15` | — | Spring damping; a lower value gives more bounce. |

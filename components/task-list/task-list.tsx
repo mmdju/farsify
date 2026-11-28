@@ -102,11 +102,11 @@ const FILLED: Stage[] = ["tick", "strike", "nudge", "settled", "unstrike"];
 const STRUCK: Stage[] = ["strike", "nudge", "settled"];
 
 const CARD = cn(
-  "bg-white",
+  "bg-foreground text-background",
   "shadow-[0_1px_2px_rgb(0_0_0/0.04),0_3px_10px_rgb(0_0_0/0.06)]",
   "hover:shadow-[0_1px_2px_rgb(0_0_0/0.05),0_6px_18px_rgb(0_0_0/0.09)]",
   "active:brightness-95",
-  "dark:bg-accent",
+  "dark:bg-accent dark:text-foreground",
   "dark:shadow-[0_1px_2px_rgb(0_0_0/0.4),0_3px_10px_rgb(0_0_0/0.3)]",
   "dark:hover:shadow-[0_1px_2px_rgb(0_0_0/0.45),0_6px_18px_rgb(0_0_0/0.4)]",
   "dark:active:brightness-110",
@@ -161,7 +161,7 @@ function TaskCheck({
         cy="12"
         r={RING_R}
         fill="none"
-        className="text-muted-foreground"
+        className="text-neutral-500"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
@@ -223,7 +223,7 @@ function TaskLabel({
           "font-medium transition-colors duration-300",
           "motion-reduce:transition-none",
           text,
-          struck ? "text-muted-foreground" : "text-foreground",
+          struck ? "text-neutral-400" : "text-background dark:text-foreground",
         )}
         initial={false}
         animate={{ backgroundSize: `${struck ? 100 : 0}% ${line}` }}
@@ -257,7 +257,7 @@ export function TaskItem({
   defaultChecked = false,
   size = "md",
   accent = "currentColor",
-  checkColor = "var(--background, #ffffff)",
+  checkColor = "#0a0a0a",
   onCheckedChange,
   onSettled,
   onReverted,

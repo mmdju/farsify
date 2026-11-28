@@ -49,9 +49,9 @@ export function VoiceNote() {
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `accentColor` | `string` | `"#f5f5f5"` | — | Accent color of the recording state. |
-| `iconColor` | `string` | `"#a1a1aa"` | — | Color of the microphone icon at rest. |
-| `background` | `string` | `"#27272a"` | — | Background color of the pill. |
+| `accentColor` | `string` | `"#fafafa"` | — | Accent color of the recording state. |
+| `iconColor` | `string` | `"#a3a3a3"` | — | Color of the microphone icon at rest. |
+| `background` | `string` | `"#232323"` | — | Background color of the pill. |
 | `size` | `number` | `40` | — | Diameter of the button in the closed state, in pixels. |
 | `shape` | `VoicePillShape` (`pill` · `rounded`) | `"pill"` | — | Shape when open: pill or rounded. |
 | `reach` | `number` | `12` | — | How far the pill opens ahead of the button. |

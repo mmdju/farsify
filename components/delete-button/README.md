@@ -54,7 +54,7 @@ export function Examples() {
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `accent` | `string` | `"#007BFF"` | — | Color of the confirm check and the large check after deletion — the button's only touch of color. |
+| `accent` | `string` | `"#e5484d"` | — | Color of the confirm check and the large check after deletion — the button's only touch of color. |
 | `disabled` | `boolean` | `false` | — | Dims the button and makes it inert; it neither opens nor has auto-preview. |
 | `autoPreview` | `boolean` | `false` | — | For the site preview only: it opens itself, confirms, and starts over. Leave it off in normal use. |
 | `onConfirm` | `() => void` | — | — | When confirm is pressed; at the moment the check settles. Hand the actual deletion work to this. |

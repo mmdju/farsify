@@ -45,13 +45,13 @@
     {
       "name": "trackColor",
       "type": "string",
-      "defaultValue": "\"#262626\"",
+      "defaultValue": "\"#232323\"",
       "description": "The track behind the handle."
     },
     {
       "name": "handleColor",
       "type": "string",
-      "defaultValue": "\"#f5f5f5\"",
+      "defaultValue": "\"#fafafa\"",
       "description": "The handle and the fill it drags; its arrow color is chosen for legibility over it."
     },
     {

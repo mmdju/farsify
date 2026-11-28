@@ -83,7 +83,7 @@ export function Examples() {
 | `mode` | `'flap' | 'book'` (`flap` · `book`) | `'flap'` | — | `flap` keeps the folder upright and opens its flap; `book` lays it flat and turns the cover like a book. |
 | `variant` | `'solid' | 'glass' | 'matte'` (`solid` · `glass` · `matte`) | `'solid'` | — | The folder's material; `glass` makes the flap refractive glass and shows the papers inside through it. |
 | `layout` | `'spread' | 'stack' | 'row'` (`spread` · `stack` · `row`) | `'spread'` | — | Arrangement of the papers when the folder is open: free spread, vertical stack, or tidy row. |
-| `color` | `string` | `تم‌آگاه (#8c8c8c / #27272a)` | — | Color of the folder; shadows and the light/dark layers are derived from it. Omit it to stay in tune with the mono surface theme; the blue `#3b82f6` is only the accent of the dock's blue slot. |
+| `color` | `string` | `تم‌آگاه (#232323)` | — | Color of the folder; shadows and the light/dark layers are derived from it. Omit it to stay in tune with the mono surface theme; the blue `#3b82f6` is only the accent of the dock's blue slot. |
 | `paperColor` | `string` | `'#ffffff'` | — | Color of the papers. |
 | `label` | `string` | `undefined` | — | Text of the tab label; the tab grows to fit the text. |
 | `tabPosition` | `'left' | 'center' | 'right'` (`left` · `center` · `right`) | `'right'` | — | Where the tab sits on the top edge (in right-to-left layout, `right` is the start side). |

@@ -56,7 +56,7 @@ export function Examples() {
 | `active` | `string` | — | — | Controlled active id; pass it together with `onChange`, otherwise clicking does nothing. |
 | `defaultActive` | `string` | — | — | Active id on the first render in uncontrolled mode; defaults to the first tab. |
 | `onChange` | `(id: string) => void` | — | — | Called with the id of the pill that was picked. |
-| `accent` | `string` | `"var(--foreground)"` | — | Colour of the active pill's icon and label; the foreground token keeps it readable in both themes. |
+| `accent` | `string` | `"#fafafa"` | — | Colour of the active pill's icon and label; the foreground token keeps it readable in both themes. |
 | `size` | `"sm" | "md" | "lg"` | `"md"` | — | Icon size, padding and label size of every pill. |
 | `className` | `string` | `""` | — | Extra class for the row. |
 
