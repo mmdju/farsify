@@ -9,7 +9,8 @@
     "ballColor": "Ball, and the dust the throw leaves behind. Follows the theme unless set.",
     "markColor": "Color of the arrow inside the ball. Follows the theme unless set.",
     "ariaLabel": "Accessible name of the ball, for when the default Persian label does not fit the page.",
-    "className": "Extra class for the stage."
+    "className": "Extra class for the stage.",
+    "autoPreview": "Site preview only: it plays the interaction on its own. Leave it off in normal use."
   },
   "tips": [
     "`power` is read at the moment of release, so changing it while the ball sits in the socket changes the next throw; `bounce` is read every frame and can be changed mid-flight.",

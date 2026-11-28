@@ -52,6 +52,7 @@ export function HotShot() {
 | `markColor` | `string` | `"#0a0a0a"` | — | Color of the arrow inside the ball. Follows the theme unless set. |
 | `ariaLabel` | `string` | `"توپ رو بکش و رها کن؛ با کلیدهای جهت‌دار نشونه بگیر و با کلید فاصله پرتش کن"` | — | Accessible name of the ball, for when the default Persian label does not fit the page. |
 | `className` | `string` | `—` | — | Extra class for the stage. |
+| `autoPreview` | `boolean` | `false` | — | Site preview only: it plays the interaction on its own. Leave it off in normal use. |
 
 ## Tips
 

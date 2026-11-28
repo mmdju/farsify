@@ -62,6 +62,12 @@
       "type": "string",
       "defaultValue": "—",
       "description": "Extra class for the wrapper."
+    },
+    {
+      "name": "autoPreview",
+      "type": "boolean",
+      "defaultValue": "false",
+      "description": "Site preview only: it plays the interaction on its own. Leave it off in normal use."
     }
   ],
   "tips": [

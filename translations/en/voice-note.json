@@ -11,7 +11,8 @@
     "textColor": "Label, icons and the play disc, and the colour the pill's edge is mixed from.",
     "waveColor": "The bars while recording and the recorded ones in the clip.",
     "accentColor": "The recording dot, and the mark once the take is armed for the throw.",
-    "className": "Extra class for the wrapper."
+    "className": "Extra class for the wrapper.",
+    "autoPreview": "Site preview only: it plays the interaction on its own. Leave it off in normal use."
   },
   "tips": [
     "The level is a stand-in shaped like speech, so the component never asks for a microphone; swap it for a real recorder when the audio has to exist.",

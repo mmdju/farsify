@@ -55,6 +55,7 @@ export function DenseRecorder() {
 | `waveColor` | `string` | `"#8f8f94"` | — | The bars while recording and the recorded ones in the clip. |
 | `accentColor` | `string` | `"#e5484d"` | — | The recording dot, and the mark once the take is armed for the throw. |
 | `className` | `string` | `—` | — | Extra class for the wrapper. |
+| `autoPreview` | `boolean` | `false` | — | Site preview only: it plays the interaction on its own. Leave it off in normal use. |
 
 ## Tips
 

@@ -14,7 +14,8 @@
     "warningColor": "Icon of the warning toasts.",
     "errorColor": "Icon of the error toasts.",
     "ariaLabel": "Accessible name of the region the stack lives in.",
-    "className": "Extra class for the frame."
+    "className": "Extra class for the frame.",
+    "autoPreview": "Site preview only: it plays the interaction on its own. Leave it off in normal use."
   },
   "tips": [
     "The stack always holds three toasts: dismissing one pulls the next item from the pool and a new one rises in at the front, so it never runs empty.",

@@ -45,6 +45,7 @@ export function SixDigits() {
 | `textColor` | `string` | `"#fafafa"` | — | Digits, the caret and the focus ring. |
 | `successColor` | `string` | `"#22c55e"` | — | The tick and the word beside it once the code verifies. |
 | `className` | `string` | `—` | — | Extra class for the wrapper. |
+| `autoPreview` | `boolean` | `false` | — | Site preview only: it plays the interaction on its own. Leave it off in normal use. |
 
 ## Tips
 

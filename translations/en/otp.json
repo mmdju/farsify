@@ -9,7 +9,8 @@
     "surfaceColor": "Cell and capsule surface.",
     "textColor": "Digits, the caret and the focus ring.",
     "successColor": "The tick and the word beside it once the code verifies.",
-    "className": "Extra class for the wrapper."
+    "className": "Extra class for the wrapper.",
+    "autoPreview": "Site preview only: it plays the interaction on its own. Leave it off in normal use."
   },
   "tips": [
     "`answer` is a demonstration knob, not validation: no code is ever checked. Send the code yourself and render the same verified state for a real sign-in.",

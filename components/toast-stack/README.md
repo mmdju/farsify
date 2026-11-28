@@ -50,6 +50,7 @@ export function TightStack() {
 | `errorColor` | `string` | `"#e5484d"` | — | Icon of the error toasts. |
 | `ariaLabel` | `string` | `"اعلان‌ها"` | — | Accessible name of the region the stack lives in. |
 | `className` | `string` | `—` | — | Extra class for the frame. |
+| `autoPreview` | `boolean` | `false` | — | Site preview only: it plays the interaction on its own. Leave it off in normal use. |
 
 ## Tips
 
